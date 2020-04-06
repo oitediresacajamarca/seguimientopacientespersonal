@@ -1,0 +1,91 @@
+<div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#"> BIENVENIDOS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">INICIO <span class="sr-only">(current)</span></a>
+      </li>
+     
+     
+      
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">BUSCAR</button>
+    </form>
+  </div>
+</nav>
+<p-panel header="SEGUIMIENTO PACIENTES DE RIESGO" [toggleable]="true">
+  <div class="ui-g">
+      <div class="ui-g-12">            
+            <p-panel header="SELECCIONE LOS CRITERIOS DE BUSQUEDAD" [toggleable]="true">
+
+              
+                  <span   class="ubicaciones">
+                    Provincia<p-dropdown [options]="provincias" [(ngModel)]="provinciaselected" (onChange)="devolverDistritos()"></p-dropdown>
+                    Distrito <p-dropdown [options]="dddistritos" [(ngModel)]="distritoselecionado"></p-dropdown>
+                  </span>
+
+                
+     
+               
+                
+                  <span   class="rangoanos">
+                    EDAD
+                    Rango: {{rangoanos[0] + ' - ' + rangoanos[1]}} AÑOS
+                    <p-slider [min]="0" [max]="100"  [range]="true" [(ngModel)]="rangoanos" (onChange)="gjj()" [style]="{'width':'14em','margin-top': '0.5em'}" ></p-slider>
+                  </span>
+
+                 <div class="ui-g" style="width:250px;margin-bottom:25px;margin-top:25px">
+                    GENERO
+                    <div class="ui-g-12"><p-radioButton name="genero" value="1" label="Masculino" [(ngModel)]="generoselecionado" inputId="opt1"></p-radioButton></div>
+                    <div class="ui-g-12"><p-radioButton name="genero" value="0" label="Femenino" [(ngModel)]="generoselecionado" inputId="opt2"></p-radioButton></div>
+                    <div class="ui-g-12"><p-radioButton name="genero" value="" label="Ambos" [(ngModel)]="generoselecionado" inputId="opt3"></p-radioButton></div>
+                </div>
+
+                
+             
+
+
+
+              
+                  <p-footer>
+                    <p-button label="BUSCAR" (onClick)="BUSCAR($event)"></p-button>
+                </p-footer>
+            </p-panel>
+
+            <p-panel header="RESULTADOS DE BUSQUEDA">
+
+                <p-table [columns]="colsresultados" [(value)]="resultados">
+                    <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th *ngFor="let col of columns">
+                                {{col.header}}
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-car let-columns="columns">
+                        <tr>
+                            <td *ngFor="let col of columns">
+                                    {{car[col.field]}}
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+                <button type="button" pButton icon="pi pi-file-excel" iconPos="left" label="EXPORTAR A EXCEL" (click)="exportExcel()" style="margin-right: 0.5em;" class="ui-button-success"></button>
+            
+
+            </p-panel>
+      </div>
+      
+    
+
+
+  </div>
+</p-panel>
+</div>
