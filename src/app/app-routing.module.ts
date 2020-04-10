@@ -4,7 +4,8 @@ import { PaneldeseguimientoComponent } from './paneldeseguimiento/paneldeseguimi
 
 
 const routes: Routes = [
-  {path:'',component:PaneldeseguimientoComponent}
+  {path:'',component:PaneldeseguimientoComponent},
+  {path:'personal.jsp',component:PaneldeseguimientoComponent}
 ];
 
 @NgModule({

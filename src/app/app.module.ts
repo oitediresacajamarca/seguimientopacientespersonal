@@ -17,10 +17,19 @@ import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
 import {InplaceModule} from 'primeng/inplace';
 import {CheckboxModule} from 'primeng/checkbox';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
+import {FieldsetModule} from 'primeng/fieldset';
+import {ListboxModule} from 'primeng/listbox';
+import {ChipsModule} from 'primeng/chips';
+import { TablaMorbilidadesComponent } from './componentes/tabla-morbilidades/tabla-morbilidades.component';
+import {ProgressBarModule} from 'primeng/progressbar';
+import { TablaNotificacionComponent } from './componetes/tabla-notificacion/tabla-notificacion.component';
 @NgModule({
   declarations: [
     AppComponent,
-    PaneldeseguimientoComponent
+    PaneldeseguimientoComponent,
+    TablaMorbilidadesComponent,
+    TablaNotificacionComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +42,9 @@ import {CheckboxModule} from 'primeng/checkbox';
     ,SliderModule,RadioButtonModule,
     ButtonModule,
     TableModule,InplaceModule,
-    CheckboxModule
+    CheckboxModule,ScrollPanelModule,
+    FieldsetModule,
+    ListboxModule,ChipsModule,ProgressBarModule
   ],
   providers: [DistritosService],
   bootstrap: [AppComponent]

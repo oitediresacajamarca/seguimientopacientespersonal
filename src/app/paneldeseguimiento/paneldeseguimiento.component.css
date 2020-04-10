@@ -14,5 +14,33 @@
 }
 .container{
     width: 90%;
+   
 
+}
+
+.ui-table-scrollable-header{
+    font-size: 8.5px;
+}
+.custombar2{
+    margin-bottom: 14px;
+}
+.ui-fieldset .ui-fieldset-legend{
+    font-size: 7.5px;
+    padding: 50px 50px !important;
+}
+
+.ui-fieldset, .ui-fieldset .ui-fieldset-legend {
+    padding:0.6em 1em;
+    font-size: 10px;
+}
+
+.ui-fieldset-toggleable .ui-fieldset-legend {
+    padding: 0.5em 1em 0.5em 0.5em;
+    cursor:pointer;
+}
+
+.ui-fieldset .ui-fieldset-toggler {
+    padding-right: .1em;
+    margin-top: -0.1em;
+    float:left;
 }
