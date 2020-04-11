@@ -25,12 +25,17 @@ import { TablaMorbilidadesComponent } from './componentes/tabla-morbilidades/tab
 import {ProgressBarModule} from 'primeng/progressbar';
 import { TablaNotificacionComponent } from './componetes/tabla-notificacion/tabla-notificacion.component';
 import {DialogModule} from 'primeng/dialog';
+import { AccesoComponent } from './componentes/acceso/acceso.component';
+import {InputMaskModule} from 'primeng/inputmask';
+import {CalendarModule} from 'primeng/calendar';
+import {CaptchaModule} from 'primeng/captcha';
 @NgModule({
   declarations: [
     AppComponent,
     PaneldeseguimientoComponent,
     TablaMorbilidadesComponent,
-    TablaNotificacionComponent
+    TablaNotificacionComponent,
+    AccesoComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,9 @@ import {DialogModule} from 'primeng/dialog';
     CheckboxModule,ScrollPanelModule,
     FieldsetModule,
     ListboxModule,ChipsModule,ProgressBarModule,
-    DialogModule
+    DialogModule,
+    InputMaskModule,
+    CalendarModule,CaptchaModule
   ],
   providers: [DistritosService],
   bootstrap: [AppComponent]

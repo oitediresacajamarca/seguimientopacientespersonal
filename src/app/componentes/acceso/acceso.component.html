@@ -1,0 +1,40 @@
+<div class="container contenedor">
+    <div class="ui-g">
+        <div class="ui-g-4"></div>
+        <div class="ui-g-4">
+            <div class="example-container">
+                <p-panel header="Inicio de Session Personal de Salud">
+                    <br>
+                    
+                    
+                    <span class="ui-float-label">                       
+                        <input id="float-input" type="text" size="19" pInputText [(ngModel)]="usuario"> 
+                        <label for="float-input">USUARIO</label>
+                    </span>
+
+                      <br>
+                      <br>
+
+                    <span class="ui-float-label">
+                       
+                        <input type="password" pPassword size="20" [(ngModel)]="clave"/>
+                        <label for="float-input">CONTRASEÑA</label>
+                    </span>
+                    <br>
+                    <p-captcha siteKey="6Lf2XQkTAAAAANcvOwYqPxWL4iZDksFqHpS39GDA" (onResponse)="showResponse($event)">
+                        
+                    </p-captcha>
+                      
+                    
+                <button pButton type="button" label="Iniciar sesion" (click)="Login()"></button>
+                </p-panel>
+              </div>
+        </div>
+        <div class="ui-g-4">
+           
+           
+           
+        </div>
+    </div>
+    
+</div>
