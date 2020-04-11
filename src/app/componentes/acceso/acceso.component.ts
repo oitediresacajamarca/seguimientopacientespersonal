@@ -18,13 +18,15 @@ export class AccesoComponent implements OnInit {
   Login(){
   this.usu.login(this.usuario,this.clave).subscribe((datos)=>{
       if(datos.respuesta.logueado ==true){
-        
+        localStorage.setItem('datos',JSON.stringify(datos.respuesta));
+
           this.rout.navigate(['personal.jsp']);
       }
       else{
         this.rout.navigate(['']);
         this.usuario='';
         this.clave='';
+        localStorage.setItem('datos','');
       }
     
   });
