@@ -26,8 +26,9 @@
             <p-panel header="SELECCIONE LOS CRITERIOS DE BUSQUEDAD" [toggleable]="true">
 
               
-               
+               <div class="ui-g">
 
+                <div class="ui-g-6">
                   <p-fieldset legend="UBICACION" [transitionOptions]="'400ms cubic-bezier(0.86, 0, 0.07, 1)'"
                   >
                       Provincia<p-dropdown [options]="provincias" [(ngModel)]="provinciaselected" (onChange)="devolverDistritos()"></p-dropdown>
@@ -35,11 +36,10 @@
                       <br>
                       <br>
                   </p-fieldset>
-                
+                </div>
                  
 
-                
-     
+                <div class="ui-g-6">    
                
                 
                   <p-fieldset legend="EDAD">
@@ -50,19 +50,21 @@
                     <br>
                   </p-fieldset>
 
+                </div>
+
                   <p-fieldset legend="GENERO">
                     <div class="ui-g-12"><p-radioButton name="genero" value="1" label="Masculino" [(ngModel)]="generoselecionado" inputId="opt1"></p-radioButton></div>
                     <div class="ui-g-12"><p-radioButton name="genero" value="0" label="Femenino" [(ngModel)]="generoselecionado" inputId="opt2"></p-radioButton></div>
                     <div class="ui-g-12"><p-radioButton name="genero" value="" label="Ambos" [(ngModel)]="generoselecionado" inputId="opt3"></p-radioButton></div>
                   </p-fieldset>
 
+                </div>
+
                   <p-fieldset legend="MORBILIDAD" [toggleable]="true">
 
-                     
+                     <app-tabla-morbilidades></app-tabla-morbilidades>                
 
-
-                    <app-tabla-morbilidades></app-tabla-morbilidades>
-              
+                                 
                   </p-fieldset>
 
                 
@@ -110,3 +112,4 @@
   </div>
 </p-panel>
 </div>
+<app-tabla-notificacion></app-tabla-notificacion>

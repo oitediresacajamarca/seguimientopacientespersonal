@@ -24,6 +24,7 @@ import {ChipsModule} from 'primeng/chips';
 import { TablaMorbilidadesComponent } from './componentes/tabla-morbilidades/tabla-morbilidades.component';
 import {ProgressBarModule} from 'primeng/progressbar';
 import { TablaNotificacionComponent } from './componetes/tabla-notificacion/tabla-notificacion.component';
+import {DialogModule} from 'primeng/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +45,8 @@ import { TablaNotificacionComponent } from './componetes/tabla-notificacion/tabl
     TableModule,InplaceModule,
     CheckboxModule,ScrollPanelModule,
     FieldsetModule,
-    ListboxModule,ChipsModule,ProgressBarModule
+    ListboxModule,ChipsModule,ProgressBarModule,
+    DialogModule
   ],
   providers: [DistritosService],
   bootstrap: [AppComponent]

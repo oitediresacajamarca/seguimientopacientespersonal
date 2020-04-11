@@ -77,7 +77,7 @@ export class PaneldeseguimientoComponent implements OnInit {
       (datos)=>{
         
       this.morbilidades.push(datos.respuesta)
-      console.log(this.morbilidades);
+    
       
       
       });
