@@ -9,6 +9,7 @@ export class FitrarService {
 
   constructor(private http:HttpClient) { }
   filtra(cod_distrito:string,edad_min:string,edad_max:string,genero:string){
+  
 
     let consulta=	{
       "cod_distrito":cod_distrito,

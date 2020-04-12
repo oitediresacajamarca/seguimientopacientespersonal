@@ -33,7 +33,7 @@ export class TablaMorbilidadesComponent implements OnInit {
   this.customers=dat.respuesta;
 
   this.loading = false;
-  this.selectedCustomers.values
+ 
 
   console.log(dat);
 })

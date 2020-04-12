@@ -29,6 +29,8 @@ import { AccesoComponent } from './componentes/acceso/acceso.component';
 import {InputMaskModule} from 'primeng/inputmask';
 import {CalendarModule} from 'primeng/calendar';
 import {CaptchaModule} from 'primeng/captcha';
+import {ContextMenuModule} from 'primeng/contextmenu';
+import {MenuItem} from 'primeng/api';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +55,8 @@ import {CaptchaModule} from 'primeng/captcha';
     ListboxModule,ChipsModule,ProgressBarModule,
     DialogModule,
     InputMaskModule,
-    CalendarModule,CaptchaModule
+    CalendarModule,CaptchaModule,ContextMenuModule
+    
   ],
   providers: [DistritosService],
   bootstrap: [AppComponent]

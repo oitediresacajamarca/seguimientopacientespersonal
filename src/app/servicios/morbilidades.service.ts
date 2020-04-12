@@ -26,4 +26,7 @@ export class MorbilidadesService {
     return this.cad;
 
   }
+  devolverMorbildadPaciente(cod_paciente:string){
+   return this.http.get<any>(environment.ipmicroservicios+'morbilidad/paciente/'+cod_paciente);
+  }
 }

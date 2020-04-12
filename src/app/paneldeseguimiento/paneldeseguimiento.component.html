@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container-fluid">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"> BIENVENIDOS</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  
+  <button class="navbar-toggler" href="#" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -14,9 +14,8 @@
      
       
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">BUSCAR</button>
+    <form class="form-inline my-2 my-lg-0">     
+      <button class="btn btn-outline-success my-2 my-sm-0"  routerLink="" type="button">CERRAR SESION</button>
     </form>
   </div>
 </nav>
@@ -53,8 +52,8 @@
                 </div>
 
                   <p-fieldset legend="GENERO">
-                    <div class="ui-g-12"><p-radioButton name="genero" value="1" label="Masculino" [(ngModel)]="generoselecionado" inputId="opt1"></p-radioButton></div>
-                    <div class="ui-g-12"><p-radioButton name="genero" value="0" label="Femenino" [(ngModel)]="generoselecionado" inputId="opt2"></p-radioButton></div>
+                    <div class="ui-g-12"><p-radioButton name="genero" value="M" label="Masculino" [(ngModel)]="generoselecionado" inputId="opt1"></p-radioButton></div>
+                    <div class="ui-g-12"><p-radioButton name="genero" value="F" label="Femenino" [(ngModel)]="generoselecionado" inputId="opt2"></p-radioButton></div>
                     <div class="ui-g-12"><p-radioButton name="genero" value="" label="Ambos" [(ngModel)]="generoselecionado" inputId="opt3"></p-radioButton></div>
                   </p-fieldset>
 
@@ -82,22 +81,29 @@
              
               <p-scrollPanel [style]="{width: '100%', height: '200px'}" styleClass="custombar2">
                
-                        <p-table [columns]="colsresultados" [(value)]="resultados" [style]="{width: '180%', height: '200px'}">
-                    <ng-template pTemplate="header" let-columns>
-                        <tr>
-                            <th *ngFor="let col of columns" [style]="{'font-size': '9px'}">
-                                {{col.header}}
-                            </th>
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-car let-columns="columns" >
-                        <tr>
-                            <td *ngFor="let col of columns">
-                                    {{car[col.field]}}
-                            </td>
-                        </tr>
-                    </ng-template>
-                </p-table>
+                    <p-table [columns]="colsresultados" [(value)]="resultados"
+                     [style]="{width: '180%', height: '200px'}"    [(contextMenuSelection)]="selectedResultado" 
+                     [contextMenu]="cm">
+                          <ng-template pTemplate="header" let-columns>
+                              <tr>
+                                  <th *ngFor="let col of columns" [style]="{'font-size': '9px'}">
+                                      {{col.header}}
+                                  </th>
+                              </tr>
+                          </ng-template>
+                          <ng-template pTemplate="body" let-car let-columns="columns" >
+                              <tr [pContextMenuRow]="car" [pContextMenuRowIndex]="rowIndex">
+                                  <td>
+                                    <a [routerLink]="['/'+car['NRO_DOCUMENTO']]" [queryParams]="{ID_PACIENTE: car['NRO_DOCUMENTO']}">Ver Solicitud</a>
+                                  </td>
+                                  <td *ngFor="let col of columns">
+                                          {{car[col.field]}}
+                                  </td>
+                              </tr>
+                          </ng-template>
+                   </p-table>
+
+                  <p-contextMenu #cm [model]="items"></p-contextMenu>
 
               </p-scrollPanel>
                 <button type="button" pButton icon="pi pi-file-excel" iconPos="left" label="EXPORTAR A EXCEL" (click)="exportExcel()" style="margin-right: 0.5em;" class="ui-button-success"></button>
