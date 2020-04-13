@@ -30,14 +30,21 @@ import {InputMaskModule} from 'primeng/inputmask';
 import {CalendarModule} from 'primeng/calendar';
 import {CaptchaModule} from 'primeng/captcha';
 import {ContextMenuModule} from 'primeng/contextmenu';
-import {MenuItem} from 'primeng/api';
+
+import { PrincipalComponent } from './componentes/atencion/principal.component';
+import {TabViewModule} from 'primeng/tabview';
+import { MorbilidadesPorPacienteComponent } from './componentes/morbilidades-por-paciente/morbilidades-por-paciente.component';
+import { RegistrarAtencionComponent } from './componentes/registrar-atencion/registrar-atencion.component';
 @NgModule({
   declarations: [
     AppComponent,
     PaneldeseguimientoComponent,
     TablaMorbilidadesComponent,
     TablaNotificacionComponent,
-    AccesoComponent
+    PrincipalComponent,
+    AccesoComponent,
+    MorbilidadesPorPacienteComponent,
+    RegistrarAtencionComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +62,8 @@ import {MenuItem} from 'primeng/api';
     ListboxModule,ChipsModule,ProgressBarModule,
     DialogModule,
     InputMaskModule,
-    CalendarModule,CaptchaModule,ContextMenuModule
+    CalendarModule,CaptchaModule,ContextMenuModule,
+    TabViewModule
     
   ],
   providers: [DistritosService],

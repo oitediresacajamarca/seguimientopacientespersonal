@@ -1,0 +1,27 @@
+<p-table [value]="morbilidadesdepaciente">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>ITEM</th>
+            <th>COD_MORBILIDAD</th>
+            <th>MORBILIDAD</th>
+            <th>COD_MED</th>
+            <th>NOMBRE_MEDICAMENTO</th>
+            <th>NRO_DOCUMENTO</th>
+                     
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-morbi>
+        <tr>
+            <td>{{morbi.ITEM}}</td>
+            <td>{{morbi.COD_MORBILIDAD}}</td>
+            <td>{{morbi.MORBILIDAD}}</td>
+            <td>{{morbi.COD_MED}}</td>
+            <td>{{morbi.NOMBRE_MEDICAMENTO}}</td>
+            <td>{{morbi.NRO_DOCUMENTO}}</td>
+
+        </tr>
+    </ng-template>
+</p-table>
+
+
+

@@ -94,7 +94,7 @@
                           <ng-template pTemplate="body" let-car let-columns="columns" >
                               <tr [pContextMenuRow]="car" [pContextMenuRowIndex]="rowIndex">
                                   <td>
-                                    <a [routerLink]="['/'+car['NRO_DOCUMENTO']]" [queryParams]="{ID_PACIENTE: car['NRO_DOCUMENTO']}">Ver Solicitud</a>
+                                    <a [routerLink]="['/atencion/'+car['NRO_DOCUMENTO']]" >Ver Solicitud</a>
                                   </td>
                                   <td *ngFor="let col of columns">
                                           {{car[col.field]}}
