@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { SolicitudPacienteService } from 'src/app/servicios/solicitud-paciente.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { MorbilidadesPorPacienteComponent } from '../morbilidades-por-paciente/morbilidades-por-paciente.component';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-principal',
@@ -32,6 +33,8 @@ export class PrincipalComponent implements OnInit {
   "ID_GENERO": '',
   "ID_SOLICITUD": ''}   ;
   cod_buscar:string;
+  ID_PACIENTE:string;
+  ID_SOLICITUD:string;
 
   constructor(private solipac:SolicitudPacienteService,private rutaActiva: ActivatedRoute) { }
 
@@ -40,7 +43,11 @@ export class PrincipalComponent implements OnInit {
 
   this.rutaActiva.params.subscribe(
     (params: Params) => {
-      this.cod_buscar = params.ID_PACIENTE;
+      this.cod_buscar = params.NRO_DOCUMENTO;
+      this.ID_PACIENTE=params.ID_PACIENTE;
+      this.ID_SOLICITUD=params.ID_SOLICITUD
+
+
     
     }
   );

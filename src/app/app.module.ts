@@ -30,6 +30,10 @@ import {InputMaskModule} from 'primeng/inputmask';
 import {CalendarModule} from 'primeng/calendar';
 import {CaptchaModule} from 'primeng/captcha';
 import {ContextMenuModule} from 'primeng/contextmenu';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
+import {ToastModule} from 'primeng/toast';
+import {MessageService} from 'primeng/api';
 
 import { PrincipalComponent } from './componentes/atencion/principal.component';
 import {TabViewModule} from 'primeng/tabview';
@@ -63,10 +67,11 @@ import { RegistrarAtencionComponent } from './componentes/registrar-atencion/reg
     DialogModule,
     InputMaskModule,
     CalendarModule,CaptchaModule,ContextMenuModule,
-    TabViewModule
+    TabViewModule,ConfirmDialogModule,
+    ToastModule
     
   ],
-  providers: [DistritosService],
+  providers: [DistritosService,ConfirmationService,MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,7 +8,7 @@ import { PrincipalComponent } from './componentes/atencion/principal.component';
 const routes: Routes = [
   {path:'',component:AccesoComponent},
   {path:'personal.jsp',component:PaneldeseguimientoComponent},
-  {path:'atencion/:ID_PACIENTE',component:PrincipalComponent}
+  {path:'atencion/:NRO_DOCUMENTO/:ID_PACIENTE/:ID_SOLICITUD',component:PrincipalComponent}
 ];
 
 @NgModule({
