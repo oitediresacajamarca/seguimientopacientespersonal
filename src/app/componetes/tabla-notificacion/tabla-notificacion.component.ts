@@ -31,7 +31,11 @@ let distrito:string=SESION.ID_DISTRITO;
       
     }
     if(SESION.AMBITO=="P"){
-      this.cod_ambito=distrito.substring(1,2);
+      this.cod_ambito=distrito.substring(0,4);
+           
+    }
+    if(SESION.AMBITO=="R"){
+      this.cod_ambito=distrito.substring(0,2);
            
     }
 

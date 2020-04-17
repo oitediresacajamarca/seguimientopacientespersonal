@@ -22,7 +22,7 @@ export class PaneldeseguimientoComponent implements OnInit {
 
 
   distritoselecionado:string;
-  generoselecionado:string;
+  generoselecionado:string='';
   resultados:any[];
   morbilidades:SelectItem[];
   morbiselected:SelectItem;
@@ -130,7 +130,7 @@ export class PaneldeseguimientoComponent implements OnInit {
       (datos)=>{
 
 
-        this.resultados.push(datos.respuesta);
+        this.resultados=datos.respuesta;
 
         
         

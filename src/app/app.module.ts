@@ -39,6 +39,7 @@ import { PrincipalComponent } from './componentes/atencion/principal.component';
 import {TabViewModule} from 'primeng/tabview';
 import { MorbilidadesPorPacienteComponent } from './componentes/morbilidades-por-paciente/morbilidades-por-paciente.component';
 import { RegistrarAtencionComponent } from './componentes/registrar-atencion/registrar-atencion.component';
+import { InicioComponent } from './componentes/inicio/inicio.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import { RegistrarAtencionComponent } from './componentes/registrar-atencion/reg
     PrincipalComponent,
     AccesoComponent,
     MorbilidadesPorPacienteComponent,
-    RegistrarAtencionComponent
+    RegistrarAtencionComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,

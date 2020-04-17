@@ -20,7 +20,7 @@ export class AccesoComponent implements OnInit {
       if(datos.respuesta.logueado ==true){
         localStorage.setItem('datos',JSON.stringify(datos.respuesta));
 
-          this.rout.navigate(['personal.jsp']);
+          this.rout.navigate(['PRIMERO']);
       }
       else{
         this.rout.navigate(['']);
