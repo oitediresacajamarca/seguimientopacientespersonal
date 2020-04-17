@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  ipmicroservicios:"http://localhost:8089/"
+  ipmicroservicios:"http://localhost:8089/",
+  ip:"localhost:8089" 
 };
 
 /*

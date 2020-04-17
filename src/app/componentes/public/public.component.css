@@ -1,0 +1,13 @@
+.contenedor {
+    width: 1048px;
+    margin: auto;
+    border-color:rgb(0, 195, 255);
+    border-style: solid;
+    margin-top: 40px;
+    height: 703px;
+    background-image: url('../../../assets/Fondo.jpg');
+}
+.login{
+    align-items: flex-end;
+    font-size: 20px;
+}

@@ -1,0 +1,172 @@
+
+<div class="container contenedor">
+    <div class="ui-g">
+        <div class="ui-g-4"></div>
+        <div class="ui-g-4">
+            <div class="example-container">
+                <p-panel header="Requerimiento de Atencion">
+                    <br>
+                    <p-dropdown [options]="tiposdoc"  size="80" [(ngModel)]="tipodocseleccionado" [style]="{width:'150px'}" [maxlength]="300" placeholder="Seleccione "></p-dropdown>
+                    <br>
+                    <br>
+                    
+                    <span class="ui-float-label">
+                        <p-inputMask [(ngModel)]="numerodoc" size="8" mask="99999999"  size="20" title="INGRESE SU NUMERO DE DOCUMENTO" characterPattern="[0-9]" id="float-input"></p-inputMask>
+                         
+                        <label for="float-input">NUMERO DE DOCUMENTO</label>
+                    </span>
+
+                      <br>
+
+                    <span class="ui-float-label">
+                        <p-calendar [(ngModel)]="FECNAC" [yearNavigator]="true" yearRange="1900:2020"></p-calendar>
+                         
+                        <label for="float-input">FECHA DE NACIMIENTO</label>
+                    </span>
+                    <br>
+                    <p-captcha siteKey="6Lf2XQkTAAAAANcvOwYqPxWL4iZDksFqHpS39GDA" (onResponse)="showResponse($event)"></p-captcha>
+                      
+                    
+                <button pButton type="button" label="Enviar Solicitud" (click)="solicitaAtencion()"></button>
+                </p-panel>
+              </div>
+        </div>
+        <div class="ui-g-4">
+           
+            
+           
+        </div>
+    </div>
+    
+</div>
+
+<p-dialog header="REGISTRE SUS DATOS" [(visible)]="verpanelregistro" [modal]="true" [style]="{width: '50vw',heigth:'60vw'}" [maximizable]="true" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="true">
+
+   <p-messages [(value)]="msgs" ></p-messages>
+        <p-panel header="DATOS GENERALES" *ngIf="verpaneldatosgenerales">
+            
+
+            <table style="width:100%">
+                <tr>
+                  <th>Nombres</th>
+                  <td><input type="text" pInputText [(ngModel)]="nombres_nuevo"/>
+                      </td>
+                 
+                </tr>
+                <tr>
+                    <th>Apellido Paterno</th>
+                    <td><input type="text" pInputText [(ngModel)]="ape_pat_nuevo"></td>
+                   
+                  </tr>
+                <tr>
+                  <th>Apellido Materno</th>
+                  <td><input type="text" pInputText [(ngModel)]="ape_mat_nuevo"></td>
+        
+                </tr>
+                <tr>
+                    <th>Genero</th>
+                    <td><p-dropdown [options]="generos" [(ngModel)]="generosele" placeholder="Seleccione "></p-dropdown></td>
+          
+                  </tr>
+                <tr>
+                  <th>Tipo Doc</th>
+                  <td> <p-dropdown [options]="tiposdoc" disabled="true"  size="80" [(ngModel)]="tipodocseleccionado" [style]="{width:'150px'}" [maxlength]="300" placeholder="Seleccione "></p-dropdown></td>
+                  
+                </tr>
+                <tr>
+                    <th>Numero de Documento</th>
+                    <td>
+                    <span class="ui-float-label">
+                        <p-inputMask [(ngModel)]="numerodoc" size="8" mask="99999999"  size="20"
+                        disabled="true" title="INGRESE SU NUMERO DE DOCUMENTO" characterPattern="[0-9]" id="float-input"></p-inputMask>
+                         
+                        
+                    </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Fecha de Nacimiento</th>
+                    <td>
+                        <p-calendar [(ngModel)]="FECNAC" [yearNavigator]="true" yearRange="1900:2020" disabled="true"></p-calendar>
+                    </td>
+                </tr>
+                
+            
+                  
+              </table>
+
+
+
+       
+
+        </p-panel>
+        <p-panel header="Solicitud de Atencion de Paciente" [toggleable]="true">
+            
+            <table style="width:100%">
+                <tr>
+                  <th>Telefono Celular de Contacto</th>
+                  <td><p-inputMask [(ngModel)]="telefcon1" mask="999-999999"></p-inputMask></td>
+                 
+                </tr>
+                <tr>
+                    <th>Telefono Fijo de Contacto</th>
+                    <td><p-inputMask [(ngModel)]="telefcon2" mask="99-9999"></p-inputMask></td>
+                   
+                  </tr>
+                  <tr>
+                    <th>Correo Electronico</th>
+                    <td>
+                      <input type="text" [(ngModel)]="correo" pInputText placeholder="correo" characterPattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"> 
+                     </td>
+                   
+                  </tr>
+                <tr>
+                  <th>Motivo</th>
+                  <td><textarea pInputTextarea [rows]="10" [(ngModel)]="obsevaciones"></textarea></td>
+        
+                </tr>
+                <tr>
+                  <th>Fecha de Solicitud</th>
+                  <td><p-calendar [(ngModel)]="fechasolicitud" showButtonBar="true" disabled="true"></p-calendar></td>
+                  
+                </tr>
+                <tr>
+                    <th>Provincia</th>
+                    <td><p-dropdown [options]="provincias" [(ngModel)]="provinciaselecionada" placeholder="Seleccione " (onChange)="cambioProvincia()"></p-dropdown></td>
+                    
+                  </tr>
+                  <tr>
+                    <th>Distrito</th>
+                    <td><p-dropdown [options]="distritos" [(ngModel)]="distritoselecionado"></p-dropdown></td>
+                    
+                  </tr>
+
+                  <tr>
+                    <th>Domicilio Actual</th>
+                    <td><textarea pInputTextarea [rows]="10" [(ngModel)]="direccion"></textarea></td>
+          
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <td></td>
+                    
+                  </tr> 
+                  <tr>
+                    <th></th>
+                    <td></td>
+                    
+                  </tr>
+                  
+              </table>
+
+
+        </p-panel>
+        <p-footer>
+            <button type="button" pButton icon="pi pi-check" (click)="guardarPaciente()" label="Aceptar"></button>
+            <button type="button" pButton icon="pi pi-times" (click)="displayMaximizable=false" label="Cancelar" class="ui-button-secondary"></button>
+        </p-footer>
+        <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+<p-toast [style]="{marginTop: '80px'}" position="center" key="tc"></p-toast>
+</p-dialog>
+
