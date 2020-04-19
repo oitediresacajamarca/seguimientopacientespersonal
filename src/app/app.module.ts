@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {MatCardModule} from '@angular/material'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -95,7 +96,7 @@ import { PublicComponent } from './componentes/public/public.component';
     CalendarModule,CaptchaModule,ContextMenuModule,
     TabViewModule,ConfirmDialogModule,
     ToastModule,MatDividerModule, MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, MatListModule
-    ,FlexLayoutModule,MessagesModule,MessageModule
+    ,FlexLayoutModule,MessagesModule,MessageModule,MatCardModule
     
 
     

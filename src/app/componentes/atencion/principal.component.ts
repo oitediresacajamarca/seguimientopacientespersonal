@@ -10,6 +10,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./principal.component.scss']
 })
 export class PrincipalComponent implements OnInit {
+  sideBarOpen:boolean=false;
   @ViewChild('mpp',{static:false}) mpp:MorbilidadesPorPacienteComponent;
   verpanelregistro:boolean=false;
   form:any= { 
@@ -70,7 +71,9 @@ export class PrincipalComponent implements OnInit {
     this.verpanelregistro=true;
 
   }
-
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
+  }
 
 
 

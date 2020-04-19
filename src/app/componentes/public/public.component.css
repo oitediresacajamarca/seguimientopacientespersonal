@@ -7,7 +7,8 @@
     height: 703px;
     background-image: url('../../../assets/Fondo.jpg');
 }
-.login{
-    align-items: flex-end;
-    font-size: 20px;
+
+.ui-inputtext
+{
+    text-transform: uppercase;
 }

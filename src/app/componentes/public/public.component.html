@@ -117,7 +117,9 @@
                   <tr>
                     <th>Correo Electronico</th>
                     <td>
-                      <input type="text" [(ngModel)]="correo" pInputText placeholder="correo" characterPattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"> 
+                      <input type="text" [(ngModel)]="correo" pInputText 
+                       characterPattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"
+                       pKeyFilter="email"> 
                      </td>
                    
                   </tr>

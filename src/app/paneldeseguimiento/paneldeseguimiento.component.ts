@@ -18,6 +18,7 @@ export class PaneldeseguimientoComponent implements OnInit {
   rangoanos:number[]=[1,120];
   colsresultados:any[];
 
+  sideBarOpen:boolean=false;
   private items: MenuItem[];
 
 
@@ -161,6 +162,11 @@ saveAsExcelFile(buffer: any, fileName: string): void {
         });
         FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
     });
+}
+
+
+sideBarToggler() {
+  this.sideBarOpen = !this.sideBarOpen;
 }
 
 }
