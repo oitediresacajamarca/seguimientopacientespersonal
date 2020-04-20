@@ -18,15 +18,32 @@ const routes: Routes = [
   {path:'atencion/:NRO_DOCUMENTO/:ID_PACIENTE/:ID_SOLICITUD',component:PrincipalComponent},
   {path:'public',component:PublicComponent},
   {
-    path: '',
+    path: 'admin',
     component: DefaultComponent,
-    children: [{
-      path: '',
+    children: [
+    {
+      path: 'reportes',
       component: DashboardComponent
-    }, {
-      path: 'posts',
-      component: PostsComponent
-    }]
+    },
+    {
+      path:'atencion/:NRO_DOCUMENTO/:ID_PACIENTE/:ID_SOLICITUD',
+      component:PrincipalComponent
+    },
+   
+    {
+      path: 'panel',
+      component: PaneldeseguimientoComponent,
+      children:[
+        {
+          path:'atencion/:NRO_DOCUMENTO/:ID_PACIENTE/:ID_SOLICITUD',
+          component:PrincipalComponent
+        }
+       
+      ]
+
+    }
+  
+  ]
   }
   
 ];

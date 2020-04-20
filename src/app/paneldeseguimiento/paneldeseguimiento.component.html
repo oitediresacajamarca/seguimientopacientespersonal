@@ -83,7 +83,7 @@
                           <ng-template pTemplate="body" let-car let-columns="columns" >
                               <tr [pContextMenuRow]="car" [pContextMenuRowIndex]="rowIndex">
                                   <td>
-                                    <a [routerLink]="['/atencion/'+car['NRO_DOCUMENTO']+'/'+car['ID_PACIENTE']+'/'+car['ID_SOLICITUD']]" >Ver Solicitud</a>
+                                    <a [routerLink]="['/admin/atencion/'+car['NRO_DOCUMENTO']+'/'+car['ID_PACIENTE']+'/'+car['ID_SOLICITUD']]" >Ver Solicitud</a>
                                   </td>
                                   <td *ngFor="let col of columns">
                                           {{car[col.field]}}

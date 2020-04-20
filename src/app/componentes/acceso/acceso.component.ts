@@ -20,7 +20,7 @@ export class AccesoComponent implements OnInit {
       if(datos.respuesta.logueado ==true){
         localStorage.setItem('datos',JSON.stringify(datos.respuesta));
 
-          this.rout.navigate(['PRIMERO']);
+          this.rout.navigate(['admin/panel']);
       }
       else{
         this.rout.navigate(['']);
