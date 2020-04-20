@@ -8,10 +8,10 @@
    
 <div class="contenedor">
 <p-table #dt [value]="pacientes" [(selection)]="pacientesSelected" dataKey="Codigo_Item" styleClass="ui-table-customers" [rowHover]="true"
-[rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="CARGANDO"
+[rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" 
 [paginator]="true" currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} resultados"
 [filterDelay]="0" [globalFilterFields]="['Codigo_Item','Descripcion_Item','Fg_Tipo','Fg_Estado']"
-[resizableColumns]="true" (onRowSelect)="aniadirMorb()"
+[resizableColumns]="true" 
 [columns]="cols">
 
 <ng-template pTemplate="header" let-columns>

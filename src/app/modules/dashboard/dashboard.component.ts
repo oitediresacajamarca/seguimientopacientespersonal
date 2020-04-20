@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DashboardService } from '../dashboard.service';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
+import * as Highcharts from 'highcharts';
 
 export interface PeriodicElement {
   name: string;

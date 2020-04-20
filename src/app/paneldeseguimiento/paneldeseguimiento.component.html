@@ -1,9 +1,4 @@
-<app-header (toggleSideBarForMe)="sideBarToggler($event)"></app-header>
-<mat-drawer-container>
-  <mat-drawer mode="side" [opened]="sideBarOpen">
-      <app-sidebar></app-sidebar>
-  </mat-drawer>
-  <mat-drawer-content>
+
 
 <p-panel header="SEGUIMIENTO PACIENTES DE RIESGO" [toggleable]="true">
   <div class="ui-g">
@@ -36,7 +31,7 @@
                   <p-fieldset legend="EDAD">
                     EDAD
                     Rango: {{rangoanos[0] + ' - ' + rangoanos[1]}} AÑOS
-                    <p-slider [min]="0" [max]="100"  [range]="true" [(ngModel)]="rangoanos" (onChange)="gjj()" [style]="{'width':'14em','margin-top': '0.5em'}" ></p-slider>
+                    <p-slider [min]="0" [max]="100"  [range]="true" [(ngModel)]="rangoanos"  [style]="{'width':'14em','margin-top': '0.5em'}" ></p-slider>
                     <br>
                     <br>
                   </p-fieldset>
@@ -66,7 +61,7 @@
 
               
                   <p-footer>
-                    <p-button label="BUSCAR" (onClick)="BUSCAR($event)"></p-button>
+                    <p-button label="BUSCAR" (onClick)="BUSCAR()"></p-button>
                 </p-footer>
             </p-panel>
 
@@ -113,8 +108,3 @@
 </p-panel>
 
 <app-tabla-notificacion></app-tabla-notificacion>
-</mat-drawer-content>
-</mat-drawer-container>
-
-
-<app-footer></app-footer>

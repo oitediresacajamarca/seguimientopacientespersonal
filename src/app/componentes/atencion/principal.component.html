@@ -1,9 +1,4 @@
-<app-header (toggleSideBarForMe)="sideBarToggler($event)"></app-header>
-<mat-drawer-container>
-  <mat-drawer mode="side" [opened]="sideBarOpen">
-      <app-sidebar></app-sidebar>
-  </mat-drawer>
-  <mat-drawer-content>
+
     
     <p-tabView class="container">
   <br>
@@ -113,8 +108,3 @@
 </p-tabView>
 
 <app-registrar-atencion [(cod_paciente)]='cod_buscar' [(ID_PACIENTE)]='ID_PACIENTE' [(ID_SOLICITUD)]='ID_SOLICITUD' [(visible)]='verpanelregistro'></app-registrar-atencion>
-</mat-drawer-content>
-</mat-drawer-container>
-
-
-<app-footer></app-footer>

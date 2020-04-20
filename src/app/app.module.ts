@@ -8,9 +8,9 @@ import { PaneldeseguimientoComponent } from './paneldeseguimiento/paneldeseguimi
 import {PanelModule} from 'primeng/panel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DropdownModule} from 'primeng/dropdown';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { DistritosService } from './servicios/distritos.service';
+import {FormsModule } from '@angular/forms';
+import {HttpClientModule } from '@angular/common/http';
+import {DistritosService } from './servicios/distritos.service';
 import {SpinnerModule} from 'primeng/spinner';
 import {SliderModule} from 'primeng/slider';
 import {RadioButtonModule} from 'primeng/radiobutton';
@@ -32,31 +32,29 @@ import {CalendarModule} from 'primeng/calendar';
 import {CaptchaModule} from 'primeng/captcha';
 import {ContextMenuModule} from 'primeng/contextmenu';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
-import {ConfirmationService } from 'primeng/api';
+import {ConfirmationService, SharedModule } from 'primeng/api';
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
-import{DefaultComponent} from './layouts/default/default.component'
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
-
-
 import { PrincipalComponent } from './componentes/atencion/principal.component';
 import { TabViewModule} from 'primeng/tabview';
 import { MorbilidadesPorPacienteComponent } from './componentes/morbilidades-por-paciente/morbilidades-por-paciente.component';
 import { RegistrarAtencionComponent } from './componentes/registrar-atencion/registrar-atencion.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
+import {KeyFilterModule} from 'primeng/keyfilter';
 
-import { CommonModule } from '@angular/common';
+
 import { MatDividerModule, MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, MatListModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { RouterModule } from '@angular/router';
 
-import { from } from 'rxjs';
-import { HeaderComponent } from './shared/components/header/header.component';
+
+
+
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
-import { FooterComponent } from './shared/components/footer/footer.component';
+
 import { PublicComponent } from './componentes/public/public.component';
+import { DefaultModule } from './layouts/default/default.module';
 
 @NgModule({
   declarations: [
@@ -69,14 +67,14 @@ import { PublicComponent } from './componentes/public/public.component';
     MorbilidadesPorPacienteComponent,
     RegistrarAtencionComponent,
     InicioComponent,
-    DefaultComponent,
-    HeaderComponent,
-    SidebarComponent,
-    FooterComponent,
+
+   
+  
     PublicComponent
 
   ],
   imports: [
+    KeyFilterModule,
     BrowserModule,
     AppRoutingModule,
     PanelModule,
@@ -96,7 +94,9 @@ import { PublicComponent } from './componentes/public/public.component';
     CalendarModule,CaptchaModule,ContextMenuModule,
     TabViewModule,ConfirmDialogModule,
     ToastModule,MatDividerModule, MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, MatListModule
-    ,FlexLayoutModule,MessagesModule,MessageModule,MatCardModule
+    ,FlexLayoutModule,MessagesModule,MessageModule,MatCardModule,
+    SharedModule,
+    DefaultModule
     
 
     

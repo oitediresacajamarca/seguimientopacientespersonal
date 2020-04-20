@@ -42,11 +42,24 @@ export class PublicComponent implements OnInit {
   telefcon1:string;
   telefcon2:string;
   correo:string;
+  es:any;
+  letrasyespacio:RegExp=/[a-zA-Z ]/;
+  vermensajeconfirmacion:boolean=false;
  
 
   constructor(private pers:PersonaService,private geo:GeografiaService,private sol:SolicitudService,private confirmationService: ConfirmationService,private mesgs:MessageService) { }
 
   ngOnInit() {
+    this.es = {
+      firstDayOfWeek: 1,
+      dayNames: [ "domingo","lunes","martes","miércoles","jueves","viernes","sábado" ],
+      dayNamesShort: [ "dom","lun","mar","mié","jue","vie","sáb" ],
+      dayNamesMin: [ "D","L","M","MI","J","V","S" ],
+      monthNames: [ "enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre" ],
+      monthNamesShort: [ "ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic" ],
+      today: 'Hoy',
+      clear: 'Borrar'
+  };
     this.tiposdoc = [
       {label:'DNI', value:'1'},
       {label:'CARNET', value:'2'},
@@ -76,6 +89,13 @@ export class PublicComponent implements OnInit {
   }
   solicitaAtencion(){
 
+    if(this.numerodoc=='' ){alert('debera de ingresar un numero de documento valido')}
+    if(this.FECNAC==null ){alert('debera de ingresar su fecha de nacimiento ')}
+
+   if(this.numerodoc!='' && this.FECNAC !=null ){
+
+
+ 
   
     this.pers.devolverPersona(this.tipodocseleccionado,this.numerodoc,this.FECNAC.getFullYear()+'-'+(this.FECNAC.getMonth()+1)+'-'+this.FECNAC.getDate()).subscribe((dat)=>{
       
@@ -97,6 +117,7 @@ export class PublicComponent implements OnInit {
           });
   
     this.verpanelregistro=true;
+  }
   }
   cambioProvincia(){
 
@@ -153,7 +174,16 @@ this.confirmationService.confirm({
         
          this.sol.guardarSolicitud({root:solic}).subscribe((solicito)=>{
 
-          console.log(solicito);
+        // this.vermensajeconfirmacion=true;
+          this.confirmationService.confirm({
+            message: 'Su solicitud ha sido guardada exitosamente Pronto el personal medico se comunicara con usted segun la informacion proporcionada',
+            accept: () => {
+              this.verpanelregistro=false;
+              this.resetearData();
+           },key:'final'
+         
+        
+        });
         });
       });
 
@@ -163,20 +193,38 @@ this.confirmationService.confirm({
 
       this.sol.guardarSolicitud({root:solic}).subscribe((solicito)=>{
 
-        console.log(solicito);
+     //   this.vermensajeconfirmacion=true;
+
+              this.confirmationService.confirm({
+                message: 'Su solicitud ha sido guardada exitosamente Pronto el personal medico se comunicara con usted segun la informacion proporcionada',
+                accept: () => {
+                  this.verpanelregistro=false;
+                  this.resetearData();
+              },key:'final'
+            
+            });
+
+       
       });
 
     }
 
     this.mesgs.add({severity:'info', summary:'Info Message', detail:'Se agrego la solicitud de atencion pronto nos comunicaremos con usted'});
   
-          this.verpanelregistro=false;
-          this.resetearData();
+       
       }
       })
 
 
 
  }
+
+ cancelarSolicitud(){
+    this.verpanelregistro=false;
+    this.resetearData();
+
+ }
+
+
 
 }

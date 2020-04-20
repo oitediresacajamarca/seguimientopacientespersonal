@@ -19,7 +19,9 @@ export class PaneldeseguimientoComponent implements OnInit {
   colsresultados:any[];
 
   sideBarOpen:boolean=false;
-  private items: MenuItem[];
+   items: MenuItem[];
+  rowIndex;
+  selectedResultado;
 
 
   distritoselecionado:string;

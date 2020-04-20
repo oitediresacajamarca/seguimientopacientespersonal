@@ -9,6 +9,7 @@ import { MatSidenavModule, MatDividerModule, MatCardModule, MatPaginatorModule, 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DashboardService } from 'src/app/modules/dashboard.service';
 
+
 @NgModule({
   declarations: [
     DefaultComponent,

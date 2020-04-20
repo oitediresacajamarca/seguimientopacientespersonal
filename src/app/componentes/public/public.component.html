@@ -6,12 +6,18 @@
             <div class="example-container">
                 <p-panel header="Requerimiento de Atencion">
                     <br>
-                    <p-dropdown [options]="tiposdoc"  size="80" [(ngModel)]="tipodocseleccionado" [style]="{width:'150px'}" [maxlength]="300" placeholder="Seleccione "></p-dropdown>
+                    <p-dropdown required [options]="tiposdoc"  size="80" [(ngModel)]="tipodocseleccionado" [style]="{width:'150px'}" 
+                    [maxlength]="300" placeholder="Seleccione " #tipodoc="ngModel" (onChange)="cajanumdoc.disabled=!tipodoc.valid; calenfecnac.disabled= !tipodoc.valid"></p-dropdown>
+                  
+                 
+                   
                     <br>
                     <br>
                     
                     <span class="ui-float-label">
-                        <p-inputMask [(ngModel)]="numerodoc" size="8" mask="99999999"  size="20" title="INGRESE SU NUMERO DE DOCUMENTO" characterPattern="[0-9]" id="float-input"></p-inputMask>
+                        <p-inputMask [(ngModel)]="numerodoc" size="8" mask="99999999"  size="20"
+                         title="INGRESE SU NUMERO DE DOCUMENTO" characterPattern="[0-9]" id="float-input"
+                        #cajanumdoc  disabled></p-inputMask>
                          
                         <label for="float-input">NUMERO DE DOCUMENTO</label>
                     </span>
@@ -19,12 +25,14 @@
                       <br>
 
                     <span class="ui-float-label">
-                        <p-calendar [(ngModel)]="FECNAC" [yearNavigator]="true" yearRange="1900:2020"></p-calendar>
+                        <p-calendar [(ngModel)]="FECNAC" [yearNavigator]="true" yearRange="1900:2020" 
+                        disabled [locale]="es" dateFormat="dd/mm/yy"
+                        #calenfecnac></p-calendar>
                          
                         <label for="float-input">FECHA DE NACIMIENTO</label>
                     </span>
                     <br>
-                    <p-captcha siteKey="6Lf2XQkTAAAAANcvOwYqPxWL4iZDksFqHpS39GDA" (onResponse)="showResponse($event)"></p-captcha>
+                   
                       
                     
                 <button pButton type="button" label="Enviar Solicitud" (click)="solicitaAtencion()"></button>
@@ -40,46 +48,73 @@
     
 </div>
 
+
+
 <p-dialog header="REGISTRE SUS DATOS" [(visible)]="verpanelregistro" [modal]="true" [style]="{width: '50vw',heigth:'60vw'}" [maximizable]="true" [baseZIndex]="10000"
     [draggable]="false" [resizable]="true">
 
    <p-messages [(value)]="msgs" ></p-messages>
         <p-panel header="DATOS GENERALES" *ngIf="verpaneldatosgenerales">
-            
+            <form #datosgenerales="ngForm">
 
             <table style="width:100%">
                 <tr>
                   <th>Nombres</th>
-                  <td><input type="text" pInputText [(ngModel)]="nombres_nuevo"/>
-                      </td>
+                  <td><input  name ='nombres' required type="text" #nombres="ngModel" 
+                    pInputText [(ngModel)]="nombres_nuevo" [pKeyFilter]="letrasyespacio"/>
+                    
+                  
+                  </td>
+                  <td *ngIf="!nombres.valid">
+                     <div *ngIf="nombres.errors.required && nombres.touched ">   Campo es requerido </div>
+                  </td>
                  
                 </tr>
                 <tr>
                     <th>Apellido Paterno</th>
-                    <td><input type="text" pInputText [(ngModel)]="ape_pat_nuevo"></td>
+                    <td><input name ='apellido_paterno' required type="text" pInputText 
+                      [(ngModel)]="ape_pat_nuevo" [pKeyFilter]="letrasyespacio" #ape_pat="ngModel">
+                    </td>
+                      <td *ngIf="!ape_pat.valid">
+                        <div *ngIf="ape_pat.errors.required && ape_pat.touched ">   Campo es requerido </div>
+                     </td>
                    
                   </tr>
                 <tr>
                   <th>Apellido Materno</th>
-                  <td><input type="text" pInputText [(ngModel)]="ape_mat_nuevo"></td>
+                  <td><input name ='apellido_materno' required type="text" 
+                    pInputText [(ngModel)]="ape_mat_nuevo" #ape_mat="ngModel">
+                  </td>
+                  <td *ngIf="!ape_mat.valid">
+                    <div *ngIf="ape_mat.errors.required && ape_mat.touched ">   Campo es requerido </div>
+                 </td>
         
                 </tr>
                 <tr>
                     <th>Genero</th>
-                    <td><p-dropdown [options]="generos" [(ngModel)]="generosele" placeholder="Seleccione "></p-dropdown></td>
+                    <td><p-dropdown name ='genero' required [options]="generos" 
+                      [(ngModel)]="generosele" placeholder="Seleccione" #genero="ngModel"></p-dropdown>
+                      
+                    </td>
+                    <td *ngIf="!genero.valid">
+                      <div *ngIf="genero.errors.required && genero.touched ">   Campo es requerido </div>
+                   </td>
           
                   </tr>
                 <tr>
                   <th>Tipo Doc</th>
-                  <td> <p-dropdown [options]="tiposdoc" disabled="true"  size="80" [(ngModel)]="tipodocseleccionado" [style]="{width:'150px'}" [maxlength]="300" placeholder="Seleccione "></p-dropdown></td>
+                  <td> <p-dropdown name ='tipodo'  [options]="tiposdoc" disabled="true"  
+                    size="80" [(ngModel)]="tipodocseleccionado" [style]="{width:'150px'}" 
+                    [maxlength]="300" placeholder="Seleccione "></p-dropdown></td>
                   
                 </tr>
                 <tr>
                     <th>Numero de Documento</th>
                     <td>
                     <span class="ui-float-label">
-                        <p-inputMask [(ngModel)]="numerodoc" size="8" mask="99999999"  size="20"
-                        disabled="true" title="INGRESE SU NUMERO DE DOCUMENTO" characterPattern="[0-9]" id="float-input"></p-inputMask>
+                        <p-inputMask name ='numerodo' [(ngModel)]="numerodoc" size="8" mask="99999999"  size="20"
+                        disabled="true" title="INGRESE SU NUMERO DE DOCUMENTO" characterPattern="[0-9]" id="float-input">
+                      </p-inputMask>
                          
                         
                     </span>
@@ -88,36 +123,43 @@
                 <tr>
                     <th>Fecha de Nacimiento</th>
                     <td>
-                        <p-calendar [(ngModel)]="FECNAC" [yearNavigator]="true" yearRange="1900:2020" disabled="true"></p-calendar>
+                        <p-calendar name ='FECNAC' required [(ngModel)]="FECNAC"
+                         [yearNavigator]="true" yearRange="1900:2020" disabled="true"></p-calendar>
                     </td>
                 </tr>
                 
-            
+      
                   
               </table>
 
+            </form>
 
 
        
 
         </p-panel>
         <p-panel header="Solicitud de Atencion de Paciente" [toggleable]="true">
+
+          <form #solicitud="ngForm">
             
             <table style="width:100%">
                 <tr>
                   <th>Telefono Celular de Contacto</th>
-                  <td><p-inputMask [(ngModel)]="telefcon1" mask="999-999999"></p-inputMask></td>
+                  <td><p-inputMask required name="telefcon1" [(ngModel)]="telefcon1" 
+                    mask="999-999999" #telecon1="ngModel"></p-inputMask></td>
                  
                 </tr>
                 <tr>
                     <th>Telefono Fijo de Contacto</th>
-                    <td><p-inputMask [(ngModel)]="telefcon2" mask="99-9999"></p-inputMask></td>
+                    <td><p-inputMask name="telefcon2" [(ngModel)]="telefcon2" mask="99-9999">
+
+                    </p-inputMask></td>
                    
                   </tr>
                   <tr>
                     <th>Correo Electronico</th>
                     <td>
-                      <input type="text" [(ngModel)]="correo" pInputText 
+                      <input name="correo" type="text" [(ngModel)]="correo" pInputText 
                        characterPattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"
                        pKeyFilter="email"> 
                      </td>
@@ -125,28 +167,44 @@
                   </tr>
                 <tr>
                   <th>Motivo</th>
-                  <td><textarea pInputTextarea [rows]="10" [(ngModel)]="obsevaciones"></textarea></td>
+                  <td><textarea name="obsevaciones" pInputTextarea [rows]="10" 
+                    [(ngModel)]="obsevaciones"></textarea>
+                  </td>
         
                 </tr>
                 <tr>
                   <th>Fecha de Solicitud</th>
-                  <td><p-calendar [(ngModel)]="fechasolicitud" showButtonBar="true" disabled="true"></p-calendar></td>
+                  <td><p-calendar name="fechasolicitud" [(ngModel)]="fechasolicitud" showButtonBar="true" disabled="true"></p-calendar></td>
                   
                 </tr>
                 <tr>
                     <th>Provincia</th>
-                    <td><p-dropdown [options]="provincias" [(ngModel)]="provinciaselecionada" placeholder="Seleccione " (onChange)="cambioProvincia()"></p-dropdown></td>
+                    <td><p-dropdown required name="provincia" [options]="provincias" 
+                      [(ngModel)]="provinciaselecionada" placeholder="Seleccione "
+                       (onChange)="cambioProvincia()" #provincia="ngModel"></p-dropdown></td>
+                       <td *ngIf="!provincia.valid">
+                        <div *ngIf="provincia.errors.required && provincia.touched ">   Campo es requerido </div>
+                     </td>
                     
                   </tr>
                   <tr>
                     <th>Distrito</th>
-                    <td><p-dropdown [options]="distritos" [(ngModel)]="distritoselecionado"></p-dropdown></td>
+                    <td><p-dropdown required name="distrito" [options]="distritos" 
+                      [(ngModel)]="distritoselecionado" #distrito="ngModel"></p-dropdown></td>
+                      <td *ngIf="!distrito.valid">
+                        <div *ngIf="distrito.errors.required && distrito.touched ">   Campo es requerido </div>
+                     </td>
                     
                   </tr>
 
                   <tr>
                     <th>Domicilio Actual</th>
-                    <td><textarea pInputTextarea [rows]="10" [(ngModel)]="direccion"></textarea></td>
+                    <td><textarea  required name="direccion" pInputTextarea [rows]="10" 
+                      [(ngModel)]="direccion" #direccio="ngModel"></textarea></td>
+
+                      <td *ngIf="!direccio.valid">
+                        <div *ngIf="direccio.errors.required && direccio.touched ">   Campo es requerido </div>
+                     </td>
           
                   </tr>
                   <tr>
@@ -161,14 +219,19 @@
                   </tr>
                   
               </table>
+            
 
+
+            </form>
+     
 
         </p-panel>
         <p-footer>
-            <button type="button" pButton icon="pi pi-check" (click)="guardarPaciente()" label="Aceptar"></button>
-            <button type="button" pButton icon="pi pi-times" (click)="displayMaximizable=false" label="Cancelar" class="ui-button-secondary"></button>
+            <button  type="button" pButton icon="pi pi-check" (click)="guardarPaciente()" label="Aceptar"></button>
+            <button type="button" pButton icon="pi pi-times" (click)="cancelarSolicitud()" label="Cancelar" class="ui-button-secondary"></button>
         </p-footer>
         <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+        <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" key="final"></p-confirmDialog>
 <p-toast [style]="{marginTop: '80px'}" position="center" key="tc"></p-toast>
 </p-dialog>
-
+<p-dialog [(visible)]="vermensajeconfirmacion" >Su solicitud ha sido guardada exitosamente Pronto el personal medico se comunicara con usted segun la informacion proporcionada</p-dialog>

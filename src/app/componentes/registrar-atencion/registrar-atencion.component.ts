@@ -28,7 +28,7 @@ sesion:any;
 
 
 
-  registrarAtencion(){
+  registrarAtencion(event){
    
 
     let fechacadena=this.fechaatencion.getDate()+'/'+(this.fechaatencion.getMonth()+1).toString()+'/'+this.fechaatencion.getFullYear();
