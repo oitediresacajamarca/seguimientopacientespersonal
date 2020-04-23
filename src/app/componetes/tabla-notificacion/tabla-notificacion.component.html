@@ -1,8 +1,8 @@
 
 
 
-<p-dialog header=" Solicitudes Actuales de Seguimiento" [(visible)]="displayNotificacion" [modal]="true" [style]="{width: '80vw'}" [maximizable]="true" [baseZIndex]="10000"
-    [draggable]="false" [resizable]="false" [baseZIndex]="80">
+
+
 
 <p-scrollPanel [style]="{width: '100%', height: '800px'}">
    
@@ -16,16 +16,14 @@
 
 <ng-template pTemplate="header" let-columns>
     <tr>
-        <th></th>
+       
         <th pSortableColumn="{{col.field}}" *ngFor="let col of columns" >{{col.header}}  <p-sortIcon field="{{col.field}}"></p-sortIcon></th>
      
        
         <th></th>
     </tr>
     <tr>
-        <th >
-            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-        </th>
+       
         <th *ngFor="let col of columns">
             <input pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'startsWith')" placeholder="Buscar por {{col.header}}" class="ui-column-filter">
         </th>   
@@ -35,9 +33,7 @@
 </ng-template>
 <ng-template pTemplate="body" let-customer let-columns="columns">
     <tr class="ui-selectable-row">
-        <td>
-            <p-tableCheckbox [value]="customer"></p-tableCheckbox>
-        </td>
+        
         <td *ngFor="let col of columns">
             <span class="ui-column-title">Codigo</span>
        
@@ -61,4 +57,3 @@
 </div>
 
 </p-scrollPanel>
-</p-dialog>

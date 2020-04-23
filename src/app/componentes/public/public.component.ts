@@ -146,13 +146,13 @@ this.confirmationService.confirm({
      
 
         let PER= {
-          "ID_PERSONA":this.tipodocseleccionado+this.numerodoc,
+        "ID_PERSONA":this.tipodocseleccionado+this.numerodoc,
         "ID_TIPOD":this.tipodocseleccionado,
         "NRO_DOCUMENTO":this.numerodoc,
         "ID_GENERO":this.generosele,
         "NOMBRES":this.nombres_nuevo,
-        "APELLIDO_PAT":this.ape_mat_nuevo,
-        "APELLIDO_MAT":this.ape_pat_nuevo,
+        "APELLIDO_PAT":this.ape_pat_nuevo,
+        "APELLIDO_MAT":this.ape_mat_nuevo,
         "ID_DISTRITO":this.distritoselecionado,
         "FECHA_NAC":this.FECNAC};
 

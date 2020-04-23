@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-default',
@@ -9,6 +9,8 @@ export class DefaultComponent implements OnInit {
 
   sideBarOpen = false;
 
+  displayNotificacion=true;
+
   constructor() { }
 
   ngOnInit() { }
@@ -17,5 +19,9 @@ export class DefaultComponent implements OnInit {
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
   }
-
+  noti(){  
+    
+    this.displayNotificacion=true;
+  }
+ 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ɵConsole } from '@angular/core';
+import { Component, OnInit, ɵConsole, Input } from '@angular/core';
 import { SolicitudesService } from 'src/app/servicios/solicitudes.service';
 import { MorbilidadesService } from 'src/app/servicios/morbilidades.service';
 
@@ -11,6 +11,7 @@ export class TablaNotificacionComponent implements OnInit {
   pacientes:any[];
   pacientesSelected:any[];
   cols:any[]
+  @Input()
   displayNotificacion:boolean=true;
   cod_ambito:string;
 
@@ -45,31 +46,7 @@ let distrito:string=SESION.ID_DISTRITO;
   this.sol.devolverColumnasSolicitudes().subscribe((res)=>{
       this.cols=res.respuesta;    
 
-    /*  let col:any=  {'header':'ID_CIE1','field':'ID_CIE1'};             
-      this.cols.push(col);
-       col=  {'header':'ID_CIE2','field':'ID_CIE2'};             
-      this.cols.push(col);
-      col=  {'header':'ID_CIE3','field':'ID_CIE3'};             
-      this.cols.push(col);
-      col=  {'header':'ID_CIE4','field':'ID_CIE4'};             
-      this.cols.push(col);
-      col=  {'header':'ID_CIE5','field':'ID_CIE5'};             
-      this.cols.push(col);
-      col=  {'header':'ID_CIE6','field':'ID_CIE6'};             
-      this.cols.push(col);
-
-      col=  {'header':'ID_MEDICAMENTO_CIE1','field':'ID_MEDICAMENTO_CIE1'};             
-      this.cols.push(col);
-       col=  {'header':'ID_MEDICAMENTO_CIE2','field':'ID_MEDICAMENTO_CIE2'};             
-      this.cols.push(col);
-      col=  {'header':'ID_MEDICAMENTO_CIE3','field':'ID_MEDICAMENTO_CIE3'};             
-      this.cols.push(col);
-      col=  {'header':'ID_MEDICAMENTO_CIE4','field':'ID_MEDICAMENTO_CIE4'};             
-      this.cols.push(col);
-      col=  {'header':'ID_MEDICAMENTO_CIE5','field':'ID_MEDICAMENTO_CIE5'};             
-      this.cols.push(col);
-      col=  {'header':'ID_MEDICAMENTO_CIE6','field':'ID_MEDICAMENTO_CIE6'};             
-      this.cols.push(col);*/
+    
   })
   
   let maximo_cie=0;

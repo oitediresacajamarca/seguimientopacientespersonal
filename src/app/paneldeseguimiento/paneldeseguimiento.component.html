@@ -8,42 +8,46 @@
               
                <div class="ui-g">
 
-                <div class="ui-g-6">
-                  
-                            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
-                              <mat-card fxFlex="100">
-                                              <p-fieldset legend="UBICACION" [transitionOptions]="'400ms cubic-bezier(0.86, 0, 0.07, 1)'"
-                                              >
-                                                  Provincia<p-dropdown [options]="provincias" [(ngModel)]="provinciaselected" (onChange)="devolverDistritos()"></p-dropdown>
-                                                  Distrito <p-dropdown [options]="dddistritos" [(ngModel)]="distritoselecionado"></p-dropdown>
-                                                  <br>
-                                                  <br>
-                                              </p-fieldset>
-                              </mat-card>
-                </div>
+                    <div class="ui-g-4">
+                      
+                                <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
+                                  <mat-card fxFlex="100">
+                                                  <p-fieldset legend="UBICACION" [transitionOptions]="'400ms cubic-bezier(0.86, 0, 0.07, 1)'">
+                                                    Provincia<p-dropdown [options]="provincias" [(ngModel)]="provinciaselected" (onChange)="devolverDistritos()" placeholder="Selecciona Provincia"></p-dropdown>
+                                                    <br>
+                                                    <br>
+                                                    Distrito  <p-dropdown [options]="dddistritos" [(ngModel)]="distritoselecionado" placeholder="Selecciona Distrito"></p-dropdown>
+                                                      
+                                                  </p-fieldset>
+                                  </mat-card>
+                              </div>
 
-                </div>
+                    </div>
                  
 
-                <div class="ui-g-6">    
-               
-                
-                  <p-fieldset legend="EDAD">
-                    EDAD
-                    Rango: {{rangoanos[0] + ' - ' + rangoanos[1]}} AÑOS
-                    <p-slider [min]="0" [max]="100"  [range]="true" [(ngModel)]="rangoanos"  [style]="{'width':'14em','margin-top': '0.5em'}" ></p-slider>
-                    <br>
-                    <br>
-                  </p-fieldset>
+                    <div class="ui-g-4">    
+                      <mat-card fxFlex="100">
+                    
+                      <p-fieldset legend="EDAD">
+                        EDAD
+                        Rango: {{rangoanos[0] + ' - ' + rangoanos[1]}} AÑOS
+                        <p-slider [min]="0" [max]="100"  [range]="true" [(ngModel)]="rangoanos"  [style]="{'width':'14em','margin-top': '0.5em'}" ></p-slider>
+                        <br>
+                        <br>
+                      </p-fieldset>
+                    </mat-card>
 
-                </div>
-                <mat-divider></mat-divider>
-
-                  <p-fieldset legend="GENERO">
-                    <div class="ui-g-12"><p-radioButton name="genero" value="M" label="Masculino" [(ngModel)]="generoselecionado" inputId="opt1"></p-radioButton></div>
-                    <div class="ui-g-12"><p-radioButton name="genero" value="F" label="Femenino" [(ngModel)]="generoselecionado" inputId="opt2"></p-radioButton></div>
-                    <div class="ui-g-12"><p-radioButton name="genero" value="" label="Ambos" [(ngModel)]="generoselecionado" inputId="opt3"></p-radioButton></div>
-                  </p-fieldset>
+                    </div>
+              
+                    <div class="ui-g-4">
+                      <mat-card fxFlex="100">
+                      <p-fieldset legend="GENERO">
+                        <div ><p-radioButton name="genero" value="M" label="Masculino" [(ngModel)]="generoselecionado" inputId="opt1"></p-radioButton></div>
+                        <div ><p-radioButton name="genero" value="F" label="Femenino" [(ngModel)]="generoselecionado" inputId="opt2"></p-radioButton></div>
+                        <div ><p-radioButton name="genero" value="" label="Ambos" [(ngModel)]="generoselecionado" inputId="opt3"></p-radioButton></div>
+                      </p-fieldset>
+                      </mat-card>
+                    </div>
 
                 </div>
 
@@ -107,4 +111,4 @@
   </div>
 </p-panel>
 
-<app-tabla-notificacion></app-tabla-notificacion>
+

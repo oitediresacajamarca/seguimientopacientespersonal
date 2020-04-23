@@ -24,7 +24,7 @@ import {ListboxModule} from 'primeng/listbox';
 import {ChipsModule} from 'primeng/chips';
 import {TablaMorbilidadesComponent } from './componentes/tabla-morbilidades/tabla-morbilidades.component';
 import {ProgressBarModule} from 'primeng/progressbar';
-import {TablaNotificacionComponent } from './componetes/tabla-notificacion/tabla-notificacion.component';
+
 import {DialogModule} from 'primeng/dialog';
 import {AccesoComponent } from './componentes/acceso/acceso.component';
 import {InputMaskModule} from 'primeng/inputmask';
@@ -61,7 +61,7 @@ import { DefaultModule } from './layouts/default/default.module';
     AppComponent,
     PaneldeseguimientoComponent,
     TablaMorbilidadesComponent,
-    TablaNotificacionComponent,
+  
     PrincipalComponent,
     AccesoComponent,
     MorbilidadesPorPacienteComponent,

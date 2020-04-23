@@ -119,6 +119,7 @@
 :host ::ng-deep .ui-table-customers .ui-table-thead > tr > th {
 	border: 0 none;
 	text-align: left;
+	width: 23em;
 }
 
 :host ::ng-deep .ui-table-customers .ui-table-thead > tr > th.ui-filter-column {
@@ -126,27 +127,38 @@
 }
 
 :host ::ng-deep .ui-table-customers .ui-table-thead > tr > th:first-child {
+	width: 2em;
+	text-align: center;
+}
+:host ::ng-deep .ui-table-customers .ui-table-thead > tr > th:nth-child(2) {
 	width: 5em;
 	text-align: center;
 }
+:host ::ng-deep .ui-table-customers .ui-table-thead > tr > th:nth-child(3) {
+	
+	text-align: left;
+	align-items: center;
+}
+
 
 :host ::ng-deep .ui-table-customers .ui-table-thead > tr > th:last-child {
 	width: 8em;
-	text-align: center;
+	text-align: left;
+	align-items: center;
 }
 
 :host ::ng-deep .ui-table-customers .ui-table-tbody > tr > td {
 	border: 0 none;
 	cursor: auto;
+	width: 23em;
 }
 
 :host ::ng-deep .ui-table-customers .ui-table-tbody > tr > td:first-child {
 	width: 3em;
 	text-align: center;
 }
-
-:host ::ng-deep .ui-table-customers .ui-table-tbody > tr > td:last-child {
-	width: 8em;
+:host ::ng-deep .ui-table-customers .ui-table-tbody > tr > td:first-child {
+	width: 2em;
 	text-align: center;
 }
 

@@ -8,16 +8,24 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MatSidenavModule, MatDividerModule, MatCardModule, MatPaginatorModule, MatTableModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DashboardService } from 'src/app/modules/dashboard.service';
+import { TablaNotificacionComponent } from 'src/app/componetes/tabla-notificacion/tabla-notificacion.component';
+import {DialogModule} from 'primeng/dialog';
+import {TableModule} from 'primeng/table';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
+
 
 
 @NgModule({
   declarations: [
     DefaultComponent,
     DashboardComponent,
-    PostsComponent
+    PostsComponent,TablaNotificacionComponent
   ],
   imports: [
+    ScrollPanelModule,
+    TableModule,
     CommonModule,
+    DialogModule,
     RouterModule,
     SharedModule,
     MatSidenavModule,

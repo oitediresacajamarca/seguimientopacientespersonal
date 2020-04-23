@@ -48,8 +48,6 @@ export class PaneldeseguimientoComponent implements OnInit {
       {label:"SAN MIGUEL",value:"0611"},
       {label:"SAN PABLO",value:"0612"},
       {label:"SANTA CRUZ",value:"0613"},
-
-
     ];
 
     this.colsresultados=[
@@ -62,7 +60,6 @@ export class PaneldeseguimientoComponent implements OnInit {
       { field: 'edad', header: 'edad' },
       { field: 'telefono', header: 'telefono' },
       { field: 'correo', header: 'Correo Electronico' },
-
     ]
 
     this.items = [

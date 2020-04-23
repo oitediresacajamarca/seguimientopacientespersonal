@@ -8,6 +8,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
+  @Output() notiA: EventEmitter<any> = new EventEmitter();
+
 
   constructor() { }
 
@@ -20,6 +22,19 @@ export class HeaderComponent implements OnInit {
         new Event('resize')
       );
     }, 300);
+  }
+
+  abrirNotificaciones(){
+    this.notiA.emit();
+  
+    setTimeout(() => {
+      window.dispatchEvent(
+        new Event('resize')
+      );
+    }, 300);
+    
+
+
   }
 
 }

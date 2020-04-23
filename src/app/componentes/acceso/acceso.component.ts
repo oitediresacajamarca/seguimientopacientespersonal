@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class AccesoComponent implements OnInit {
   usuario:string;
   clave:string;
+  msgs=[]
 
   constructor(private usu:UsuariosService,private rout:Router) { }
 
@@ -23,10 +24,13 @@ export class AccesoComponent implements OnInit {
           this.rout.navigate(['admin/panel']);
       }
       else{
-        this.rout.navigate(['']);
+      
         this.usuario='';
         this.clave='';
         localStorage.setItem('datos','');
+        this.msgs=[];
+
+        this.msgs.push({severity:'error', summary:'USUARIO INCORRECTO',closable:'false', detail:''});
       }
     
   });

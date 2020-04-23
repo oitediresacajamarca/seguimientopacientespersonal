@@ -3,7 +3,8 @@
                               [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
                               [paginator]="true" currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} resultados"
                               [filterDelay]="0" [globalFilterFields]="['Codigo_Item','Descripcion_Item','Fg_Tipo','Fg_Estado']"
-                              [resizableColumns]="true" (onRowSelect)="aniadirMorb()">
+                              [resizableColumns]="true" (onRowSelect)="aniadirMorb()"
+                             [columnResizeMode]="expand">
                               <ng-template pTemplate="caption">
                                  Lista de Morbilidades
                                   <div class="ui-table-globalfilter-container">
@@ -17,7 +18,7 @@
                                       <th pSortableColumn="Descripcion_Item">Nombre <p-sortIcon field="Descripcion_Item"></p-sortIcon></th>
                                       <th pSortableColumn="Fg_Tipo">Tipo <p-sortIcon field="Fg_Tipo"></p-sortIcon></th>
                                      
-                                      <th></th>
+                                      
                                   </tr>
                                   <tr>
                                       <th>
@@ -34,7 +35,6 @@
                                       </th>
                                      
                               
-                                      <th></th>
                                   </tr>
                               </ng-template>
                               <ng-template pTemplate="body" let-customer>
@@ -58,9 +58,7 @@
                                       
                                           <span style="vertical-align: middle; margin-left: .5em">{{customer.Fg_Tipo}}</span>
                                       </td>
-                                      <td>
-                                         
-                                      </td>
+                                  
                                       
                                   </tr>
                               </ng-template>
@@ -74,6 +72,6 @@
                           <h4>Lista de morbilidades seleccionadas</h4> 
                            <br>
        
-                           <p-chips [(ngModel)]="morbilidadesselec" [style]="{'width':'800px'}" (onRemove)='removerMorb($event.value)'></p-chips>
+                           <p-chips [(ngModel)]="morbilidadesselec" [max]="10" [style]="{'display':'block'}" (onRemove)='removerMorb($event.value)'></p-chips>
        
        

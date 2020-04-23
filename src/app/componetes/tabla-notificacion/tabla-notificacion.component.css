@@ -7,7 +7,7 @@
 	padding: .25em .5em;
 	text-transform: uppercase;
 	font-weight: 700;
-	font-size: 12px;
+	font-size:8px;
 	letter-spacing: .3px;
 }
 
@@ -126,7 +126,7 @@
 }
 
 :host ::ng-deep .ui-table-customers .ui-table-thead > tr > th:first-child {
-	width: 5em;
+	width: 12em;
 	text-align: center;
 }
 
@@ -141,7 +141,7 @@
 }
 
 :host ::ng-deep .ui-table-customers .ui-table-tbody > tr > td:first-child {
-	width: 3em;
+	width: 12em;
 	text-align: center;
 }
 
