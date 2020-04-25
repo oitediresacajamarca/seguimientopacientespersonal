@@ -20,6 +20,7 @@ export class PublicComponent implements OnInit {
   verpanelregistro:boolean=false;
   noexistepaciente:boolean=false;
   msgs:any[];
+  msgvalidaper:any[];
   fechasolicitud:Date=new Date();
   
   provincias:SelectItem[];
@@ -93,31 +94,55 @@ export class PublicComponent implements OnInit {
     if(this.FECNAC==null ){alert('debera de ingresar su fecha de nacimiento ')}
 
    if(this.numerodoc!='' && this.FECNAC !=null ){
-
-
  
   
     this.pers.devolverPersona(this.tipodocseleccionado,this.numerodoc,this.FECNAC.getFullYear()+'-'+(this.FECNAC.getMonth()+1)+'-'+this.FECNAC.getDate()).subscribe((dat)=>{
       
-      this.verpanelregistro=true;
-      this.msgs=[];
-          
-            if(dat.respuesta.cantidad_resultados == undefined){
-              
-              this.noexistepaciente=false;
-              this.msgs.push({severity:'info', summary:'Info Message', detail:'Usted se encuentra registrado en nuestra base de datos'});
-              this.verpaneldatosgenerales=false;
 
-            }
-            else{
-              this.verpaneldatosgenerales=true;
-            
-            }
+      this.msgvalidaper=[]
+      this.mesgs.clear();
+
+      if(dat.respuesta.existeper!="" && dat.respuesta.coincidefecha==""){ 
+      
+        this.msgvalidaper.push({severity:'info', summary:'Datos no validos', detail:'',key:'validapersona'});
+      }else{
+
+
+
+        if( dat.respuesta.tienesoliditudpendiente!=""){
+     
+
+          this.msgvalidaper.push({severity:'info', summary:' Usted ya tiene una solicitud pendiente', detail:'',key:'validapersona'});
+          this.verpanelregistro=false;
+        }
+
+        if(dat.respuesta.existeper==""){
+
+          this.verpanelregistro=true;
+          this.verpaneldatosgenerales=true;
+
+        }  
+
+        
+        if(dat.respuesta.existeper!="" && dat.respuesta.tienesoliditudpendiente==""){
+
+          this.verpanelregistro=true;
+          this.verpaneldatosgenerales=false;
+          this.mesgs.add({severity:'success', summary:'PACIENTE IDENTIFICADO:', detail:'Para solicitar atencion complete el siguiente formulario: '});
+
+        }
+     
+
           
-          });
+
+         
+         
+          }
+         });
   
-    this.verpanelregistro=true;
-  }
+   
+       }
+       
   }
   cambioProvincia(){
 

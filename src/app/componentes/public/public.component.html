@@ -31,11 +31,16 @@
                          
                         <label for="float-input">FECHA DE NACIMIENTO</label>
                     </span>
+
                     <br>
-                   
-                      
+
+                 
+                
+                                       
                     
                 <button pButton type="button" label="Enviar Solicitud" (click)="solicitaAtencion()"></button>
+                <p-messages [(value)]="msgvalidaper" [key]="validapersona"></p-messages>
+
                 </p-panel>
               </div>
         </div>
@@ -232,6 +237,6 @@
         </p-footer>
         <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
         <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" key="final"></p-confirmDialog>
-<p-toast [style]="{marginTop: '80px'}" position="center" key="tc"></p-toast>
+    <p-toast [style]="{marginTop: '80px'}" position="center" key="tc"></p-toast>
 </p-dialog>
 <p-dialog [(visible)]="vermensajeconfirmacion" >Su solicitud ha sido guardada exitosamente Pronto el personal medico se comunicara con usted segun la informacion proporcionada</p-dialog>
