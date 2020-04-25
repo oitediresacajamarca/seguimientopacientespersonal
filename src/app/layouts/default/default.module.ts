@@ -12,6 +12,8 @@ import { TablaNotificacionComponent } from 'src/app/componetes/tabla-notificacio
 import {DialogModule} from 'primeng/dialog';
 import {TableModule} from 'primeng/table';
 import {ScrollPanelModule} from 'primeng/scrollpanel';
+import {PanelModule} from 'primeng/panel';
+import {ButtonModule} from 'primeng/button';
 
 
 
@@ -22,6 +24,7 @@ import {ScrollPanelModule} from 'primeng/scrollpanel';
     PostsComponent,TablaNotificacionComponent
   ],
   imports: [
+    ButtonModule,
     ScrollPanelModule,
     TableModule,
     CommonModule,
@@ -33,7 +36,8 @@ import {ScrollPanelModule} from 'primeng/scrollpanel';
     FlexLayoutModule,
     MatCardModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    PanelModule
   ],
   providers: [
     DashboardService

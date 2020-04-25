@@ -133,17 +133,12 @@ export class PaneldeseguimientoComponent implements OnInit {
         this.resultados=datos.respuesta;
 
         
-        
-      }
-
-
-
-
+              }
     )
     
   }
 
-  exportExcel() {
+exportExcel() {
     import("xlsx").then(xlsx => {
         const worksheet = xlsx.utils.json_to_sheet(this.resultados);
         const workbook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
