@@ -14,6 +14,8 @@ import {TableModule} from 'primeng/table';
 import {ScrollPanelModule} from 'primeng/scrollpanel';
 import {PanelModule} from 'primeng/panel';
 import {ButtonModule} from 'primeng/button';
+import {ContextMenuModule} from 'primeng/contextmenu';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 
@@ -37,7 +39,9 @@ import {ButtonModule} from 'primeng/button';
     MatCardModule,
     MatPaginatorModule,
     MatTableModule,
-    PanelModule
+    PanelModule,
+    ContextMenuModule,
+    MatFormFieldModule
   ],
   providers: [
     DashboardService

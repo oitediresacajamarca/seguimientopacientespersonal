@@ -1,6 +1,9 @@
-import { Component, OnInit, ɵConsole, Input } from '@angular/core';
+import { Component, OnInit, ɵConsole, Input, Output, EventEmitter } from '@angular/core';
 import { SolicitudesService } from 'src/app/servicios/solicitudes.service';
 import { MorbilidadesService } from 'src/app/servicios/morbilidades.service';
+import { MenuItem } from 'primeng/api/menuitem';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-tabla-notificacion',
@@ -11,15 +14,24 @@ export class TablaNotificacionComponent implements OnInit {
   pacientes:any[];
   pacientesSelected:any[];
   cols:any[]
-  @Input()
-  displayNotificacion:boolean=true;
+  @Output()  displayNotificacion:EventEmitter<any>= new EventEmitter();
   cod_ambito:string;
+  selectedNoti: any;
+
+    selectCars: any[];
+
+    elementosmenu: MenuItem[];
 
 
 
-  constructor(private sol:SolicitudesService,private morb:MorbilidadesService) { }
+  constructor(private sol:SolicitudesService,private morb:MorbilidadesService,private router:Router) { }
 
   ngOnInit() {
+    this.elementosmenu= [
+      { label: 'Registrar Atencion', icon: 'pi-user-edit', command: (event) =>{   this.router.navigate(['/admin/atencion/'+this.selectedNoti.NRO_DOCUMENTO+'/'+this.selectedNoti.ID_PACIENTE+'/0']);
+      console.log(this.selectedNoti);this.displayNotificacion.emit('cerrar')}  },
+      { label: 'Esperar', icon: 'pi pi-times', command: (event) => {}}
+  ];
     this.cols= [
     
     ]
@@ -27,20 +39,7 @@ let SESION:any=JSON.parse(localStorage.getItem('datos'));
 
 
 let distrito:string=SESION.ID_DISTRITO;
-    if(SESION.AMBITO=="D"){
-      this.cod_ambito=distrito
-      
-    }
-    if(SESION.AMBITO=="P"){
-      this.cod_ambito=distrito.substring(0,4);
-           
-    }
-    if(SESION.AMBITO=="R"){
-      this.cod_ambito=distrito.substring(0,2);
-           
-    }
-
-  
+    this.cod_ambito=SESION.COD_AMBITO_GEOGRAFICO; 
 
 
   this.sol.devolverColumnasSolicitudes().subscribe((res)=>{

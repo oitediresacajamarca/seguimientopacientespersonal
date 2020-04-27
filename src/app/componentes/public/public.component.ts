@@ -175,23 +175,23 @@ this.confirmationService.confirm({
         "ID_TIPOD":this.tipodocseleccionado,
         "NRO_DOCUMENTO":this.numerodoc,
         "ID_GENERO":this.generosele,
-        "NOMBRES":this.nombres_nuevo,
-        "APELLIDO_PAT":this.ape_pat_nuevo,
-        "APELLIDO_MAT":this.ape_mat_nuevo,
+        "NOMBRES":this.nombres_nuevo.toLocaleUpperCase(),
+        "APELLIDO_PAT":this.ape_pat_nuevo.toLocaleUpperCase(),
+        "APELLIDO_MAT":this.ape_mat_nuevo.toLocaleUpperCase(),
         "ID_DISTRITO":this.distritoselecionado,
         "FECHA_NAC":this.FECNAC};
 
       let solic=
               {
             "ID_PACIENTE":this.tipodocseleccionado+this.numerodoc,
-            "DESCRIPCION":this.obsevaciones,
+            "DESCRIPCION":this.obsevaciones.toLocaleUpperCase(),
             "TELEF_CONTACTO":this.telefcon1,
             "TELEF_CONTACTO2":this.telefcon2,
-            "DOMICILIO_ACTUAL":this.direccion,
+            "DOMICILIO_ACTUAL":this.direccion.toLocaleUpperCase(),
             "FECHA_SOLICITUD":this.fechasolicitud,
             "ESTADO":"P",
             "ID_DISTRITO":this.distritoselecionado,
-            "CORREO":this.correo
+            "CORREO":this.correo.toLocaleLowerCase()
             }
   if(   this.verpaneldatosgenerales){
       this.pers.guardarPersona({root:PER}).subscribe((dat)=>{

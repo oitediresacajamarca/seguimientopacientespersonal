@@ -1,5 +1,5 @@
 
-    
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <p-tabView class="container">
   <br>
     <p-tabPanel header="Registro de Atenciones">
@@ -15,13 +15,16 @@
 
           <p-fieldset legend="Datos Generales del Paciente">
               <div class="ui-g">
-            <div class="form-group ui-g-6">
-                <label for="exampleInputEmail1">Numero de Documento de Identidad</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" 
-                       aria-describedby="emailHelp" placeholder="Numero de Documento de Identidad"
-                       [(ngModel)]="form.NRO_DOCUMENTO" disabled="true">
+            <div class="form-group ui-g-6 ui-inputgroup">
+                
+                
+                  <label for="exampleInputEmail1">Numero de Documento de Identidad</label>
+                  <input matInput type="email" class="form-control" id="exampleInputEmail1" 
+                        aria-describedby="emailHelp" placeholder="Numero de Documento de Identidad"
+                        [(ngModel)]="form.NRO_DOCUMENTO" disabled="true">
+                
               </div>
-              <div class="form-group ui-g-6">
+              <div class="form-group ui-g-6 ui-inputgroup">
                 <label for="exampleInputEmail1">Fecha Solicitud</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" 
                        aria-describedby="emailHelp" placeholder=" Fecha Solicitud"

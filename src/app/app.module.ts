@@ -24,6 +24,8 @@ import {ListboxModule} from 'primeng/listbox';
 import {ChipsModule} from 'primeng/chips';
 import {TablaMorbilidadesComponent } from './componentes/tabla-morbilidades/tabla-morbilidades.component';
 import {ProgressBarModule} from 'primeng/progressbar';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 
 import {DialogModule} from 'primeng/dialog';
 import {AccesoComponent } from './componentes/acceso/acceso.component';
@@ -96,7 +98,8 @@ import { DefaultModule } from './layouts/default/default.module';
     ToastModule,MatDividerModule, MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, MatListModule
     ,FlexLayoutModule,MessagesModule,MessageModule,MatCardModule,
     SharedModule,
-    DefaultModule
+    DefaultModule,
+    MatFormFieldModule
     
 
     

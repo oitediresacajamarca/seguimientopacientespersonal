@@ -23,5 +23,7 @@ export class DefaultComponent implements OnInit {
     
     this.displayNotificacion=true;
   }
- 
+  manejarnot(e){
+    this.displayNotificacion=false;
+  }
 }
