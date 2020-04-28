@@ -19,6 +19,7 @@
 <ng-template pTemplate="header" let-columns>
     <tr>
         <th pSortableColumn="ESTADO">Estado <p-sortIcon field="ESTADO"></p-sortIcon></th>
+        <th pSortableColumn="ESTADO">Telefono <p-sortIcon field="ESTADO"></p-sortIcon></th>
        
         <th pSortableColumn="{{col.field}}" *ngFor="let col of columns" >{{col.header}}  <p-sortIcon field="{{col.field}}"></p-sortIcon></th>
      
@@ -27,6 +28,7 @@
     </tr>
     <tr>
         <th> <input pInputText type="text" (input)="dt.filter($event.target.value, 'ESTADO', 'contains')" placeholder="Buscar por ESTADO" class="ui-column-filter"></th>
+        <th> <input pInputText type="text" (input)="dt.filter($event.target.value, 'TELEF_CONTACTO', 'contains')" placeholder="Buscar por TELEFONO" class="ui-column-filter"></th>
         <th *ngFor="let col of columns">
             <input pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'startsWith')" placeholder="Buscar por {{col.header}}" class="ui-column-filter">
         </th>   
@@ -39,6 +41,10 @@
         <td>
             <span class="ui-column-title">Status</span>
             <span [class]="'customer-badge status-' + customer.ESTADO">Pendiente</span>
+        </td>
+        <td>
+            <span class="ui-column-title">Status</span>
+            {{customer.TELEF_CONTACTO}}
         </td>
         
         <td *ngFor="let col of columns">
