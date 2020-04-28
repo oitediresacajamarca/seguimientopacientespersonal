@@ -44,30 +44,25 @@
                       <p-fieldset legend="GENERO">
                         <div ><p-radioButton name="genero" value="M" label="Masculino" [(ngModel)]="generoselecionado" inputId="opt1"></p-radioButton></div>
                         <div ><p-radioButton name="genero" value="F" label="Femenino" [(ngModel)]="generoselecionado" inputId="opt2"></p-radioButton></div>
-                        <div ><p-radioButton name="genero" value="" label="Ambos" [(ngModel)]="generoselecionado" inputId="opt3"></p-radioButton></div>
+                        <div ><p-radioButton name="genero" value="" label="Todos" [(ngModel)]="generoselecionado" inputId="opt3"></p-radioButton></div>
                       </p-fieldset>
                       </mat-card>
                     </div>
 
                 </div>
-
+                  <br>
                   <p-fieldset legend="MORBILIDAD" [toggleable]="true">
 
                      <app-tabla-morbilidades></app-tabla-morbilidades>                
 
                                  
-                  </p-fieldset>
-
-                
+                  </p-fieldset>                     
              
-
-
-
-              
                   <p-footer>
                     <p-button label="BUSCAR" (onClick)="BUSCAR()"></p-button>
                 </p-footer>
             </p-panel>
+            <br>
 
             <p-panel header="RESULTADOS DE BUSQUEDA">
              

@@ -11,9 +11,10 @@
 	letter-spacing: .3px;
 }
 
-:host ::ng-deep .ui-table-customers .customer-badge.status-qualified {
+:host ::ng-deep .ui-table-customers .customer-badge.status-P {
 	background-color: #C8E6C9;
 	color: #256029;
+	font-size: 12px;
 }
 
 :host ::ng-deep .ui-table-customers .customer-badge.status-unqualified {
