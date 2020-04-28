@@ -8,6 +8,7 @@ import { DefaultComponent } from './layouts/default/default.component';
 import { PublicComponent } from './componentes/public/public.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { PostsComponent } from './modules/posts/posts.component';
+import { ConsentimientoInformadoComponent } from './componentes/formatos/consentimiento-informado/consentimiento-informado.component';
 
 
 const routes: Routes = [
@@ -41,7 +42,17 @@ const routes: Routes = [
        
       ]
 
+    },
+    {
+     
+          path:'consentimiento',
+          component:ConsentimientoInformadoComponent
+        
+       
+      
+
     }
+
   
   ]
   }

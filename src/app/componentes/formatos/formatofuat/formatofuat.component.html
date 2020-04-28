@@ -1,0 +1,210 @@
+<p-fieldset legend="II.ATENCIÓN DEL SERVICIO">
+  
+    <div class="ui-fluid">
+            <div class="ui-g">
+                <div class="ui-g-12">
+
+                    <div class="ui-g" style="width:850px;margin-bottom:5px">
+                        <div class="ui-g-4"><p-radioButton name="tipo" value="Option 1" label="Nuevo" [(ngModel)]="val1" inputId="opt1"></p-radioButton></div>
+                        <div class="ui-g-4"><p-radioButton name="tipo" value="Option 2" label="Control" [(ngModel)]="val1" inputId="opt2"></p-radioButton></div>
+                        
+                        <div class="ui-g-4">
+                        <p-fieldset legend="Numero de Control">
+                                <div class="ui-g-12"><p-radioButton name="numcon" value="Option 1" label="1" [(ngModel)]="val1" inputId="opt1"></p-radioButton></div>
+                                <div class="ui-g-12"><p-radioButton name="numcon" value="Option 2" label="2" [(ngModel)]="val1" inputId="opt2"></p-radioButton></div>
+                                <div class="ui-g-12"><p-radioButton name="numcon" value="Option 3" label=">2" [(ngModel)]="val1" inputId="opt3"></p-radioButton></div>
+                         </p-fieldset>
+                     </div>
+                       
+                    </div>
+
+                </div>
+                <div class="ui-g-12">
+                <h3>Especialidades</h3>
+                        <p-chips [(ngModel)]="values3">
+                            <ng-template let-item pTemplate="item">
+                                {{item}} - (active) <i class="pi pi-user" style="margin-right:2em; padding-bottom: 2px;vertical-align: middle"></i>
+                            </ng-template>
+                        </p-chips>
+                </div>
+
+
+                
+            </div>
+
+    </div>
+
+
+
+        </p-fieldset>
+
+        <p-fieldset legend="2.2 BREVE RESUMEN CLÍNICO (Antecedentes de importancia, enfermedad actual, anamnesis, examen físico, impresión
+        diagnóstica, tratamiento actual, exámenes de apoyo al diagnóstico)">
+
+        <div class="ui-fluid ui-g">
+
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        
+                        <input type="text" pInputText placeholder="Presion Arterial">   
+                        <span class="ui-inputgroup-addon">mmHg</span>      
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        
+                        <input type="text" pInputText placeholder="Frecuencia Cardiaca">   
+                        <span class="ui-inputgroup-addon">lat/min</span>      
+                    </div>
+                </div>
+            
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        
+                        <input type="text" pInputText placeholder="Frecuencia Respiratoria">   
+                        <span class="ui-inputgroup-addon">res/min</span>      
+                    </div>
+                </div>
+
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        
+                        <input type="text" pInputText placeholder="Temperatura"> 
+                        <span class="ui-inputgroup-addon">°C</span>  
+                    </div>
+                       
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        
+                        <input type="text" pInputText placeholder="SatO2"> 
+                        <span class="ui-inputgroup-addon">%</span>    
+                    </div>
+                       
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        
+                        <input type="text" pInputText placeholder="Peso">   
+                        <span class="ui-inputgroup-addon">kg</span>      
+                    </div>
+                    
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        
+                        <input type="text" pInputText placeholder="Talla">   
+                        <span class="ui-inputgroup-addon">cm</span>     
+                    </div>
+                    
+                </div>
+      </div>
+
+      <p-fieldset legend="Descripcion del Caso">
+        <input type="text" pInputText />
+
+      </p-fieldset>
+
+
+      <p-fieldset legend="2.3  Tratamiento actual">
+        <p-chips [(ngModel)]="values1" ></p-chips>
+      </p-fieldset>
+      <p-fieldset legend="2.4 Exámenes de apoyo al diagnóstico">
+        <p-chips [(ngModel)]="values" ></p-chips>
+      </p-fieldset>
+
+
+
+
+
+
+
+ </p-fieldset>
+
+ <p-fieldset legend="3.  Motivo de la Teleconsulta">
+    <p-chips [(ngModel)]="motivos" ></p-chips>
+ </p-fieldset>
+ <p-fieldset legend="4.  Datos de la Ipres">
+    <div class="ui-g">
+        <div class="ui-g-6">Nombre Ipress <input type="text" pInputText /></div>
+        <div class="ui-g-6">Codigo Renipres <input type="text" pInputText />
+        </div>
+        <div class="ui-g-12 ui-md-4">
+            <h4>Fecha y Hora</h4>
+            <p-calendar [(ngModel)]="date7" [showTime]="true"></p-calendar>
+        </div>
+    </div>
+ </p-fieldset>
+ <br>
+ <p-fieldset legend="5. Diagnósticos">
+
+   
+
+ 
+    
+    <div class="ui-g">
+        <div class="ui-g-3">
+  
+            <span class="ui-float-label">
+                <input id="float-input" type="text" size="30" pInputText [(ngModel)]="cod_diag_selec"> 
+                <label for="float-input">Codigo de Diagnostico</label>
+            </span>
+           
+        </div>
+        <div class="ui-g-3">
+        
+            <span class="ui-float-label">
+                <input id="float-input" type="text" size="30" pInputText [(ngModel)]="desc_diag_selec"> 
+                <label for="float-input">Descripcion de Diagnostico</label>
+            </span>
+        </div>
+        <div class="ui-g-3">
+         
+            <span class="ui-float-label">
+                <p-dropdown [options]="tipodiag" [(ngModel)]="selectedtipdiag" placeholder="Select tipo diagnostico" [showClear]="true"></p-dropdown>
+            </span>
+        </div>
+        <div class="ui-g-3">
+            <button pButton type="button" label="Agregar Diagnostico" (click)="aniadediag($event)"></button>
+        </div>
+        <br>
+        <br><br>
+        <p-table [value]="dianosticospac">
+            <ng-template pTemplate="header">
+            <tr><th>item</th><th>Codigo</th><th>Tipo de diagnostico</th></tr>
+            </ng-template>
+
+                <ng-template pTemplate="body" let-dianospac>
+                      <tr  ><td>{{dianospac.item}}</td><td>{{dianospac.cod_cie}}</td><td>{{dianospac.tip_diag}}</td></tr>
+                </ng-template>
+
+
+
+        </p-table>
+    </div>
+    
+ </p-fieldset>
+ <br>
+
+ <p-fieldset legend="6. Recomedaciones/Plan/INDICACIONES (de acuerdo a las competencias del profesional que brinda el servicio)">
+
+    <p-chips [(ngModel)]="recomendaciones"></p-chips>
+
+</p-fieldset>
+<br>
+<p-fieldset legend="7. Datos Personal Medico">
+    <p-card>
+        <p-header>
+           Nombres y Apellidos:{{nombresyapellidosper}}
+        </p-header>
+            Especialidad:
+        <p-footer>
+            N° Colegio profesional/RNE:
+        </p-footer>
+    </p-card>
+
+    
+
+</p-fieldset>
+
+

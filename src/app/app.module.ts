@@ -25,8 +25,10 @@ import {ChipsModule} from 'primeng/chips';
 import {TablaMorbilidadesComponent } from './componentes/tabla-morbilidades/tabla-morbilidades.component';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {MatFormFieldModule} from '@angular/material/form-field';
-
-
+import {PickListModule} from 'primeng/picklist';
+import {LightboxModule} from 'primeng/lightbox';
+import {SidebarModule} from 'primeng/sidebar';
+import {CardModule} from 'primeng/card';
 import {DialogModule} from 'primeng/dialog';
 import {AccesoComponent } from './componentes/acceso/acceso.component';
 import {InputMaskModule} from 'primeng/inputmask';
@@ -57,6 +59,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 
 import { PublicComponent } from './componentes/public/public.component';
 import { DefaultModule } from './layouts/default/default.module';
+import { FormatofuatComponent } from './componentes/formatos/formatofuat/formatofuat.component';
+import { TablaCieSelecComponent } from './componentes/tabla-cie-selec/tabla-cie-selec.component';
+import { ConsentimientoInformadoComponent } from './componentes/formatos/consentimiento-informado/consentimiento-informado.component';
 
 @NgModule({
   declarations: [
@@ -72,10 +77,22 @@ import { DefaultModule } from './layouts/default/default.module';
 
    
   
-    PublicComponent
+    PublicComponent,
+
+   
+  
+    FormatofuatComponent,
+
+   
+  
+    TablaCieSelecComponent,
+
+   
+  
+    ConsentimientoInformadoComponent
 
   ],
-  imports: [
+  imports: [PickListModule,
     KeyFilterModule,
     BrowserModule,
     AppRoutingModule,
@@ -99,7 +116,8 @@ import { DefaultModule } from './layouts/default/default.module';
     ,FlexLayoutModule,MessagesModule,MessageModule,MatCardModule,
     SharedModule,
     DefaultModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    LightboxModule,SidebarModule,CardModule
     
 
     

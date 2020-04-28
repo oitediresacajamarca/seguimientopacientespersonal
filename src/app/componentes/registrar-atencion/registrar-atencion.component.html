@@ -1,7 +1,8 @@
 
 
-<p-dialog header="REGISTRO DE ATENCION" [(visible)]="visible" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"
+<p-dialog header="REGISTRO DE ATENCION" [(visible)]="visible" [modal]="true" [style]="{width: '80vw'}" [maximizable]="true" [baseZIndex]="10000"
     [draggable]="false" [resizable]="false">
+<div class="ui-fluid">
 <p-fieldset legend="Datos de Atencion Realizada">
     <div class="ui-g">
         <div class="ui-g-6">
@@ -12,7 +13,7 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">Motivo de la Atencion</label>
                 <br>
-                <textarea pInputTextarea [(ngModel)]="motivoAte" [rows]="20" [cols]="40"></textarea>
+                <textarea pInputTextarea [(ngModel)]="motivoAte" [rows]="5" [cols]="80"></textarea>
             </div>  
         </div>
         <div class="ui-g-6">
@@ -23,7 +24,8 @@
                 </span>
                 <span pInplaceContent>
                     <p-panel header="Tipo de caso Covid" >
-                  
+                        
+                       
                        <label for="confirmado">Caso Confirmado</label>
                         <p-radioButton name="groupname" value="C" [(ngModel)]="tipocov">Caso Confirmado</p-radioButton>
                         <label for="sospechoso">Caso Sospechoso</label>
@@ -46,5 +48,9 @@
             
            
  </p-fieldset>
+
+<app-formatofuat></app-formatofuat>
+
+</div>
  <button pButton type="button" label="REGISTRAR ATENCION" (click)="registrarAtencion($event)"></button>
 </p-dialog>

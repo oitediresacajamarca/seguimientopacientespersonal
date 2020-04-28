@@ -1,21 +1,21 @@
 
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <p-tabView class="container">
+   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <p-tabView class="container-fluid">
   <br>
     <p-tabPanel header="Registro de Atenciones">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Numero de solicitud</span>
+              <span class="input-group-text" id="basic-addon1">Numero de Documento</span>
             </div>
              <input type="text" pInputText [(ngModel)]="cod_buscar"  class="form-control" placeholder="Ingrese el numero de solicitud a registrar" aria-label="Username" aria-describedby="basic-addon1"/>
             <button pButton type="button" label="BUSCAR" (click)="buscarSolicitud()"></button>
         
         </div>
-
+        
 
           <p-fieldset legend="Datos Generales del Paciente">
               <div class="ui-g">
-            <div class="form-group ui-g-6 ui-inputgroup">
+            <div class="form-group ui-g-6 ">
                 
                 
                   <label for="exampleInputEmail1">Numero de Documento de Identidad</label>
@@ -24,7 +24,7 @@
                         [(ngModel)]="form.NRO_DOCUMENTO" disabled="true">
                 
               </div>
-              <div class="form-group ui-g-6 ui-inputgroup">
+              <div class="form-group ui-g-6 ">
                 <label for="exampleInputEmail1">Fecha Solicitud</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" 
                        aria-describedby="emailHelp" placeholder=" Fecha Solicitud"

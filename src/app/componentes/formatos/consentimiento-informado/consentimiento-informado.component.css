@@ -1,0 +1,14 @@
+.text-consentimiento{
+    font-size: 16px;
+    text-align: justify;
+    text-indent: 2em;
+    margin: 2em 4em;
+}
+.text-consentimiento-title{
+    text-align: center;
+ 
+}
+.aceptar{
+    text-align: center;
+    font-size: 21px;
+}

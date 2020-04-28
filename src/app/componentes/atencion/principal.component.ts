@@ -68,7 +68,10 @@ export class PrincipalComponent implements OnInit {
   }
 
   IniciaRegistro(e){
-    this.verpanelregistro=true;
+  
+    this.verpanelregistro=true;   
+    localStorage.setItem('datosPacienteRegistrar',JSON.stringify(this.form))
+
 
   }
   sideBarToggler() {
