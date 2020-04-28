@@ -31,7 +31,7 @@
                       <p-fieldset legend="EDAD">
                         EDAD
                         Rango: {{rangoanos[0] + ' - ' + rangoanos[1]}} AÑOS
-                        <p-slider [min]="0" [max]="100"  [range]="true" [(ngModel)]="rangoanos"  [style]="{'width':'14em','margin-top': '0.5em'}" ></p-slider>
+                        <p-slider [min]="0" [max]="120"  [range]="true" [(ngModel)]="rangoanos"  [style]="{'width':'14em','margin-top': '0.5em'}" ></p-slider>
                         <br>
                         <br>
                       </p-fieldset>
@@ -51,7 +51,7 @@
 
                 </div>
                   <br>
-                  <p-fieldset legend="MORBILIDAD" [toggleable]="true">
+                  <p-fieldset legend="MORBILIDAD" [toggleable]="true" [collapsed]="true">
 
                      <app-tabla-morbilidades></app-tabla-morbilidades>                
 

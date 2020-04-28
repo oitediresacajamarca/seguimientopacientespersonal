@@ -15,7 +15,7 @@ export class PaneldeseguimientoComponent implements OnInit {
   provincias:SelectItem[];
   provinciaselected:string;
   dddistritos:SelectItem[];
-  rangoanos:number[]=[1,120];
+  rangoanos:number[]=[0,120];
   colsresultados:any[];
 
   sideBarOpen:boolean=false;

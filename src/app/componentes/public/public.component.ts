@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SelectItem } from 'primeng/api/selectitem';
 import { PersonaService } from 'src/app/servicios/servicios/persona.service';
 import { GeografiaService } from 'src/app/servicios/servicios/geografia.service';
 import { SolicitudService } from 'src/app/servicios/servicios/solicitud.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { NgForm, Form } from '@angular/forms';
+import { Button } from 'primeng/button/button';
+
 
 
 @Component({
@@ -38,6 +41,8 @@ export class PublicComponent implements OnInit {
   FECNAC:Date;
   distritoselecionado:string;
   direccion:string;
+  desabiltbot:boolean=true;
+  aceptocon:boolean=false;
 
   obsevaciones:string;
   telefcon1:string;
@@ -46,11 +51,18 @@ export class PublicComponent implements OnInit {
   es:any;
   letrasyespacio:RegExp=/[a-zA-Z ]/;
   vermensajeconfirmacion:boolean=false;
- 
+  @ViewChild('datosgenerales',{static:false})
+  datosgenerales:NgForm;
+  @ViewChild('solicitud',{static:false})
+  solicitud:NgForm;
+  @ViewChild('btenv',{static:false})
+  btenv:Button
 
   constructor(private pers:PersonaService,private geo:GeografiaService,private sol:SolicitudService,private confirmationService: ConfirmationService,private mesgs:MessageService) { }
 
   ngOnInit() {
+    
+    
     this.es = {
       firstDayOfWeek: 1,
       dayNames: [ "domingo","lunes","martes","miércoles","jueves","viernes","sábado" ],
@@ -61,6 +73,7 @@ export class PublicComponent implements OnInit {
       today: 'Hoy',
       clear: 'Borrar'
   };
+ 
     this.tiposdoc = [
       {label:'DNI', value:'1'},
       {label:'CARNET', value:'2'},
@@ -247,6 +260,33 @@ this.confirmationService.confirm({
  cancelarSolicitud(){
     this.verpanelregistro=false;
     this.resetearData();
+
+ }
+ cambiaform(){
+
+  this.desabiltbot=true;
+   if(this.verpaneldatosgenerales&&this.aceptocon&&this.datosgenerales.valid&&this.solicitud.valid){
+    this.desabiltbot=false;
+   }
+   if(this.verpaneldatosgenerales==false&&this.aceptocon&&this.solicitud.valid){
+    this.desabiltbot=false;
+   }
+
+
+
+
+ }
+ validarcheck(e){
+
+if(e=="acepto"){
+  this.aceptocon=true;
+
+}
+else{
+  this.aceptocon=false;
+}
+
+this.cambiaform();
 
  }
 

@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-consentimiento-informado',
@@ -14,7 +15,7 @@ export class ConsentimientoInformadoComponent implements OnInit {
   @Input() apellidosynombrespaciente:string;
   @Input() dnipaciente:string;
   aceptaconsetimiento:boolean
-  constructor() { }
+  @Output() aceptocon:EventEmitter<any>=new EventEmitter()
 
   ngOnInit() {
 
@@ -23,6 +24,15 @@ export class ConsentimientoInformadoComponent implements OnInit {
     this.datospaciente=localStorage.getItem('datosPacienteRegistrar');
     this.apellidosynombrespaciente=JSON.parse(this.datospaciente).APELLIDO_PAT+' '+JSON.parse(this.datospaciente ).APELLIDO_MAT+' '+JSON.parse(this.datospaciente).NOMBRES
     this.dnipaciente=JSON.parse(this.datospaciente).NRO_DOCUMENTO;
+  }
+  verificar(e){
+    console.log(e)
+    if(e){
+      this.aceptocon.emit("acepto");
+    }else{
+      this.aceptocon.emit("noacepto");
+    }
+
   }
 
 }

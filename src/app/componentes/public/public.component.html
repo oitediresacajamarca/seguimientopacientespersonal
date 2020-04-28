@@ -66,7 +66,7 @@
                 <tr>
                   <th>Nombres</th>
                   <td><input  name ='nombres' required type="text" #nombres="ngModel" 
-                    pInputText [(ngModel)]="nombres_nuevo" [pKeyFilter]="letrasyespacio"/>
+                    pInputText [(ngModel)]="nombres_nuevo" [pKeyFilter]="letrasyespacio" (blur)="cambiaform()"/>
                     
                   
                   </td>
@@ -78,7 +78,8 @@
                 <tr>
                     <th>Apellido Paterno</th>
                     <td><input name ='apellido_paterno' required type="text" pInputText 
-                      [(ngModel)]="ape_pat_nuevo" [pKeyFilter]="letrasyespacio" #ape_pat="ngModel">
+                      [(ngModel)]="ape_pat_nuevo" [pKeyFilter]="letrasyespacio" #ape_pat="ngModel" 
+                      (blur)="cambiaform()">
                     </td>
                       <td *ngIf="!ape_pat.valid">
                         <div *ngIf="ape_pat.errors.required && ape_pat.touched ">   Campo es requerido </div>
@@ -88,7 +89,8 @@
                 <tr>
                   <th>Apellido Materno</th>
                   <td><input name ='apellido_materno' required type="text" 
-                    pInputText [(ngModel)]="ape_mat_nuevo" #ape_mat="ngModel">
+                    pInputText [(ngModel)]="ape_mat_nuevo" #ape_mat="ngModel"
+                    (blur)="cambiaform()">
                   </td>
                   <td *ngIf="!ape_mat.valid">
                     <div *ngIf="ape_mat.errors.required && ape_mat.touched ">   Campo es requerido </div>
@@ -98,7 +100,7 @@
                 <tr>
                     <th>Genero</th>
                     <td><p-dropdown name ='genero' required [options]="generos" 
-                      [(ngModel)]="generosele" placeholder="Seleccione" #genero="ngModel"></p-dropdown>
+                      [(ngModel)]="generosele" placeholder="Seleccione" #genero="ngModel" (blur)="cambiaform()"></p-dropdown>
                       
                     </td>
                     <td *ngIf="!genero.valid">
@@ -110,7 +112,8 @@
                   <th>Tipo Doc</th>
                   <td> <p-dropdown name ='tipodo'  [options]="tiposdoc" disabled="true"  
                     size="80" [(ngModel)]="tipodocseleccionado" [style]="{width:'150px'}" 
-                    [maxlength]="300" placeholder="Seleccione "></p-dropdown></td>
+                    [maxlength]="300" placeholder="Seleccione "
+                    (blur)="cambiaform()"></p-dropdown></td>
                   
                 </tr>
                 <tr>
@@ -151,12 +154,14 @@
                 <tr>
                   <th>Telefono Celular de Contacto</th>
                   <td><p-inputMask required name="telefcon1" [(ngModel)]="telefcon1" 
-                    mask="999-999999" #telecon1="ngModel"></p-inputMask></td>
+                    mask="999-999999" #telecon1="ngModel"
+                    (blur)="cambiaform()"></p-inputMask></td>
                  
                 </tr>
                 <tr>
                     <th>Telefono Fijo de Contacto</th>
-                    <td><p-inputMask name="telefcon2" [(ngModel)]="telefcon2" mask="99-9999">
+                    <td><p-inputMask name="telefcon2" [(ngModel)]="telefcon2" mask="99-9999"
+                      (blur)="cambiaform()">
 
                     </p-inputMask></td>
                    
@@ -166,27 +171,30 @@
                     <td>
                       <input name="correo" type="text" [(ngModel)]="correo" pInputText 
                        characterPattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"
-                       pKeyFilter="email"> 
+                       pKeyFilter="email" (blur)="cambiaform()">  
                      </td>
                    
                   </tr>
                 <tr>
                   <th>Motivo</th>
                   <td><textarea name="obsevaciones" pInputTextarea [rows]="10" 
-                    [(ngModel)]="obsevaciones"></textarea>
+                    [(ngModel)]="obsevaciones" (blur)="cambiaform()" required></textarea>
                   </td>
         
                 </tr>
                 <tr>
                   <th>Fecha de Solicitud</th>
-                  <td><p-calendar name="fechasolicitud" [(ngModel)]="fechasolicitud" showButtonBar="true" disabled="true"></p-calendar></td>
+                  <td><p-calendar name="fechasolicitud" [(ngModel)]="fechasolicitud" 
+                    showButtonBar="true" disabled="true"
+                    ></p-calendar></td>
                   
                 </tr>
                 <tr>
                     <th>Provincia</th>
                     <td><p-dropdown required name="provincia" [options]="provincias" 
                       [(ngModel)]="provinciaselecionada" placeholder="Seleccione "
-                       (onChange)="cambioProvincia()" #provincia="ngModel"></p-dropdown></td>
+                       (onChange)="cambioProvincia()" #provincia="ngModel"
+                       (change)="cambiaform()"></p-dropdown></td>
                        <td *ngIf="!provincia.valid">
                         <div *ngIf="provincia.errors.required && provincia.touched ">   Campo es requerido </div>
                      </td>
@@ -195,7 +203,8 @@
                   <tr>
                     <th>Distrito</th>
                     <td><p-dropdown required name="distrito" [options]="distritos" 
-                      [(ngModel)]="distritoselecionado" #distrito="ngModel"></p-dropdown></td>
+                      [(ngModel)]="distritoselecionado" #distrito="ngModel"
+                      (change)="cambiaform()"></p-dropdown></td>
                       <td *ngIf="!distrito.valid">
                         <div *ngIf="distrito.errors.required && distrito.touched ">   Campo es requerido </div>
                      </td>
@@ -205,7 +214,8 @@
                   <tr>
                     <th>Domicilio Actual</th>
                     <td><textarea  required name="direccion" pInputTextarea [rows]="10" 
-                      [(ngModel)]="direccion" #direccio="ngModel"></textarea></td>
+                      [(ngModel)]="direccion" #direccio="ngModel"
+                      (change)="cambiaform()"></textarea></td>
 
                       <td *ngIf="!direccio.valid">
                         <div *ngIf="direccio.errors.required && direccio.touched ">   Campo es requerido </div>
@@ -225,14 +235,14 @@
                   
               </table>
             
-                <app-consentimiento-informado ></app-consentimiento-informado>
+                <app-consentimiento-informado (aceptocon)="validarcheck($event)"></app-consentimiento-informado>
 
             </form>
      
 
         </p-panel>
         <p-footer>
-            <button  type="button" pButton icon="pi pi-check" (click)="guardarPaciente()" label="Aceptar"></button>
+            <button  #btenv type="button" pButton icon="pi pi-check" [(disabled)]="desabiltbot" (click)="guardarPaciente()" label="Aceptar"></button>
             <button type="button" pButton icon="pi pi-times" (click)="cancelarSolicitud()" label="Cancelar" class="ui-button-secondary"></button>
         </p-footer>
         <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
