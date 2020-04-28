@@ -4,6 +4,12 @@
     text-indent: 2em;
     margin: 2em 4em;
 }
+.alert {
+    padding: 20px;
+    background-color: #68cff8; /* Red */
+    color: white;
+    margin-bottom: 15px;
+  }
 .text-consentimiento-title{
     text-align: center;
  

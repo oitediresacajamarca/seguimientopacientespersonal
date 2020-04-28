@@ -18,6 +18,13 @@ export class FormatofuatComponent implements OnInit {
   desc_diag_selec:string="";
   nombresyapellidosper:string;
   datossession:any;
+  tipcontrol:string;
+  tratamientoactual:string;
+  especialidades:string;
+  examenesdeapoyo:string;
+  motivos:string[];
+  fechayhora:Date=new Date();
+  recomendaciones:string[];
 
   constructor(private morbilidad:MorbilidadesService) { }
 

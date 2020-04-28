@@ -1,16 +1,15 @@
-<p>consentimiento-informado works!</p>
 
-<p-dialog header="CONSENTIMIENTO INFORMADO" [(visible)]="display" [style]="{width: '80vw'}">
+
+
 <div class="text-consentimiento-title">
-<h3>Formato de Consentimiento Informado para Teleorientación y
+<h3>Consentimiento Informado para Teleorientación y
     Telemonitoreo y Revocatoria de Consentimiento Informado de Teleorientación y
     Telemonitoreo</h3>
 </div>
 
-<div class="text-consentimiento">
-        YO {{apellidosynombrespaciente}} con DNI N {{dnipaciente}}
-    Declaro haber sido informado/a por: {{nombresyapellidosper}}
-    , para realizar Teleorientación Telemonitoreo, pudiendo incluir una o varias sesiones con el
+<div class="text-consentimiento alert">
+        
+    Declaro haber sido informado/a  para realizar Teleorientación Telemonitoreo, pudiendo incluir una o varias sesiones con el
     profesional de salud de la IPRESS: , para que el paciente reciba
     recomendaciones del profesional de la salud según el motivo de la Teleorientación o
     Telemonitoreo.
@@ -28,6 +27,5 @@
     se realicen, en mi presencia o incluso en mi ausencia.
 </div>
   <div class="aceptar">
-    <p-checkbox name="groupname" value="ACEPTAR" [(ngModel)]="selectedValues" label="ACEPTAR"></p-checkbox>
+    <p-checkbox name="groupname" value="ACEPTAR" [(ngModel)]="aceptaconsetimiento" label="ACEPTAR"></p-checkbox>
   </div>
-</p-dialog>

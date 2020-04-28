@@ -1,10 +1,10 @@
 
             <p-table #dt [value]="cies" [(selection)]="ciesselected" [(contextMenuSelection)]="selectedCie" [contextMenu]="cm"
             dataKey="Codigo_Item" styleClass="ui-table-customers" [rowHover]="true"
-            [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
+            [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" 
             [paginator]="true" currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} resultados"
             [filterDelay]="0" [globalFilterFields]="['Codigo_Item','Descripcion_Item','Fg_Tipo','Fg_Estado']"
-            [resizableColumns]="true" (onRowSelect)="aniadirMorb()"
+            [resizableColumns]="true" 
           >
             <ng-template pTemplate="caption">
                Lista de Morbilidades

@@ -5,14 +5,13 @@
                 <div class="ui-g-12">
 
                     <div class="ui-g" style="width:850px;margin-bottom:5px">
-                        <div class="ui-g-4"><p-radioButton name="tipo" value="Option 1" label="Nuevo" [(ngModel)]="val1" inputId="opt1"></p-radioButton></div>
-                        <div class="ui-g-4"><p-radioButton name="tipo" value="Option 2" label="Control" [(ngModel)]="val1" inputId="opt2"></p-radioButton></div>
+                        <div class="ui-g-4"><p-radioButton name="tipo" value="N" label="Nuevo" [(ngModel)]="tipcontrol" inputId="opt1"></p-radioButton></div>
+                        <div class="ui-g-4"><p-radioButton name="tipo" value="C" label="Control" [(ngModel)]="tipcontrol" inputId="opt2"></p-radioButton></div>
                         
                         <div class="ui-g-4">
                         <p-fieldset legend="Numero de Control">
-                                <div class="ui-g-12"><p-radioButton name="numcon" value="Option 1" label="1" [(ngModel)]="val1" inputId="opt1"></p-radioButton></div>
-                                <div class="ui-g-12"><p-radioButton name="numcon" value="Option 2" label="2" [(ngModel)]="val1" inputId="opt2"></p-radioButton></div>
-                                <div class="ui-g-12"><p-radioButton name="numcon" value="Option 3" label=">2" [(ngModel)]="val1" inputId="opt3"></p-radioButton></div>
+                                <div class="ui-g-12"><input type="text" pKeyFilter="int"></div>
+                              
                          </p-fieldset>
                      </div>
                        
@@ -21,7 +20,7 @@
                 </div>
                 <div class="ui-g-12">
                 <h3>Especialidades</h3>
-                        <p-chips [(ngModel)]="values3">
+                        <p-chips [(ngModel)]="especialidades">
                             <ng-template let-item pTemplate="item">
                                 {{item}} - (active) <i class="pi pi-user" style="margin-right:2em; padding-bottom: 2px;vertical-align: middle"></i>
                             </ng-template>
@@ -107,10 +106,10 @@
 
 
       <p-fieldset legend="2.3  Tratamiento actual">
-        <p-chips [(ngModel)]="values1" ></p-chips>
+        <p-chips [(ngModel)]="tratamientoactual" ></p-chips>
       </p-fieldset>
       <p-fieldset legend="2.4 Exámenes de apoyo al diagnóstico">
-        <p-chips [(ngModel)]="values" ></p-chips>
+        <p-chips [(ngModel)]="examenesdeapoyo" ></p-chips>
       </p-fieldset>
 
 
@@ -131,7 +130,7 @@
         </div>
         <div class="ui-g-12 ui-md-4">
             <h4>Fecha y Hora</h4>
-            <p-calendar [(ngModel)]="date7" [showTime]="true"></p-calendar>
+            <p-calendar [(ngModel)]="fechayhora" [showTime]="true" disabled></p-calendar>
         </div>
     </div>
  </p-fieldset>

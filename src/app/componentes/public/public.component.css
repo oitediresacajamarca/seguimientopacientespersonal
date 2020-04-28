@@ -12,3 +12,6 @@
 {
     text-transform: uppercase;
 }
+.ui-dialog-titlebar{
+     font-size: 16px;
+}

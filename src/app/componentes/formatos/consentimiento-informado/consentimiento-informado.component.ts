@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-consentimiento-informado',
@@ -11,7 +11,9 @@ export class ConsentimientoInformadoComponent implements OnInit {
   datossession:any;
   display:boolean=true;
   datospaciente:any={};
-  apellidosynombrespaciente:string;
+  @Input() apellidosynombrespaciente:string;
+  @Input() dnipaciente:string;
+  aceptaconsetimiento:boolean
   constructor() { }
 
   ngOnInit() {
@@ -20,7 +22,7 @@ export class ConsentimientoInformadoComponent implements OnInit {
     this.nombresyapellidosper=JSON.parse(this.datossession ).APELLIDO_PAT+' '+JSON.parse(this.datossession ).APELLIDO_MAT+' '+JSON.parse(this.datossession ).NOMBRES
     this.datospaciente=localStorage.getItem('datosPacienteRegistrar');
     this.apellidosynombrespaciente=JSON.parse(this.datospaciente).APELLIDO_PAT+' '+JSON.parse(this.datospaciente ).APELLIDO_MAT+' '+JSON.parse(this.datospaciente).NOMBRES
-
+    this.dnipaciente=JSON.parse(this.datospaciente).NRO_DOCUMENTO;
   }
 
 }
