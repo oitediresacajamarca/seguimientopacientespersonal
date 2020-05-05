@@ -52,6 +52,7 @@ import {StepsModule} from 'primeng/steps';
 
 import { MatDividerModule, MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, MatListModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {GMapModule} from 'primeng/gmap';
 
 
 
@@ -68,8 +69,7 @@ import { ConsentimientoInformadoComponent } from './componentes/formatos/consent
   declarations: [
     AppComponent,
     PaneldeseguimientoComponent,
-    TablaMorbilidadesComponent,
-  
+    TablaMorbilidadesComponent,  
     PrincipalComponent,
     AccesoComponent,
     MorbilidadesPorPacienteComponent,
@@ -94,6 +94,7 @@ import { ConsentimientoInformadoComponent } from './componentes/formatos/consent
 
   ],
   imports: [
+    GMapModule,
     StepsModule,
     PickListModule,
     KeyFilterModule,

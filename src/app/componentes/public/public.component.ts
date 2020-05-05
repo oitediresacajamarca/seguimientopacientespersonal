@@ -17,6 +17,7 @@ import { Button } from 'primeng/button/button';
 export class PublicComponent implements OnInit {
 
   tiposdoc:SelectItem[];
+  optionsMap: any;
 
  
 
@@ -61,6 +62,10 @@ export class PublicComponent implements OnInit {
   constructor(private pers:PersonaService,private geo:GeografiaService,private sol:SolicitudService,private confirmationService: ConfirmationService,private mesgs:MessageService) { }
 
   ngOnInit() {
+    this.optionsMap = {
+      center: {lat: 36.890257, lng: 30.707417},
+      zoom: 12
+  };
     
     
     this.es = {
