@@ -18,88 +18,143 @@
             <div class="form-group ui-g-6 ">
                 
                 
-                  <label for="exampleInputEmail1">Numero de Documento de Identidad</label>
-                  <input matInput type="email" class="form-control" id="exampleInputEmail1" 
+                  <label for="docidentidad">Numero de Documento de Identidad</label>
+                  <input matInput type="email" class="form-control" id="docidentidad" 
                         aria-describedby="emailHelp" placeholder="Numero de Documento de Identidad"
                         [(ngModel)]="form.NRO_DOCUMENTO" disabled="true">
                 
               </div>
-              <div class="form-group ui-g-6 ">
-                <label for="exampleInputEmail1">Fecha Solicitud</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" 
-                       aria-describedby="emailHelp" placeholder=" Fecha Solicitud"
-                       [(ngModel)]="form.FECHA_SOLICITUD" disabled="true">
-              </div>
+              
             <div class="form-group ui-g-6">
-                <label for="exampleInputEmail1">Nombres</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" 
-                       aria-describedby="emailHelp" placeholder=" Nombres"
+                <label for="nombres">Nombres</label>
+                <input type="text" class="form-control" id="nombres" 
+                       aria-describedby="emailHelp" 
                        [(ngModel)]="form.NOMBRES" disabled="true">
               </div>
               <div class="form-group ui-g-6">
-                <label for="exampleInputEmail1">Apellido Paterno</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" 
-                       aria-describedby="emailHelp" placeholder="Apellido Paterno"
+                <label for="ape_pat">Apellido Paterno</label>
+                <input type="text" class="form-control" id="ape_pat" 
+                       aria-describedby="emailHelp"
                        [(ngModel)]="form.APELLIDO_PAT" disabled="true">
               </div>
 
               <div class="form-group ui-g-6">
-                <label for="exampleInputEmail1">Apellido Materno</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" 
-                       aria-describedby="emailHelp" placeholder=" Apellido Materno"
+                <label for="ape_mat">Apellido Materno</label>
+                <input type="email" class="form-control" id="ape_mat" 
+                       aria-describedby="emailHelp" 
                        [(ngModel)]="form.APELLIDO_MAT" disabled="true">
               </div>
 
               <div class="form-group ui-g-6">
-                <label for="exampleInputEmail1">Domicilio Actual</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" 
-                       aria-describedby="emailHelp" placeholder="Domicilio Actual"
-                       [(ngModel)]="form.DOMICILIO_ACTUAL" disabled="true">
+                <label for="domicilio">Domicilio Actual</label>
+                <input type="email" class="form-control" id="domicilio" 
+                       aria-describedby="emailHelp" 
+                       [(ngModel)]="form.DIRECCION" disabled="true">
               </div>
               <div class="form-group ui-g-6">
-                <label for="exampleInputEmail1">Genero</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" 
+                <label for="genero">Genero</label>
+                <input type="email" class="form-control" id="genero" 
                        aria-describedby="emailHelp" placeholder="Genero"
-                       [(ngModel)]="form.ID_GENERO" disabled="true">
+                       [(ngModel)]="form.GENERO" disabled="true">
               </div>
+           
               <div class="form-group ui-g-6">
-                <label for="exampleInputEmail1">Motivo</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" 
-                       aria-describedby="emailHelp" placeholder=" Motivo"
-                       [(ngModel)]="form.DESCRIPCION" disabled="true" >
-              </div>
-              <div class="form-group ui-g-6">
-                <label for="exampleInputEmail1">Provincia</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" 
+                <label for="provincia">Provincia</label>
+                <input type="email" class="form-control" id="provincia" 
                        aria-describedby="emailHelp" placeholder="Provincia"
                        [(ngModel)]="form.NOMBRE_PROVINCIA" disabled="true"> 
               </div>
               <div class="form-group ui-g-6">
-                <label for="exampleInputEmail1">Distrito</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" 
+                <label for="distrito">Distrito</label>
+                <input type="email" class="form-control" id="distrito" 
                        aria-describedby="emailHelp" placeholder="Distrito"
                        [(ngModel)]="form.NOMBRE_DISTRITO" disabled="true">
               </div>
               <div class="form-group ui-g-6">
-                <label for="exampleInputEmail1">Fecha Nacimiento</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" 
+                <label for="fecha_nacimiento">Fecha Nacimiento</label>
+                <input type="email" class="form-control" id="fecha_nacimiento" 
                        aria-describedby="emailHelp" placeholder="Fecha Nacimiento"
                        [(ngModel)]="form.FECHA_NAC" disabled="true">
               </div>
 
-            </div>
-
-            
+            </div>          
         
            
          </p-fieldset>
+        <br>
+         SOLICITUD DE ATENCION
+         <mat-card>
+          <div class="ui-g">
+            <div class="ui-g-6">
+              <mat-card>
+              FECHA Y HORA DE SOLICITUD<br>                
+                      <p-calendar [(ngModel)]="formsol.FECHA_SOLICITUD" [showTime]="true" [locale]='es' disabled></p-calendar>
+           
+            </mat-card>
+            </div>
+            <div class="ui-g-6">
+              <mat-card>
+             MOTIVO
+                <input type="email" class="form-control" 
+                      aria-describedby="emailHelp"
+                      [(ngModel)]="formsol.DESCRIPCION" disabled="true" >
+             
+            </mat-card>
+             </div>
+             <div class="ui-g-6">
+              <mat-card>
+               DOMICILIO ACTUAL
+                <input type="email" class="form-control" 
+                      aria-describedby="emailHelp" 
+                      [(ngModel)]="formsol.DOMICILIO_ACTUAL" disabled="true" >
+             
+            </mat-card>
+             </div>
+             <div class="ui-g-6">
+              <mat-card>
+              REFERENCIA
+                <input type="email" class="form-control" 
+                      aria-describedby="emailHelp" 
+                      [(ngModel)]="formsol.DIRECCION" disabled="true" >
+             
+            </mat-card>
+             </div>
+             <div class="ui-g-6">
+              <mat-card>
+              TELEFONO DE CONTACTO 1
+                <input type="email" class="form-control" 
+                      aria-describedby="emailHelp" 
+                      [(ngModel)]="formsol.TELEF_CONTACTO" disabled="true" >
+             
+            </mat-card>
+             </div>
+             <div class="ui-g-6">
+              <mat-card>
+              TELEFONO DE CONTACTO 2
+                <input type="email" class="form-control" 
+                      aria-describedby="emailHelp" 
+                      [(ngModel)]="formsol.TELEF_CONTACTO2" disabled="true" >
+             
+            </mat-card>
+             </div>
+             <div class="ui-g-6">
+              <mat-card>
+              CORREO ELECTRONICO
+                <input type="email" class="form-control" 
+                      aria-describedby="emailHelp" placeholder=" Motivo"
+                      [(ngModel)]="formsol.CORREO2" disabled="true" >
+             
+            </mat-card>
+             </div>
+          </div>
+         </mat-card>
 
          <p-fieldset legend="Morbilidades del Paciente">
            <app-morbilidades-por-paciente #mpp [(dni)]="cod_buscar"></app-morbilidades-por-paciente>
 
          </p-fieldset>
 
-         <button pButton type="button" label="Registrar Atencion" (click)="IniciaRegistro($event)"></button>
+         <button pButton type="button" label="Iniciar Atencion" (click)="IniciaRegistro($event)"></button>
     </p-tabPanel>
     <p-tabPanel header="Solicitudes de Atencion Pendientes">
       

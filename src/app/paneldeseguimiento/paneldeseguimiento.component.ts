@@ -17,6 +17,7 @@ export class PaneldeseguimientoComponent implements OnInit {
   dddistritos:SelectItem[];
   rangoanos:number[]=[0,120];
   colsresultados:any[];
+  padones_selected:SelectItem;
 
   sideBarOpen:boolean=false;
    items: MenuItem[];
@@ -31,9 +32,23 @@ export class PaneldeseguimientoComponent implements OnInit {
   morbiselected:SelectItem;
   morbilidadesselec:string[];
 
+  padrones:SelectItem[];
+
   constructor(private sd:DistritosService,private fil:FitrarService,private mor:MorbilidadesService) { }
 
   ngOnInit() {
+    this.padrones=[
+      
+    {
+      label:"Niño",value:"niño"
+    },
+    {
+      label:"Anemia",value:"anemia"
+    },
+    {
+      label:"Gestantes",value:"gestante"
+    }
+  ];
     this.provincias=[
       {label:"CAJAMARCA",value:"0601"},
       {label:"CAJABAMBA",value:"0602"},

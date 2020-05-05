@@ -18,5 +18,10 @@ export class PersonaService {
      
     return this.http.post('http://'+environment.ip+'/persona/pacientenuevo/',person);
    }
+   devolverPersonaPaciente( tipodoc:String,num_doc:String){
+
+    return this.http.get<any>('http://'+environment.ip+'/persona/paciente/tipodoc/'+tipodoc+'/numerodoc/'+num_doc)
+  
+   }
 
 }

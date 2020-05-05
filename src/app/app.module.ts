@@ -47,6 +47,7 @@ import { MorbilidadesPorPacienteComponent } from './componentes/morbilidades-por
 import { RegistrarAtencionComponent } from './componentes/registrar-atencion/registrar-atencion.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import {KeyFilterModule} from 'primeng/keyfilter';
+import {StepsModule} from 'primeng/steps';
 
 
 import { MatDividerModule, MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, MatListModule } from '@angular/material';
@@ -92,7 +93,9 @@ import { ConsentimientoInformadoComponent } from './componentes/formatos/consent
     ConsentimientoInformadoComponent
 
   ],
-  imports: [PickListModule,
+  imports: [
+    StepsModule,
+    PickListModule,
     KeyFilterModule,
     BrowserModule,
     AppRoutingModule,

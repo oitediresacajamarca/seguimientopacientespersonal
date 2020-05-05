@@ -3,6 +3,7 @@ import { Table } from 'primeng/table/table';
 import { MorbilidadesTablaItem } from 'src/app/interfaces/morbilidades-tabla-item';
 import { MorbilidadesService } from 'src/app/servicios/morbilidades.service';
 import { element } from 'protractor';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Component({
   selector: 'app-tabla-morbilidades',
@@ -45,6 +46,7 @@ export class TablaMorbilidadesComponent implements OnInit {
 {
 
           let a:string[]=[];
+        
           this.selectedCustomers.forEach(element => {
           let el=  element as any
           a.push(el.label)
@@ -58,7 +60,39 @@ export class TablaMorbilidadesComponent implements OnInit {
 
 removerMorb(event){
 
-this.selectedCustomers
+
+   let seleccionueva:any=[];
+  
+ // console.log( this.selectedCustomers.findIndex(element  => element.label==event));
+   this.selectedCustomers.splice(this.selectedCustomers.findIndex(element=>element.label==event),1)
+   seleccionueva= this.selectedCustomers
+   this.selectedCustomers=[];
+   seleccionueva.forEach(element => {
+    this.selectedCustomers.push(element)
+   });
+  
+ 
+   
+
+
+
+}
+
+removerCie(event){
+  let morb=[];
+  
+ this.morbilidadesselec.splice(this.morbilidadesselec.findIndex(element=>element==event.data.label),1)
+ morb=this.morbilidadesselec;
+  this.morbilidadesselec=[]
+ 
+  morb.forEach(element => {
+
+    this.morbilidadesselec.push(element)
+    
+  });
+ console.log( this.morbilidadesselec.toString())
+
+
 }
 
 

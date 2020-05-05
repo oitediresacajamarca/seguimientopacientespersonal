@@ -18,7 +18,7 @@ export class AccesoComponent implements OnInit {
   }
   Login(){
   this.usu.login(this.usuario,this.clave).subscribe((datos)=>{
-      if(datos.respuesta.logueado ==true){
+      if(datos.respuesta.logueado =="TRUE"){
         localStorage.setItem('datos',JSON.stringify(datos.respuesta));
 
           this.rout.navigate(['admin/panel']);

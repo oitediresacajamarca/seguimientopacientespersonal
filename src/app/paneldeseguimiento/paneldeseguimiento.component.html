@@ -56,7 +56,25 @@
                      <app-tabla-morbilidades></app-tabla-morbilidades>                
 
                                  
+                  </p-fieldset>   
+                  
+                  <p-fieldset legend="BUSQUEDA POR  PADRON" [toggleable]="true" [collapsed]="true">
+                  
+                    <div class="ui-g-4">
+                       <mat-card fxFlex="100">
+                          
+                          
+                        <p-listbox [options]="padrones" [style]="{width:'180px'}" [(ngModel)]="padones_selected" [multiple]="false" [checkbox]="true" [filter]="true" >
+                          <p-header>
+                           Padrones
+                          </p-header>
+                        </p-listbox>
+                        
+                        </mat-card>
+                      </div>
+                                 
                   </p-fieldset>                     
+                               
              
                   <p-footer>
                     <p-button label="BUSCAR" (onClick)="BUSCAR()"></p-button>

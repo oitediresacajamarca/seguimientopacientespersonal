@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AtencionService } from 'src/app/servicios/atencion.service';
-import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService, MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-registrar-atencion',
@@ -17,11 +17,14 @@ export class RegistrarAtencionComponent implements OnInit {
   casocovit:boolean;
   tipocov:string;
   trabajador_id:string;
-sesion:any;
+  sesion:any;
+  pasos:MenuItem[];
+  activo:MenuItem;
   constructor( private aten:AtencionService,private confirmationService: ConfirmationService,private messageService: MessageService) { }
 
   ngOnInit() {
     this.sesion=JSON.parse(localStorage.getItem('datos'));
+
 
     this.trabajador_id=this.sesion.TRABAJADOR_ID;
   }

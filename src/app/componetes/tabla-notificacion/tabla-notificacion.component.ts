@@ -11,44 +11,38 @@ import { Router } from '@angular/router';
   styleUrls: ['./tabla-notificacion.component.css']
 })
 export class TablaNotificacionComponent implements OnInit {
-  pacientes:any[];
-  pacientesSelected:any[];
-  cols:any[]
-  @Output()  displayNotificacion:EventEmitter<any>= new EventEmitter();
-  cod_ambito:string;
-  selectedNoti: any;
-
-    selectCars: any[];
-
-    elementosmenu: MenuItem[];
+      pacientes:any[];
+      pacientesSelected:any[];
+      cols:any[]
+      @Output()  displayNotificacion:EventEmitter<any>= new EventEmitter();
+      cod_ambito:string;
+      selectedNoti: any;
+      selectCars: any[];
+      elementosmenu: MenuItem[];
 
 
 
   constructor(private sol:SolicitudesService,private morb:MorbilidadesService,private router:Router) { }
 
   ngOnInit() {
-    this.elementosmenu= [
-      { label: 'Registrar Atencion', icon: 'pi-user-edit', command: (event) =>{   this.router.navigate(['/admin/atencion/'+this.selectedNoti.NRO_DOCUMENTO+'/'+this.selectedNoti.ID_PACIENTE+'/0']);
-      console.log(this.selectedNoti);this.displayNotificacion.emit('cerrar')}  },
-      { label: 'Esperar', icon: 'pi pi-times', command: (event) => {}}
-  ];
-    this.cols= [
-    
-    ]
-let SESION:any=JSON.parse(localStorage.getItem('datos'));
-
-
-let distrito:string=SESION.ID_DISTRITO;
-    this.cod_ambito=SESION.COD_AMBITO_GEOGRAFICO; 
-
-
-  this.sol.devolverColumnasSolicitudes().subscribe((res)=>{
-      this.cols=res.respuesta;    
-
-    
-  })
+          this.elementosmenu= [
+            { label: 'Registrar Atencion', icon: 'pi-user-edit', command: (event) =>{   this.router.navigate(['/admin/atencion/'+this.selectedNoti.NRO_DOCUMENTO+'/'+this.selectedNoti.ID_PACIENTE+'/'+this.selectedNoti.ID_SOLICITUD]);
+            console.log(this.selectedNoti);this.displayNotificacion.emit('cerrar')}  },
+            { label: 'Esperar', icon: 'pi pi-times', command: (event) => {}}
+        ];
   
-  let maximo_cie=0;
+        let SESION:any=JSON.parse(localStorage.getItem('datos'));
+
+
+        let distrito:string=SESION.ID_DISTRITO;
+        this.cod_ambito=SESION.COD_AMBITO_GEOGRAFICO; 
+          
+
+        this.sol.devolverColumnasSolicitudes().subscribe((res)=>{
+            this.cols=res.respuesta;          
+        })
+  
+      let maximo_cie=0;
           this.sol.devolverDatosSolicitudes(this.cod_ambito).subscribe((datos)=>{
               let solicitudes=datos.respuesta;
               let solicitudesedit=[]

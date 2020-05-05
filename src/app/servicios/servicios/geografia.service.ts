@@ -10,14 +10,7 @@ export class GeografiaService {
   provincias:SelectItem[];
 
   constructor(private http:HttpClient) {
-
-
-
-   }
-
-   devolverProvincias(){
-
-    return this.provincias=[
+    this.provincias=[
       {label:"CAJAMARCA",value:"0601"},
       {label:"CAJABAMBA",value:"0602"},
       {label:"CELENDIN",value:"0603"},
@@ -34,6 +27,20 @@ export class GeografiaService {
   
   
     ]
+
+
+   }
+
+   devolverProvincias(){
+
+    return this.provincias;
+   }
+   devolverProvincia(cod_prov:string){
+
+      return this.provincias.find(prov=>prov.value==cod_prov)
+   }
+   devolverDistrito(cod_dis:string){
+    return this.http.get<any>('http://'+environment.ip+'/distritos/'+cod_dis)
    }
    devolverDistritos(codprovincia:string){
      return this.http.get<any>('http://'+environment.ip+'/distritos/provincia/'+codprovincia)

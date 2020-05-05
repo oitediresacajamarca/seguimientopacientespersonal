@@ -196,7 +196,8 @@ this.confirmationService.confirm({
 
       let solic=
               {
-            "ID_PACIENTE":this.tipodocseleccionado+this.numerodoc,
+            "ID_TIPOD":this.tipodocseleccionado,  
+            "NRO_DOCUMENTO":this.numerodoc,
             "DESCRIPCION":this.obsevaciones.toLocaleUpperCase(),
             "TELEF_CONTACTO":this.telefcon1,
             "TELEF_CONTACTO2":this.telefcon2,
