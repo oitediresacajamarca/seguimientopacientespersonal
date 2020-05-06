@@ -53,7 +53,7 @@
                   <br>
                   <p-fieldset legend="MORBILIDAD" [toggleable]="true" [collapsed]="true" > 
 
-                     <app-tabla-morbilidades #tablamorb></app-tabla-morbilidades >                
+                     <app-tabla-morbilidades #tablamorb (cambioSelecion)="cambioSelecionMorb($event)"></app-tabla-morbilidades >                
 
                                  
                   </p-fieldset>   
