@@ -2,8 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Table } from 'primeng/table/table';
 import { MorbilidadesTablaItem } from 'src/app/interfaces/morbilidades-tabla-item';
 import { MorbilidadesService } from 'src/app/servicios/morbilidades.service';
-import { element } from 'protractor';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
+
 
 @Component({
   selector: 'app-tabla-morbilidades',
@@ -16,6 +15,7 @@ export class TablaMorbilidadesComponent implements OnInit {
 
   selectedCustomers: MorbilidadesTablaItem[];
   morbilidadesselec:string[];
+ public codigosSelect:string[];
 
  
 
@@ -46,54 +46,59 @@ export class TablaMorbilidadesComponent implements OnInit {
 {
 
           let a:string[]=[];
-        
+          let cod:string[]=[];
+         
           this.selectedCustomers.forEach(element => {
           let el=  element as any
           a.push(el.label)
+          cod.push(el.value)
      
         
         });
-
+        this.codigosSelect=cod;
         this.morbilidadesselec=a;
 }
 
 
-removerMorb(event){
+        removerMorb(event){
 
 
-   let seleccionueva:any=[];
-  
- // console.log( this.selectedCustomers.findIndex(element  => element.label==event));
-   this.selectedCustomers.splice(this.selectedCustomers.findIndex(element=>element.label==event),1)
-   seleccionueva= this.selectedCustomers
-   this.selectedCustomers=[];
-   seleccionueva.forEach(element => {
-    this.selectedCustomers.push(element)
-   });
-  
- 
-   
+          let seleccionueva:any=[];
+          let indiceremover:number;
+          indiceremover=this.selectedCustomers.findIndex(element=>element.label==event)
+          
+        
+                    this.selectedCustomers.splice(indiceremover,1)
+                    this.codigosSelect.splice(indiceremover,1)
+                    seleccionueva= this.selectedCustomers
+                    this.selectedCustomers=[];
+                    seleccionueva.forEach(element => {
+                      this.selectedCustomers.push(element)
+          });
+          
+        
+          
 
 
 
-}
+        }
 
-removerCie(event){
-  let morb=[];
-  
- this.morbilidadesselec.splice(this.morbilidadesselec.findIndex(element=>element==event.data.label),1)
- morb=this.morbilidadesselec;
-  this.morbilidadesselec=[]
- 
-  morb.forEach(element => {
+    removerCie(event){
+                    let morb=[];
+                    let indexaremover:number=this.morbilidadesselec.findIndex(element=>element==event.data.label);
+                    
+                  this.morbilidadesselec.splice(indexaremover,1)
+                  this.codigosSelect.splice(indexaremover,1)
+                  morb=this.morbilidadesselec;
+                    this.morbilidadesselec=[]
+                  
+                    morb.forEach(element => {
 
-    this.morbilidadesselec.push(element)
-    
-  });
- console.log( this.morbilidadesselec.toString())
-
-
-}
+                      this.morbilidadesselec.push(element)
+                      
+                    });
+                  
+                  }
 
 
 }

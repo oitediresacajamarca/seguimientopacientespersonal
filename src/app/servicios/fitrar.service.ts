@@ -8,21 +8,24 @@ import { environment } from 'src/environments/environment';
 export class FitrarService {
 
   constructor(private http:HttpClient) { }
-  filtra(cod_distrito:string,edad_min:string,edad_max:string,genero:string){
+  filtra(ambito:string,cod_distrito:string,edad_min:string,edad_max:string,genero:string,padron:string,morbilidad:string){
   
 
     let consulta=	{
-      "cod_distrito":cod_distrito,
+      "cod_ambito":cod_distrito,
       "edad_min":edad_min,
       "edad_max":edad_max,
-      "genero":genero
+      "genero":genero,
+      "ID_PADRON":padron,
+      "ambito":ambito,
+      "morbilidades":"C0009','Z292','kisl",
       };
-   return this.http.post<any>(environment.ipmicroservicios+'solicitaatencion/filtrar/',{root:consulta});
+   return this.http.post<any>(environment.ipmicroservicios+'busquedas/filtra/',{root:consulta});
 
 
   }
   devolverEncabezadoReporte(){
-   return this.http.get<any>(environment.ipmicroservicios+'metadatos/tabla/SOLICITUDES_SEGUIMIENTO');
+   return this.http.get<any>(environment.ipmicroservicios+'metadatos/tabla/PERSONA_DESCRIPCION');
   }
   devolverDatosReporte(){
     

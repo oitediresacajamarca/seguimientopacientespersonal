@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SelectItem } from 'primeng/api/selectitem';
 import { DistritosService } from '../servicios/distritos.service';
 import { FitrarService } from '../servicios/fitrar.service';
 import { MorbilidadesService } from '../servicios/morbilidades.service';
 import { MenuItem } from 'primeng/api/menuitem';
+import { TablaMorbilidadesComponent } from '../componentes/tabla-morbilidades/tabla-morbilidades.component';
 
 @Component({
   selector: 'app-paneldeseguimiento',
@@ -17,7 +18,7 @@ export class PaneldeseguimientoComponent implements OnInit {
   dddistritos:SelectItem[];
   rangoanos:number[]=[0,120];
   colsresultados:any[];
-  padones_selected:SelectItem;
+  padones_selected:string='';
 
   sideBarOpen:boolean=false;
    items: MenuItem[];
@@ -31,8 +32,11 @@ export class PaneldeseguimientoComponent implements OnInit {
   morbilidades:SelectItem[];
   morbiselected:SelectItem;
   morbilidadesselec:string[];
+  cod_ambito:string='06';
+  ambito:string="R";
 
   padrones:SelectItem[];
+  @ViewChild('tablamorb',{static:false}) tablamorb:TablaMorbilidadesComponent
 
   constructor(private sd:DistritosService,private fil:FitrarService,private mor:MorbilidadesService) { }
 
@@ -40,13 +44,13 @@ export class PaneldeseguimientoComponent implements OnInit {
     this.padrones=[
       
     {
-      label:"Niño",value:"niño"
+      label:"Niño",value:"1"
     },
     {
-      label:"Anemia",value:"anemia"
+      label:"Anemia",value:"2"
     },
     {
-      label:"Gestantes",value:"gestante"
+      label:"Gestantes",value:"3"
     }
   ];
     this.provincias=[
@@ -110,28 +114,40 @@ export class PaneldeseguimientoComponent implements OnInit {
 
   }
 
-  devolverDistritos(){
+        devolverDistritos(e){
+          this.ambito='P';
+          this.cod_ambito=e.value;
+          this.sd.devolverDistritos(this.provinciaselected).subscribe((datos)=>{this.dddistritos=datos.respuesta});
+        }
 
-    this.sd.devolverDistritos(this.provinciaselected).subscribe((datos)=>{this.dddistritos=datos.respuesta});
-  }
+        seleccionoDistrito(e){
+          this.ambito='D';
+          this.cod_ambito=e.value;
 
-  devolverMorbilidades(){
-    this.mor.devolverMorbilidades().subscribe(
-      (datos)=>{
+        }
+        seleccionPadron(e){
+
+          this.padones_selected=e.value
+
+        }
+
         
-      this.morbilidades.push(datos.respuesta)
-    
-      
-      
-      });
 
-  }
+        devolverMorbilidades(){
+          this.mor.devolverMorbilidades().subscribe(
+            (datos)=>{        
+            this.morbilidades.push(datos.respuesta)
+            
+            });
+
+        }
 
 
 
 
         BUSCAR(){
           this.resultados=[];
+            console.log(this.tablamorb.codigosSelect)
 
           this.fil.devolverEncabezadoReporte().subscribe((dat)=>{
 
@@ -141,13 +157,18 @@ export class PaneldeseguimientoComponent implements OnInit {
 
 
         
-          this.fil.filtra(this.distritoselecionado,this.rangoanos[0].toString(),this.rangoanos[1].toString(),this.generoselecionado).subscribe(
+          this.fil.filtra(this.ambito,this.cod_ambito,this.rangoanos[0].toString()
+          ,this.rangoanos[1].toString(),this.generoselecionado,this.padones_selected,"").subscribe(
             (datos)=>{
 
 
               this.resultados=datos.respuesta;
 
               
+                    },
+                    (error)=>{
+
+
                     }
           )
           
