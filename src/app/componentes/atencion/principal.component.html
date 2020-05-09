@@ -151,7 +151,6 @@
 
          <p-fieldset legend="Morbilidades del Paciente">
            <app-morbilidades-por-paciente #mpp [(dni)]="cod_buscar"></app-morbilidades-por-paciente>
-
          </p-fieldset>
 
          <button pButton type="button" label="Iniciar Atencion" (click)="IniciaRegistro($event)"></button>
@@ -165,4 +164,4 @@
    
 </p-tabView>
 
-<app-registrar-atencion [(cod_paciente)]='cod_buscar' [(ID_PACIENTE)]='ID_PACIENTE' [(ID_SOLICITUD)]='ID_SOLICITUD' [(visible)]='verpanelregistro'></app-registrar-atencion>
+<app-registrar-atencion [(datosPaciente)]="form"[(atencion)]="atencion" [(cod_paciente)]='cod_buscar' [(ID_PACIENTE)]='ID_PACIENTE' [(ID_SOLICITUD)]='ID_SOLICITUD' [(visible)]='verpanelregistro'></app-registrar-atencion>

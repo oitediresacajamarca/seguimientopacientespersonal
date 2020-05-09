@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class TablaNotificacionComponent implements OnInit {
       pacientes:any[];
       pacientesSelected:any[];
-      cols:any[]
+      cols:any[]=[]
       @Output()  displayNotificacion:EventEmitter<any>= new EventEmitter();
       cod_ambito:string;
       selectedNoti: any;
@@ -27,7 +27,7 @@ export class TablaNotificacionComponent implements OnInit {
   ngOnInit() {
           this.elementosmenu= [
             { label: 'Registrar Atencion', icon: 'pi-user-edit', command: (event) =>{   this.router.navigate(['/admin/atencion/'+this.selectedNoti.NRO_DOCUMENTO+'/'+this.selectedNoti.ID_PACIENTE+'/'+this.selectedNoti.ID_SOLICITUD]);
-            console.log(this.selectedNoti);this.displayNotificacion.emit('cerrar')}  },
+           this.displayNotificacion.emit('cerrar')}  },
             { label: 'Esperar', icon: 'pi pi-times', command: (event) => {}}
         ];
   
@@ -45,7 +45,7 @@ export class TablaNotificacionComponent implements OnInit {
       let maximo_cie=0;
           this.sol.devolverDatosSolicitudes(this.cod_ambito).subscribe((datos)=>{
               let solicitudes=datos.respuesta;
-              let solicitudesedit=[]
+            
 
               var max_col_sol=0;
 
@@ -68,7 +68,7 @@ export class TablaNotificacionComponent implements OnInit {
                             this.cols.push(col);
                             col=  {'header':'ID_CIE_'+maximo_cie,'field':'ID_CIE_'+maximo_cie};
                             this.cols.push(col);
-                            console.log('LEGANO'+max_col_sol);            
+                                   
 
                         }
 

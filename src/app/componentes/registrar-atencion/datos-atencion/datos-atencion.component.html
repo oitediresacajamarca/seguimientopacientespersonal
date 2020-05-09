@@ -1,0 +1,119 @@
+<div class="ui-g" *ngIf="visible">
+    <br>
+<div class="ui-g-4">
+   
+    <mat-card>
+        <div class="NumControl">
+            Indique si el paciente es nuevo o continuador<br><br>
+            Nuevo
+            <p-radioButton [(ngModel)]=" tipocon" name="numcontrol" value="nuevo"  class="elementcontrol" (onClick)="controlarentrada($event)"></p-radioButton>
+            Control
+            <p-radioButton [(ngModel)]=" tipocon"  name="numcontrol" value="control"  class="elementcontrol" (onClick)="controlarentrada($event)"></p-radioButton>
+            <input type="number" pInputText class="elementcontrol" *ngIf="mostrarnumero" [(ngModel)]="numcon">
+        </div>
+    </mat-card>
+</div>
+    <div class="ui-g-8">
+      
+        <mat-card>
+            MOTIVO
+            <input id="float-input" type="text" size="30" [(ngModel)]="atencion_detalle.MOTIVO" pInputText> 
+        </mat-card>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <div class="ui-g-12">
+    RESUMEN CLÍNICO (Antecedentes de importancia, enfermedad actual, anamnesis, examen físico, impresión
+        diagnóstica, tratamiento actual, exámenes de apoyo al diagnóstico)"
+        <mat-card>             
+
+        <div class="ui-fluid ui-g">
+
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        
+                        <input type="text" [(ngModel)]="examenesFisicos.examenes[0].VALOR" pInputText placeholder="Presion Arterial">   
+                        <span class="ui-inputgroup-addon">mmHg</span>      
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        
+                        <input type="text"  [(ngModel)]="examenesFisicos.examenes[1].VALOR" pInputText placeholder="Frecuencia Cardiaca">   
+                        <span class="ui-inputgroup-addon">lat/min</span>      
+                    </div>
+                </div>
+            
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        
+                        <input type="text"  [(ngModel)]="examenesFisicos.examenes[2].VALOR" pInputText placeholder="Frecuencia Respiratoria">   
+                        <span class="ui-inputgroup-addon">res/min</span>      
+                    </div>
+                </div>
+
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        
+                        <input type="text"  [(ngModel)]="examenesFisicos.examenes[3].VALOR" pInputText placeholder="Temperatura"> 
+                        <span class="ui-inputgroup-addon">°C</span>  
+                    </div>
+                       
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        
+                        <input type="text"  [(ngModel)]="examenesFisicos.examenes[4].VALOR" pInputText placeholder="SatO2"> 
+                        <span class="ui-inputgroup-addon">%</span>    
+                    </div>
+                       
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        
+                        <input type="text"  [(ngModel)]="examenesFisicos.examenes[5].VALOR" pInputText placeholder="Peso">   
+                        <span class="ui-inputgroup-addon">kg</span>      
+                    </div>
+                    
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        
+                        <input type="text"  [(ngModel)]="examenesFisicos.examenes[6].VALOR" pInputText placeholder="Talla">   
+                        <span class="ui-inputgroup-addon">cm</span>     
+                    </div>
+                    
+                </div>
+                <div class="ui-g-12 ui-md-12">
+                   
+                        <mat-card> 
+                            Descripcion del Caso
+                        <input type="text" pInputText placeholder=" Descripcion del Caso">   
+                       
+                    </mat-card>        
+                    
+                </div>
+      </div>
+
+ 
+
+      <mat-card>
+        Tratamiento actual
+            <p-chips [(ngModel)]="tratamientoactual"  (ngModelChange)="selecciondeTratamientos($event)"></p-chips>
+        
+        
+    
+    </mat-card>
+    <mat-card>
+      Exámenes de apoyo al diagnóstico
+        <p-chips [(ngModel)]="examenesdeapoyo" (ngModelChange)="selecciondeEA($event)"></p-chips>
+        
+    </mat-card>
+</mat-card>
+
+    
+
+     
+     </div>
+  
+</div>

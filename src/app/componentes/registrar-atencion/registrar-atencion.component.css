@@ -24,3 +24,6 @@
 .ui-steps.steps-custom .ui-steps-item .ui-steps-title {
     color: #555555;
 }
+.ui-dialog-footer{
+    background-color: red;
+}
