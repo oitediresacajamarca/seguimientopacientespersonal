@@ -19,7 +19,7 @@
 <ng-template pTemplate="header" let-columns>
     <tr>
         <th pSortableColumn="ESTADO">Estado <p-sortIcon field="ESTADO"></p-sortIcon></th>
-        <th pSortableColumn="ESTADO">Telefono <p-sortIcon field="ESTADO"></p-sortIcon></th>
+        <th pSortableColumn="TELEF_CONTACTO">Telefono <p-sortIcon field="TELEF_CONTACTO"></p-sortIcon></th>
        
         <th pSortableColumn="{{col.field}}" *ngFor="let col of columns" >{{col.header}}  <p-sortIcon field="{{col.field}}"></p-sortIcon></th>
      
@@ -40,7 +40,7 @@
     <tr class="ui-selectable-row" [pContextMenuRow]="customer">
         <td>
             <span class="ui-column-title">Status</span>
-            <span [class]="'customer-badge status-' + customer.ESTADO">Pendiente</span>
+            <span [class]="'customer-badge status-' + customer.ESTADO">{{customer.ESTADO}}</span>
         </td>
         <td>
             <span class="ui-column-title">Status</span>

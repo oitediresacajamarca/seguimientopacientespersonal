@@ -15,7 +15,7 @@ export class MorbilidadesPorPacienteComponent implements OnInit {
   ngOnInit() {
     this.mor.devolverMorbildadPaciente(this.dni).subscribe((dat)=>{
 
-      console.log(dat.respuesta);
+    
 
     })
 

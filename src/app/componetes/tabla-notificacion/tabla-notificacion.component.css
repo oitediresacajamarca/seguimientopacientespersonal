@@ -11,7 +11,7 @@
 	letter-spacing: .3px;
 }
 
-:host ::ng-deep .ui-table-customers .customer-badge.status-P {
+:host ::ng-deep .ui-table-customers .customer-badge.status-PENDIENTE {
 	background-color: #C8E6C9;
 	color: #256029;
 	font-size: 12px;
@@ -27,9 +27,10 @@
 	color: #8A5340;
 }
 
-:host ::ng-deep .ui-table-customers .customer-badge.status-new {
+:host ::ng-deep .ui-table-customers .customer-badge.status-ATENDIDO {
 	background-color: #B3E5FC;
 	color: #23547B;
+	font-size: 12px;
 }
 
 :host ::ng-deep .ui-table-customers .customer-badge.status-renewal {

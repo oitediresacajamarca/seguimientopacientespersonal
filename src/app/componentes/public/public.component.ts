@@ -127,7 +127,7 @@ export class PublicComponent implements OnInit {
 
 
 
-        if( dat.respuesta.tienesoliditudpendiente!=""){
+        if( dat.respuesta.tienesolicitudpendiente!=""){
      
 
           this.msgvalidaper.push({severity:'info', summary:' Usted ya tiene una solicitud pendiente', detail:'',key:'validapersona'});
@@ -142,7 +142,7 @@ export class PublicComponent implements OnInit {
         }  
 
         
-        if(dat.respuesta.existeper!="" && dat.respuesta.tienesoliditudpendiente==""){
+        if(dat.respuesta.existeper!="" && dat.respuesta.tienesolicitudpendiente==""){
 
           this.verpanelregistro=true;
           this.verpaneldatosgenerales=false;

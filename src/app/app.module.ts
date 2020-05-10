@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatCardModule } from '@angular/material'
+import { MatCardModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -65,6 +65,9 @@ import { FormatofuatComponent } from './componentes/formatos/formatofuat/formato
 import { TablaCieSelecComponent } from './componentes/tabla-cie-selec/tabla-cie-selec.component';
 import { ConsentimientoInformadoComponent } from './componentes/formatos/consentimiento-informado/consentimiento-informado.component';
 import { SistemaPadronComponent } from './componentes/sistema-padron/sistema-padron.component';
+import { DatosAtencionComponent } from './componentes/registrar-atencion/datos-atencion/datos-atencion.component';
+import { DiagnosticosComponent } from './componentes/registrar-atencion/diagnosticos/diagnosticos.component';
+import { TratamientoComponent } from './componentes/registrar-atencion/tratamiento/tratamiento.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +98,19 @@ import { SistemaPadronComponent } from './componentes/sistema-padron/sistema-pad
 
 
 
-    SistemaPadronComponent
+    SistemaPadronComponent,
+
+
+
+    DatosAtencionComponent,
+
+
+
+    DiagnosticosComponent,
+
+
+
+    TratamientoComponent
 
   ],
   imports: [
