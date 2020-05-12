@@ -1,5 +1,5 @@
 
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyCN3Q6zCjywCkPKy_Vl3ZZuf5OrZ76YJkE" async defer></script>
+
 <div class="container contenedor">
     <div class="ui-g">
         <div class="ui-g-4"></div>
@@ -10,8 +10,7 @@
                     <p-dropdown required [options]="tiposdoc"  size="80" [(ngModel)]="tipodocseleccionado" [style]="{width:'150px'}" 
                     [maxlength]="300" placeholder="Seleccione " #tipodoc="ngModel" (onChange)="cajanumdoc.disabled=!tipodoc.valid; calenfecnac.disabled= !tipodoc.valid"></p-dropdown>
                   
-                 
-                   
+                                   
                     <br>
                     <br>
                     
@@ -221,23 +220,36 @@
                     <th>Distrito</th>
                     <td><p-dropdown required name="distrito" [options]="distritos" 
                       [(ngModel)]="distritoselecionado" #distrito="ngModel"
-                      (change)="cambiaform()"></p-dropdown></td>
+                      (onChange)="cambiadis()"></p-dropdown></td>
                       <td *ngIf="!distrito.valid">
                         <div *ngIf="distrito.errors.required && distrito.touched ">   Campo es requerido </div>
                      </td>
                     
                   </tr>
+                  
 
                   <tr>
                     <th>Domicilio Actual</th>
                     <td><textarea  required name="direccion" pInputTextarea [rows]="10" 
                       [(ngModel)]="direccion" #direccio="ngModel"
-                      (change)="cambiaform()"></textarea></td>
+                     ></textarea></td>
 
                       <td *ngIf="!direccio.valid">
                         <div *ngIf="direccio.errors.required && direccio.touched ">   Campo es requerido </div>
                      </td>
           
+                  </tr>
+
+                  <tr>
+                    <th>Establecimiento de salud mas cercano</th>
+                    <td>
+                      <p-dropdown required name="ipresss" [options]="ipressFiltrados" 
+                      [(ngModel)]="ipress_select" #ipress="ngModel"
+                   ></p-dropdown></td>
+                      <td *ngIf="!ipress.valid">
+                        <div *ngIf="ipress.errors.required && ipress.touched ">   Campo es requerido </div>
+                     </td>
+                    
                   </tr>
                   
                   <tr>

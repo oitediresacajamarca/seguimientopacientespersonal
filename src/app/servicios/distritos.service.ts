@@ -16,4 +16,5 @@ export class DistritosService {
   devolverCP(coddist:string){
     return this.http.get<any>(environment.ipmicroservicios+'centrospoblados/distrito/'+coddist);
   }
+  
 }

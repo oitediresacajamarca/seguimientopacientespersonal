@@ -18,6 +18,8 @@ export class PublicComponent implements OnInit {
 
   tiposdoc: SelectItem[];
   optionsMap: any;
+  ipressFiltrados: SelectItem[];
+  ipress_select: SelectItem;
 
 
 
@@ -106,6 +108,7 @@ export class PublicComponent implements OnInit {
       { label: "SANTA CRUZ", value: "0613" }]
 
   }
+ 
   solicitaAtencion() {
     if (this.numerodoc == '') { alert('debera de ingresar un numero de documento valido') }
     if (this.FECNAC == null) { alert('debera de ingresar su fecha de nacimiento ') }
@@ -162,10 +165,10 @@ export class PublicComponent implements OnInit {
     }
 
   }
-  
+
   cambioProvincia() {
 
-    this.geo.devolverDistritos(this.provinciaselecionada).subscribe((dat) => { console.log(this.distritos = dat.respuesta) });
+    this.geo.devolverDistritos(this.provinciaselecionada).subscribe((dat) => { this.distritos = dat.respuesta });
   }
   resetearData() {
     this.nombres_nuevo = '';
@@ -189,7 +192,7 @@ export class PublicComponent implements OnInit {
       accept: () => {
 
 
-       
+
 
         let solic =
         {
@@ -204,7 +207,7 @@ export class PublicComponent implements OnInit {
           "ID_DISTRITO": this.distritoselecionado,
           "CORREO": this.correo.toLocaleLowerCase()
         }
-      
+
         if (this.verpaneldatosgenerales) {
 
           let PER = {
@@ -239,7 +242,7 @@ export class PublicComponent implements OnInit {
         }
 
         else {
-  
+
 
           this.sol.guardarSolicitud({ root: solic }).subscribe((solicito) => {
 
@@ -275,6 +278,11 @@ export class PublicComponent implements OnInit {
     this.resetearData();
 
   }
+  cambiadis() {
+   
+    this.cambiaform()
+    this.cargar_esta_cerc();
+  }
   cambiaform() {
 
     this.desabiltbot = true;
@@ -284,6 +292,8 @@ export class PublicComponent implements OnInit {
     if (this.verpaneldatosgenerales == false && this.aceptocon && this.solicitud.valid) {
       this.desabiltbot = false;
     }
+
+
 
 
 
@@ -300,6 +310,17 @@ export class PublicComponent implements OnInit {
     }
 
     this.cambiaform();
+
+  }
+
+  cargar_esta_cerc() {
+    this.geo.devolverIpress(this.distritoselecionado).subscribe((datos) => {
+
+      this.ipressFiltrados = [];
+    
+
+    this.ipressFiltrados=datos.respuesta;
+    })
 
   }
 

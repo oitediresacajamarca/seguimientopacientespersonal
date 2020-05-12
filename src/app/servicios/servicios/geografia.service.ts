@@ -45,4 +45,7 @@ export class GeografiaService {
    devolverDistritos(codprovincia:string){
      return this.http.get<any>('http://'+environment.ip+'/distritos/provincia/'+codprovincia)
    }
+   devolverIpress(coddist:string){
+    return this.http.get<any>(environment.ipmicroservicios+'distritos/'+coddist+'/IPRESS')
+  }
 }
