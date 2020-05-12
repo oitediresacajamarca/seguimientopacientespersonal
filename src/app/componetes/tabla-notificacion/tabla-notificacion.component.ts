@@ -26,9 +26,11 @@ export class TablaNotificacionComponent implements OnInit {
 
   ngOnInit() {
           this.elementosmenu= [
-            { label: 'Registrar Atencion', icon: 'pi-user-edit', command: (event) =>{   this.router.navigate(['/admin/atencion/'+this.selectedNoti.NRO_DOCUMENTO+'/'+this.selectedNoti.ID_PACIENTE+'/'+this.selectedNoti.ID_SOLICITUD]);
+            { label: 'Registrar Atencion', icon: 'pi pi-calendar-plus', command: (event) =>{   this.router.navigate(['/admin/atencion/'+this.selectedNoti.NRO_DOCUMENTO+'/'+this.selectedNoti.ID_PACIENTE+'/'+this.selectedNoti.ID_SOLICITUD]);
            this.displayNotificacion.emit('cerrar')}  },
-            { label: 'Esperar', icon: 'pi pi-times', command: (event) => {}}
+            
+            { label: 'Mantener en Seguimiento', icon: 'pi pi-heart', command: (event) => {}},
+            { label: 'Cerrar Soliciitud', icon: 'pi pi-times', command: (event) => {}},
         ];
   
         let SESION:any=JSON.parse(localStorage.getItem('datos'));

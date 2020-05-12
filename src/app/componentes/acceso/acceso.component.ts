@@ -30,7 +30,7 @@ export class AccesoComponent implements OnInit {
         localStorage.setItem('datos','');
         this.msgs=[];
 
-        this.msgs.push({severity:'error', summary:'USUARIO INCORRECTO',closable:'false', detail:''});
+        this.msgs.push({severity:'error', summary:'USUARIO INCORRECTO',closable:'false', detail:'',key:'mensagesgenerales'});
       }
     
   });

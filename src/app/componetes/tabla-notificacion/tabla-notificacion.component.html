@@ -4,9 +4,9 @@
 
 
 <p-contextMenu #cm [model]="elementosmenu"></p-contextMenu>
-<p-scrollPanel [style]="{width: '100%', height: '800px'}">
+
    
-<div class="contenedor">
+
 
 <p-table #dt [value]="pacientes"   styleClass="ui-table-customers" 
 [rowHover]="true"  [(contextMenuSelection)]="selectedNoti" [contextMenu]="cm"
@@ -14,7 +14,12 @@
 [paginator]="true" currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} resultados"
 [filterDelay]="0" [globalFilterFields]="['Codigo_Item','Descripcion_Item','Fg_Tipo','Fg_Estado']"
 [resizableColumns]="true" 
-[columns]="cols">
+[columns]="cols" [scrollable]="true" [style]="{width:'100%'}">
+<ng-template pTemplate="colgroup" let-columns>
+    <colgroup>
+        <col *ngFor="let col of columns" style="width:250px">
+    </colgroup>
+</ng-template>
 
 <ng-template pTemplate="header" let-columns>
     <tr>
@@ -60,6 +65,10 @@
         
     </tr>
 </ng-template>
+<ng-template pTemplate="summary">
+    Existen {{pacientes?.length}} resultados
+    <button type="button" pButton icon="pi pi-file-excel" iconPos="left" label="EXPORTAR A EXCEL" (click)="exportExcel()" style="margin-right: 0.5em;" class="ui-button-success"></button>
+</ng-template>
 <ng-template pTemplate="emptymessage">
     <tr>
         <td colspan="8" style="text-align:left">No se han hallado Solicitudes.</td>
@@ -70,12 +79,12 @@
 </p-table>
 
 
-<button type="button" pButton icon="pi pi-file-excel" iconPos="left" label="EXPORTAR A EXCEL" (click)="exportExcel()" style="margin-right: 0.5em;" class="ui-button-success"></button>
-
-</div>
 
 
-</p-scrollPanel>
+
+
+
+
 
 
 
