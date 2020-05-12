@@ -6,6 +6,7 @@
       import { MenuItem } from 'primeng/api/menuitem';
       import { TablaMorbilidadesComponent } from '../componentes/tabla-morbilidades/tabla-morbilidades.component';
 import { MaestrosService } from '../servicios/maestros.service';
+import { Button } from 'primeng/button/button';
 
       @Component({
         selector: 'app-paneldeseguimiento',
@@ -38,6 +39,7 @@ import { MaestrosService } from '../servicios/maestros.service';
 
         padrones: SelectItem[]=[];
         @ViewChild('tablamorb', { static: false }) tablamorb: TablaMorbilidadesComponent
+        @ViewChild('btbuscar', { static: false }) btbuscar:Button
 
         constructor(private sd: DistritosService, private fil: FitrarService, private mor: MorbilidadesService,private maestros:MaestrosService) { }
 
@@ -150,6 +152,9 @@ import { MaestrosService } from '../servicios/maestros.service';
 
 
         BUSCAR() {
+
+          this.btbuscar.disabled=true;
+
           this.resultados = [];
          
 
@@ -166,10 +171,12 @@ import { MaestrosService } from '../servicios/maestros.service';
               (datos) => {
 
                 this.resultados = datos.respuesta;
+                this.btbuscar.disabled=false;
+
 
               },
               (error) => {
-
+                this.btbuscar.disabled=false;
 
               }
             )
