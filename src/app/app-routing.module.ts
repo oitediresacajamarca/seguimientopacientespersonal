@@ -38,10 +38,12 @@ const routes: Routes = [
         {
           path:'atencion/:NRO_DOCUMENTO/:ID_PACIENTE/:ID_SOLICITUD',
           component:PrincipalComponent
+        },
+        {
+          path:'',
+          component:PrincipalComponent
         }
-       
       ]
-
     },
     {
      
