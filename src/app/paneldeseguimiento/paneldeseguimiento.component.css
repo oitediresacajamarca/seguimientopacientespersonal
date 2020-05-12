@@ -32,4 +32,7 @@
 .ui-listbox{
     width: 60px;
 }
+.encabesadobusqueda{
+    align-items:flex-start;
+}
 

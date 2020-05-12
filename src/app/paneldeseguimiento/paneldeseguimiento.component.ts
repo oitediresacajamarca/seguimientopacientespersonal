@@ -5,6 +5,7 @@
       import { MorbilidadesService } from '../servicios/morbilidades.service';
       import { MenuItem } from 'primeng/api/menuitem';
       import { TablaMorbilidadesComponent } from '../componentes/tabla-morbilidades/tabla-morbilidades.component';
+import { MaestrosService } from '../servicios/maestros.service';
 
       @Component({
         selector: 'app-paneldeseguimiento',
@@ -35,24 +36,14 @@
         cod_ambito: string = '06';
         ambito: string = "R";
 
-        padrones: SelectItem[];
+        padrones: SelectItem[]=[];
         @ViewChild('tablamorb', { static: false }) tablamorb: TablaMorbilidadesComponent
 
-        constructor(private sd: DistritosService, private fil: FitrarService, private mor: MorbilidadesService) { }
+        constructor(private sd: DistritosService, private fil: FitrarService, private mor: MorbilidadesService,private maestros:MaestrosService) { }
 
         ngOnInit() {
-          this.padrones = [
+          this.devolverPadrones();
 
-            {
-              label: "Niño", value: "1"
-            },
-            {
-              label: "Anemia", value: "2"
-            },
-            {
-              label: "Gestantes", value: "3"
-            }
-          ];
           this.provincias = [
             { label: "CAJAMARCA", value: "0601" },
             { label: "CAJABAMBA", value: "0602" },
@@ -109,6 +100,28 @@
 
       
       
+
+        }
+
+        devolverPadrones(){
+            this.maestros.devolverPadrones().subscribe((datos)=>{
+              
+             
+                datos.respuesta.forEach((padron)=>{
+                  let padrontemp:any={}
+
+
+                  padrontemp.label=padron.NOMBRE_PADRON;
+                  padrontemp.value=padron.ID_PADRON;
+                  this.padrones.push(padrontemp);
+
+                })
+
+                console.log(this.padrones)
+
+              
+
+            })
 
         }
 

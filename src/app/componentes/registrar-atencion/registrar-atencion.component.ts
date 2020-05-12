@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { AtencionService } from 'src/app/servicios/atencion.service';
 import { ConfirmationService, MessageService, MenuItem } from 'primeng/api';
 import { DatosAtencionComponent } from './datos-atencion/datos-atencion.component';
 import { DiagnosticosComponent } from './diagnosticos/diagnosticos.component';
 import { TratamientoComponent } from './tratamiento/tratamiento.component';
 import { Atencion } from 'src/app/interfaces/atencion';
+
 
 @Component({
   selector: 'app-registrar-atencion',
@@ -14,12 +15,13 @@ import { Atencion } from 'src/app/interfaces/atencion';
 export class RegistrarAtencionComponent implements OnInit {
   fechaatencion: Date = new Date()
   @Input() cod_paciente: string
-  @Input() visible: boolean;
+  @Input() ver: boolean;
   @Input() ID_PACIENTE: string;
   @Input() ID_SOLICITUD: string;
   @ViewChild('form1', { static: false }) form1: DatosAtencionComponent;
   @ViewChild('form2', { static: false }) form2: DiagnosticosComponent;
   @ViewChild('form3', { static: false }) form3: TratamientoComponent;
+  @Output('completoRegistro') completoRegistro:EventEmitter<any>=new EventEmitter
   motivoAte: string;
   casocovit: boolean;
   tipocov: string;
@@ -67,9 +69,10 @@ export class RegistrarAtencionComponent implements OnInit {
           this.aten.registrarAtencionDiagnosticos(this.form2.diagnostabla,id_atencion,this.trabajador_id).subscribe(()=>{});
          
           this.confirmationService.confirm({message: 'Se guardaron los datos correctamente'})
+          this.completoRegistro.emit('Se completo el Registro');
          
          
-          this.visible=false;
+         
         });
       }
     })

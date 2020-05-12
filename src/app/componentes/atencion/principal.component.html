@@ -1,5 +1,5 @@
 
-   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  
     <p-tabView class="container-fluid">
   <br>
     <p-tabPanel header="Registro de Atenciones">
@@ -152,8 +152,10 @@
          <p-fieldset legend="Morbilidades del Paciente">
            <app-morbilidades-por-paciente #mpp [(dni)]="cod_buscar"></app-morbilidades-por-paciente>
          </p-fieldset>
-
-         <button pButton type="button" label="Iniciar Atencion" (click)="IniciaRegistro($event)"></button>
+         <app-registrar-atencion [(datosPaciente)]="form"[(atencion)]="atencion" [(cod_paciente)]='cod_buscar'
+          [(ID_PACIENTE)]='ID_PACIENTE' [(ID_SOLICITUD)]='ID_SOLICITUD' [ver]='verpanelregistro'></app-registrar-atencion>
+         <button pButton type="button" label="Iniciar Atencion" (click)="IniciaRegistro($event)"
+         (completoRegistro)="CerrarRegistro()"></button>
     </p-tabPanel>
     <p-tabPanel header="Solicitudes de Atencion Pendientes">
       
@@ -164,4 +166,4 @@
    
 </p-tabView>
 
-<app-registrar-atencion [(datosPaciente)]="form"[(atencion)]="atencion" [(cod_paciente)]='cod_buscar' [(ID_PACIENTE)]='ID_PACIENTE' [(ID_SOLICITUD)]='ID_SOLICITUD' [(visible)]='verpanelregistro'></app-registrar-atencion>
+

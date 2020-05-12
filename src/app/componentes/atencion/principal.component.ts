@@ -149,6 +149,10 @@
 
 
       }
+      CerrarRegistro(){
+        this.verpanelregistro = false;
+
+      }
       sideBarToggler() {
         this.sideBarOpen = !this.sideBarOpen;
       }

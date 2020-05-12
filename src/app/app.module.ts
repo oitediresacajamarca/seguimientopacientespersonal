@@ -8,6 +8,7 @@ import { PaneldeseguimientoComponent } from './paneldeseguimiento/paneldeseguimi
 import { PanelModule } from 'primeng/panel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropdownModule } from 'primeng/dropdown';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DistritosService } from './servicios/distritos.service';
@@ -141,7 +142,8 @@ import { TratamientoComponent } from './componentes/registrar-atencion/tratamien
     SharedModule,
     DefaultModule,
     MatFormFieldModule,
-    LightboxModule, SidebarModule, CardModule
+    LightboxModule, SidebarModule, CardModule,
+    MatCheckboxModule
 
 
 

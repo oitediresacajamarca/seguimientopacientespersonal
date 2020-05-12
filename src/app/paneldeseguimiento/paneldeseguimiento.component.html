@@ -3,7 +3,7 @@
 <p-panel header="SEGUIMIENTO PACIENTES DE RIESGO" [toggleable]="true">
   <div class="ui-g">
       <div class="ui-g-12">            
-            <p-panel header="SELECCIONE LOS CRITERIOS DE BUSQUEDAD" [toggleable]="true">
+            <p-panel header="SELECCIONE LOS CRITERIOS DE BUSQUEDA" [toggleable]="true">
 
               
                <div class="ui-g">
@@ -86,11 +86,25 @@
 
             <p-panel header="RESULTADOS DE BUSQUEDA">
              
-              <p-scrollPanel [style]="{width: '100%', height: '200px'}" styleClass="custombar2">
+             
                
-                    <p-table [columns]="colsresultados" [(value)]="resultados"
-                     [style]="{width: '180%', height: '200px'}"    [(contextMenuSelection)]="selectedResultado" 
-                     [contextMenu]="cm">
+                    <p-table #tres [columns]="colsresultados" [(value)]="resultados"
+                       [(contextMenuSelection)]="selectedResultado" 
+                     [contextMenu]="cm" [paginator]="true" [rows]="10" [scrollable]="true" scrollHeight="600px" [style]="{width:'100%'}">
+
+                     <ng-template pTemplate="colgroup" let-columns>
+                      <colgroup>
+                          <col *ngFor="let col of columns" style="width:150px">
+                      </colgroup>
+                  </ng-template>
+
+                        <ng-template pTemplate="caption">
+                            
+                            <div class="encabesadobusqueda">
+                              <i class="pi pi-search" style="margin:4px 4px 0 0"></i>  <input type="text" pInputText size="50" placeholder="Filtro Global" (input)="tres.filterGlobal($event.target.value, 'contains')" >
+                            </div>
+                            
+                        </ng-template>
                           <ng-template pTemplate="header" let-columns>
                               <tr>
                                 <th></th>
@@ -117,7 +131,7 @@
 
                   <p-contextMenu #cm [model]="items"></p-contextMenu>
 
-              </p-scrollPanel>
+  
                 <button type="button" pButton icon="pi pi-file-excel" iconPos="left" label="EXPORTAR A EXCEL" (click)="exportExcel()" style="margin-right: 0.5em;" class="ui-button-success"></button>
             
 
