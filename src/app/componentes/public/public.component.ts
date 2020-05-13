@@ -108,7 +108,7 @@ export class PublicComponent implements OnInit {
       { label: "SANTA CRUZ", value: "0613" }]
 
   }
- 
+
   solicitaAtencion() {
     if (this.numerodoc == '') { alert('debera de ingresar un numero de documento valido') }
     if (this.FECNAC == null) { alert('debera de ingresar su fecha de nacimiento ') }
@@ -191,9 +191,6 @@ export class PublicComponent implements OnInit {
       message: 'ESTAS SEGURO DE REGISTRARTE PARA SOLICITAR ATENCION?',
       accept: () => {
 
-
-
-
         let solic =
         {
           "ID_TIPOD": this.tipodocseleccionado,
@@ -263,7 +260,7 @@ export class PublicComponent implements OnInit {
 
         }
 
-        this.mesgs.add({ severity: 'info', summary: 'Info Message', detail: 'Se agrego la solicitud de atencion pronto nos comunicaremos con usted' });
+        this.mesgs.add({ severity: 'info', summary: 'Info Message', detail: 'Se agrego la solicitud de atencion pronto nos comunicaremos con usted', key: 'final' });
 
 
       }
@@ -279,7 +276,7 @@ export class PublicComponent implements OnInit {
 
   }
   cambiadis() {
-   
+
     this.cambiaform()
     this.cargar_esta_cerc();
   }
@@ -317,9 +314,9 @@ export class PublicComponent implements OnInit {
     this.geo.devolverIpress(this.distritoselecionado).subscribe((datos) => {
 
       this.ipressFiltrados = [];
-    
 
-    this.ipressFiltrados=datos.respuesta;
+
+      this.ipressFiltrados = datos.respuesta;
     })
 
   }
