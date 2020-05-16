@@ -36,3 +36,7 @@
     align-items:flex-start;
 }
 
+:host() .ui-fieldset-toggleable .ui-fieldset-legend {
+    padding: 10px 20px !important;
+}
+

@@ -1,47 +1,484 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-<div class="row" style="background-color: #0a2344">
-    <div class="col-lg-12">
-        <div class="Titulo"><h1>SISTEMA DE SEGUIMIENTO A PACIENTES EN RIESGO</h1></div>  
-    </div>
+<!-- Preloader -->
+<div id="preloader">
+  <div class="medica-load"></div>
+  <img src="assets/img/core-img/plus.png" alt="logo" />
 </div>
 
-<div class="row">
-    <div class="col-lg-12 RecortePortada">
-        <img class="Portada" src="assets/images/portada.png" alt="" />
-    </div>
-</div>
+<!-- ***** Header Area Start ***** -->
+<header class="header-area">
+  <!-- Top Header Area -->
+  <div class="top-header-area gradient-background"></div>
+  <!-- Main Header Area -->
+  <div class="main-header-area" id="stickyHeader">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-12 h-100">
+          <div class="main-menu h-100">
+            <nav class="navbar h-100 navbar-expand-lg">
+              <!-- Logo Area  -->
+              <a class="navbar-brand" href="index.html"
+                ><img src="assets/img/logo_diresa.png" alt="Logo"
+              /></a>
 
-<div class="row" style="background-color: #0a2344">
-    <div class="col-lg-6 text-center tarjeta">
-        <a class="Linkeador" href="public" alt="Paciente">
-            <div class="row">
-                <div class="col-lg-12">
-                    <img class="Imagenes" src="assets/images/inicio/paciente.png" alt="" />
-                </div>
+              <div class="collapse navbar-collapse" id="medicaMenu">
+                <!-- Menu Area -->
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="public">Pacientes</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="personal.jsp"
+                      >Seguimiento</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- ***** Header Area End ***** -->
+
+<!-- ***** Hero Area Start ***** -->
+<section class="hero-area">
+  <div class="hero-slides">
+    <!-- Single Hero Slide -->
+    <div
+      class="single-hero-slide height-700 bg-img"
+      style="background-image: url(assets/img/banner_01.jpg);"
+    >
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+          <div class="col-12">
+            <div class="hero-slides-content">
+              <h2 data-animation="fadeInUp" data-delay="80ms">
+                HOSPITAL VIRTUAL CAJAMARCA
+              </h2>
+
+              <div
+                class="slide-btn-group mt-50"
+                data-animation="fadeInUp"
+                data-delay="700ms"
+              >
+                <a routerLink="public" class="btn medica-btn">PACIENTES</a>
+                <a routerLink="personal.jsp" class="btn medica-btn ml-2 btn-2">SEGUIMIENTO</a>
+              </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <br/>
-                    <h3>PACIENTES</h3>
-                </div>
-            </div>            
-        </a>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-lg-6 text-center tarjeta">
-        <a class="Linkeador" href="personal.jsp" alt="Atención">
-            <div class="row">
-                <div class="col-lg-12">
-                    <img class="Imagenes" src="assets/images/inicio/seguimiento.png" alt="" />
-                </div>
+    <!-- Single Hero Slide -->
+    <div
+      class="single-hero-slide height-700 bg-img"
+      style="background-image: url(assets/img/banner_02.jpg);"
+    >
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+          <div class="col-12">
+            <div class="hero-slides-content">
+              <h2 data-animation="fadeInUp" data-delay="80ms">
+                DURANTE LA CRISIS COVID-19<br />USA TU HOSPITAL VIRTUAL
+              </h2>
+
+              <div
+                class="slide-btn-group mt-50"
+                data-animation="fadeInUp"
+                data-delay="700ms"
+              >
+                <a routerLink="public" class="btn medica-btn">PACIENTES</a>
+                <a routerLink="personal.jsp" class="btn medica-btn ml-2 btn-2">SEGUIMIENTO</a>
+              </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <br/>
-                    <h3>SEGUIMIENTO</h3>
-                </div>
-            </div>            
-        </a>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-   
+
+    <div
+      class="single-hero-slide height-700 bg-img"
+      style="background-image: url(assets/img/banner_03.jpg);"
+    >
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+          <div class="col-12">
+            <div class="hero-slides-content">
+              <h2 data-animation="fadeInUp" data-delay="80ms">
+                TU SOFTWARE MÉDICO CON <br />TELEORIENTACIÓN Y TELEMONITOREO
+              </h2>
+
+              <div
+                class="slide-btn-group mt-50"
+                data-animation="fadeInUp"
+                data-delay="700ms"
+              >
+                <a href="#" class="btn medica-btn">PACIENTES</a>
+                <a routerLink="personal.jsp" class="btn medica-btn ml-2 btn-2">SEGUIMIENTO</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="single-hero-slide height-700 bg-img"
+      style="background-image: url(assets/img/banner_04.jpg);"
+    >
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+          <div class="col-12">
+            <div class="hero-slides-content">
+              <h2 data-animation="fadeInUp" data-delay="80ms">
+                CONÉCTATE CON TU MEDICO!!
+              </h2>
+
+              <div
+                class="slide-btn-group mt-50"
+                data-animation="fadeInUp"
+                data-delay="700ms"
+              >
+                <a routerLink="public" class="btn medica-btn">PACIENTES</a>
+                <a routerLink="personal.jsp" class="btn medica-btn ml-2 btn-2">SEGUIMIENTO</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="single-hero-slide height-700 bg-img"
+      style="background-image: url(assets/img/banner_05.jpg);"
+    >
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+          <div class="col-12">
+            <div class="hero-slides-content">
+              <h2 data-animation="fadeInUp" data-delay="80ms">
+                SISTEMA DE SEGUIMIENTO <br />A PACIENTES CON RIESGO
+              </h2>
+
+              <div
+                class="slide-btn-group mt-50"
+                data-animation="fadeInUp"
+                data-delay="700ms"
+              >
+                <a routerLink="public" class="btn medica-btn">PACIENTES</a>
+                <a routerLink="personal.jsp" class="btn medica-btn ml-2 btn-2">SEGUIMIENTO</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="single-hero-slide height-700 bg-img"
+      style="background-image: url(assets/img/banner_06.jpg);"
+    >
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+          <div class="col-12">
+            <div class="hero-slides-content">
+              <h2 data-animation="fadeInUp" data-delay="80ms">
+                SISTEMA DE SEGUIMIENTO <br />A PACIENTES CON RIESGO
+              </h2>
+
+              <div
+                class="slide-btn-group mt-50"
+                data-animation="fadeInUp"
+                data-delay="700ms"
+              >
+                <a routerLink="public" class="btn medica-btn">PACIENTES</a>
+                <a routerLink="personal.jsp" class="btn medica-btn ml-2 btn-2">SEGUIMIENTO</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="single-hero-slide height-700 bg-img"
+      style="background-image: url(assets/img/banner_07.jpg);"
+    >
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+          <div class="col-12">
+            <div class="hero-slides-content">
+              <h2 data-animation="fadeInUp" data-delay="80ms">
+                SISTEMA DE SEGUIMIENTO <br />A PACIENTES CON RIESGO
+              </h2>
+
+              <div
+                class="slide-btn-group mt-50"
+                data-animation="fadeInUp"
+                data-delay="700ms"
+              >
+                <a routerLink="public" class="btn medica-btn">PACIENTES</a>
+                <a routerLink="personal.jsp" class="btn medica-btn ml-2 btn-2">SEGUIMIENTO</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="single-hero-slide height-700 bg-img"
+      style="background-image: url(assets/img/banner_08.jpeg);"
+    >
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+          <div class="col-12">
+            <div class="hero-slides-content">
+              <h2 data-animation="fadeInUp" data-delay="80ms">
+                SISTEMA DE SEGUIMIENTO <br />A PACIENTES CON RIESGO
+              </h2>
+
+              <div
+                class="slide-btn-group mt-50"
+                data-animation="fadeInUp"
+                data-delay="700ms"
+              >
+                <a routerLink="public" class="btn medica-btn">PACIENTES</a>
+                <a href="#" class="btn medica-btn ml-2 btn-2">SEGUIMIENTO</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="single-hero-slide height-700 bg-img"
+      style="background-image: url(assets/img/banner_09.jpg);"
+    >
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+          <div class="col-12">
+            <div class="hero-slides-content">
+              <h2 data-animation="fadeInUp" data-delay="80ms">
+                SISTEMA DE SEGUIMIENTO <br />A PACIENTES CON RIESGO
+              </h2>
+
+              <div
+                class="slide-btn-group mt-50"
+                data-animation="fadeInUp"
+                data-delay="700ms"
+              >
+                <a routerLink="public" class="btn medica-btn">PACIENTES</a>
+                <a routerLink="personal.jsp" class="btn medica-btn ml-2 btn-2">SEGUIMIENTO</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="single-hero-slide height-700 bg-img"
+      style="background-image: url(assets/img/banner_10.jpg);"
+    >
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+          <div class="col-12">
+            <div class="hero-slides-content">
+              <h2 data-animation="fadeInUp" data-delay="80ms">
+                SISTEMA DE SEGUIMIENTO <br />A PACIENTES CON RIESGO
+              </h2>
+
+              <div
+                class="slide-btn-group mt-50"
+                data-animation="fadeInUp"
+                data-delay="700ms"
+              >
+                <a routerLink="public" class="btn medica-btn">PACIENTES</a>
+                <a routerLink="personal.jsp" class="btn medica-btn ml-2 btn-2">SEGUIMIENTO</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="single-hero-slide height-700 bg-img"
+      style="background-image: url(assets/img/banner_11.jpg);"
+    >
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+          <div class="col-12">
+            <div class="hero-slides-content">
+              <h2 data-animation="fadeInUp" data-delay="80ms">
+                SISTEMA DE SEGUIMIENTO <br />A PACIENTES CON RIESGO
+              </h2>
+
+              <div
+                class="slide-btn-group mt-50"
+                data-animation="fadeInUp"
+                data-delay="700ms"
+              >
+                <a routerLink="public" class="btn medica-btn">PACIENTES</a>
+                <a routerLink="personal.jsp" class="btn medica-btn ml-2 btn-2">SEGUIMIENTO</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="single-hero-slide height-700 bg-img"
+      style="background-image: url(assets/img/banner_12.jpg);"
+    >
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+          <div class="col-12">
+            <div class="hero-slides-content">
+              <h2 data-animation="fadeInUp" data-delay="80ms">
+                SISTEMA DE SEGUIMIENTO <br />A PACIENTES CON RIESGO
+              </h2>
+
+              <div
+                class="slide-btn-group mt-50"
+                data-animation="fadeInUp"
+                data-delay="700ms"
+              >
+                <a routerLink="public" class="btn medica-btn">PACIENTES</a>
+                <a routerLink="personal.jsp" class="btn medica-btn ml-2 btn-2">SEGUIMIENTO</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ***** Hero Area End ***** -->
+
+<!-- ***** Services Area Start ***** -->
+<section
+  class="medica-services-area section_padding_700 bg-img gradient-background-overlay"
+  style="background-image: url(img/bg-img/service.jpg);"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="section_heading white-heading">
+          <img src="img/icons/hospital2.png" alt="" />
+          <h2>ESPECIALIDADES</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="single-service-area wow fadeInUp" data-wow-delay="0.2s">
+          <img src="img/icons/hospital.png" alt="" />
+          <h5>Cardiología</h5>
+          <p>
+            Se centran en el diagnóstico y tratamiento de problemas de salud
+            relacionados con el corazón, las arterias y venas que componen el
+            sistema cardiovascular.
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="single-service-area wow fadeInUp" data-wow-delay="0.3s">
+          <img src="img/icons/blood.png" alt="" />
+          <h5>Laboratory</h5>
+          <p>
+            Phasellus at nunc orci. Donec ipsum metus, pharetr a quis nunc sit
+            amet, maximus vehicula nibh.
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="single-service-area wow fadeInUp" data-wow-delay="0.4s">
+          <img src="img/icons/ambulance.png" alt="" />
+          <h5>Ambulance Service</h5>
+          <p>
+            Phasellus at nunc orci. Donec ipsum metus, pharetr a quis nunc sit
+            amet, maximus vehicula nibh.
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="single-service-area wow fadeInUp" data-wow-delay="0.5s">
+          <img src="img/icons/nuclear.png" alt="" />
+          <h5>Radiology</h5>
+          <p>
+            Phasellus at nunc orci. Donec ipsum metus, pharetr a quis nunc sit
+            amet, maximus vehicula nibh.
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="single-service-area wow fadeInUp" data-wow-delay="0.6s">
+          <img src="img/icons/emergency-call.png" alt="" />
+          <h5>Emergency Care</h5>
+          <p>
+            Phasellus at nunc orci. Donec ipsum metus, pharetr a quis nunc sit
+            amet, maximus vehicula nibh.
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
+        <div class="single-service-area">
+          <img src="img/icons/medicine.png" alt="" />
+          <h5>Pharmacy</h5>
+          <p>
+            Phasellus at nunc orci. Donec ipsum metus, pharetr a quis nunc sit
+            amet, maximus vehicula nibh.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ***** Services Area End ***** -->
+
+<footer>
+  <!-- Bottom Footer Area -->
+  <div class="bottom-footer-area">
+    <div class="container h-100">
+      <div class="row h-100">
+        <div class="col-12 h-100">
+          <div
+            class="bottom-footer-content h-100 d-md-flex align-items-center justify-content-between"
+          >
+            <!-- Copywrite Text -->
+            <div class="copywrite-text">
+              <p>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;
+                <script>
+                  document.write(new Date().getFullYear());
+                </script>
+                All rights reserved | OITE DIRESA CAJAMARCA
+                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                <a href="" target="_blank"></a>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              </p>
+            </div>
+            <!-- Footer Menu -->
+            <div class="footer-menu">
+              <nav>
+                <ul>
+                  <li><a href="#">Inicio</a></li>
+                  <li><a href="#">Pacientes</a></li>
+                  <li><a href="#">Seguimiento</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
