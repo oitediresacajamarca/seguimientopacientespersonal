@@ -7,6 +7,7 @@
     import { FormatoFuat } from 'src/app/interfaces/formato-fuat';
     import { Configuracion } from 'src/app/configuracion/configuracion';
     import { Atencion } from 'src/app/interfaces/atencion';
+import { RegistrarAtencionComponent } from '../registrar-atencion/registrar-atencion.component';
 
     @Component({
       selector: 'app-principal',
@@ -60,6 +61,7 @@
         "ID_GENERO": '',
         "ID_SOLICITUD": ''
       };
+      @ViewChild('panreg',{static:false}) panreg:RegistrarAtencionComponent
       atencion: Atencion = {
         ID_ATENCION: '',
         TIPO_CONEXION: '',
@@ -138,7 +140,7 @@
 
       IniciaRegistro(e) {
 
-        this.verpanelregistro = true;
+        this.panreg.ver=true;
         let sesion = JSON.parse(localStorage.getItem('datos'));
         this.atencion.ID_RESPONSABLE = sesion.TRABAJADOR_ID;
 
