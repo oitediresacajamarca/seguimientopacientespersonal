@@ -47,8 +47,10 @@
 
           ngOnInit() {
             this.customers = [];
+        
             this.morb.devolverMorbilidades().subscribe((dat) => {
               this.customers = dat.respuesta;
+              
 
               this.loading = false;
 

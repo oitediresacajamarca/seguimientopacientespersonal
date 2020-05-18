@@ -1,56 +1,96 @@
 <div class="ui-g-12" *ngIf="visible">
-
-<br>
-<br>
-DIAGNOSTICO
-<mat-card>
+  <br />
+  <br />
+  DIAGNOSTICO
+  <mat-card>
     <div class="ui-g">
-        <div class="ui-g-2">
-  
-            <span class="ui-float-label">
-                <input id="COD_DIAG" type="text" size="30" pInputText [(ngModel)]="cod_diag_selec"> 
-                <label for="COD_DIAG">Codigo de Diagnostico</label>
-            </span>
-           
-        </div>
-        <div class="ui-g-4">
-        
-            <span class="ui-float-label">
-                <input id="DESC_DIAG" type="text" size="20" pInputText [(ngModel)]="desc_diag_selec"> 
-                <label for="DESC_DIAG">Descripcion de Diagnostico</label>
-            </span>
-        </div>
-        <div class="ui-g-2">
-         
-            <span class="ui-float-label">
-                <p-dropdown [options]="tipodiag" [(ngModel)]="selectedtipdiag" placeholder="Select tipo diagnostico" [showClear]="true"></p-dropdown>
-            </span>
-            
-        </div>
-        <div class="ui-g-2">
+      <div class="ui-g-2">
         <span class="ui-float-label">
-            <input id="LAB" type="text" size="20" pInputText [(ngModel)]="lab_selec"> 
-            <label for="LAB">Lab</label>
+          <input
+            id="COD_DIAG"
+            type="text"
+            size="30"
+            pInputText
+            [(ngModel)]="cod_diag_selec"
+            (blur)="cargarCieDesc($event)"
+          />
+          <label for="COD_DIAG">Codigo de Diagnostico</label>
         </span>
-        </div>
-        <div class="ui-g-2">
-            <button pButton type="button" label="Agregar Diagnostico" (click)="aniadediag($event)"></button>
-        </div>
-        <br>
-        <br><br>
-        <p-table [value]="dianosticospac">
-            <ng-template pTemplate="header">
-                <tr><th>item</th><th>Codigo</th><th>Tipo de diagnostico</th><th>Lab</th><th> </th></tr>
-            </ng-template>
+      </div>
+      <div class="ui-g-4">
+        <span class="ui-float-label">
+          <input
+            id="DESC_DIAG"
+            type="text"
+            size="20"
+            pInputText
+            [(ngModel)]="desc_diag_selec"
+            disabled
+          />
+          <label for="DESC_DIAG">Descripcion de Diagnostico</label>
+        </span>
+      </div>
+      <div class="ui-g-2">
+        <span class="ui-float-label">
+          <p-dropdown
+            [options]="tipodiag"
+            [(ngModel)]="selectedtipdiag"
+            placeholder="Select tipo diagnostico"
+            [showClear]="true"
+          ></p-dropdown>
+        </span>
+      </div>
+      <div class="ui-g-2">
+        <span class="ui-float-label">
+          <input
+            id="LAB"
+            type="text"
+            size="20"
+            pInputText
+            [(ngModel)]="lab_selec"
+          />
+          <label for="LAB">Lab</label>
+        </span>
+      </div>
+      <div class="ui-g-2">
+        <button
+          pButton
+          type="button"
+          label="Agregar Diagnostico"
+          (click)="aniadediag($event)"
+        ></button>
+      </div>
+      <br />
+      <br /><br />
+      <p-table [value]="dianosticospac">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>item</th>
+            <th>Codigo</th>
+            <th>Tipo de diagnostico</th>
+            <th>Lab</th>
+            <th></th>
+          </tr>
+        </ng-template>
 
-            <ng-template pTemplate="body" let-dianospac>
-                <tr><td>{{dianospac.item}}</td><td>{{dianospac.cod_cie}}</td><td>{{dianospac.tip_diag}}</td><td>{{dianospac.lab}}</td><td>
-                    <button color="primary" mat-mini-fab aria-label="Example icon-button with a heart icon">
-                    <mat-icon>delete</mat-icon>
-                  </button></td></tr>
-            </ng-template>
-        </p-table>
+        <ng-template pTemplate="body" let-dianospac>
+          <tr>
+            <td>{{ dianospac.item }}</td>
+            <td>{{ dianospac.cod_cie }}</td>
+            <td>{{ dianospac.tip_diag }}</td>
+            <td>{{ dianospac.lab }}</td>
+            <td>
+              <button
+                color="primary"
+                mat-mini-fab
+                aria-label="Example icon-button with a heart icon"
+             (click)="eliminarDiagnosticoPaciente(dianospac)" >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
     </div>
-    
-</mat-card>
+  </mat-card>
 </div>

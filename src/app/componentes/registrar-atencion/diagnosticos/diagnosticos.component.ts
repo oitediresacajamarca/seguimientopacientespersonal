@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { SelectItem } from 'primeng/api/selectitem';
 import { AtencionDiagnosticoItem } from 'src/app/interfaces/atencion-diagnostico-item';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { MorbilidadesService } from 'src/app/servicios/morbilidades.service';
 
 @Component({
   selector: 'app-diagnosticos',
@@ -18,7 +19,7 @@ export class DiagnosticosComponent implements OnInit {
   diagnostabla: AtencionDiagnosticoItem[] = [];
   lab_selec: string;
 
-  constructor() { }
+  constructor(private morb: MorbilidadesService) { }
 
   ngOnInit() {
     this.tipodiag = [
@@ -50,7 +51,7 @@ export class DiagnosticosComponent implements OnInit {
 
 
 
-    this.dianosticospac.push({ item: this.dianosticospac.length + 1, cod_cie: this.cod_diag_selec, tip_diag: tipo, lab: this.lab_selec })
+    this.dianosticospac.push({ item: this.dianosticospac.length + 1, cod_cie: this.cod_diag_selec,desc_diag:this.desc_diag_selec, tip_diag: tipo, lab: this.lab_selec })
 
     this.diagnostabla.push(
       {
@@ -58,6 +59,21 @@ export class DiagnosticosComponent implements OnInit {
         ESTADO_DIAGNOSTICO: "1", NRO_ITEM: this.dianosticospac.length, LAB_DIAGNOSTICO: this.lab_selec
         , TIPO_DIAGNOSTICO: this.selectedtipdiag, ID_ATENCION: "", ID_TRABAJADOR: ""
       })
+
+  }
+  cargarCieDesc(e) {
+    this.morb.devolverMorbilidad(e.target.value).subscribe(data => {
+
+      this.desc_diag_selec = data.respuesta.Descripcion_Item;
+
+    })
+
+  }
+  eliminarDiagnosticoPaciente(diagnos){
+
+   let lugar= this.dianosticospac.findIndex((element)=>{element.cod_cie==diagnos.cod_cie})
+    this.dianosticospac.splice(lugar,1);
+    this.diagnostabla.splice(lugar,1)
 
   }
 
