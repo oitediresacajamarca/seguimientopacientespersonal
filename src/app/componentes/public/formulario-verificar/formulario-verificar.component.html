@@ -1,0 +1,168 @@
+
+
+ <!-- Preloader -->
+ 
+ <!-- ***** Header Area Start ***** -->
+ <header class="header-area">
+   <!-- Top Header Area -->
+   <div class="top-header-area gradient-background"></div>
+   <!-- Main Header Area -->
+   <div class="main-header-area" id="stickyHeader">
+     <div class="container h-100">
+       <div class="row h-100 align-items-center">
+         <div class="col-12 h-100">
+           <div class="main-menu h-100"></div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </header>
+ <!-- ***** Header Area End ***** -->
+ 
+ <section
+   class="breadcumb-area bg-img gradient-background-overlay"
+   style="background-image: url(assets/img/bg-img/hero3.jpg);"
+ >
+   <div class="container  h-100">
+     <div class="row h-100 align-items-center">
+       <div class="col-12">
+         <div class="breadcumb-content">
+           <!-- Title -->
+           <h3 class="breadcumb-title" font-family="inherit">PACIENTES</h3>
+ 
+           <!-- Breadcumb -->
+           <nav aria-label="breadcrumb">
+             <ol class="breadcrumb">
+               <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+               <li class="breadcrumb-item active" aria-current="page">
+                 Pacientes
+               </li>
+             </ol>
+           </nav>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ 
+ <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+   <div class="wrapper wrapper--w680">
+     <div class="card card-4">
+       <div class="card-body">
+        <p-messages [(value)]="msgvalidaper"></p-messages>
+
+         <h2 class="title">Requerimiento de la atención</h2>
+ 
+     
+           <div class="form-group col-md-4">
+             <label class="label">Tipo de documento</label>
+             <p-dropdown
+               required
+               [options]="tiposdoc"
+               size="80"
+               [(ngModel)]="tipodocseleccionado"
+               [style]="{ width: '35em' }"
+               [maxlength]="300"
+               placeholder="Seleccione "
+               #tipodoc="ngModel"
+               (onChange)="
+                 cajanumdoc.disabled = !tipodoc.valid;
+                 calenfecnac.disabled = !tipodoc.valid
+               "
+               class="form-control"
+             ></p-dropdown>
+           </div>
+ 
+           <div class="form-group col-md-6">
+             <label for="inputCity">N° de documento</label>
+             <p-inputMask
+               [(ngModel)]="numerodoc"
+               size="8"
+               mask="99999999"
+               size="20"
+               title="INGRESE SU NUMERO DE DOCUMENTO"
+               characterPattern="[0-9]"
+               id="float-input"
+               #cajanumdoc
+               disabled
+               class="form-control"
+               [style]="{ width: '35em' }"
+             ></p-inputMask>
+           </div>
+ 
+           <div class="form-group col-md-6">
+             <label for="infecncputCity">Fecha de nacimiento</label>
+             <p-calendar
+               mask="99/99/9999"
+               [(ngModel)]="FECNAC"
+               [yearNavigator]="true"
+               yearRange="1900:2020"
+               disabled
+               [locale]="es"
+               dateFormat="dd/mm/yy"
+               id="fecnc"
+               #calenfecnac
+               class="form-control"
+         
+              
+             ></p-calendar>
+           </div>
+ 
+           <button
+            
+             type="button"
+            
+             (click)="solicitaAtencion()"
+             class="btn btn-primary btn-lg btn-block"
+           >
+           Enviar Solicitud
+     
+           </button>
+           <button type="button" class="btn btn-secondary btn-lg btn-block">
+             Regresar
+           </button>
+    
+       </div>
+     </div>
+   </div>
+ </div>
+ 
+ <footer>
+   <!-- Bottom Footer Area -->
+   <div class="bottom-footer-area">
+     <div class="container h-100">
+       <div class="row h-100">
+         <div class="col-12 h-100">
+           <div
+             class="bottom-footer-content h-100 d-md-flex align-items-center justify-content-between"
+           >
+             <!-- Copywrite Text -->
+             <div class="copywrite-text">
+               <p>
+                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                 Copyright &copy;
+                 <script>
+                   document.write(new Date().getFullYear());
+                 </script>
+                 All rights reserved | OITE DIRESA CAJAMARCA
+                 <i class="fa fa-heart-o" aria-hidden="true"></i>
+                 <a href="" target="_blank"></a>
+                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+               </p>
+             </div>
+             <!-- Footer Menu -->
+             <div class="footer-menu">
+               <nav>
+                 <ul>
+                   <li><a href="#">Inicio</a></li>
+                   <li><a href="#">Pacientes</a></li>
+                   <li><a href="#">Seguimiento</a></li>
+                 </ul>
+               </nav>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </footer>

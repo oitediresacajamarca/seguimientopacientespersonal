@@ -69,6 +69,7 @@ import { SistemaPadronComponent } from './componentes/sistema-padron/sistema-pad
 import { DatosAtencionComponent } from './componentes/registrar-atencion/datos-atencion/datos-atencion.component';
 import { DiagnosticosComponent } from './componentes/registrar-atencion/diagnosticos/diagnosticos.component';
 import { TratamientoComponent } from './componentes/registrar-atencion/tratamiento/tratamiento.component';
+import { FormularioVerificarComponent } from './componentes/public/formulario-verificar/formulario-verificar.component';
 
 @NgModule({
   declarations: [
@@ -111,7 +112,11 @@ import { TratamientoComponent } from './componentes/registrar-atencion/tratamien
 
 
 
-    TratamientoComponent
+    TratamientoComponent,
+
+
+
+    FormularioVerificarComponent
 
   ],
   imports: [

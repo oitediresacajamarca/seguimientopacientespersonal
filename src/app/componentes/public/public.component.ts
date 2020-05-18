@@ -20,13 +20,14 @@ export class PublicComponent implements OnInit {
   optionsMap: any;
   ipressFiltrados: SelectItem[];
   ipress_select: SelectItem;
+  msgs: any[];
 
 
 
   verpanelregistro: boolean = false;
   noexistepaciente: boolean = false;
-  msgs: any[];
-  msgvalidaper: any[];
+ 
+
   fechasolicitud: Date = new Date();
 
   provincias: SelectItem[];
@@ -109,62 +110,6 @@ export class PublicComponent implements OnInit {
 
   }
 
-  solicitaAtencion() {
-    if (this.numerodoc == '') { alert('debera de ingresar un numero de documento valido') }
-    if (this.FECNAC == null) { alert('debera de ingresar su fecha de nacimiento ') }
-
-    if (this.numerodoc != '' && this.FECNAC != null) {
-
-
-      this.pers.devolverPersona(this.tipodocseleccionado, this.numerodoc, this.FECNAC.getFullYear() + '-' + (this.FECNAC.getMonth() + 1) + '-' + this.FECNAC.getDate()).subscribe((dat) => {
-
-
-        this.msgvalidaper = []
-        this.mesgs.clear();
-
-        if (dat.respuesta.existeper != "" && dat.respuesta.coincidefecha == "") {
-
-          this.msgvalidaper.push({ severity: 'info', summary: 'Datos no validos', detail: '', key: 'validapersona' });
-        } else {
-
-
-
-          if (dat.respuesta.tienesolicitudpendiente != "") {
-
-
-
-            this.msgvalidaper.push({ severity: 'info', summary: ' Usted ya tiene una solicitud pendiente', detail: '', key: 'validapersona' });
-            this.verpanelregistro = false;
-          }
-
-          if (dat.respuesta.existeper == "") {
-
-            this.verpanelregistro = true;
-            this.verpaneldatosgenerales = true;
-
-          }
-
-
-          if (dat.respuesta.existeper != "" && dat.respuesta.tienesolicitudpendiente == "") {
-
-            this.verpanelregistro = true;
-            this.verpaneldatosgenerales = false;
-            this.mesgs.add({ severity: 'success', summary: 'PACIENTE IDENTIFICADO:', detail: 'Para solicitar atencion complete el siguiente formulario: ' });
-
-          }
-
-
-
-
-
-
-        }
-      });
-
-
-    }
-
-  }
 
   cambioProvincia() {
 

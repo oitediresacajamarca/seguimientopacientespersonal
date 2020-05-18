@@ -1,78 +1,5 @@
 
-<div class="container contenedor">
-  <div class="ui-g">
-    <div class="ui-g-4"></div>
-    <div class="ui-g-4">
-      <div class="example-container">
-        <p-panel header="Requerimiento de Atencion">
-          <br />
-          <p-dropdown
-            required
-            [options]="tiposdoc"
-            size="80"
-            [(ngModel)]="tipodocseleccionado"
-            [style]="{ width: '150px' }"
-            [maxlength]="300"
-            placeholder="Seleccione "
-            #tipodoc="ngModel"
-            (onChange)="
-              cajanumdoc.disabled = !tipodoc.valid;
-              calenfecnac.disabled = !tipodoc.valid
-            "
-          ></p-dropdown>
-
-          <br />
-          <br />
-
-          <span class="ui-float-label">
-            <p-inputMask
-              [(ngModel)]="numerodoc"
-              size="8"
-              mask="99999999"
-              size="20"
-              title="INGRESE SU NUMERO DE DOCUMENTO"
-              characterPattern="[0-9]"
-              id="float-input"
-              #cajanumdoc
-              disabled
-            ></p-inputMask>
-
-            <label for="float-input">NUMERO DE DOCUMENTO</label>
-          </span>
-
-          <br />
-
-          <span class="ui-float-label">
-            <p-calendar
-              mask="99/99/9999"
-              [(ngModel)]="FECNAC"
-              [yearNavigator]="true"
-              yearRange="1900:2020"
-              disabled
-              [locale]="es"
-              dateFormat="dd/mm/yy"
-              #calenfecnac
-            ></p-calendar>
-
-            <label for="float-input">FECHA DE NACIMIENTO</label>
-          </span>
-
-          <br />
-
-          <button
-            pButton
-            type="button"
-            label="Enviar Solicitud"
-            (click)="solicitaAtencion()"
-          ></button>
-          <p-messages [(value)]="msgvalidaper"></p-messages>
-        </p-panel>
-      </div>
-    </div>
-    <div class="ui-g-4"></div>
-  </div>
-</div>
-
+<app-formulario-verificar></app-formulario-verificar>
 <p-dialog
   header="REGISTRE SUS DATOS"
   [(visible)]="verpanelregistro"
@@ -99,11 +26,8 @@
             [pKeyFilter]="letrasyespacio"
             (blur)="cambiaform()"
           />
-         
-        
         </div>
-      
-       
+
         <div class="ui-g-6 label-form">Apellido Paterno</div>
         <div class="ui-g-6">
           <input
@@ -116,7 +40,12 @@
             #ape_pat="ngModel"
             (blur)="cambiaform()"
           />
-          <p-message severity="error" text="Apellido Paterno es requerido" *ngIf="ape_pat.invalid&&ape_pat.touched">Campo es requerido</p-message>
+          <p-message
+            severity="error"
+            text="Apellido Paterno es requerido"
+            *ngIf="ape_pat.invalid && ape_pat.touched"
+            >Campo es requerido</p-message
+          >
         </div>
         <div class="ui-g-6 label-form">Apellido Materno</div>
         <div class="ui-g-6">
@@ -129,7 +58,11 @@
             #ape_mat="ngModel"
             (blur)="cambiaform()"
           />
-          <p-message severity="error" text="Apellido Materno es requerido" *ngIf="ape_mat.invalid&&ape_mat.touched"></p-message>
+          <p-message
+            severity="error"
+            text="Apellido Materno es requerido"
+            *ngIf="ape_mat.invalid && ape_mat.touched"
+          ></p-message>
         </div>
         <div class="ui-g-6 label-form">Genero</div>
         <div class="ui-g-6">
@@ -142,7 +75,11 @@
             #genero="ngModel"
             (blur)="cambiaform()"
           ></p-dropdown>
-          <p-message severity="error" text="Campo Genero es requerido" *ngIf="genero.invalid&&genero.touched"></p-message>
+          <p-message
+            severity="error"
+            text="Campo Genero es requerido"
+            *ngIf="genero.invalid && genero.touched"
+          ></p-message>
         </div>
         <div class="ui-g-6 label-form">Tipo Doc</div>
         <div class="ui-g-6">
@@ -158,7 +95,11 @@
             (blur)="cambiaform()"
             #tipodoc="ngModel"
           ></p-dropdown>
-          <p-message severity="error" text="Tipo de Documento es requerido" *ngIf="tipodoc.invalid&&tipodoc.touched"></p-message>
+          <p-message
+            severity="error"
+            text="Tipo de Documento es requerido"
+            *ngIf="tipodoc.invalid && tipodoc.touched"
+          ></p-message>
         </div>
         <div class="ui-g-6 label-form">Numero de Documento</div>
         <div class="ui-g-6">
@@ -172,10 +113,8 @@
             title="INGRESE SU NUMERO DE DOCUMENTO"
             characterPattern="[0-9]"
             id="float-input"
-           
           >
           </p-inputMask>
-         
         </div>
         <div class="ui-g-6 label-form">Fecha de Nacimiento</div>
         <div class="ui-g-6">
@@ -187,7 +126,6 @@
             yearRange="1900:2020"
             disabled="true"
           ></p-calendar>
-          
         </div>
       </div>
     </form>
@@ -205,8 +143,11 @@
             #telecon1="ngModel"
             (blur)="cambiaform()"
           ></p-inputMask>
-          <p-message severity="error" text="Tipo de Documento es requerido" *ngIf="telecon1.invalid&&telecon1.touched"></p-message>
-          
+          <p-message
+            severity="error"
+            text="Tipo de Documento es requerido"
+            *ngIf="telecon1.invalid && telecon1.touched"
+          ></p-message>
         </div>
 
         <div class="ui-g-6 label-form">Telefono Fijo de Contacto</div>
@@ -216,9 +157,8 @@
             [(ngModel)]="telefcon2"
             mask="99-9999"
             (blur)="cambiaform()"
-               >
+          >
           </p-inputMask>
-          
         </div>
         <div class="ui-g-6 label-form">Correo Electronico</div>
         <div class="ui-g-6">
@@ -232,7 +172,11 @@
             (blur)="cambiaform()"
             #corre="ngModel"
           />
-          <p-message severity="error" text="Correo Electronico es requerido" *ngIf="corre.invalid&&corre.touched"></p-message>
+          <p-message
+            severity="error"
+            text="Correo Electronico es requerido"
+            *ngIf="corre.invalid && corre.touched"
+          ></p-message>
         </div>
         <div class="ui-g-6 label-form">Motivo</div>
         <div class="ui-g-6">
@@ -245,7 +189,11 @@
             required
             #obser="ngModel"
           ></textarea>
-          <p-message severity="error" text="Campo Motivo es requerido" *ngIf="obser.invalid&&obser.touched"></p-message>
+          <p-message
+            severity="error"
+            text="Campo Motivo es requerido"
+            *ngIf="obser.invalid && obser.touched"
+          ></p-message>
         </div>
         <div class="ui-g-6"></div>
         <div class="ui-g-6">
@@ -273,7 +221,11 @@
             #provincia="ngModel"
             (change)="cambiaform()"
           ></p-dropdown>
-          <p-message severity="error" text="Campo Provincia es requerido" *ngIf="provincia.invalid&&provincia.touched"></p-message>
+          <p-message
+            severity="error"
+            text="Campo Provincia es requerido"
+            *ngIf="provincia.invalid && provincia.touched"
+          ></p-message>
         </div>
         <div class="ui-g-6 label-form">Distrito</div>
         <div class="ui-g-6">
@@ -285,7 +237,11 @@
             #distrito="ngModel"
             (onChange)="cambiadis()"
           ></p-dropdown>
-          <p-message severity="error" text="Campo Distrito es requerido" *ngIf="distrito.invalid&&distrito.touched"></p-message>
+          <p-message
+            severity="error"
+            text="Campo Distrito es requerido"
+            *ngIf="distrito.invalid && distrito.touched"
+          ></p-message>
         </div>
         <div class="ui-g-6 label-form">Domicilio Actual</div>
         <div class="ui-g-6">
@@ -297,7 +253,11 @@
             [(ngModel)]="direccion"
             #direccio="ngModel"
           ></textarea>
-          <p-message severity="error" text="Campo Direccion es requerido" *ngIf="direccio.invalid&&direccio.touched"></p-message>
+          <p-message
+            severity="error"
+            text="Campo Direccion es requerido"
+            *ngIf="direccio.invalid && direccio.touched"
+          ></p-message>
         </div>
         <div class="ui-g-6 label-form">
           Establecimiento de Salud mas Cercano
@@ -310,7 +270,11 @@
             [(ngModel)]="ipress_select"
             #ipress="ngModel"
           ></p-dropdown>
-          <p-message severity="error" text="Establecimiento es requerido" *ngIf="ipress.invalid&&ipress.touched"></p-message>
+          <p-message
+            severity="error"
+            text="Establecimiento es requerido"
+            *ngIf="ipress.invalid && ipress.touched"
+          ></p-message>
         </div>
       </div>
 
@@ -338,15 +302,15 @@
       class="ui-button-secondary"
     ></button>
   </p-footer>
- 
+
   <p-confirmDialog
     header="Confirmation"
     icon="pi pi-exclamation-triangle"
     key="final"
   ></p-confirmDialog>
-  <p-toast [style]="{ marginTop: '80px' }" position="center" ></p-toast>
+  <p-toast [style]="{ marginTop: '80px' }" position="center"></p-toast>
 </p-dialog>
-<p-dialog [(visible)]="vermensajeconfirmacion">Su solicitud ha sido guardada exitosamente Pronto el personal medico se
-  comunicara con usted segun la informacion proporcionada</p-dialog>
-
-
+<p-dialog [(visible)]="vermensajeconfirmacion"
+  >Su solicitud ha sido guardada exitosamente Pronto el personal medico se
+  comunicara con usted segun la informacion proporcionada</p-dialog
+>
