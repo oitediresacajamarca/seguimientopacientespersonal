@@ -6,6 +6,7 @@ import { SolicitudService } from 'src/app/servicios/servicios/solicitud.service'
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { NgForm, Form } from '@angular/forms';
 import { Button } from 'primeng/button/button';
+import { EstadosService } from 'src/app/servicios/estados.service';
 
 
 
@@ -21,15 +22,10 @@ export class PublicComponent implements OnInit {
   ipressFiltrados: SelectItem[];
   ipress_select: SelectItem;
   msgs: any[];
-
-
-
   verpanelregistro: boolean = false;
   noexistepaciente: boolean = false;
- 
 
   fechasolicitud: Date = new Date();
-
   provincias: SelectItem[];
   provinciaselecionada: string;
   distritos: SelectItem[];
@@ -62,13 +58,21 @@ export class PublicComponent implements OnInit {
   @ViewChild('btenv', { static: false })
   btenv: Button
 
-  constructor(private pers: PersonaService, private geo: GeografiaService, private sol: SolicitudService, private confirmationService: ConfirmationService, private mesgs: MessageService) { }
+  constructor(private est: EstadosService, private pers: PersonaService, private geo: GeografiaService, private sol: SolicitudService, private confirmationService: ConfirmationService, private mesgs: MessageService) { }
 
   ngOnInit() {
     this.optionsMap = {
       center: { lat: 36.890257, lng: 30.707417 },
       zoom: 12
     };
+
+    this.est.verificoform.subscribe((dat) => {
+
+      this.verpanelregistro = dat.verpanelregistro;
+      this.verpaneldatosgenerales = dat.verpaneldatosgenerales;
+      console.log(this.verpaneldatosgenerales)
+
+    })
 
 
     this.es = {
@@ -127,6 +131,11 @@ export class PublicComponent implements OnInit {
     this.obsevaciones = null;
     this.direccion = null;
 
+  }
+  manejarPanel(event) {
+
+    this.verpanelregistro = event.verpanelregistro;
+    this.verpaneldatosgenerales = event.verpaneldatosgenerales;
   }
 
 

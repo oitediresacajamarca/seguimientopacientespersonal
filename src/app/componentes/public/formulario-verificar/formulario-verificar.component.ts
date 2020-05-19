@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SelectItem } from 'primeng/api/selectitem';
 import { PersonaService } from 'src/app/servicios/servicios/persona.service';
 import { MessageService } from 'primeng/api';
+import { EstadosService } from 'src/app/servicios/estados.service';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { MessageService } from 'primeng/api';
 })
 export class FormularioVerificarComponent implements OnInit {
 
-  constructor(private pers: PersonaService,private mesgs: MessageService) { }
+  constructor(private pers: PersonaService, private mesgs: MessageService, private est: EstadosService) { }
 
   msgvalidaper: any[];
   tiposdoc: SelectItem[];
@@ -22,10 +23,12 @@ export class FormularioVerificarComponent implements OnInit {
   msgs: any[];
   verpaneldatosgenerales: boolean = false;
   verpanelregistro: boolean = false;
+  @Output('verificoform') verificoform = new EventEmitter<any>()
+
 
   ngOnInit() {
 
-    
+
     this.es = {
       firstDayOfWeek: 1,
       dayNames: ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
@@ -43,7 +46,8 @@ export class FormularioVerificarComponent implements OnInit {
       { label: 'PASS', value: '3' }
     ]
   }
- 
+
+
   solicitaAtencion() {
     if (this.numerodoc == '') { alert('debera de ingresar un numero de documento valido') }
     if (this.FECNAC == null) { alert('debera de ingresar su fecha de nacimiento ') }
@@ -65,9 +69,6 @@ export class FormularioVerificarComponent implements OnInit {
 
 
           if (dat.respuesta.tienesolicitudpendiente != "") {
-
-
-
             this.msgvalidaper.push({ severity: 'info', summary: ' Usted ya tiene una solicitud pendiente', detail: '', key: 'validapersona' });
             this.verpanelregistro = false;
           }
@@ -89,15 +90,14 @@ export class FormularioVerificarComponent implements OnInit {
           }
 
 
-
-
-
-
         }
+        this.est.verificoform.emit({verpanelregistro:this.verpanelregistro,verpaneldatosgenerales:this.verpaneldatosgenerales});
       });
 
 
     }
+
+
 
   }
 
