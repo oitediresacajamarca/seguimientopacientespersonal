@@ -70,6 +70,9 @@ export class PublicComponent implements OnInit {
 
       this.verpanelregistro = dat.verpanelregistro;
       this.verpaneldatosgenerales = dat.verpaneldatosgenerales;
+      this.FECNAC=dat.FECNAC;
+      this.tipodocseleccionado=dat.tipodocseleccionado;
+      this.numerodoc=dat.numerodoc;
       console.log(this.verpaneldatosgenerales)
 
     })
@@ -143,6 +146,7 @@ export class PublicComponent implements OnInit {
 
     this.confirmationService.confirm({
       message: 'ESTAS SEGURO DE REGISTRARTE PARA SOLICITAR ATENCION?',
+      key:'final',
       accept: () => {
 
         let solic =
