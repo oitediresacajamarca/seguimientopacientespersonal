@@ -2,12 +2,13 @@
 
 
 <div class="text-consentimiento-title">
-<h3>Consentimiento Informado para Teleorientación y
+<h5>Consentimiento Informado para Teleorientación y
     Telemonitoreo y Revocatoria de Consentimiento Informado de Teleorientación y
-    Telemonitoreo</h3>
+    Telemonitoreo</h5>
 </div>
 
 <div class="text-consentimiento alert">
+  <p-scrollPanel [style]="{width: '100%', height: '200px'}">
         
     Declaro haber sido informado/a  para realizar Teleorientación Telemonitoreo, pudiendo incluir una o varias sesiones con el
     profesional de salud de la IPRESS: , para que el paciente reciba
@@ -25,7 +26,11 @@
     Consciente de mis derechos y en forma voluntaria, en cumplimiento de la normativa legal
     vigente, doy mi consentimiento para que el acto médico o el acto de salud, según corresponda,
     se realicen, en mi presencia o incluso en mi ausencia.
-</div>
-  <div class="aceptar btn btn-primary">
+   
+    
+  </p-scrollPanel>
+  <div class="aceptar ">
     <p-checkbox name="groupname" value="ACEPTAR" [(ngModel)]="aceptaconsetimiento" label="ACEPTAR" (onChange)="verificar($event)"></p-checkbox>
   </div>
+</div>
+ 

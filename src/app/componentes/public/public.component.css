@@ -8,6 +8,9 @@
     background-image: url('../../../assets/Fondo.jpg');
 }
 
+.ui-calendar{
+   width: 100%; 
+}
 .ui-inputtext
 {
     text-transform: uppercase;

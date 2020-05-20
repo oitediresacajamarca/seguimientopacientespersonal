@@ -92,11 +92,7 @@ declare var $:any
 
       ngOnInit() {
 
-        $("body, textarea").niceScroll({
-          cursorcolor: "#151515",
-          cursorwidth: "26px",
-          background: "#f0f0f0"
-      });
+    
         this.cod_buscar = this.rutaActiva.snapshot.params.ID_PACIENTE;
         this.es = (new Configuracion()).es
 

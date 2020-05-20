@@ -663,3 +663,10 @@
     width: 500px !important;
     background-color: red !important;
   }
+  :host() .ui-calendar{
+    width: 200%;
+  }
+
+  .stilocaja{
+    width: 1400px;
+  }

@@ -46,11 +46,11 @@
     //$('[data-toggle="tooltip"]').tooltip()
 
     // :: 5.0 Nicescroll Active Code
-    $("body, textarea").niceScroll({
+  /* $("body, textarea").niceScroll({
         cursorcolor: "#151515",
         cursorwidth: "26px",
         background: "#f0f0f0"
-    });
+    });*/
 
     // :: 6.0 Owl Carousel Slider
     if ($.fn.owlCarousel) {
@@ -160,7 +160,7 @@
     }
 
     // :: 10.0 ScrollUp Active Code
-    if ($.fn.scrollUp) {
+  if ($.fn.scrollUp) {
         $.scrollUp({
             scrollSpeed: 1000,
             easingType: 'easeInOutQuart',

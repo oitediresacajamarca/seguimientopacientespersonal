@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UsuariosService } from 'src/app/servicios/usuarios.service';
 import { Router } from '@angular/router';
-import { BindingScope } from '@angular/compiler/src/render3/view/template';
 import { Button } from 'primeng/button/button';
 
 @Component({
