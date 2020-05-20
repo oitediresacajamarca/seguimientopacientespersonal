@@ -35,7 +35,8 @@
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/popper.js/dist/umd/popper.min.js" ,
               "src/assets/js/plugins.js",
-              "src/assets/js/active.js"
+              "src/assets/js/active.js"          
+              
               
             ]
           },
@@ -59,8 +60,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "9mb",
+                  "maximumError": "15mb"
                 },
                 {
                   "type": "anyComponentStyle",

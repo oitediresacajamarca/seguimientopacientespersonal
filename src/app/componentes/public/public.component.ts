@@ -24,7 +24,6 @@ export class PublicComponent implements OnInit {
   msgs: any[];
   verpanelregistro: boolean = false;
   noexistepaciente: boolean = false;
-
   fechasolicitud: Date = new Date();
   provincias: SelectItem[];
   provinciaselecionada: string;

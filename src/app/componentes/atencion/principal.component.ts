@@ -8,16 +8,20 @@
     import { Configuracion } from 'src/app/configuracion/configuracion';
     import { Atencion } from 'src/app/interfaces/atencion';
 import { RegistrarAtencionComponent } from '../registrar-atencion/registrar-atencion.component';
+declare var $:any
 
     @Component({
       selector: 'app-principal',
       templateUrl: './principal.component.html',
       styleUrls: ['./principal.component.scss']
     })
+   
     export class PrincipalComponent implements OnInit {
       sideBarOpen: boolean = false;
       @ViewChild('mpp', { static: false }) mpp: MorbilidadesPorPacienteComponent;
       verpanelregistro: boolean = false;
+      
+
       formsol: any =
         {
           "APELLIDO_PAT": "",
@@ -87,6 +91,12 @@ import { RegistrarAtencionComponent } from '../registrar-atencion/registrar-aten
       constructor(private solipac: SolicitudPacienteService, private rutaActiva: ActivatedRoute, private personser: PersonaService, private GEO: GeografiaService) { }
 
       ngOnInit() {
+
+        $("body, textarea").niceScroll({
+          cursorcolor: "#151515",
+          cursorwidth: "26px",
+          background: "#f0f0f0"
+      });
         this.cod_buscar = this.rutaActiva.snapshot.params.ID_PACIENTE;
         this.es = (new Configuracion()).es
 

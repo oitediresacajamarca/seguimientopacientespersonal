@@ -48,7 +48,7 @@
     // :: 5.0 Nicescroll Active Code
     $("body, textarea").niceScroll({
         cursorcolor: "#151515",
-        cursorwidth: "6px",
+        cursorwidth: "26px",
         background: "#f0f0f0"
     });
 
