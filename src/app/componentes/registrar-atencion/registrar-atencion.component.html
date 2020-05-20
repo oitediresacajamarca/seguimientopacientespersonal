@@ -13,18 +13,21 @@
         <div class="ui-g-6">
           <mat-card
             >NOMBRES Y APELLIDOS COMPLETOS:
+            <div class="nombrescompletos">
             {{
               datosPaciente.NOMBRES +
                 " " +
                 datosPaciente.APELLIDO_PAT +
                 " " +
                 datosPaciente.APELLIDO_MAT
-            }}</mat-card
+            }}
+          </div></mat-card
           >
         </div>
         <div class="ui-g-6">
           <mat-card
-            >NUMERO DE DOCUMENTO: {{ datosPaciente.NRO_DOCUMENTO }}
+            >NUMERO DE DOCUMENTO:
+            <div class="nombrescompletos"> {{ datosPaciente.NRO_DOCUMENTO }}</div>
           </mat-card>
         </div>
         <div class="ui-g-12">
