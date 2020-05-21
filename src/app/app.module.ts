@@ -1,14 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PaneldeseguimientoComponent } from './paneldeseguimiento/paneldeseguimiento.component';
 import { PanelModule } from 'primeng/panel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropdownModule } from 'primeng/dropdown';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DistritosService } from './servicios/distritos.service';
@@ -49,17 +48,10 @@ import { RegistrarAtencionComponent } from './componentes/registrar-atencion/reg
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { StepsModule } from 'primeng/steps';
-
-
 import { MatDividerModule, MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, MatListModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { GMapModule } from 'primeng/gmap';
-
-
-
-
 import { MatSidenavModule } from '@angular/material/sidenav';
-
 import { PublicComponent } from './componentes/public/public.component';
 import { DefaultModule } from './layouts/default/default.module';
 import { FormatofuatComponent } from './componentes/formatos/formatofuat/formatofuat.component';
@@ -71,6 +63,7 @@ import { DiagnosticosComponent } from './componentes/registrar-atencion/diagnost
 import { TratamientoComponent } from './componentes/registrar-atencion/tratamiento/tratamiento.component';
 import { FormularioVerificarComponent } from './componentes/public/formulario-verificar/formulario-verificar.component';
 
+import { UsuariosModule } from './modulos/usuarios/usuarios.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,43 +74,15 @@ import { FormularioVerificarComponent } from './componentes/public/formulario-ve
     MorbilidadesPorPacienteComponent,
     RegistrarAtencionComponent,
     InicioComponent,
-
-
-
     PublicComponent,
-
-
-
     FormatofuatComponent,
-
-
-
     TablaCieSelecComponent,
-
-
-
     ConsentimientoInformadoComponent,
-
-
-
     SistemaPadronComponent,
-
-
-
     DatosAtencionComponent,
-
-
-
     DiagnosticosComponent,
-
-
-
     TratamientoComponent,
-
-
-
     FormularioVerificarComponent
-
   ],
   imports: [
     GMapModule,
@@ -148,10 +113,8 @@ import { FormularioVerificarComponent } from './componentes/public/formulario-ve
     DefaultModule,
     MatFormFieldModule,
     LightboxModule, SidebarModule, CardModule,
-    MatCheckboxModule
-
-
-
+    MatCheckboxModule,
+    UsuariosModule
   ],
   providers: [DistritosService, ConfirmationService, MessageService],
   bootstrap: [AppComponent]
