@@ -12,10 +12,10 @@ export class UsuariosService {
  
   login(usu:string,clave:string){
     let consulta={
-    "usuario":usu,
+    "username":usu,
     "clave":clave
 
     }
-  return  this.http.post<any>(environment.ipmicroservicios+'usuarios/login/',{root:consulta});
+  return  this.http.post<any>('http://localhost:3000/usuarios/',{root:consulta});
   }
 }
