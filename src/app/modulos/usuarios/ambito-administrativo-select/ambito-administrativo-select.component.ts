@@ -33,7 +33,7 @@ export class AmbitoAdministrativoSelectComponent implements OnInit {
     tipo_ambito: "REGION",
     peso: 600000000000,
     nivel: Nivel.RED,
-    NOMBRE_IPRES: "",
+    NOMBRE_IPRESS: "",
     NOMBRE_MICRORED: "",
     NOMBRE_RED: "",
     NOMBRE_SUBREGION: ""
@@ -82,6 +82,8 @@ export class AmbitoAdministrativoSelectComponent implements OnInit {
     this.ambitoSelect.nivel = Nivel.SREGION;
     this.ambitoSelect.peso = e.value * Math.pow(10, this.ambitoSelect.nivel);
     this.ambitoSelect.NOMBRE_SUBREGION =    this.subregiones.find(sub=>sub.value==e.value).label;
+    this.ambitoSelect.NOMBRE_RED="";
+    
 
   }
   cambioRed(e) {
@@ -101,6 +103,7 @@ export class AmbitoAdministrativoSelectComponent implements OnInit {
       this.ambitoSelect.nivel = Nivel.RED;
       this.ambitoSelect.peso = this.ambitoSelect.COD_SUBREGION * Math.pow(10, Nivel.SREGION) + this.ambitoSelect.COD_RED * Math.pow(10, Nivel.RED)
       this.ambitoSelect.NOMBRE_RED =   this.redes_filtradas.find(sub=>sub.value==e.value).label;
+     
     })
 
   }
@@ -135,14 +138,32 @@ export class AmbitoAdministrativoSelectComponent implements OnInit {
     this.ambitoSelect.peso = this.ambitoSelect.COD_SUBREGION * Math.pow(10, Nivel.SREGION)
       + this.ambitoSelect.COD_RED * Math.pow(10, Nivel.RED) + this.ambitoSelect.COD_MICRORED * Math.pow(10, Nivel.MICRORED)
       + this.ambitoSelect.COD_IPRESS * Math.pow(10, 0);
-    this.ambitoSelect.NOMBRE_IPRES =   this.ipresses.find(sub=>sub.value==e.value).label;
+    this.ambitoSelect.NOMBRE_IPRESS =   this.ipresses.find(sub=>sub.value==e.value).label;
     console.log(this.ambitoSelect)
 
 
   }
   ambitoSelecionado(){
  
-    this.selecionoAmbito.emit(this.ambitoSelect);
+    let sel={}
+    Object.assign(sel,this.ambitoSelect)
+    this.selecionoAmbito.emit(sel);
+    this.ambitoSelect={
+      COD_IPRESS: 0,
+      COD_MICRORED: 0,
+      COD_RED: 0,
+      COD_SUBREGION: 0,
+      cod_ambito: "06",
+      tipo_ambito: "REGION",
+      peso: 600000000000,
+      nivel: Nivel.RED,
+      NOMBRE_IPRESS: "",
+      NOMBRE_MICRORED: "",
+      NOMBRE_RED: "",
+      NOMBRE_SUBREGION: ""
+    }
+   
+    
 
   }
 

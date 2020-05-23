@@ -9,7 +9,7 @@ export interface AmbitoInterface {
     COD_SUBREGION: number,
     peso:number,
     nivel:Nivel,
-    NOMBRE_IPRES:string,
+    NOMBRE_IPRESS:string,
     NOMBRE_MICRORED:string,
     NOMBRE_RED:string,
     NOMBRE_SUBREGION:string,

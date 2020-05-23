@@ -7,15 +7,23 @@ import { environment } from 'src/environments/environment';
 })
 export class UsuariosService {
 
-  constructor(private http:HttpClient) { }
- 
- 
-  login(usu:string,clave:string){
-    let consulta={
-    "username":usu,
-    "clave":clave
+  constructor(private http: HttpClient) { }
+
+
+  login(usu: string, clave: string) {
+    let consulta = {
+      "username": usu,
+      "clave": clave
 
     }
-  return  this.http.post<any>('http://localhost:3000/usuarios/',{root:consulta});
+    return this.http.post<any>('http://localhost:3000/usuarios/', { root: consulta });
   }
+  verificar(username: string) {
+    return this.http.post<any>('http://localhost:3000/usuarios/verifica', { username: username });
+  }
+  nuevo(nuevo: any) {
+    
+    return this.http.post<any>('http://localhost:3000/usuarios/nuevo', nuevo);
+  }
+
 }

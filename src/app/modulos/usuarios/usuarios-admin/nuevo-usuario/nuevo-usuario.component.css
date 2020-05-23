@@ -34,5 +34,11 @@
   ::ng-deep .ui-corner-all{
     border-radius: 8px !important;
 }
+.usuario{
+    font-size: 22px;
+    color: blue;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: inline;
+}
   
 

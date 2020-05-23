@@ -1,4 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { PersonaService } from 'src/app/servicios/servicios/persona.service';
+import { UsuariosService } from 'src/app/servicios/usuarios.service';
+var ngfaker = require('ng-faker');
 
 @Component({
   selector: 'app-nuevo-usuario',
@@ -7,32 +11,140 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class NuevoUsuarioComponent implements OnInit {
 
-  constructor() { }
+  constructor(private persona: PersonaService, private usu: UsuariosService) { }
   @Input()
-  verNuevoUsuarios:boolean=false;
-  colsambitos:any[];
-  ambitoelegidos:any[];
+  verNuevoUsuarios: boolean = false;
+  colsambitos: any[];
+  ambitoelegidos: any[] = [];
+  numdocbuscar: string;
+  avanceusuario: number = 0
+  datgenerales: any = {
+    numdoc: "",
+    apellidopaterno: "",
+    nombre: "",
+    apellidomaterno: "",
+    telef: "",
+    correo: "",
+
+  };
+
+
+
+
+
+  usuariogen: string;
+  clavegen: string;
+
 
   ngOnInit() {
-    this.colsambitos=[
-      {header:"Subregion",
-      field:"subregion"},
-      {header:"RED",
-      field:"red"},
-      {header:"MICRORED",
-      field:"microred"},
-      {header:"ESTABLECIMIENTO",
-      field:"establecimiento"}
+    this.colsambitos = [
+      {
+        header: "Subregion",
+        field: "NOMBRE_SUBREGION"
+      },
+      {
+        header: "RED",
+        field: "NOMBRE_RED"
+      },
+      {
+        header: "MICRORED",
+        field: "NOMBRE_MICRORED"
+      },
+      {
+        header: "ESTABLECIMIENTO",
+        field: "NOMBRE_IPRESS"
+      }
 
     ]
   }
 
-  buscarPersonal($event){
+  buscarPersonal($event) {
+    this.persona.devolverPersonaTrabajador(this.numdocbuscar).subscribe((datos) => {
+
+      if (datos.respuesta[0].ID_PERSONA == 0) {
+
+
+      } else {
+        this.datgenerales.numdoc = datos.respuesta[0].NRO_DOCUMENTO;
+        this.datgenerales.nombre = datos.respuesta[0].NOMBRES;
+        this.datgenerales.apellidopaterno = datos.respuesta[0].APELLIDO_PAT;
+        this.datgenerales.apellidomaterno = datos.respuesta[0].APELLIDO_MAT;
+        //  this.datgenerales =datos.respuesta[0].DIRECCION
+        this.datgenerales.telef = datos.respuesta[0].TELEFONO
+        this.datgenerales.correo = datos.respuesta[0].CORREO
+
+
+
+      }
+    })
 
   }
-  aniadirAmbito(e){
-    console.log(e);
+  aniadirAmbito(e) {
 
+    let am = e;
+
+    this.ambitoelegidos.push(am)
+
+
+  }
+
+  generarContrasenia(seed: number = 4) {
+    this.avanceusuario = 0
+    this.avanceusuario = 30;
+
+    this.usuariogen = this.datgenerales.nombre.slice(0, 1) +
+      this.datgenerales.apellidopaterno + this.datgenerales.apellidomaterno.slice(0, 1);
+    this.clavegen = this.numdocbuscar.slice(0, seed) + ngfaker.name.firstName();
+    this.usu.verificar(this.usuariogen).subscribe((dat) => {
+      if (dat.mensaje == "Existe") {
+        this.generarContrasenia(seed + 1)
+        this.avanceusuario = this.avanceusuario + 10;
+
+      } else {
+        this.avanceusuario = 100;
+      }
+    })
+
+  }
+  usuario: {
+    username: string,
+    clave: string,
+    id_persona: Number,
+    id_trabajadores: number[],
+    numero_doc: string,
+    tipo_doc: string,
+    ambitos: any,
+    establecimientos: any[],
+    ID_PROFESION: Number,
+    ID_CONDICION: Number,
+    FUNCION: string,
+    TIPO_AMBITO_GEOGRAFICO: String,
+    NOMBRES: string,
+    APELLIDO_MAT: string,
+    APELLIDO_PAT: string,
+    COD_AMBITO_ADMINISTRATIVO: Number,
+    COD_AMBITO_GEOGRAFICO: string,
+    COD_IPRESS: string,
+    CORREO: string,
+    ID_DISTRITO: string, ID_GENERO: string,
+    NOMBRE_IPRESS: string,
+    TELEFONO: string,
+    TIPO_AMBITO_ADMINISTRATIVO: string,
+    logueado: string
+
+  }
+  generarCuenta() {
+    this.usuario.numero_doc = this.numdocbuscar
+    this.usuario.username = this.usuariogen
+    this.usuario.clave = this.clavegen;
+    this.usuario.NOMBRES = this.datgenerales.nombre
+    this.usuario.APELLIDO_PAT = this.datgenerales.apellidopaterno
+    this.usuario.APELLIDO_MAT = this.datgenerales.apellidomaterno
+    this.usuario.ambitos = this.ambitoelegidos;  
+    this.usu.nuevo(this.usuario).subscribe((dat)=>{
+      console.log(dat);
+      
+    });
   }
 
 }

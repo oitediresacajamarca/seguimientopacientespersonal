@@ -15,7 +15,7 @@
       </span>
 
       <div class="ui-inputgroup contenedordatosnuevos">
-        <input id="input" type="text" style="width: 100%;" pInputText />
+        <input id="input" type="text" [(ngModel)]="numdocbuscar" style="width: 100%;" pInputText />
         <p-button label="Buscar" (onClick)="buscarPersonal($event)"></p-button>
       </div>
     </div>
@@ -23,50 +23,50 @@
     <div class="ui-g ui-g-12">
       <p-fieldset legend="Datos Generales" [toggleable]="true">
         <div class="ui-g-3 contenedordatosnuevos">
-          <span class="ui-float-label">
-            <input id="float-input" type="text" size="30" pInputText />
+          
+            <input id="float-input" [(ngModel)]="datgenerales.numdoc" type="text" size="30" pInputText />
             <label for="float-input">Numerdo de Documento</label>
-          </span>
+      
         </div>
         <div class="ui-g-3 contenedordatosnuevos">
-          <span class="ui-float-label">
-            <input id="float-input" type="text" size="30" pInputText />
+        
+            <input id="float-input" type="text" size="30"  [(ngModel)]="datgenerales.nombre" pInputText />
             <label for="float-input">Nombres</label>
-          </span>
+         
         </div>
         <div class="ui-g-3 contenedordatosnuevos">
-          <span class="ui-float-label">
-            <input id="float-input" type="text" size="30" pInputText />
+       
+            <input id="float-input" type="text" size="30" pInputText [(ngModel)]="datgenerales.apellidopaterno"/>
             <label for="float-input">Apellido Paterno</label>
-          </span>
+    
         </div>
         <div class="ui-g-3 contenedordatosnuevos">
-          <span class="ui-float-label">
-            <input id="float-input" type="text" size="30" pInputText />
+      
+            <input id="float-input" type="text" size="30" pInputText [(ngModel)]="datgenerales.apellidomaterno" />
             <label for="float-input">Apellido Materno</label>
-          </span>
+    
         </div>
       </p-fieldset>
     </div>
     <div class="ui-g ui-g-12">
         <p-fieldset legend="Datos Adicionales" [toggleable]="true">
           <div class="ui-g-4 contenedordatosnuevos">
-            <span class="ui-float-label">
-              <input id="float-input" type="text" size="30" pInputText />
+          
+              <input id="float-input" type="text" size="30" pInputText [(ngModel)]="datgenerales.correo"/>
               <label for="float-input">Correo Electronico</label>
-            </span>
+     
           </div>
           <div class="ui-g-4 contenedordatosnuevos">
-            <span class="ui-float-label">
-              <input id="float-input" type="text" size="30" pInputText />
+     
+              <input id="float-input" type="text" size="30" pInputText [(ngModel)]="datgenerales.telef"/>
               <label for="float-input">Numero de Telefono</label>
-            </span>
+          
           </div>
           <div class="ui-g-4 contenedordatosnuevos">
-            <span class="ui-float-label">
-              <input id="float-input" type="text" size="30" pInputText />
+           
+              <input id="float-input" type="text" size="30" pInputText [(ngModel)]="datgenerales.ipress"/>
               <label for="float-input">IPRESS</label>
-            </span>
+          
           </div>
           
          
@@ -91,12 +91,20 @@
                     <th *ngFor="let col of columns">
                         {{col.header}}
                     </th>
+                    <th>
+
+                    </th>
+
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-car let-columns="columns">
                 <tr>
                     <td *ngFor="let col of columns">
                             {{car[col.field]}}
+                    </td>
+                    <td>
+                      <button pButton icon="pi pi-refresh" label="Editar" class="ui-button-success" ></button>
+                      <button pButton icon="pi pi-trash" label="Eliminar" class="ui-button-danger" ></button>
                     </td>
                 </tr>
             </ng-template>
@@ -109,17 +117,16 @@
         legend="Generacion de Cuenta y Contraseña"
         [toggleable]="true"
       > <div class="ui-g-12">
-        <div class="ui-g-2"><p-button label="Generar"></p-button></div>
-        <div class="ui-g-10"><p-progressBar [value]="10"></p-progressBar></div>
+        <div class="ui-g-2"><p-button label="Generar" (onClick)="generarContrasenia()"></p-button></div>
+        <div class="ui-g-10"><p-progressBar [value]="avanceusuario"></p-progressBar></div>
         
         </div>
         <div class="ui-g-4">
         </div>
         <div class="ui-g-4">
             <p-card header="USUARIO GENERADO">
-                USUARIO: MARANA<br>
-                CONTRASENIA:ARANAR
-            
+                USUARIO: <div class="usuario">{{usuariogen}}</div> <br>
+                CONTRASENIA: <div class="usuario"> {{clavegen}}</div>            
             </p-card>
            </div>
         <div class="ui-g-4"></div>
@@ -127,20 +134,20 @@
     </div>
   </div>
   <p-footer>
-    <button
+    <p-button
       type="button"
       pButton
       icon="pi pi-check"
-      (click)="displayModal = false"
-      label="ACEPTAR"
-    ></button>
-    <button
+      (onClick)="generarCuenta()"
+      label="GENERAR USUARIO"
+    ></p-button>
+    <p-button 
       type="button"
       pButton
       icon="pi pi-times"
-      (click)="displayModal = false"
-      label="No"
+    
+      label="CANCELAR"
       class="ui-button-secondary"
-    ></button>
+    ></p-button>
   </p-footer>
 </p-dialog>
