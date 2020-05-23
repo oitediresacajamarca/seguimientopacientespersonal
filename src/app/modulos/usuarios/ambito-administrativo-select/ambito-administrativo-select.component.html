@@ -1,0 +1,40 @@
+
+    <div class="ui-g-2">
+        SUB-REGION
+        <br>
+        <p-dropdown [options]="subregiones" [(ngModel)]="sregionesSelect" 
+        placeholder="Seleccione Subregion"  [showClear]="true" (onChange)="cambioSubregion($event)"></p-dropdown>
+
+    </div>
+    <div class="ui-g-2">
+        RED
+        <br>
+        <p-dropdown [options]="redes_filtradas"  placeholder="seleccione una Red"  
+        [showClear]="true" (onChange)="cambioRed($event)"></p-dropdown>
+    </div>
+    <div class="ui-g-2">
+       MICRORED
+       <br>
+        <p-dropdown [options]="microredes"  placeholder="Seleccione una microred" 
+        (onChange)="cambioMicroRed($event)" [showClear]="true"></p-dropdown>
+    </div>
+    <div class="ui-g-2">
+        ESTABLECIMIENTO
+        <br>
+        <p-dropdown [options]="ipresses"  
+        placeholder="Selecione una Ipress" 
+         [showClear]="true"
+         (onChange)=" cambioEstablecimiento($event)"
+        ></p-dropdown>
+   
+    </div>
+  
+    <div class="ui-g-2">
+        <Br>
+        <p-button label="Agregar" (onClick)="ambitoSelecionado()"></p-button>
+
+    </div>
+    
+    <div class="ui-g-3"></div>
+    <div class="ui-g-3"></div>
+

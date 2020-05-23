@@ -8,6 +8,7 @@ import { DefaultComponent } from './layouts/default/default.component';
 import { PublicComponent } from './componentes/public/public.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { ConsentimientoInformadoComponent } from './componentes/formatos/consentimiento-informado/consentimiento-informado.component';
+import { UsuariosAdminComponent } from './modulos/usuarios/usuarios-admin/usuarios-admin.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,10 @@ const routes: Routes = [
       path:'atencion/:NRO_DOCUMENTO/:ID_PACIENTE/:ID_SOLICITUD',
       component:PrincipalComponent
     },
+    {
+      path:'usuarios',
+      component:UsuariosAdminComponent
+    },
    
     {
       path: 'panel',
@@ -42,15 +47,13 @@ const routes: Routes = [
         {
           path:'',
           component:PrincipalComponent
-        }
+        },
+       
       ]
     },
-    {
-     
+    {    
           path:'consentimiento',
-          component:ConsentimientoInformadoComponent
-        
-       
+          component:ConsentimientoInformadoComponent      
       
 
     }

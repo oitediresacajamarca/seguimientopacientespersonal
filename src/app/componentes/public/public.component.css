@@ -8,12 +8,14 @@
     background-image: url('../../../assets/Fondo.jpg');
 }
 
-.ui-calendar{
+::ng-deep .ui-calendar{
    width: 100%; 
 }
-.ui-inputtext
+::ng-deep .ui-inputtext
 {
     text-transform: uppercase;
+    width: 100%; 
+    border-radius: 15px;
 }
 .ui-dialog-titlebar{
      font-size: 16px;

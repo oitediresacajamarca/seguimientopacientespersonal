@@ -1,0 +1,14 @@
+.contenedoruser{
+    margin-top: 20px;
+}
+::ng-deep .ui-fieldset-legend{
+    font-size: 14px  ;
+    border-width: 2px;
+ 
+}
+
+::ng-deep 
+    .ui-widget{
+    font-size: 10px  ; 
+    
+}

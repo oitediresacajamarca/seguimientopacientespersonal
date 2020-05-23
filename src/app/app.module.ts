@@ -64,6 +64,7 @@ import { TratamientoComponent } from './componentes/registrar-atencion/tratamien
 import { FormularioVerificarComponent } from './componentes/public/formulario-verificar/formulario-verificar.component';
 
 import { UsuariosModule } from './modulos/usuarios/usuarios.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,7 +83,8 @@ import { UsuariosModule } from './modulos/usuarios/usuarios.module';
     DatosAtencionComponent,
     DiagnosticosComponent,
     TratamientoComponent,
-    FormularioVerificarComponent
+    FormularioVerificarComponent,
+   
   ],
   imports: [
     GMapModule,

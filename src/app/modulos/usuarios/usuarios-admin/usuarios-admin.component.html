@@ -1,0 +1,43 @@
+<div class="ui-g contenedoruser">
+  <div class="ui-g-12">
+    <div class="ui-inputgroup">
+      <input
+        type="text"
+        pInputText
+        placeholder="Nombre de Usuario,Dni,Nombres personales"
+        style="width: 100%;"
+      />
+      <p-button label="Buscar"></p-button>
+    </div>
+  </div>
+  <div class="ui-g-12" id="contenedo" #contenedo>
+    <p-fieldset legend="Listado de Usuarios">
+      <p-table [columns]="columnasUsuarios" [value]="usuariosDatos">
+        <ng-template pTemplate="caption">
+            <div class="ui-helper-clearfix" style="text-align: left">
+                <button type="button" pButton icon="pi pi-file-o" iconPos="left" label="CSV"  style="margin-right: 0.5em;"></button>
+                <button type="button" pButton icon="pi pi-file-excel" iconPos="left" label="EXCEL"  style="margin-right: 0.5em;" class="ui-button-success"></button>
+                <button type="button" pButton icon="pi pi-file-pdf" iconPos="left" label="PDF"  class="ui-button-warning"></button>
+                <button type="button" pButton icon="pi pi-plus" iconPos="left" label="NUEVO USUARIO"  style="float:right" (click)="formN.verNuevoUsuarios=true"></button>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th *ngFor="let col of columns">
+              {{ col.header }}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-car let-columns="columns">
+          <tr>
+            <td *ngFor="let col of columns">
+              {{ car[col.field] }}
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-fieldset>
+  </div>
+</div>
+<app-nuevo-usuario #formN></app-nuevo-usuario>
+
