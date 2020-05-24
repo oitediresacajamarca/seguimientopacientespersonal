@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { PersonaService } from 'src/app/servicios/servicios/persona.service';
 import { UsuariosService } from 'src/app/servicios/usuarios.service';
+import { UsuarioBase } from '../../interfaces/usuario-base';
 var ngfaker = require('ng-faker');
 
 @Component({
@@ -12,6 +13,9 @@ var ngfaker = require('ng-faker');
 export class NuevoUsuarioComponent implements OnInit {
 
   constructor(private persona: PersonaService, private usu: UsuariosService) { }
+
+
+  logueado: string;
   @Input()
   verNuevoUsuarios: boolean = false;
   colsambitos: any[];
@@ -106,34 +110,10 @@ export class NuevoUsuarioComponent implements OnInit {
     })
 
   }
-  usuario: {
-    username: string,
-    clave: string,
-    id_persona: Number,
-    id_trabajadores: number[],
-    numero_doc: string,
-    tipo_doc: string,
-    ambitos: any,
-    establecimientos: any[],
-    ID_PROFESION: Number,
-    ID_CONDICION: Number,
-    FUNCION: string,
-    TIPO_AMBITO_GEOGRAFICO: String,
-    NOMBRES: string,
-    APELLIDO_MAT: string,
-    APELLIDO_PAT: string,
-    COD_AMBITO_ADMINISTRATIVO: Number,
-    COD_AMBITO_GEOGRAFICO: string,
-    COD_IPRESS: string,
-    CORREO: string,
-    ID_DISTRITO: string, ID_GENERO: string,
-    NOMBRE_IPRESS: string,
-    TELEFONO: string,
-    TIPO_AMBITO_ADMINISTRATIVO: string,
-    logueado: string
 
-  }
   generarCuenta() {
+   
+    /*
     this.usuario.numero_doc = this.numdocbuscar
     this.usuario.username = this.usuariogen
     this.usuario.clave = this.clavegen;
@@ -144,7 +124,7 @@ export class NuevoUsuarioComponent implements OnInit {
     this.usu.nuevo(this.usuario).subscribe((dat)=>{
       console.log(dat);
       
-    });
+    });*/
   }
 
 }

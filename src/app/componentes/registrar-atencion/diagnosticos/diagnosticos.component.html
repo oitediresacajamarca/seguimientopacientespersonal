@@ -15,9 +15,24 @@
             (blur)="cargarCieDesc($event)"
           />
           <label for="COD_DIAG">Codigo de Diagnostico</label>
+          
         </span>
+       
       </div>
-      <div class="ui-g-4">
+      <div class="ui-g-1">
+        <p-button
+        icon="pi pi-search"
+        (onClick)="op1.show($event)"
+      
+      ></p-button>
+
+      <p-overlayPanel #op1>
+        <ng-template pTemplate>
+          <app-tabla-morbilidades></app-tabla-morbilidades>
+        </ng-template>
+      </p-overlayPanel>
+      </div>
+      <div class="ui-g-3">
         <span class="ui-float-label">
           <input
             id="DESC_DIAG"
@@ -84,7 +99,8 @@
                 color="primary"
                 mat-mini-fab
                 aria-label="Example icon-button with a heart icon"
-             (click)="eliminarDiagnosticoPaciente(dianospac)" >
+                (click)="eliminarDiagnosticoPaciente(dianospac)"
+              >
                 <mat-icon>delete</mat-icon>
               </button>
             </td>

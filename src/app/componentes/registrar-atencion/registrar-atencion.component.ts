@@ -147,6 +147,7 @@ export class RegistrarAtencionComponent implements OnInit {
     this.formatofuat.horaatencion = (new Date()).getHours().toString() + ':' + (new Date()).getMinutes()
     console.log(this.form2.dianosticospac)
     this.formatofuat.diagnosticos=[];
+
     this.form2.dianosticospac.forEach(element => {
       let diagnos: Diagnostico={cod_diag:"",item:1,tipo_diag:"",valor_lab:"",desc_diag:""}
       diagnos.item=element.item;
@@ -179,19 +180,17 @@ export class RegistrarAtencionComponent implements OnInit {
     doc.setFontSize(12);
     doc.text("ANEXO 3: FORMATO ÚNICO DE ATENCIÓN DE TELEORIENTACIÓN Y TELEMONITOREO - FUAT"
       , 20
-      , 35,
-      { lineHeightFactor: 0.5 });
+      , 35);
+      
 
     doc.text(" FORMATO ÚNICO DE ATENCIÓN DE TELEORIENTACIÓN Y"
       , 30
-      , 55,
-      { lineHeightFactor: 0.5 });
+      , 55);
 
 
     doc.text(" TELEMONITOREO - FUAT"
       , 90
-      , 65,
-      { lineHeightFactor: 0.5 });
+      , 65);
 
     //pdf.addImage("http://localhost:4200/assets/FUATFORMATO.jpg", "JPEG", 15, 40, 180, 180);
 
@@ -207,25 +206,43 @@ export class RegistrarAtencionComponent implements OnInit {
     doc.text("Telemonitoreo"
       , 250
       , 85)
-
+ 
     doc.cell(30, 87, 380, 16, "1. DATOS DEL PACIENTE")
-    doc.cell(30, 103, 100, 50, "Nombre de IPRESS más cercana al domicilio (Establecimiento de Salud y/o Servicio Médico de Apoyo)")
-    doc.cell(130, 103, 80, 50, this.formatofuat.nombreipress)
-    doc.cell(210, 103, 50, 50, "Fecha que solicita el servicio")
-    doc.cell(310, 103, 50, 50, "Hora que solicita el servicio")
-    doc.cell(30, 153, 100, 16, "Nombres y Apellidos")
-    doc.cell(130, 153, 280, 16, this.formatofuat.nombresypaciente)
-    doc.cell(30, 169, 30, 16, "Edad")
-    doc.cell(60, 169, 70, 16, " ")
-    doc.cell(130, 169, 30, 16, "Sexo")
-    doc.cell(160, 169, 25, 16, "M")
-    doc.cell(185, 169, 25, 16, "F")
-    doc.cell(210, 169, 19, 16, "DNI")
-    doc.cell(229, 169, 29, 16, " ")
-    doc.cell(258, 169, 152, 16, "TIPO DE SEGURO DEL PACIENTE")
+    doc.cell(30, 103, 100, 45, "Nombre de IPRESS más   ")
+    doc.text("cercana al domicilio ",
+    30, 125)
+    doc.text("(Establecimiento de Salud y/o)",
+    30, 138)
+    doc.text("Servicio Médico de Apoyo",
+    30, 146)
+    
+    doc.cell(130, 103, 80, 45, this.formatofuat.nombreipress)
+    
+    doc.cell(210, 103, 50, 45, "Fecha que")
+    doc.text(212, 125, "solicita el")
+    doc.text(212, 138, "servicio")
+
+    doc.cell(310, 103, 50, 45, "Hora que ")
+    doc.text(310, 125, "solicita el")
+    doc.text(310, 138, "servicio")
+
+    doc.cell(30, 148, 100, 14, "Nombres y Apellidos")
+    doc.cell(130, 148, 280, 14, this.formatofuat.nombresypaciente)
+  
+    doc.cell(30, 162, 30, 16, "Edad")
+    doc.cell(60, 162, 70, 16, " ")
+    doc.cell(130, 162, 30, 16, "Sexo")
+    doc.cell(160, 162, 25, 16, "M")
+    doc.cell(185, 162, 25, 16, "F")
+    doc.cell(210, 162, 19, 16, "DNI")
+    doc.cell(229, 162, 29, 16, " ")
+    doc.cell(258, 162, 152, 16, "TIPO DE SEGURO DEL PACIENTE")
+ 
     doc.setFontSize(8);
-    doc.cell(30, 185, 160, 18, "(*) En caso de no poseer DNI, indicar Pasaporte, Carné de extranjería o Cédula de Identidad.")
-    doc.cell(190, 185, 220, 18, " ")
+    doc.cell(30, 178, 160, 18, " ")
+    doc.cell(190, 178, 220, 18, " ")
+    doc.text(30, 183, "(*) En caso de no poseer DNI, indicar Pasaporte, Carné de extranjería o Cédula de Identidad.",{align:"justify",maxWidth:160})
+      
     doc.cell(30, 203, 380, 16, "II. ATENCIÓN DEL SERVICIO DE TELEORIENTACIÓN O TELEMONITOREO")
     doc.cell(30, 219, 380, 14, "2.1 RESUMEN DE LA SOLICITUD")
     doc.cell(30, 233, 80, 16, "Nuevo")
@@ -235,30 +252,39 @@ export class RegistrarAtencionComponent implements OnInit {
     doc.cell(260, 233, 50, 16, "1")
     doc.cell(310, 233, 50, 16, "2")
     doc.cell(360, 233, 50, 16, ">2")
+     
     doc.cell(30, 249, 380, 16, "Especificar especialidad(es):")
     doc.cell(30, 265, 80, 16, "Otros")
     doc.cell(110, 265, 20, 16, " ")
     doc.cell(130, 265, 280, 16, "Especificar")
-    doc.cell(30, 281, 380, 16, "2.2 BREVE RESUMEN CLÍNICO (Antecedentes de importancia, enfermedad actual, anamnesis, examen físico, impresión diagnóstica, tratamiento actual, exámenes de apoyo al diagnóstico) PA mmHg FC x' FR x' Tº x'")
-    doc.cell(30, 297, 30, 16, "PA")
-    doc.cell(60, 297, 30, 16, this.formatofuat.examenfisico.presionarterial + " mmHg")
-    doc.cell(90, 297, 30, 16, "FC")
-    doc.cell(120, 297, 30, 16, this.formatofuat.examenfisico.frecuenciacardiaca + " X'")
-    doc.cell(150, 297, 30, 16, " FR")
-    doc.cell(180, 297, 30, 16, this.formatofuat.examenfisico.frecuenciarespi + "X'")
-    doc.cell(210, 297, 30, 16, "T")
-    doc.cell(240, 297, 30, 16, this.formatofuat.examenfisico.temperatura + " X'")
-    doc.cell(270, 297, 30, 16, "SAT O2")
-    doc.cell(300, 297, 30, 16, this.formatofuat.examenfisico.temperatura + " %")
-    doc.cell(330, 297, 30, 16, "Peso")
-    doc.cell(360, 297, 30, 16, this.formatofuat.examenfisico.peso + " Kg")
-    doc.cell(390, 297, 30, 16, this.formatofuat.examenfisico.talla + "Talla")
+  
+    doc.cell(30, 281, 380, 16, " ")
+    doc.text(30, 288, "2.2 BREVE RESUMEN CLÍNICO (Antecedentes de importancia, enfermedad actual, anamnesis, examen físico, impresión diagnóstica, tratamiento actual, exámenes de apoyo al diagnóstico) PA mmHg FC x' FR x' Tº x'",{align:"justify",maxWidth:380})
+      
+    
+    doc.setFontSize(8);   
+    doc.cell(30, 297, 25, 16, "PA")
+    doc.cell(55, 297, 25, 16, this.formatofuat.examenfisico.presionarterial + " mmHg")
+    doc.cell(80, 297, 25, 16, "FC")
+    doc.cell(105, 297, 25, 16, this.formatofuat.examenfisico.frecuenciacardiaca + " X'")
+    doc.cell(130, 297, 25, 16, " FR")
+    doc.cell(155, 297, 25, 16, this.formatofuat.examenfisico.frecuenciarespi + "X'")
+    doc.cell(180, 297, 25, 16, "T")
+    doc.cell(205, 297, 25, 16, this.formatofuat.examenfisico.temperatura + " X'")
+    doc.cell(230, 297, 25, 16, "SAT O2")
+    doc.cell(255, 297, 25, 16, this.formatofuat.examenfisico.temperatura + " %")
+    doc.cell(280, 297, 25, 16, "Peso")
+    doc.cell(305, 297, 40, 16, this.formatofuat.examenfisico.peso + " Kg")
+    doc.cell(345, 297, 30, 16, this.formatofuat.examenfisico.talla + "Talla")
+    doc.cell(375, 297, 35, 16, this.formatofuat.examenfisico.talla + " ")
+   
     doc.cell(30, 313, 380, 10, "Descripcion de Caso")
     doc.cell(30, 323, 380, 10, "*Para llenar cuando se requiera información complementaria solicitada al paciente: SI LO SUPIERA")
     doc.cell(30, 333, 190, 10, "2.3 Tratamiento actual")
     doc.cell(220, 333, 190, 10, "2.4 Examenes de Apoyo al diagnostico")
     doc.cell(30, 343, 190, 10, " ")
     doc.cell(220, 343, 190, 10, " ")
+  
     doc.cell(30, 353, 380, 18, "3. MOTIVO DE LA TELECONSULTA")
     doc.cell(30, 371, 20, 16, "1")
     doc.cell(50, 371, 360, 16, " ")
@@ -269,19 +295,33 @@ export class RegistrarAtencionComponent implements OnInit {
     doc.cell(110, 421, 60, 36, " ")
     doc.cell(170, 421, 80, 18, "CODIGO UNICO RENIPRESS")
     doc.cell(250, 421, 160, 18, " ")
-    doc.cell(170, 439, 80, 18, "FECHA Y HORA DE TELEMONITOREO")
+    doc.cell(170, 439, 80, 18, " ")
+    doc.text(170, 446, " FECHA Y HORA DE TELEMONITOREO ",{align:"justify",maxWidth:70})
+      
     doc.cell(250, 439, 160, 18, " ")
     doc.cell(30, 457, 380, 18, "5.DIAGNÓSTICO (de acuerdo a las competencias del profesional que brinda el servicio)")
     doc.cell(30, 475, 20, 16, "N")
     doc.cell(50, 475, 50, 16, "CIE 10")
     doc.cell(100, 475, 310, 16, "DIAGNOSTICO")
-    doc.cell(30, 491, 20, 16, "1")
+
+    if(this.formatofuat.diagnosticos.length==0){       
+      doc.cell(30, 491, 20, 16, "1")    
+      doc.cell(50, 491, 50, 16," ")
+      doc.cell(100, 491, 310, 16, " ")
+      }
+
+    if(this.formatofuat.diagnosticos.length==1){       
+    doc.cell(30, 491, 20, 16, "1")    
     doc.cell(50, 491, 50, 16, this.formatofuat.diagnosticos[0].cod_diag)
     doc.cell(100, 491, 310, 16,this.formatofuat.diagnosticos[0].desc_diag)
+    }
+    if(this.formatofuat.diagnosticos.length==2){    
     doc.cell(30, 507, 20, 16, "2")
     doc.cell(50, 507, 50, 16, this.formatofuat.diagnosticos[1].cod_diag)
     doc.cell(100, 507, 310, 16, this.formatofuat.diagnosticos[1].desc_diag)
+    }
     doc.cell(30, 523, 380, 18, "6. RECOMENDACIONES / PLAN / INDICACIONES (de acuerdo a las competencias del profesional que brinda el servicio)")
+    /*
     doc.cell(30, 541, 20, 16, "1")
     doc.cell(50, 541, 360, 16, " ")
     doc.cell(30, 557, 20, 16, "2")
@@ -294,6 +334,7 @@ export class RegistrarAtencionComponent implements OnInit {
     doc.cell(30, 621, 90, 16, "N° Colegio profesional/RNE:")
     doc.cell(120, 621, 90, 16, " ")
     doc.cell(210, 589, 200, 48, " ")
+    */
 
 
 

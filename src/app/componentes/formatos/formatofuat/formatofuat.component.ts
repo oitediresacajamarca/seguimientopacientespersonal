@@ -57,14 +57,7 @@ export class FormatofuatComponent implements OnInit{
 
   devolverListaCie(){
 
-    this.morbilidad.devolverMorbilidades().subscribe(
-          (datos)=>{
-            this.list1=datos.respuesta;
-            
-          }
-
-
-          )
+  
       }
 
   aniadediag(e){

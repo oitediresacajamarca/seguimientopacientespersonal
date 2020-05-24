@@ -76,6 +76,9 @@ export class DiagnosticosComponent implements OnInit {
     this.diagnostabla.splice(lugar,1)
 
   }
+  mostrar(){
+    alert()
+  }
 
 
 }

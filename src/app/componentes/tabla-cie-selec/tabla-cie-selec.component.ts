@@ -16,9 +16,19 @@ selectedCie:any;
 
   ngOnInit() {
     this.items=[{label:'Agregar Diagnostico'}]
-    this.morb.devolverMorbilidades().subscribe((datos)=>{
-      this.cies=datos.respuesta;
+    if(this.morb.lista==null){
+    this.morb.devolverMorbilidades()
+    this.morb.eventocargo.subscribe((dato)=>{
+      this.cies=dato;
     })
+  }
+  else{
+        this.cies=this.morb.lista;
+
+  }
+
+      
+    
   }
 
 }

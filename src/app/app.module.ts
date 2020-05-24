@@ -62,6 +62,7 @@ import { DatosAtencionComponent } from './componentes/registrar-atencion/datos-a
 import { DiagnosticosComponent } from './componentes/registrar-atencion/diagnosticos/diagnosticos.component';
 import { TratamientoComponent } from './componentes/registrar-atencion/tratamiento/tratamiento.component';
 import { FormularioVerificarComponent } from './componentes/public/formulario-verificar/formulario-verificar.component';
+import {OverlayPanelModule} from 'primeng/overlaypanel';
 
 import { UsuariosModule } from './modulos/usuarios/usuarios.module';
 
@@ -116,7 +117,8 @@ import { UsuariosModule } from './modulos/usuarios/usuarios.module';
     MatFormFieldModule,
     LightboxModule, SidebarModule, CardModule,
     MatCheckboxModule,
-    UsuariosModule
+    UsuariosModule,
+    OverlayPanelModule
   ],
   providers: [DistritosService, ConfirmationService, MessageService],
   bootstrap: [AppComponent]

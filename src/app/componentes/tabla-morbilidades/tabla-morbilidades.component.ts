@@ -47,16 +47,18 @@
 
           ngOnInit() {
             this.customers = [];
-        
-            this.morb.devolverMorbilidades().subscribe((dat) => {
-              this.customers = dat.respuesta;
-              
 
-              this.loading = false;
+            if (this.morb.lista == null) {
+              this.morb.devolverMorbilidades();
+              this.morb.eventocargo.subscribe((dat) => {
+                this.customers = dat;
+              })
+            } else {
+              this.customers = this.morb.lista;
 
+            }
 
-              console.log(dat);
-            })
+            this.loading = false;
           }
 
 

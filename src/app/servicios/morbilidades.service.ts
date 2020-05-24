@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { MorbilidadesTablaItem } from '../interfaces/morbilidades-tabla-item';
@@ -8,11 +8,20 @@ import { MorbilidadesTablaItem } from '../interfaces/morbilidades-tabla-item';
 })
 export class MorbilidadesService {
   cad: string[];
+  eventocargo= new EventEmitter<any>()
+  lista:any=null
+
 
   constructor(private http: HttpClient) { }
 
   devolverMorbilidades() {
-    return this.http.get<any>(environment.ipmicroservicios + 'CIE/');
+    
+    if (this.lista == null) {
+      this.http.get<any>(environment.ipmicroservicios + 'CIE/').subscribe((dat) => { this.eventocargo.emit( dat.respuesta) 
+      this.lista=dat.respuesta;
+      });
+    }
+ 
 
   }
 
