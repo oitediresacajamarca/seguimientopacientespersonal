@@ -1,5 +1,5 @@
 export interface UsuarioBase {
-    usuario:{
+
     username: string,
     clave: string,
     id_persona: Number,
@@ -23,5 +23,5 @@ export interface UsuarioBase {
     NOMBRE_IPRESS: string,
     TELEFONO: string,
     TIPO_AMBITO_ADMINISTRATIVO: string,
-    logueado: string}
+    logueado: string
 }

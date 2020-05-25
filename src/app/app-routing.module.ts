@@ -9,11 +9,14 @@ import { PublicComponent } from './componentes/public/public.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { ConsentimientoInformadoComponent } from './componentes/formatos/consentimiento-informado/consentimiento-informado.component';
 import { UsuariosAdminComponent } from './modulos/usuarios/usuarios-admin/usuarios-admin.component';
+import { LoginComponent } from './modulos/usuarios/login/login.component';
 
 
 const routes: Routes = [
   {path:'PRIMERO',component:PaneldeseguimientoComponent},
   {path:'',component:InicioComponent},
+  {path:'login',component:LoginComponent},
+
   {path:'layout',component:DefaultComponent},
   {path:'personal.jsp',component:AccesoComponent},
   {path:'atencion/:NRO_DOCUMENTO/:ID_PACIENTE/:ID_SOLICITUD',component:PrincipalComponent},

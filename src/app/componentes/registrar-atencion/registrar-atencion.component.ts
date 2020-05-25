@@ -8,6 +8,8 @@ import { Atencion } from 'src/app/interfaces/atencion';
 import { FormatoFuat } from 'src/app/interfaces/formato-fuat';
 import * as jsPDF from 'jspdf'
 import { Diagnostico } from 'src/app/interfaces/diagnostico';
+import { FuatService } from 'src/app/servicios/fuat.service';
+import { FuatServicioService } from 'src/app/servicios/formatos/fuat-servicio.service';
 
 
 @Component({
@@ -36,8 +38,10 @@ export class RegistrarAtencionComponent implements OnInit {
   @Input() atencion: Atencion
   @Input() datosPaciente: any
   formatofuat: FormatoFuat
+  fua:string
 
-  constructor(private aten: AtencionService, private confirmationService: ConfirmationService, private messageService: MessageService) { }
+  constructor(private aten: AtencionService, private confirmationService: ConfirmationService,
+    private fuatservicio:FuatServicioService, private messageService: MessageService) { }
 
   ngOnInit() {
     this.sesion = JSON.parse(localStorage.getItem('datos'));
@@ -160,7 +164,7 @@ export class RegistrarAtencionComponent implements OnInit {
 
     //this.formatofuat.diagnosticos = this.form2.dianosticospac
 
-
+this.fuatservicio.mostrarFuat(this.formatofuat);
 
 
 

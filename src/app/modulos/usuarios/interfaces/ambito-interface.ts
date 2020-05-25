@@ -13,6 +13,7 @@ export interface AmbitoInterface {
     NOMBRE_MICRORED:string,
     NOMBRE_RED:string,
     NOMBRE_SUBREGION:string,
+    peso_sup:number
 
    
 

@@ -3,6 +3,10 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { PersonaService } from 'src/app/servicios/servicios/persona.service';
 import { UsuariosService } from 'src/app/servicios/usuarios.service';
 import { UsuarioBase } from '../../interfaces/usuario-base';
+import { Usuario } from '../../clases/usuario';
+
+import { Message } from 'primeng/api/message';
+import { ConfirmationService } from 'primeng/api';
 var ngfaker = require('ng-faker');
 
 @Component({
@@ -12,9 +16,9 @@ var ngfaker = require('ng-faker');
 })
 export class NuevoUsuarioComponent implements OnInit {
 
-  constructor(private persona: PersonaService, private usu: UsuariosService) { }
+  constructor(private persona: PersonaService, private usu: UsuariosService, private confirmationService: ConfirmationService) { }
 
-
+  msgs: Message[] = [];
   logueado: string;
   @Input()
   verNuevoUsuarios: boolean = false;
@@ -112,19 +116,43 @@ export class NuevoUsuarioComponent implements OnInit {
   }
 
   generarCuenta() {
-   
-    /*
-    this.usuario.numero_doc = this.numdocbuscar
-    this.usuario.username = this.usuariogen
-    this.usuario.clave = this.clavegen;
-    this.usuario.NOMBRES = this.datgenerales.nombre
-    this.usuario.APELLIDO_PAT = this.datgenerales.apellidopaterno
-    this.usuario.APELLIDO_MAT = this.datgenerales.apellidomaterno
-    this.usuario.ambitos = this.ambitoelegidos;  
-    this.usu.nuevo(this.usuario).subscribe((dat)=>{
-      console.log(dat);
-      
-    });*/
+
+    let usu = new Usuario()
+    usu.APELLIDO_PAT = this.datgenerales.apellidopaterno;
+    usu.APELLIDO_MAT = this.datgenerales.apellidomaterno;
+    usu.NOMBRES = this.datgenerales.nombre;
+    usu.ambitos = this.ambitoelegidos;
+    usu.username = this.usuariogen;
+    usu.clave = this.clavegen;
+    usu.numero_doc = this.numdocbuscar
+
+    this.confirmationService.confirm({
+      message: 'ESTA SEGURO DE CREAR EL USUARIO',
+      header: 'CONFIRMCION',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.usu.nuevo(usu).subscribe((dat) => {
+          console.log(dat);
+          this.usuarioCreado();
+
+
+        });
+
+
+
+      },
+      reject: () => {
+
+      }
+    });
+
+
+
+
+  }
+  usuarioCreado() {
+    this.verNuevoUsuarios = false;
+ 
   }
 
 }

@@ -10,19 +10,20 @@ export class UsuariosService {
   constructor(private http: HttpClient) { }
 
 
-  login(usu: string, clave: string) {
+  login(usu: string, clave: string,peso:number) {
     let consulta = {
       "username": usu,
-      "clave": clave
+      "clave": clave,
+      "peso":peso
 
     }
-    return this.http.post<any>('http://localhost:3000/usuarios/', { root: consulta });
+    return this.http.post<any>('http://localhost:3000/usuarios/login', { root: consulta });
   }
   verificar(username: string) {
     return this.http.post<any>('http://localhost:3000/usuarios/verifica', { username: username });
   }
   nuevo(nuevo: any) {
-    
+    console.log(nuevo);
     return this.http.post<any>('http://localhost:3000/usuarios/nuevo', nuevo);
   }
 

@@ -22,7 +22,7 @@ export class AmbitoAdministrativoSelectComponent implements OnInit {
   redes_filtradas: any[];
   ipresses: any[];
   @Output()
-  selecionoAmbito :EventEmitter<any>=new EventEmitter()
+  selecionoAmbito: EventEmitter<any> = new EventEmitter()
 
   ambitoSelect: AmbitoInterface = {
     COD_IPRESS: 0,
@@ -36,7 +36,8 @@ export class AmbitoAdministrativoSelectComponent implements OnInit {
     NOMBRE_IPRESS: "",
     NOMBRE_MICRORED: "",
     NOMBRE_RED: "",
-    NOMBRE_SUBREGION: ""
+    NOMBRE_SUBREGION: "",
+    peso_sup: 700000000000,
   }
   ngOnInit() {
 
@@ -81,9 +82,10 @@ export class AmbitoAdministrativoSelectComponent implements OnInit {
     this.ambitoSelect.COD_SUBREGION = e.value;
     this.ambitoSelect.nivel = Nivel.SREGION;
     this.ambitoSelect.peso = e.value * Math.pow(10, this.ambitoSelect.nivel);
-    this.ambitoSelect.NOMBRE_SUBREGION =    this.subregiones.find(sub=>sub.value==e.value).label;
-    this.ambitoSelect.NOMBRE_RED="";
-    
+    this.ambitoSelect.peso_sup = (e.value + 1) * Math.pow(10, this.ambitoSelect.nivel);
+    this.ambitoSelect.NOMBRE_SUBREGION = this.subregiones.find(sub => sub.value == e.value).label;
+    this.ambitoSelect.NOMBRE_RED = "";
+
 
   }
   cambioRed(e) {
@@ -101,9 +103,10 @@ export class AmbitoAdministrativoSelectComponent implements OnInit {
       this.ambitoSelect.COD_RED = e.value;
       this.ambitoSelect.cod_ambito = e.value;
       this.ambitoSelect.nivel = Nivel.RED;
-      this.ambitoSelect.peso = this.ambitoSelect.COD_SUBREGION * Math.pow(10, Nivel.SREGION) + this.ambitoSelect.COD_RED * Math.pow(10, Nivel.RED)
-      this.ambitoSelect.NOMBRE_RED =   this.redes_filtradas.find(sub=>sub.value==e.value).label;
-     
+      this.ambitoSelect.peso = this.ambitoSelect.COD_SUBREGION * Math.pow(10, Nivel.SREGION) + this.ambitoSelect.COD_RED * Math.pow(10, Nivel.RED);
+      this.ambitoSelect.peso_sup = this.ambitoSelect.COD_SUBREGION * Math.pow(10, Nivel.SREGION) + (this.ambitoSelect.COD_RED + 1) * Math.pow(10, Nivel.RED)
+      this.ambitoSelect.NOMBRE_RED = this.redes_filtradas.find(sub => sub.value == e.value).label;
+
     })
 
   }
@@ -113,8 +116,13 @@ export class AmbitoAdministrativoSelectComponent implements OnInit {
     this.ambitoSelect.cod_ambito = e.value;
     this.ambitoSelect.nivel = Nivel.MICRORED;
     this.ambitoSelect.peso = this.ambitoSelect.COD_SUBREGION * Math.pow(10, Nivel.SREGION)
-      + this.ambitoSelect.COD_RED * Math.pow(10, Nivel.RED) + this.ambitoSelect.COD_MICRORED * Math.pow(10, Nivel.MICRORED)
-    console.log(this.ambitoSelect)
+      + this.ambitoSelect.COD_RED * Math.pow(10, Nivel.RED) +
+      this.ambitoSelect.COD_MICRORED * Math.pow(10, Nivel.MICRORED)
+
+    this.ambitoSelect.peso = this.ambitoSelect.COD_SUBREGION * Math.pow(10, Nivel.SREGION)
+      + this.ambitoSelect.COD_RED * Math.pow(10, Nivel.RED) +
+      (this.ambitoSelect.COD_MICRORED + 1) * Math.pow(10, Nivel.MICRORED)
+
     this.geo.devolverIpressPorMicrored(e.value).subscribe((datos) => {
 
       this.ipresses = [];
@@ -127,7 +135,7 @@ export class AmbitoAdministrativoSelectComponent implements OnInit {
         this.ipresses.push(ipress);
       });
     })
-    this.ambitoSelect.NOMBRE_MICRORED =    this.microredes.find(sub=>sub.value==e.value).label;;
+    this.ambitoSelect.NOMBRE_MICRORED = this.microredes.find(sub => sub.value == e.value).label;;
   }
 
   cambioEstablecimiento(e) {
@@ -138,17 +146,20 @@ export class AmbitoAdministrativoSelectComponent implements OnInit {
     this.ambitoSelect.peso = this.ambitoSelect.COD_SUBREGION * Math.pow(10, Nivel.SREGION)
       + this.ambitoSelect.COD_RED * Math.pow(10, Nivel.RED) + this.ambitoSelect.COD_MICRORED * Math.pow(10, Nivel.MICRORED)
       + this.ambitoSelect.COD_IPRESS * Math.pow(10, 0);
-    this.ambitoSelect.NOMBRE_IPRESS =   this.ipresses.find(sub=>sub.value==e.value).label;
+      this.ambitoSelect.peso = this.ambitoSelect.COD_SUBREGION * Math.pow(10, Nivel.SREGION)
+      + this.ambitoSelect.COD_RED * Math.pow(10, Nivel.RED) + this.ambitoSelect.COD_MICRORED * Math.pow(10, Nivel.MICRORED)
+      +( this.ambitoSelect.COD_IPRESS +1)* Math.pow(10, 0);
+    this.ambitoSelect.NOMBRE_IPRESS = this.ipresses.find(sub => sub.value == e.value).label;
     console.log(this.ambitoSelect)
 
 
   }
-  ambitoSelecionado(){
- 
-    let sel={}
-    Object.assign(sel,this.ambitoSelect)
+  ambitoSelecionado() {
+
+    let sel = {}
+    Object.assign(sel, this.ambitoSelect)
     this.selecionoAmbito.emit(sel);
-    this.ambitoSelect={
+    this.ambitoSelect = {
       COD_IPRESS: 0,
       COD_MICRORED: 0,
       COD_RED: 0,
@@ -160,10 +171,11 @@ export class AmbitoAdministrativoSelectComponent implements OnInit {
       NOMBRE_IPRESS: "",
       NOMBRE_MICRORED: "",
       NOMBRE_RED: "",
-      NOMBRE_SUBREGION: ""
+      NOMBRE_SUBREGION: "",
+      peso_sup: 0
     }
-   
-    
+
+
 
   }
 

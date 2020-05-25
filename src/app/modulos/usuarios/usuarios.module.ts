@@ -13,10 +13,14 @@ import { AmbitoAdministrativoSelectComponent } from './ambito-administrativo-sel
 import {ProgressBarModule} from 'primeng/progressbar';
 import {CardModule} from 'primeng/card';
 import { FormsModule } from '@angular/forms';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
-  declarations: [UsuariosAdminComponent, NuevoUsuarioComponent, AmbitoAdministrativoSelectComponent],
+  declarations: [UsuariosAdminComponent, NuevoUsuarioComponent, AmbitoAdministrativoSelectComponent, LoginComponent],
+  providers:[ConfirmationService],
   imports: [
     SidebarModule,
     CommonModule,
@@ -27,7 +31,8 @@ import { FormsModule } from '@angular/forms';
     DropdownModule,
     ProgressBarModule,
     CardModule,
-    FormsModule
+    FormsModule,
+    ConfirmDialogModule
 
   ]
 })

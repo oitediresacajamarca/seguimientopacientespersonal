@@ -19,8 +19,9 @@ export class AccesoComponent implements OnInit {
   ngOnInit() {
   }
   Login() {
-    this.bis.disabled = true;
-    this.usu.login(this.usuario, this.clave).subscribe((datos) => {
+
+     this.bis.disabled = true;
+    this.usu.login(this.usuario, this.clave, 1000000000000000).subscribe((datos) => {
       if (datos.respuesta.logueado == "TRUE") {
         localStorage.setItem('datos', JSON.stringify(datos.respuesta));
 

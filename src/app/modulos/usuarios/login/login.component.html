@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="row">
+    <div class="card center">
+      <article class="card-body">
+        <h4 class="card-title mb-4 mt-1">INICIAR SESION</h4>
+
+        <div class="form-group">
+          <label>USUARIO</label>
+          <input
+            name=""
+            class="form-control"
+            placeholder="Email"
+            type="email"  [(ngModel)]="username"
+          />
+        </div>
+        <!-- form-group// -->
+        <div class="form-group">
+          <a class="float-right" href="#">Forgot?</a>
+          <label>CONTRASEÑA</label>
+          <input class="form-control" placeholder="******" type="password" 
+          [(ngModel)]="clave"/>
+        </div>
+        <!-- form-group// -->
+        <div class="form-group">
+          <label>SUBREGION</label>
+          <p-dropdown
+            [options]="SUBREGION"
+            [(ngModel)]="subregionSelect"
+            (onChange)="cambioRegion($event)"
+
+          ></p-dropdown>
+        </div>
+        <!-- form-group// -->
+
+        <div class="form-group">
+          <label>RED</label>
+          <p-dropdown
+            [options]="redes_filtradas"
+            [(ngModel)]="red_seleccionada"
+            (onChange)="cambioRed($event)"
+          ></p-dropdown>
+        </div>
+        <!-- form-group// -->
+        <div class="form-group">
+          <label>MICRORED</label>
+          <p-dropdown
+            [options]="MICROREDES_FILTRADAS"
+            [(ngModel)]="microred_selecionada"
+            (onChange)="devolver_establecimiento($event)"
+          ></p-dropdown>
+        </div>
+        <!-- form-group// -->
+
+        <div class="form-group">
+          <label>ESTABLECIMIENTO</label>
+          <p-dropdown
+            [options]="ESTABLECIMIENTO_FILTRADO"
+            [(ngModel)]="establecimiento_seleccionado"
+            (onChange)="cambio_establecimiento($event)"
+          ></p-dropdown>
+        </div>
+        <!-- form-group// -->
+
+        <div class="form-group">
+          <div class="checkbox">
+            <label> <input type="checkbox" /> GUARDAR CONTRASEÑA </label>
+          </div>
+          <!-- checkbox .// -->
+        </div>
+        <!-- form-group// -->
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block" (click)="IniciarSesion()">
+            INICIAR SESION
+          </button>
+        </div>
+        <!-- form-group// -->
+      </article>
+    </div>
+    <!-- card.// -->
+  </div>
+</div>

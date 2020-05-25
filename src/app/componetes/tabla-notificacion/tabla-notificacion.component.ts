@@ -41,7 +41,13 @@ export class TablaNotificacionComponent implements OnInit {
           
 
         this.sol.devolverColumnasSolicitudes().subscribe((res)=>{
-            this.cols=res.respuesta;          
+        
+            this.cols=res.respuesta; 
+
+           
+
+            
+            
         })
   
       let maximo_cie=0;
