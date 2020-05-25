@@ -21,7 +21,7 @@ export class AccesoComponent implements OnInit {
   Login() {
 
      this.bis.disabled = true;
-    this.usu.login(this.usuario, this.clave, 1000000000000000).subscribe((datos) => {
+    this.usu.loginant(this.usuario, this.clave).subscribe((datos) => {
       if (datos.respuesta.logueado == "TRUE") {
         localStorage.setItem('datos', JSON.stringify(datos.respuesta));
 

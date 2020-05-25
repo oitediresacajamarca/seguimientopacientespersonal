@@ -9,7 +9,6 @@ export class UsuariosService {
 
   constructor(private http: HttpClient) { }
 
-
   login(usu: string, clave: string,peso:number) {
     let consulta = {
       "username": usu,
@@ -19,6 +18,15 @@ export class UsuariosService {
     }
     return this.http.post<any>('http://localhost:3000/usuarios/login', { root: consulta });
   }
+  loginant(usu:string,clave:string){
+    let consulta={
+    "usuario":usu,
+    "clave":clave
+
+    }
+  return  this.http.post<any>(environment.ipmicroservicios+'usuarios/login/',{root:consulta});
+  }
+
   verificar(username: string) {
     return this.http.post<any>('http://localhost:3000/usuarios/verifica', { username: username });
   }

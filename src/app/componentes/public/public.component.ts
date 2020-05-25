@@ -159,7 +159,8 @@ export class PublicComponent implements OnInit {
           "FECHA_SOLICITUD": this.fechasolicitud,
           "ESTADO": "P",
           "ID_DISTRITO": this.distritoselecionado,
-          "CORREO": this.correo.toLocaleLowerCase()
+          "CORREO": this.correo.toLocaleLowerCase(),
+          "ID_IPRESS":this.ipress_select
         }
 
         if (this.verpaneldatosgenerales) {

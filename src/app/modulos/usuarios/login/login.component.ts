@@ -18,12 +18,12 @@ export class LoginComponent implements OnInit {
   SUBREGION: any[] = [];
   REDES: any[] = [];
   redes_filtradas: any[] = [];
-  subregionSelect: any;
-  red_seleccionada: any;
+  subregionSelect: any='';
+  red_seleccionada: any='';
   MICROREDES_FILTRADAS: any[] = []
-  microred_selecionada: any;
+  microred_selecionada: any='';
   ESTABLECIMIENTO_FILTRADO: any[] = [];
-  establecimiento_seleccionado: any[] = [];
+  establecimiento_seleccionado: any='';
   ambitoselec: Ambito = new Ambito();
 
 
@@ -112,9 +112,14 @@ export class LoginComponent implements OnInit {
 
 
   IniciarSesion() {
+   
+    console.log(  (100+Number(this.subregionSelect))+''+
+    (this.red_seleccionada+100)+(Number(this.microred_selecionada)+1000)+
+    this.establecimiento_seleccionado);
     this.usua.login(this.username, this.clave, this.ambitoselec.peso).subscribe(dato => {
 
       if (dato.respuesta != null) {
+     
         this.rout.navigate(['admin/panel']);
 
       }

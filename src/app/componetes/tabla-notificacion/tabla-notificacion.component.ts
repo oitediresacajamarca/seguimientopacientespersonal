@@ -30,13 +30,14 @@ export class TablaNotificacionComponent implements OnInit {
            this.displayNotificacion.emit('cerrar')}  },
             
             { label: 'Mantener en Seguimiento', icon: 'pi pi-heart', command: (event) => {}},
+            { label: 'Editar Solicitud', icon: 'pi pi-user-edit', command: (event) => {}},
             { label: 'Cerrar Soliciitud', icon: 'pi pi-times', command: (event) => {}},
         ];
   
         let SESION:any=JSON.parse(localStorage.getItem('datos'));
 
 
-        let distrito:string=SESION.ID_DISTRITO;
+    
         this.cod_ambito=SESION.COD_AMBITO_GEOGRAFICO; 
           
 
