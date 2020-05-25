@@ -640,10 +640,7 @@
       margin-left: 40px;
   }
 
-  p-dropdown{
-    padding: 10px 0px;
-    width: 500px;
-}
+
   .form-control{
       padding: 10px 0px;
       width: 500px;
@@ -653,20 +650,8 @@
     width: 500px;
     min-width: 34.5em !important;
   }
-  :host() .ui-calendar{
-    min-width: 34.5em !important;
-    width: 500px !important;
-    background-color: red;
-  }
-  body .ui-inputtext {
-    min-width: 34.5em !important;
-    width: 500px !important;
-    background-color: red !important;
-  }
+
   :host() .ui-calendar{
     width: 200%;
   }
 
-  .stilocaja{
-    width: 1400px;
-  }
