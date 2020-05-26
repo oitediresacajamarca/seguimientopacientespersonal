@@ -19,7 +19,7 @@ const routes: Routes = [
   {path:'seguimientopacientespersonal',component:LoginComponent},
 
   {path:'layout',component:DefaultComponent},
-  {path:'personal.jsp',component:AccesoComponent},
+  {path:'personal.jsp',component:LoginComponent},
   {path:'atencion/:NRO_DOCUMENTO/:ID_PACIENTE/:ID_SOLICITUD',component:PrincipalComponent},
   {path:'public',component:PublicComponent},
   {path:'frontend',component:InicioComponent},

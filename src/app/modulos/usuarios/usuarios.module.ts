@@ -16,6 +16,8 @@ import { FormsModule } from '@angular/forms';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { LoginComponent } from './login/login.component';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { LoginComponent } from './login/login.component';
     ProgressBarModule,
     CardModule,
     FormsModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    MessagesModule,
+    MessageModule
 
   ]
 })

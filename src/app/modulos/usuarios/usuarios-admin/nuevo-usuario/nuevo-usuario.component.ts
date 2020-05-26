@@ -7,7 +7,7 @@ import { Usuario } from '../../clases/usuario';
 
 import { Message } from 'primeng/api/message';
 import { ConfirmationService } from 'primeng/api';
-var ngfaker /*= require('ng-faker');*/
+var ngfaker = require('ng-faker');
 
 @Component({
   selector: 'app-nuevo-usuario',
@@ -152,7 +152,7 @@ export class NuevoUsuarioComponent implements OnInit {
   }
   usuarioCreado() {
     this.verNuevoUsuarios = false;
- 
+
   }
 
 }

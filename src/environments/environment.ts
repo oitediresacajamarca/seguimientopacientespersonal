@@ -4,12 +4,14 @@
 
 export const environment = {
   production: false,
-  ipmicroservicios:"http://localhost:8089/",
-  ip:"localhost:8089" ,
-  //ipmicroservicios: " http://190.116.36.121:8089/",
- // ip: "190.116.36.121:8089",
-  ip_backend: "localhost:8088",
-  url_backend: "http://localhost:8088/"
+  // ipmicroservicios:"http://localhost:8089/",
+  // ip:"localhost:8089" ,
+  ipmicroservicios: "http://hospitalvirtual.diresacajamarca.gob.pe:8089/",
+  ip: "hospitalvirtual.diresacajamarca.gob.pe:8089",
+  // ip_backend: "localhost:8088",
+  // url_backend: "http://localhost:8088/"
+  ip_backend: "hospitalvirtual.diresacajamarca.gob.pe:8088",
+  url_backend: "http://hospitalvirtual.diresacajamarca.gob.pe:8088/"
 
 };
 

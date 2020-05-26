@@ -9,13 +9,13 @@
           <input
             name=""
             class="form-control"
-            placeholder="Email"
-            type="email"  [(ngModel)]="username"
+            placeholder="Usuario"
+          [(ngModel)]="username"
           />
         </div>
         <!-- form-group// -->
         <div class="form-group">
-          <a class="float-right" href="#">Forgot?</a>
+          <a class="float-right" href="#">Olvido su contraseña?</a>
           <label>CONTRASEÑA</label>
           <input class="form-control" placeholder="******" type="password" 
           [(ngModel)]="clave"/>
@@ -27,6 +27,7 @@
             [options]="SUBREGION"
             [(ngModel)]="subregionSelect"
             (onChange)="cambioRegion($event)"
+            placeholder="Seleccione "
 
           ></p-dropdown>
         </div>
@@ -38,6 +39,7 @@
             [options]="redes_filtradas"
             [(ngModel)]="red_seleccionada"
             (onChange)="cambioRed($event)"
+            placeholder="Seleccione "
           ></p-dropdown>
         </div>
         <!-- form-group// -->
@@ -47,6 +49,7 @@
             [options]="MICROREDES_FILTRADAS"
             [(ngModel)]="microred_selecionada"
             (onChange)="devolver_establecimiento($event)"
+            placeholder="Seleccione "
           ></p-dropdown>
         </div>
         <!-- form-group// -->
@@ -57,6 +60,7 @@
             [options]="ESTABLECIMIENTO_FILTRADO"
             [(ngModel)]="establecimiento_seleccionado"
             (onChange)="cambio_establecimiento($event)"
+            placeholder="Seleccione "
           ></p-dropdown>
         </div>
         <!-- form-group// -->
@@ -75,7 +79,9 @@
         </div>
         <!-- form-group// -->
       </article>
+      <p-messages [(value)]="msgs"></p-messages>
     </div>
+    
     <!-- card.// -->
   </div>
 </div>

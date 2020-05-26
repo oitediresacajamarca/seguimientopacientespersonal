@@ -6,7 +6,7 @@ import { Ambito } from 'src/app/clases/ambito';
 import { Nivel } from '../enums/nivel.enum';
 import { UsuariosService } from 'src/app/servicios/usuarios.service';
 import { RouterLink, Router } from '@angular/router';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+
 import { EstadosService } from 'src/app/servicios/estados.service';
 
 @Component({
@@ -20,24 +20,26 @@ export class LoginComponent implements OnInit {
   SUBREGION: any[] = [];
   REDES: any[] = [];
   redes_filtradas: any[] = [];
-  subregionSelect: any=0;
-  red_seleccionada: any=0;
+  subregionSelect: any = 0;
+  red_seleccionada: any = 0;
   MICROREDES_FILTRADAS: any[] = []
-  microred_selecionada: any='';
+  microred_selecionada: any = '';
   ESTABLECIMIENTO_FILTRADO: any[] = [];
-  establecimiento_seleccionado: any='';
+  establecimiento_seleccionado: any = '';
   ambitoselec: Ambito = new Ambito();
-    ambitoq={ COD_SUBREGION:0,
-    COD_RED:0,
-    COD_MICRORED:0,
-    COD_IPRESS:0
+  ambitoq = {
+    COD_SUBREGION: 0,
+    COD_RED: 0,
+    COD_MICRORED: 0,
+    COD_IPRESS: 0
   }
+  msgs=[]
 
 
 
-  constructor(private disad: DistribucionAdministrativaService, 
+  constructor(private disad: DistribucionAdministrativaService,
     private geo: GeografiaService, private usua: UsuariosService
-    ,private rout:Router,private estadoapp:EstadosService) { }
+    , private rout: Router, private estadoapp: EstadosService) { }
 
   ngOnInit() {
     this.SUBREGION = this.disad.devolver_subregiones();
@@ -51,11 +53,11 @@ export class LoginComponent implements OnInit {
     this.ambitoselec.COD_SUBREGION = e.value;
 
     this.redes_filtradas = this.disad.devolver_redes_por_subregion(e.value);
-    this.ambitoq.COD_SUBREGION=1;
-    this.ambitoq.COD_RED=0
-    this.ambitoq.COD_MICRORED=0;
-    this.ambitoq.COD_IPRESS=0
- 
+    this.ambitoq.COD_SUBREGION = 1;
+    this.ambitoq.COD_RED = 0
+    this.ambitoq.COD_MICRORED = 0;
+    this.ambitoq.COD_IPRESS = 0
+
 
 
   }
@@ -80,11 +82,11 @@ export class LoginComponent implements OnInit {
 
     })
 
-    this.ambitoq.COD_SUBREGION=1;
-    this.ambitoq.COD_RED=1;
-    this.ambitoq.COD_MICRORED=0;
-    this.ambitoq.COD_IPRESS=0
-  
+    this.ambitoq.COD_SUBREGION = 1;
+    this.ambitoq.COD_RED = 1;
+    this.ambitoq.COD_MICRORED = 0;
+    this.ambitoq.COD_IPRESS = 0
+
 
   }
   devolver_establecimiento(e) {
@@ -109,10 +111,10 @@ export class LoginComponent implements OnInit {
 
     })
 
-    this.ambitoq.COD_SUBREGION=1;
-    this.ambitoq.COD_RED=1;
-    this.ambitoq.COD_MICRORED=1;
-    this.ambitoq.COD_IPRESS=0
+    this.ambitoq.COD_SUBREGION = 1;
+    this.ambitoq.COD_RED = 1;
+    this.ambitoq.COD_MICRORED = 1;
+    this.ambitoq.COD_IPRESS = 0
 
 
 
@@ -133,29 +135,54 @@ export class LoginComponent implements OnInit {
 
 
   IniciarSesion() {
-    
-  
-  
-    let  ambito={ COD_SUBREGION:(this.subregionSelect+100)*this.ambitoq.COD_SUBREGION,
-      COD_RED:(this.red_seleccionada+100)*this.ambitoq.COD_RED,
-      COD_MICRORED:(this.microred_selecionada+1000)*this.ambitoq.COD_MICRORED,
-      COD_IPRESS:this.establecimiento_seleccionado
+
+
+
+    let ambito = {
+      COD_SUBREGION: (this.subregionSelect + 100) * this.ambitoq.COD_SUBREGION,
+      COD_RED: (this.red_seleccionada + 100) * this.ambitoq.COD_RED,
+      COD_MICRORED: (this.microred_selecionada + 1000) * this.ambitoq.COD_MICRORED,
+      COD_IPRESS: this.establecimiento_seleccionado
     }
     console.log(ambito)
-    console.log(ambito.COD_SUBREGION+''+ambito.COD_RED+''+ambito.COD_MICRORED+''+ambito.COD_IPRESS)
+    console.log(this.ambitoselec.peso)
+
 
     this.usua.login(this.username, this.clave, this.ambitoselec.peso).subscribe(dato => {
 
       if (dato.respuesta != null) {
 
-  
-        console.log(dato.respuesta);
-        localStorage.setItem('datos',JSON.stringify(dato.respuesta))
-        this.estadoapp.cod_con=ambito.COD_SUBREGION+''+ambito.COD_RED+''+ambito.COD_MICRORED+''+ambito.COD_IPRESS;
-     
-        this.rout.navigate(['admin/panel']);
-        
 
+        console.log(dato.respuesta);
+        localStorage.setItem('datos', JSON.stringify(dato.respuesta))
+        let cod1 = '', cod2 = '', cod3 = '', cod4 = ''
+        if (ambito.COD_SUBREGION == 0) {
+          cod1 = ''
+        }
+        else {
+          cod1 = ambito.COD_SUBREGION.toString()
+        }
+        if (ambito.COD_RED == 0) {
+          cod2 = ''
+        }
+        else {
+          cod2 = ambito.COD_RED.toString()
+        }
+        if (ambito.COD_MICRORED == 0) {
+          cod3 = ''
+        }
+        else {
+          cod3 = ambito.COD_MICRORED.toString()
+        }
+
+        this.estadoapp.cod_con = cod1 + '' + cod2 + '' + cod3 + '' + ambito.COD_IPRESS;
+
+        this.rout.navigate(['admin/panel']);
+
+
+      }else{
+
+        this.msgs.push({ severity: 'error', summary: 'USUARIO O AMBITO DE ACCESO INCORRECTO', closable: 'false', detail: '', key: 'mensagesgenerales' });
       }
 
     });

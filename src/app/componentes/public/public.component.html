@@ -235,6 +235,7 @@
             [options]="distritos"
             [(ngModel)]="distritoselecionado"
             #distrito="ngModel"
+            placeholder="Seleccione "
             (onChange)="cambiadis()"
           ></p-dropdown>
           <p-message
@@ -266,6 +267,7 @@
           <p-dropdown
             required
             name="ipresss"
+            placeholder="Seleccione "
             [options]="ipressFiltrados"
             [(ngModel)]="ipress_select"
             #ipress="ngModel"
