@@ -16,7 +16,7 @@ export class UsuariosService {
       "peso":peso
 
     }
-    return this.http.post<any>('http://localhost:3000/usuarios/login', { root: consulta });
+    return this.http.post<any>(environment.url_backend+'usuarios/login', { root: consulta });
   }
   loginant(usu:string,clave:string){
     let consulta={
@@ -28,11 +28,11 @@ export class UsuariosService {
   }
 
   verificar(username: string) {
-    return this.http.post<any>('http://localhost:3000/usuarios/verifica', { username: username });
+    return this.http.post<any>(environment.url_backend+'usuarios/verifica', { username: username });
   }
   nuevo(nuevo: any) {
     console.log(nuevo);
-    return this.http.post<any>('http://localhost:3000/usuarios/nuevo', nuevo);
+    return this.http.post<any>(environment.url_backend+'usuarios/nuevo', nuevo);
   }
 
 }

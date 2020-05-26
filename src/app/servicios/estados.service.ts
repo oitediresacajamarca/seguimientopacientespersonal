@@ -4,6 +4,7 @@ import { Injectable, EventEmitter } from '@angular/core';
   providedIn: 'root'
 })
 export class EstadosService {
+  cod_con:string;
   verificoform= new EventEmitter<any>()
 
   constructor() { }

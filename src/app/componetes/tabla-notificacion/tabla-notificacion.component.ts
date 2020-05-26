@@ -3,6 +3,7 @@ import { SolicitudesService } from 'src/app/servicios/solicitudes.service';
 import { MorbilidadesService } from 'src/app/servicios/morbilidades.service';
 import { MenuItem } from 'primeng/api/menuitem';
 import { Router } from '@angular/router';
+import { EstadosService } from 'src/app/servicios/estados.service';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class TablaNotificacionComponent implements OnInit {
 
 
 
-  constructor(private sol:SolicitudesService,private morb:MorbilidadesService,private router:Router) { }
+  constructor(private sol:SolicitudesService,private morb:MorbilidadesService,private router:Router,
+    private estados:EstadosService) { }
 
   ngOnInit() {
           this.elementosmenu= [
@@ -40,7 +42,7 @@ export class TablaNotificacionComponent implements OnInit {
 
 
     
-        this.cod_ambito=SESION.COD_AMBITO_GEOGRAFICO; 
+        this.cod_ambito=this.estados.cod_con; 
           
 
         this.sol.devolverColumnasSolicitudes().subscribe((res)=>{
@@ -55,7 +57,7 @@ export class TablaNotificacionComponent implements OnInit {
   
       let maximo_cie=0;
           this.sol.devolverDatosSolicitudes(this.cod_ambito).subscribe((datos)=>{
-              let solicitudes=datos.respuesta;
+              let solicitudes=datos.recordset;
             
 
               var max_col_sol=0;

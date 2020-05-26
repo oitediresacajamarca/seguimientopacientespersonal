@@ -16,6 +16,7 @@ const routes: Routes = [
   {path:'PRIMERO',component:PaneldeseguimientoComponent},
   {path:'',component:InicioComponent},
   {path:'login',component:LoginComponent},
+  {path:'seguimientopacientespersonal',component:LoginComponent},
 
   {path:'layout',component:DefaultComponent},
   {path:'personal.jsp',component:AccesoComponent},

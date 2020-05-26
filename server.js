@@ -3,7 +3,7 @@ const http=require('http');
 const path=require('path');
 const app=express();
 const port=4000;
-app.use(express.static(__dirname+'/dist/seguimientopacientespersonal'))
+app.use(express.static(__dirname+'/seguimientopacientespersonal'))
 app.get('/*',(req,res)=>{res.sendFile(path.join(__dirname))})
 
 

@@ -14,10 +14,10 @@ export class DistribucionAdministrativaService {
   constructor(private http:HttpClient,private geo:GeografiaService) {
     this.subregiones = [
 
-      { label: "CAJAMARCA", value: "1" },
-      { label: "CHOTA", value: "2" },
-      { label: "CUTERVO", value: "3" },
-      { label: "JAEN", value: "4" }
+      { label: "CAJAMARCA", value: 1 },
+      { label: "CHOTA", value: 2 },
+      { label: "CUTERVO", value: 3 },
+      { label: "JAEN", value: 4 }
     ];
 
     this.redes = [

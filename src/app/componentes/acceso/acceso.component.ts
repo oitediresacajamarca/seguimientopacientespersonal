@@ -23,6 +23,7 @@ export class AccesoComponent implements OnInit {
      this.bis.disabled = true;
     this.usu.loginant(this.usuario, this.clave).subscribe((datos) => {
       if (datos.respuesta.logueado == "TRUE") {
+        console.log(datos.respuesta)
         localStorage.setItem('datos', JSON.stringify(datos.respuesta));
 
         this.rout.navigate(['admin/panel']);

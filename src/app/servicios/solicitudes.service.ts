@@ -15,7 +15,7 @@ export class SolicitudesService {
    }
 
    devolverDatosSolicitudes(codigo:string){
-     return this.http.get<any>(environment.ipmicroservicios+'solicitaatencion/notificaciones/nivel/1/codigo/'+codigo);
+     return this.http.get<any>(environment.url_backend+'solicitudes/'+codigo);
 
    }
 }
