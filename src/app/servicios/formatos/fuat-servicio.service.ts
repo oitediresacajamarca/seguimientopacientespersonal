@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import * as FileSaver from 'file-saver';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +12,18 @@ export class FuatServicioService {
 
   mostrarFuat(datosfuat: any) {
 
-  
+  console.log(datosfuat)
+  const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/pdf' })};
 
-    this.http.get('http://localhost:3000/fuat/ver', datosfuat).subscribe(
+    this.http.post(environment.url_backend+'fuat/ver', datosfuat,{responseType:'arraybuffer'}).subscribe(
       (datos) => {
+
+   
+          var blob = new Blob([datos], {type: 'application/pdf'});
+          var filename = 'test.pdf';
+          FileSaver.saveAs(blob, filename);
+       
 
 
       });

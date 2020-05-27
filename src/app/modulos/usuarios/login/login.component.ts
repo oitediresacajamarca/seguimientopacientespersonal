@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     COD_MICRORED: 0,
     COD_IPRESS: 0
   }
-  msgs=[]
+  msgs = []
 
 
 
@@ -180,7 +180,7 @@ export class LoginComponent implements OnInit {
         this.rout.navigate(['admin/panel']);
 
 
-      }else{
+      } else {
 
         this.msgs.push({ severity: 'error', summary: 'USUARIO O AMBITO DE ACCESO INCORRECTO', closable: 'false', detail: '', key: 'mensagesgenerales' });
       }

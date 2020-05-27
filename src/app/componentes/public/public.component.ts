@@ -48,7 +48,7 @@ export class PublicComponent implements OnInit {
   telefcon2: string;
   correo: string;
   es: any;
-  letrasyespacio: RegExp = /[a-zA-Z ]/;
+  letrasyespacio: RegExp = /[a-zA-Z ñÑ]/;
   vermensajeconfirmacion: boolean = false;
   @ViewChild('datosgenerales', { static: false })
   datosgenerales: NgForm;

@@ -5,5 +5,7 @@ export interface AtencionDiagnosticoItem {
         TIPO_DIAGNOSTICO:string,
         LAB_DIAGNOSTICO:string,
         ID_TRABAJADOR:string,
-        ESTADO_DIAGNOSTICO:string
+        ESTADO_DIAGNOSTICO:string,
+        DESC_DIAGNOSTICO:string
+
 }

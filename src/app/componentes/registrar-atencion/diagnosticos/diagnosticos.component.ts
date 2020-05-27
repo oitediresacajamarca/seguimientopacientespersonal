@@ -57,7 +57,7 @@ export class DiagnosticosComponent implements OnInit {
       {
         CODIGO_DIAGNOSTICO: this.cod_diag_selec,
         ESTADO_DIAGNOSTICO: "1", NRO_ITEM: this.dianosticospac.length, LAB_DIAGNOSTICO: this.lab_selec
-        , TIPO_DIAGNOSTICO: this.selectedtipdiag, ID_ATENCION: "", ID_TRABAJADOR: ""
+        , TIPO_DIAGNOSTICO: this.selectedtipdiag, ID_ATENCION: "", ID_TRABAJADOR: "",DESC_DIAGNOSTICO:this.desc_diag_selec
       })
 
   }
