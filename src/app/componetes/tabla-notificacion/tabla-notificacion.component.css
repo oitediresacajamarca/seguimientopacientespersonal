@@ -188,3 +188,8 @@
 .contenedor{
     width: 4200px;
 }
+
+::ng-deep .ui-contextmenu{
+
+	position: fixed;
+}

@@ -149,6 +149,7 @@ declare var $:any
         this.panreg.ver=true;
         let sesion = JSON.parse(localStorage.getItem('datos'));
         this.atencion.ID_RESPONSABLE = sesion.TRABAJADOR_ID;
+        this.panreg.form1.atencion_detalle.MOTIVO=this.formsol.DESCRIPCION;
 
         localStorage.setItem('formatofuat', JSON.stringify(this.formatoFuat));
 

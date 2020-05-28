@@ -11,7 +11,7 @@ export class DatosAtencionComponent implements OnInit {
   tipocon: any;
   mostrarnumero: boolean;
   tratamientoactual: string[]
-  examenesdeapoyo: string[]
+  examenesdeapoyo: string[]=[]
   numcon: number;
   @Input()
   visible: boolean;

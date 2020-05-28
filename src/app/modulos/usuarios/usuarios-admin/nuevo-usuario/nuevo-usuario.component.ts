@@ -7,7 +7,7 @@ import { Usuario } from '../../clases/usuario';
 
 import { Message } from 'primeng/api/message';
 import { ConfirmationService } from 'primeng/api';
-var ngfaker //= require('ng-faker');
+var ngfaker = require('ng-faker');
 
 @Component({
   selector: 'app-nuevo-usuario',
@@ -24,6 +24,7 @@ export class NuevoUsuarioComponent implements OnInit {
   verNuevoUsuarios: boolean = false;
   colsambitos: any[];
   ambitoelegidos: any[] = [];
+  ipressselect: any[] = [];
   numdocbuscar: string;
   avanceusuario: number = 0
   datgenerales: any = {
@@ -123,6 +124,8 @@ export class NuevoUsuarioComponent implements OnInit {
     usu.NOMBRES = this.datgenerales.nombre;
     usu.ambitos = this.ambitoelegidos;
     usu.username = this.usuariogen;
+    usu.COD_IPRESS=this.ipressselect[0].COD_IPRESS,
+    usu.NOMBRE_IPRESS=this.ipressselect[0].NOMBRE_IPRESS,
     usu.clave = this.clavegen;
     usu.numero_doc = this.numdocbuscar
 
@@ -153,6 +156,9 @@ export class NuevoUsuarioComponent implements OnInit {
   usuarioCreado() {
     this.verNuevoUsuarios = false;
 
+  }
+  aniadirIpress(e) {
+    this.ipressselect.push(e)
   }
 
 }

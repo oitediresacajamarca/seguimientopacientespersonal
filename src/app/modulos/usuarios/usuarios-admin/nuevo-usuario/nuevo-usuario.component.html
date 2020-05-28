@@ -15,7 +15,13 @@
       </span>
 
       <div class="ui-inputgroup contenedordatosnuevos">
-        <input id="input" type="text" [(ngModel)]="numdocbuscar" style="width: 100%;" pInputText />
+        <input
+          id="input"
+          type="text"
+          [(ngModel)]="numdocbuscar"
+          style="width: 100%;"
+          pInputText
+        />
         <p-button label="Buscar" (onClick)="buscarPersonal($event)"></p-button>
       </div>
     </div>
@@ -23,91 +29,163 @@
     <div class="ui-g ui-g-12">
       <p-fieldset legend="Datos Generales" [toggleable]="true">
         <div class="ui-g-3 contenedordatosnuevos">
-          
-            <input id="float-input" [(ngModel)]="datgenerales.numdoc" type="text" size="30" pInputText />
-            <label for="float-input">Numerdo de Documento</label>
-      
+          <input
+            id="float-input"
+            [(ngModel)]="datgenerales.numdoc"
+            type="text"
+            size="30"
+            pInputText
+          />
+          <label for="float-input">Numerdo de Documento</label>
         </div>
         <div class="ui-g-3 contenedordatosnuevos">
-        
-            <input id="float-input" type="text" size="30"  [(ngModel)]="datgenerales.nombre" pInputText />
-            <label for="float-input">Nombres</label>
-         
+          <input
+            id="float-input"
+            type="text"
+            size="30"
+            [(ngModel)]="datgenerales.nombre"
+            pInputText
+          />
+          <label for="float-input">Nombres</label>
         </div>
         <div class="ui-g-3 contenedordatosnuevos">
-       
-            <input id="float-input" type="text" size="30" pInputText [(ngModel)]="datgenerales.apellidopaterno"/>
-            <label for="float-input">Apellido Paterno</label>
-    
+          <input
+            id="float-input"
+            type="text"
+            size="30"
+            pInputText
+            [(ngModel)]="datgenerales.apellidopaterno"
+          />
+          <label for="float-input">Apellido Paterno</label>
         </div>
         <div class="ui-g-3 contenedordatosnuevos">
-      
-            <input id="float-input" type="text" size="30" pInputText [(ngModel)]="datgenerales.apellidomaterno" />
-            <label for="float-input">Apellido Materno</label>
-    
+          <input
+            id="float-input"
+            type="text"
+            size="30"
+            pInputText
+            [(ngModel)]="datgenerales.apellidomaterno"
+          />
+          <label for="float-input">Apellido Materno</label>
         </div>
       </p-fieldset>
     </div>
     <div class="ui-g ui-g-12">
-        <p-fieldset legend="Datos Adicionales" [toggleable]="true">
-          <div class="ui-g-4 contenedordatosnuevos">
-          
-              <input id="float-input" type="text" size="30" pInputText [(ngModel)]="datgenerales.correo"/>
-              <label for="float-input">Correo Electronico</label>
-     
-          </div>
-          <div class="ui-g-4 contenedordatosnuevos">
-     
-              <input id="float-input" type="text" size="30" pInputText [(ngModel)]="datgenerales.telef"/>
-              <label for="float-input">Numero de Telefono</label>
-          
-          </div>
-          <div class="ui-g-4 contenedordatosnuevos">
-           
-              <input id="float-input" type="text" size="30" pInputText [(ngModel)]="datgenerales.ipress"/>
-              <label for="float-input">IPRESS</label>
-          
-          </div>
-          
-         
-        </p-fieldset>
-      </div>
+      <p-fieldset legend="Datos Adicionales" [toggleable]="true">
+        <div class="ui-g-4 contenedordatosnuevos">
+          <input
+            id="float-input"
+            type="text"
+            size="30"
+            pInputText
+            [(ngModel)]="datgenerales.correo"
+          />
+          <label for="float-input">Correo Electronico</label>
+        </div>
+        <div class="ui-g-4 contenedordatosnuevos">
+          <input
+            id="float-input"
+            type="text"
+            size="30"
+            pInputText
+            [(ngModel)]="datgenerales.telef"
+          />
+          <label for="float-input">Numero de Telefono</label>
+        </div>
+        <div class="ui-g-4 contenedordatosnuevos">
+          <input
+            id="float-input"
+            type="text"
+            size="30"
+            pInputText
+            [(ngModel)]="datgenerales.ipress"
+          />
+          <label for="float-input">IPRESS</label>
+        </div>
+      </p-fieldset>
+    </div>
 
     <div class="ui-g ui-g-12">
-        
       <p-fieldset legend="Ambitos de Acceso" [toggleable]="true">
-          
-        
-
-        
         <p-table [columns]="colsambitos" [value]="ambitoelegidos">
-            <ng-template pTemplate="caption">
-                <div class="ui-helper-clearfix" style="text-align: rigth">
-                    <app-ambito-administrativo-select (selecionoAmbito)="aniadirAmbito($event)"></app-ambito-administrativo-select>
-                </div>
-            </ng-template>
-            <ng-template pTemplate="header" let-columns>
-                <tr>
-                    <th *ngFor="let col of columns">
-                        {{col.header}}
-                    </th>
-                    <th>
-
-                    </th>
-
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-car let-columns="columns">
-                <tr>
-                    <td *ngFor="let col of columns">
-                            {{car[col.field]}}
-                    </td>
-                    <td>
-                      <button pButton icon="pi pi-refresh" label="Editar" class="ui-button-success" ></button>
-                      <button pButton icon="pi pi-trash" label="Eliminar" class="ui-button-danger" ></button>
-                    </td>
-                </tr>
-            </ng-template>
+          <ng-template pTemplate="caption">
+            <div class="ui-helper-clearfix" style="text-align: rigth;">
+              <app-ambito-administrativo-select
+                (selecionoAmbito)="aniadirAmbito($event)"
+              ></app-ambito-administrativo-select>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns">
+                {{ col.header }}
+              </th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-car let-columns="columns">
+            <tr>
+              <td *ngFor="let col of columns">
+                {{ car[col.field] }}
+              </td>
+              <td>
+                <button
+                  pButton
+                  icon="pi pi-refresh"
+                  label="Editar"
+                  class="ui-button-success"
+                ></button>
+                <button
+                  pButton
+                  icon="pi pi-trash"
+                  label="Eliminar"
+                  class="ui-button-danger"
+                ></button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </p-fieldset>
+    </div>
+    <div class="ui-g ui-g-12">
+      <p-fieldset legend="Selecion de Ipreess" [toggleable]="true">
+        <p-table [columns]="colsambitos" [value]="ipressselect">
+          <ng-template pTemplate="caption">
+            <div class="ui-helper-clearfix" style="text-align: rigth;">
+              <app-ambito-administrativo-select
+                (selecionoAmbito)="aniadirIpress($event)"
+              ></app-ambito-administrativo-select>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns">
+                {{ col.header }}
+              </th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-car let-columns="columns">
+            <tr>
+              <td *ngFor="let col of columns">
+                {{ car[col.field] }}
+              </td>
+              <td>
+                <button
+                  pButton
+                  icon="pi pi-refresh"
+                  label="Editar"
+                  class="ui-button-success"
+                ></button>
+                <button
+                  pButton
+                  icon="pi pi-trash"
+                  label="Eliminar"
+                  class="ui-button-danger"
+                ></button>
+              </td>
+            </tr>
+          </ng-template>
         </p-table>
       </p-fieldset>
     </div>
@@ -116,19 +194,28 @@
       <p-fieldset
         legend="Generacion de Cuenta y Contraseña"
         [toggleable]="true"
-      > <div class="ui-g-12">
-        <div class="ui-g-2"><p-button label="Generar" (onClick)="generarContrasenia()"></p-button></div>
-        <div class="ui-g-10"><p-progressBar [value]="avanceusuario"></p-progressBar></div>
-        
+      >
+        <div class="ui-g-12">
+          <div class="ui-g-2">
+            <p-button
+              label="Generar"
+              (onClick)="generarContrasenia()"
+            ></p-button>
+          </div>
+          <div class="ui-g-10">
+            <p-progressBar [value]="avanceusuario"></p-progressBar>
+          </div>
         </div>
+        <div class="ui-g-4"></div>
         <div class="ui-g-4">
+          <p-card header="USUARIO GENERADO">
+            USUARIO:
+            <div class="usuario">{{ usuariogen }}</div>
+            <br />
+            CONTRASENIA:
+            <div class="usuario">{{ clavegen }}</div>
+          </p-card>
         </div>
-        <div class="ui-g-4">
-            <p-card header="USUARIO GENERADO">
-                USUARIO: <div class="usuario">{{usuariogen}}</div> <br>
-                CONTRASENIA: <div class="usuario"> {{clavegen}}</div>            
-            </p-card>
-           </div>
         <div class="ui-g-4"></div>
       </p-fieldset>
     </div>
@@ -142,14 +229,16 @@
       label="GENERAR USUARIO"
       class="ui-button-secondary"
     ></p-button>
-    <p-button 
+    <p-button
       type="button"
       pButton
       icon="pi pi-times"
-    
       label="CANCELAR"
       class="ui-button-secondary"
     ></p-button>
   </p-footer>
 </p-dialog>
-<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+></p-confirmDialog>

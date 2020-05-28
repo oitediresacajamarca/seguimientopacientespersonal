@@ -7,6 +7,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { NgForm, Form } from '@angular/forms';
 import { Button } from 'primeng/button/button';
 import { EstadosService } from 'src/app/servicios/estados.service';
+import { Router } from '@angular/router';
 
 
 
@@ -56,8 +57,11 @@ export class PublicComponent implements OnInit {
   solicitud: NgForm;
   @ViewChild('btenv', { static: false })
   btenv: Button
+  mensajefinal: boolean = false;
 
-  constructor(private est: EstadosService, private pers: PersonaService, private geo: GeografiaService, private sol: SolicitudService, private confirmationService: ConfirmationService, private mesgs: MessageService) { }
+  constructor(private est: EstadosService, private pers: PersonaService, private geo: GeografiaService,
+    private sol: SolicitudService, private confirmationService: ConfirmationService, private mesgs: MessageService
+    , private confirmationService2: ConfirmationService, private router: Router) { }
 
   ngOnInit() {
     this.optionsMap = {
@@ -69,10 +73,11 @@ export class PublicComponent implements OnInit {
 
       this.verpanelregistro = dat.verpanelregistro;
       this.verpaneldatosgenerales = dat.verpaneldatosgenerales;
-      this.FECNAC=dat.FECNAC;
-      this.tipodocseleccionado=dat.tipodocseleccionado;
-      this.numerodoc=dat.numerodoc;
-      console.log(this.verpaneldatosgenerales)
+      this.FECNAC = dat.FECNAC;
+      this.tipodocseleccionado = dat.tipodocseleccionado;
+      this.numerodoc = dat.numerodoc;
+      this.fechasolicitud=new Date()
+      
 
     })
 
@@ -135,6 +140,8 @@ export class PublicComponent implements OnInit {
 
   }
   manejarPanel(event) {
+    this.fechasolicitud = new Date()
+    console.log(this.fechasolicitud)
 
     this.verpanelregistro = event.verpanelregistro;
     this.verpaneldatosgenerales = event.verpaneldatosgenerales;
@@ -142,10 +149,10 @@ export class PublicComponent implements OnInit {
 
 
   guardarPaciente() {
-
+    this.fechasolicitud = new Date()
     this.confirmationService.confirm({
       message: 'ESTAS SEGURO DE REGISTRARTE PARA SOLICITAR ATENCION?',
-      key:'final',
+      key: 'final',
       accept: () => {
 
         let solic =
@@ -159,8 +166,8 @@ export class PublicComponent implements OnInit {
           "FECHA_SOLICITUD": this.fechasolicitud,
           "ESTADO": "P",
           "ID_DISTRITO": this.distritoselecionado,
-          "CORREO": this.correo.toLocaleLowerCase(),
-          "ID_IPRESS":this.ipress_select
+          "CORREO": this.correo.toLocaleUpperCase(),
+          "ID_IPRESS": this.ipress_select
         }
 
         if (this.verpaneldatosgenerales) {
@@ -182,15 +189,20 @@ export class PublicComponent implements OnInit {
             this.sol.guardarSolicitud({ root: solic }).subscribe((solicito) => {
 
               // this.vermensajeconfirmacion=true;
-              this.confirmationService.confirm({
+              this.mensajefinal = true
+              this.confirmationService2.confirm({
                 message: 'Su solicitud ha sido guardada exitosamente Pronto el personal medico se comunicara con usted segun la informacion proporcionada',
                 accept: () => {
                   this.verpanelregistro = false;
-                  this.resetearData();
-                }, key: 'final'
+                  this.solicitud.resetForm();
+                  this.datosgenerales.resetForm();
+                },
+                key: 'finalfinal'
 
 
               });
+              this.router.navigate(['public'])
+
             });
           });
 
@@ -202,29 +214,44 @@ export class PublicComponent implements OnInit {
           this.sol.guardarSolicitud({ root: solic }).subscribe((solicito) => {
 
             //   this.vermensajeconfirmacion=true;
+            this.mensajefinal = true
 
-
-            this.confirmationService.confirm({
+            this.confirmationService2.confirm({
               message: 'Su solicitud ha sido guardada exitosamente Pronto el personal medico se comunicara con usted segun la informacion proporcionada',
               accept: () => {
                 this.verpanelregistro = false;
                 this.resetearData();
-              }, key: 'final'
+                this.datosgenerales.resetForm();
+                this.solicitud.resetForm()
+
+              }, key: 'finalfinal'
 
             });
+            this.router.navigate(['public'])
 
 
           });
 
         }
 
+
+
         this.mesgs.add({ severity: 'info', summary: 'Info Message', detail: 'Se agrego la solicitud de atencion pronto nos comunicaremos con usted', key: 'final' });
 
 
       }
     })
-
-
+    if (this.mensajefinal == true) {
+      this.confirmationService2.confirm({
+        message: 'Su solicitud ha sido guardada exitosamente Pronto el personal medico se comunicara con usted segun la informacion proporcionada',
+        accept: () => {
+          this.verpanelregistro = false;
+          this.solicitud.resetForm();
+          this.datosgenerales.resetForm();
+        }, key: 'finalfinal'
+      });
+      this.mensajefinal = false;
+    }
 
   }
 

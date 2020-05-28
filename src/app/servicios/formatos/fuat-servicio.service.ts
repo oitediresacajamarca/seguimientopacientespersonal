@@ -23,9 +23,9 @@ export class FuatServicioService {
           var blob = new Blob([datos], {type: 'application/pdf'});
           var filename = 'test.pdf';
           FileSaver.saveAs(blob, filename);
-       
+     let url=  URL.createObjectURL(blob)
 
-
+console.log(url)
       });
 
   }

@@ -10,6 +10,7 @@ import * as jsPDF from 'jspdf'
 import { Diagnostico } from 'src/app/interfaces/diagnostico';
 import { FuatService } from 'src/app/servicios/fuat.service';
 import { FuatServicioService } from 'src/app/servicios/formatos/fuat-servicio.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 @Component({
@@ -124,6 +125,7 @@ export class RegistrarAtencionComponent implements OnInit {
   }
   imprimirFuat() {
 
+    
     this.formatofuat.codipress = this.sesion.COD_IPRESS;
     console.log(this.datosPaciente)
     //this.formatofuat.edad=this.datosPaciente.FECHA_NAC
@@ -131,6 +133,10 @@ export class RegistrarAtencionComponent implements OnInit {
     //  this.formatofuat.fechasolicitud=this.datos_solicitud.FECHA_SOLICITUD;
     this.formatofuat.nombresypaciente = this.datosPaciente.NOMBRES + ' ' + this.datosPaciente.APELLIDO_PAT + ' ' + this.datosPaciente.APELLIDO_MAT;
     this.formatofuat.sexo = this.datosPaciente.GENERO;
+    var timeDiff = Math.abs(Date.now() - Date.parse(this.datosPaciente.FECHA_NAC));
+    console.log(timeDiff)
+    this.formatofuat.edad= (Math.ceil((timeDiff / (1000 * 3600 * 24)) / 365))+'';
+  
     this.formatofuat.nro_documento = this.datosPaciente.NRO_DOCUMENTO;
     this.formatofuat.nuevocontrol = this.form1.numcon == null || this.form1.numcon < 1 ? true : false
     this.formatofuat.numerocontrol = this.form1.numcon != null ? this.form1.numcon.toString() : ""
@@ -144,12 +150,15 @@ export class RegistrarAtencionComponent implements OnInit {
     this.formatofuat.examenfisico.talla = this.form1.examenesFisicos.examenes[6].VALOR
     this.formatofuat.examenfisico.descripciondecaso = this.form1.examenesFisicos.examenes[7].VALOR
     this.formatofuat.tratamiento = this.form1.atencion_detalle.TRATAMIENTO_ACTUAL.toString();
-    this.formatofuat.examendeapoyo = "";
+    this.formatofuat.examendeapoyo =this.form1.examenesdeapoyo.toString();
     this.formatofuat.motivo[0] = this.form1.atencion_detalle.MOTIVO;
     this.formatofuat.codipress = this.sesion.COD_IPRESS;
     this.formatofuat.fechaatencion = (new Date()).toDateString()
     this.formatofuat.horaatencion = (new Date()).getHours().toString() + ':' + (new Date()).getMinutes()
-    console.log(this.form2.dianosticospac)
+    this.formatofuat.personal.nombresyapellidos=this.sesion.APELLIDO_PAT+ ' '+this.sesion.APELLIDO_MAT+' '+this.datosPaciente.NOMBRES;
+    this.formatofuat.personal.colegiatura='doctor'
+    this.formatofuat.personal.profesion='doctor'
+
     this.formatofuat.diagnosticos = [];
 
     this.form2.dianosticospac.forEach(element => {
@@ -168,7 +177,7 @@ export class RegistrarAtencionComponent implements OnInit {
 
 
 
-
+/*
 
     var doc = new jsPDF(
       {
@@ -325,7 +334,7 @@ export class RegistrarAtencionComponent implements OnInit {
       doc.cell(100, 507, 310, 16, this.formatofuat.diagnosticos[1].desc_diag)
     }
     doc.cell(30, 523, 380, 18, "6. RECOMENDACIONES / PLAN / INDICACIONES (de acuerdo a las competencias del profesional que brinda el servicio)")
-    /*
+
     doc.cell(30, 541, 20, 16, "1")
     doc.cell(50, 541, 360, 16, " ")
     doc.cell(30, 557, 20, 16, "2")
@@ -338,13 +347,13 @@ export class RegistrarAtencionComponent implements OnInit {
     doc.cell(30, 621, 90, 16, "N° Colegio profesional/RNE:")
     doc.cell(120, 621, 90, 16, " ")
     doc.cell(210, 589, 200, 48, " ")
-    */
+  
 
 
 
     doc.save("dat.pdf");
 
-
+*/
   }
 
   selecionarForm() {

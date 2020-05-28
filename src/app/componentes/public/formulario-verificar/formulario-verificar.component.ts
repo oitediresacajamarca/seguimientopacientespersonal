@@ -91,9 +91,12 @@ export class FormularioVerificarComponent implements OnInit {
 
 
         }
-        this.est.verificoform.emit({verpanelregistro:this.verpanelregistro,
-          verpaneldatosgenerales:this.verpaneldatosgenerales,tipodocseleccionado:this.tipodocseleccionado
-          ,FECNAC:this.FECNAC,numerodoc:this.numerodoc});
+        this.est.verificoform.emit({
+          verpanelregistro: this.verpanelregistro,
+          verpaneldatosgenerales: this.verpaneldatosgenerales, tipodocseleccionado: this.tipodocseleccionado
+          , FECNAC: this.FECNAC, numerodoc: this.numerodoc
+        });
+
       });
 
 
