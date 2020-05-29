@@ -8,7 +8,7 @@ import { Usuario } from '../../clases/usuario';
 import { Message } from 'primeng/api/message';
 import { ConfirmationService } from 'primeng/api';
 
-var ngfaker = require('ng-faker');
+
 
 @Component({
   selector: 'app-nuevo-usuario',
@@ -104,7 +104,8 @@ export class NuevoUsuarioComponent implements OnInit {
 
     this.usuariogen = this.datgenerales.nombre.slice(0, 1) +
       this.datgenerales.apellidopaterno + this.datgenerales.apellidomaterno.slice(0, 1);
-    this.clavegen = this.numdocbuscar.slice(0, seed) + this.usu.generaFakeNom();
+    this.clavegen = this.numdocbuscar.slice(0, seed),
+     this.usu.generaFakeNom().subscribe(dato=>{this.clavegen=this.clavegen+dato});
     this.usu.verificar(this.usuariogen).subscribe((dat) => {
       if (dat.mensaje == "Existe") {
         this.generarContrasenia(seed + 1)
@@ -126,8 +127,8 @@ export class NuevoUsuarioComponent implements OnInit {
     usu.ambitos = this.ambitoelegidos;
     usu.username = this.usuariogen;
     usu.COD_IPRESS = this.ipressselect[0].COD_IPRESS,
-    usu.NOMBRE_IPRESS = this.ipressselect[0].NOMBRE_IPRESS,
-    usu.CORREO = this.datgenerales.correo;
+      usu.NOMBRE_IPRESS = this.ipressselect[0].NOMBRE_IPRESS,
+      usu.CORREO = this.datgenerales.correo;
     usu.TELEFONO = this.datgenerales.telef;
     usu.clave = this.clavegen;
     usu.numero_doc = this.numdocbuscar

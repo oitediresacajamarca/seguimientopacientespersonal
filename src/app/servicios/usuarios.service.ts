@@ -38,10 +38,7 @@ export class UsuariosService {
     return this.http.post<any>(environment.url_backend+'usuarios/nuevo', nuevo);
   }
   generaFakeNom(){
-    this.http.get(environment.url_backend+'genrarFake').subscribe(dato=>{
-    
-      
-      return dato})
+  return  this.http.get(environment.url_backend+'usuarios/generarFake')
 
   }
 
