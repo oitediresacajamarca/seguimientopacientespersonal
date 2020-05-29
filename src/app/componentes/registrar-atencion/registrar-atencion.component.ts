@@ -130,11 +130,14 @@ export class RegistrarAtencionComponent implements OnInit {
     console.log(this.datosPaciente)
     //this.formatofuat.edad=this.datosPaciente.FECHA_NAC
     this.formatofuat.nombreipress = this.sesion.NOMBRE_IPRESS;
-    //  this.formatofuat.fechasolicitud=this.datos_solicitud.FECHA_SOLICITUD;
+      this.formatofuat.fechasolicitud=this.datos_solicitud.FECHA_SOLICITUD.substring(1,10);
+      this.formatofuat.horasolicitud=this.datos_solicitud.FECHA_SOLICITUD.substring(11,20);
     this.formatofuat.nombresypaciente = this.datosPaciente.NOMBRES + ' ' + this.datosPaciente.APELLIDO_PAT + ' ' + this.datosPaciente.APELLIDO_MAT;
-    this.formatofuat.sexo = this.datosPaciente.GENERO;
+    this.formatofuat.sexo = this.datosPaciente.GENERO.substring(0,1);
+    console.log(this.datosPaciente.GENERO);
+   
     var timeDiff = Math.abs(Date.now() - Date.parse(this.datosPaciente.FECHA_NAC));
-    console.log(timeDiff)
+   
     this.formatofuat.edad= (Math.ceil((timeDiff / (1000 * 3600 * 24)) / 365))+'';
   
     this.formatofuat.nro_documento = this.datosPaciente.NRO_DOCUMENTO;
@@ -148,7 +151,7 @@ export class RegistrarAtencionComponent implements OnInit {
     this.formatofuat.examenfisico.satO2 = this.form1.examenesFisicos.examenes[4].VALOR
     this.formatofuat.examenfisico.peso = this.form1.examenesFisicos.examenes[5].VALOR
     this.formatofuat.examenfisico.talla = this.form1.examenesFisicos.examenes[6].VALOR
-    this.formatofuat.examenfisico.descripciondecaso = this.form1.examenesFisicos.examenes[7].VALOR
+    this.formatofuat.examenfisico.descripciondecaso = this.form1.descripcioncaso;
     this.formatofuat.tratamiento = this.form1.atencion_detalle.TRATAMIENTO_ACTUAL.toString();
     this.formatofuat.examendeapoyo =this.form1.examenesdeapoyo.toString();
     this.formatofuat.motivo[0] = this.form1.atencion_detalle.MOTIVO;

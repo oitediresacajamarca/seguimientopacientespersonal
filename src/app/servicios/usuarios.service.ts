@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { DatosAtencionComponent } from '../componentes/registrar-atencion/datos-atencion/datos-atencion.component';
+declare var require: any
+var ngfaker = require('ng-faker');
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +36,13 @@ export class UsuariosService {
   nuevo(nuevo: any) {
     console.log(nuevo);
     return this.http.post<any>(environment.url_backend+'usuarios/nuevo', nuevo);
+  }
+  generaFakeNom(){
+    this.http.get(environment.url_backend+'genrarFake').subscribe(dato=>{
+    
+      
+      return dato})
+
   }
 
 }

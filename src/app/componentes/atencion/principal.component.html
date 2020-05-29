@@ -144,12 +144,14 @@
         <div class="ui-g-6">
           <mat-card>
             FECHA Y HORA DE SOLICITUD<br />
-            <p-calendar
-              [(ngModel)]="formsol.FECHA_SOLICITUD"
-              [showTime]="true"
-              [locale]="es"
-              disabled
-            ></p-calendar>
+            <input
+            type="email"
+            class="form-control"
+            aria-describedby="emailHelp"
+            [(ngModel)]="formsol.FECHA_SOLICITUD"
+            disabled="true"
+          />
+           
           </mat-card>
         </div>
         <div class="ui-g-6">

@@ -13,6 +13,7 @@ export class DatosAtencionComponent implements OnInit {
   tratamientoactual: string[]
   examenesdeapoyo: string[]=[]
   numcon: number;
+  descripcioncaso:string=""
   @Input()
   visible: boolean;
   examenesFisicos: Examenfisico = {
@@ -118,6 +119,7 @@ export class DatosAtencionComponent implements OnInit {
     } else {
       this.mostrarnumero = false
       this.atencion_detalle.N_CONTROL = 0
+      this.numcon=null
     }
 
   }
