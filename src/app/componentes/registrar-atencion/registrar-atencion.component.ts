@@ -130,7 +130,7 @@ export class RegistrarAtencionComponent implements OnInit {
     console.log(this.datosPaciente)
     //this.formatofuat.edad=this.datosPaciente.FECHA_NAC
     this.formatofuat.nombreipress = this.sesion.NOMBRE_IPRESS;
-      this.formatofuat.fechasolicitud=this.datos_solicitud.FECHA_SOLICITUD.substring(1,10);
+      this.formatofuat.fechasolicitud=this.datos_solicitud.FECHA_SOLICITUD.substring(0,10);
       this.formatofuat.horasolicitud=this.datos_solicitud.FECHA_SOLICITUD.substring(11,20);
     this.formatofuat.nombresypaciente = this.datosPaciente.NOMBRES + ' ' + this.datosPaciente.APELLIDO_PAT + ' ' + this.datosPaciente.APELLIDO_MAT;
     this.formatofuat.sexo = this.datosPaciente.GENERO.substring(0,1);
@@ -158,7 +158,7 @@ export class RegistrarAtencionComponent implements OnInit {
     this.formatofuat.codipress = this.sesion.COD_IPRESS;
     this.formatofuat.fechaatencion = (new Date()).toDateString()
     this.formatofuat.horaatencion = (new Date()).getHours().toString() + ':' + (new Date()).getMinutes()
-    this.formatofuat.personal.nombresyapellidos=this.sesion.APELLIDO_PAT+ ' '+this.sesion.APELLIDO_MAT+' '+this.datosPaciente.NOMBRES;
+    this.formatofuat.personal.nombresyapellidos=this.sesion.APELLIDO_PAT+ ' '+this.sesion.APELLIDO_MAT+' '+this.sesion.NOMBRES;
     this.formatofuat.personal.colegiatura='doctor'
     this.formatofuat.personal.profesion='doctor'
 
