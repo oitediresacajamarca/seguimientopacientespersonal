@@ -156,7 +156,8 @@ export class RegistrarAtencionComponent implements OnInit {
     this.formatofuat.examendeapoyo =this.form1.examenesdeapoyo.toString();
     this.formatofuat.motivo[0] = this.form1.atencion_detalle.MOTIVO;
     this.formatofuat.codipress = this.sesion.COD_IPRESS;
-    this.formatofuat.fechaatencion = (new Date()).toDateString()
+    let  actual= new Date();
+    this.formatofuat.fechaatencion = actual.getDate()+'-'+actual.getMonth()+'-'+actual.getFullYear()
     this.formatofuat.horaatencion = (new Date()).getHours().toString() + ':' + (new Date()).getMinutes()
     this.formatofuat.personal.nombresyapellidos=this.sesion.APELLIDO_PAT+ ' '+this.sesion.APELLIDO_MAT+' '+this.sesion.NOMBRES;
     this.formatofuat.personal.colegiatura='doctor'
@@ -173,6 +174,8 @@ export class RegistrarAtencionComponent implements OnInit {
       diagnos.desc_diag = element.desc_diag;
       this.formatofuat.diagnosticos.push(diagnos)
     });
+    console.log(this.form3.recomendaciones)
+    this.formatofuat.recomendaciones=this.form3.recomendaciones;
 
     //this.formatofuat.diagnosticos = this.form2.dianosticospac
 
