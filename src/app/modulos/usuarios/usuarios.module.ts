@@ -18,6 +18,7 @@ import { ConfirmationService } from 'primeng/api';
 import { LoginComponent } from './login/login.component';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
+import {CheckboxModule} from 'primeng/checkbox';
 
 
 @NgModule({
@@ -36,7 +37,10 @@ import {MessageModule} from 'primeng/message';
     FormsModule,
     ConfirmDialogModule,
     MessagesModule,
-    MessageModule
+    MessageModule,
+    CheckboxModule
+    
+    
 
   ]
 })

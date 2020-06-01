@@ -8,6 +8,7 @@
   [resizable]="false"
   [maximizable]="true"
 >
+<form name="nuevousu" #form="ngForm">
   <div class="ui-g">
     <div class="ui-g-12 contenedordatosnuevos">
       <span class="titulobusqueda">
@@ -21,6 +22,7 @@
           [(ngModel)]="numdocbuscar"
           style="width: 100%;"
           pInputText
+          name="numdocbuscar"
         />
         <p-button label="Buscar" (onClick)="buscarPersonal($event)"></p-button>
       </div>
@@ -35,7 +37,8 @@
             type="text"
             size="30"
             pInputText
-          />
+            name="numdoc"
+          /><br>
           <label for="float-input">Numerdo de Documento</label>
         </div>
         <div class="ui-g-3 contenedordatosnuevos">
@@ -45,7 +48,8 @@
             size="30"
             [(ngModel)]="datgenerales.nombre"
             pInputText
-          />
+            name="nombre"
+          /><br>
           <label for="float-input">Nombres</label>
         </div>
         <div class="ui-g-3 contenedordatosnuevos">
@@ -55,7 +59,9 @@
             size="30"
             pInputText
             [(ngModel)]="datgenerales.apellidopaterno"
+            name="apellidopaterno"
           />
+          <br>
           <label for="float-input">Apellido Paterno</label>
         </div>
         <div class="ui-g-3 contenedordatosnuevos">
@@ -65,7 +71,9 @@
             size="30"
             pInputText
             [(ngModel)]="datgenerales.apellidomaterno"
+            name="apellidomaterno"
           />
+          <br>
           <label for="float-input">Apellido Materno</label>
         </div>
       </p-fieldset>
@@ -79,6 +87,7 @@
             size="30"
             pInputText
             [(ngModel)]="datgenerales.correo"
+            name="correo"
           />
           <label for="float-input">Correo Electronico</label>
         </div>
@@ -89,19 +98,80 @@
             size="30"
             pInputText
             [(ngModel)]="datgenerales.telef"
+            name="telef"
           />
           <label for="float-input">Numero de Telefono</label>
         </div>
         <div class="ui-g-4 contenedordatosnuevos">
-          <input
-            id="float-input"
-            type="text"
-            size="30"
-            pInputText
-            [(ngModel)]="datgenerales.ipress"
-          />
-          <label for="float-input">IPRESS</label>
+         
         </div>
+      </p-fieldset>
+    </div>
+
+    <div class=" ui-g-12">
+      <p-fieldset legend="Datos Profesionales" [toggleable]="true">
+        <div class="ui-g">
+
+        <div class="ui-g-3 contenedordatosnuevos">
+          <label for="float-input">Profesion</label>
+          <br>
+          <p-dropdown
+            [options]="profesiones"
+            [(ngModel)]="profesionselec"
+            filter="true"
+            placeholder="Seleccione una Profesion"
+            (onChange)="cambioprof($event)"
+            name="profesionselec"
+           
+          >
+            <ng-template let-item pTemplate="selectedItem">
+              <span style="vertical-align: middle; margin-left: 0.5em;">{{
+                item.label
+              }}</span>
+            </ng-template>
+            <ng-template let-car pTemplate="item">
+              <div
+                class="ui-helper-clearfix"
+                style="position: relative; height: 25px;"
+              >
+                <div style="font-size: 14px; float: right; margin-top: 4px;">
+                  {{ car.label }}
+                </div>
+              </div>
+            </ng-template>
+          </p-dropdown>
+        </div>
+        <div class="ui-g-3 ">
+
+          <label for="float-input">Colegio Profesional</label>
+       
+          <br>
+          <p-dropdown [options]="colegiost" [(ngModel)]="colegiselect"
+           editable="true" placeholder="Selecione su colegio profesional"
+           name="colegiselect"></p-dropdown>
+
+        </div>
+        <div class="ui-g-3">
+          <label for="float-input">Especialidad</label>
+          <br>
+          <label for="float-input">{{especialidad}}</label>
+
+        </div>
+
+        <div class="ui-g-3">
+          <p-checkbox [(ngModel)]="colegiado" binary="true" name="escolegiado"></p-checkbox>
+          <label for="float-input">Colegiado?</label>
+          
+        
+          
+          <br>
+          <label for="float-input">Codigo Colegiatura</label>
+          <input type="text" pInputText [(ngModel)]="cod_colegiatura"
+          name="cod_colegiatura"/>
+        </div>
+        
+
+      </div>
       </p-fieldset>
     </div>
 
@@ -148,7 +218,7 @@
       </p-fieldset>
     </div>
     <div class="ui-g ui-g-12">
-      <p-fieldset legend="Selecion de Ipreess" [toggleable]="true">
+      <p-fieldset legend="Selecion de Establecimiento" [toggleable]="true">
         <p-table [columns]="colsambitos" [value]="ipressselect">
           <ng-template pTemplate="caption">
             <div class="ui-helper-clearfix" style="text-align: rigth;">
@@ -220,23 +290,27 @@
       </p-fieldset>
     </div>
   </div>
+
+ 
+</form>
   <p-footer>
     <p-button
-      type="button"
-      pButton
-      icon="pi pi-check"
-      (onClick)="generarCuenta()"
-      label="GENERAR USUARIO"
-      class="ui-button-secondary"
-    ></p-button>
-    <p-button
-      type="button"
-      pButton
-      icon="pi pi-times"
-      label="CANCELAR"
-      class="ui-button-secondary"
-    ></p-button>
+    type="button"
+    
+    icon="pi pi-check"
+    (onClick)="generarCuenta()"
+    label="GENERAR USUARIO"
+
+  ></p-button>
+  <p-button
+    type="button"
+    
+    icon="pi pi-times"
+    label="CANCELAR"
+  
+  ></p-button>
   </p-footer>
+
 </p-dialog>
 <p-confirmDialog
   [style]="{ width: '50vw' }"

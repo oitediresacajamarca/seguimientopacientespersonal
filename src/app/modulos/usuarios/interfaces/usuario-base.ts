@@ -1,3 +1,5 @@
+import { DATOSPROFESIONALES } from './datos-profesionales';
+
 export interface UsuarioBase {
 
     username: string,
@@ -23,5 +25,7 @@ export interface UsuarioBase {
     NOMBRE_IPRESS: string,
     TELEFONO: string,
     TIPO_AMBITO_ADMINISTRATIVO: string,
-    logueado: string
+    logueado: string,
+    DATOS_PROFESIONALES: DATOSPROFESIONALES
+
 }

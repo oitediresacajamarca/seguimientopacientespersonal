@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { DatosAtencionComponent } from '../componentes/registrar-atencion/datos-atencion/datos-atencion.component';
+
 
 
 @Injectable({
