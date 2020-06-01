@@ -176,10 +176,6 @@ export class RegistrarAtencionComponent implements OnInit {
     });
 
     this.formatofuat.recomendaciones=this.form3.recomendaciones;
-
-
-
-
     this.fuatservicio.mostrarFuat(this.formatofuat);
 
 

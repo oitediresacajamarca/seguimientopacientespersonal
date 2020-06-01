@@ -18,4 +18,8 @@ export class SolicitudesService {
      return this.http.get<any>(environment.url_backend+'solicitudes/'+codigo);
 
    }
+
+   cerrarSolicitud(solicitud:any){
+    return this.http.get('http://'+environment.ip_backend+'/solicitudes/solicitud/cerrar/'+solicitud);
+  }
 }

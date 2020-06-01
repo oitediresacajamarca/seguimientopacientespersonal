@@ -11,4 +11,7 @@ export class SolicitudService {
   guardarSolicitud(solicitud:any){
     return this.http.post('http://'+environment.ip+'/solicitaatencion/',solicitud);
   }
+  cerrarSolicitud(solicitud:any){
+    return this.http.get('http://'+environment.ip_backend+'/solicitud/cerrar/',solicitud);
+  }
 }
