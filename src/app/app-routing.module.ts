@@ -10,6 +10,7 @@ import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { ConsentimientoInformadoComponent } from './componentes/formatos/consentimiento-informado/consentimiento-informado.component';
 import { UsuariosAdminComponent } from './modulos/usuarios/usuarios-admin/usuarios-admin.component';
 import { LoginComponent } from './modulos/usuarios/login/login.component';
+import { GeoreferenciaComponent } from './georeferencia/georeferencia.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path:'atencion/:NRO_DOCUMENTO/:ID_PACIENTE/:ID_SOLICITUD',component:PrincipalComponent},
   {path:'public',component:PublicComponent},
   {path:'frontend',component:InicioComponent},
+  {path:'geo',component:GeoreferenciaComponent},
   {
     path: 'admin',
     component: DefaultComponent,

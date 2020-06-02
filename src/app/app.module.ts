@@ -64,7 +64,9 @@ import { TratamientoComponent } from './componentes/registrar-atencion/tratamien
 import { FormularioVerificarComponent } from './componentes/public/formulario-verificar/formulario-verificar.component';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
 
+
 import { UsuariosModule } from './modulos/usuarios/usuarios.module';
+import { GeoreferenciaComponent } from './georeferencia/georeferencia.component';
 
 
 @NgModule({
@@ -86,6 +88,7 @@ import { UsuariosModule } from './modulos/usuarios/usuarios.module';
     DiagnosticosComponent,
     TratamientoComponent,
     FormularioVerificarComponent,
+    GeoreferenciaComponent,
  
  
   
