@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GeografiaService } from './servicios/geografia.service';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -45,17 +46,17 @@ export class DistribucionAdministrativaService {
 
   return  this.geo.devolverMicroredPorRed(id_red);
 
-   }
-
-
-
-
-   
+   }   
    devolver_subregiones(){
      return this.subregiones;
    }
    devolver_redes(){
 
     return this.redes;
+   }
+   devolver_Ipress(cod_ipress:string){
+     console.log(cod_ipress)
+    return this.http.get<any>(environment.url_backend+'distribucion-administrativa/ipress/'+cod_ipress);
+
    }
 }

@@ -14,4 +14,9 @@ export class SolicitudService {
   cerrarSolicitud(solicitud:any){
     return this.http.get('http://'+environment.ip_backend+'/solicitud/cerrar/',solicitud);
   }
+  editarSolicitud(cod_solicitud:string,editado:any){
+    return this.http.post('http://'+environment.ip_backend+'/solicitudes/actualisar/'+cod_solicitud,editado)
+
+  }
+
 }

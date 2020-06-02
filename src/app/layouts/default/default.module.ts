@@ -22,6 +22,8 @@ import { SelectorIpressComponent } from 'src/app/controles/selector-ipress/selec
 import {DropdownModule} from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import {FieldsetModule} from 'primeng/fieldset';
+import {ToastModule} from 'primeng/toast';
+
 
 
 @NgModule({
@@ -51,7 +53,8 @@ import {FieldsetModule} from 'primeng/fieldset';
     CardModule,
     DropdownModule,
     FormsModule,
-    FieldsetModule
+    FieldsetModule,
+    ToastModule
     
   ],
   providers: [

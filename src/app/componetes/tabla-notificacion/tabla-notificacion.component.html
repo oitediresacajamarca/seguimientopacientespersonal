@@ -5,9 +5,9 @@
 
 <p-contextMenu #cm [model]="elementosmenu" 
 [appendTo]="dt" (onShow)="vi()"></p-contextMenu>
-
+<p-toast key="myKey2" position="top-left"></p-toast>
    
-<app-editar-sol #editar></app-editar-sol>
+<app-editar-sol #editar (actualiso)="actualizoSolicitud()"></app-editar-sol>
 
 <p-table #dt [value]="pacientes"   styleClass="ui-table-customers" 
 [rowHover]="true"  [(contextMenuSelection)]="selectedNoti" [contextMenu]="cm"

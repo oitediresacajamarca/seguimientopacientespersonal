@@ -1,7 +1,7 @@
 <p-dialog header="Edicion de Solicitud" [(visible)]="editarsol">
   <p-card
     header="DATOS DE PACIENTE"
-    subheader="ARANA RABANAL ALEX EDWIN"
+    subheader="{{solicitud.NOMBRES}} {{solicitud.APELLIDO_PAT}} {{solicitud.APELLIDO_MAT}} "
     [style]="{ width: '600px' }"
     styleClass="ui-card-shadow"
   >
@@ -10,7 +10,7 @@
     <div class="ui-g-12">
     <p-fieldset legend="MOTIVO" [style]="{'font-size':'1rem'}">
       <input type="text" pInputText style="
-      width: 100%"/>
+      width: 100%" [(ngModel)]="solicitud.DESCRIPCION"/>
     </p-fieldset>
   </div>
       
@@ -19,17 +19,11 @@
   </div>
   <p-fieldset legend="EDITAR IPRESS DE SOLICITUD" [style]="{'font-size':'1rem'}">
  
-    <app-selector-ipress></app-selector-ipress>
+    <app-selector-ipress #selecipres></app-selector-ipress>
     
   </p-fieldset>
     <p-footer>
-      <button
-        pButton
-        type="button"
-        label="GUADAR"
-        icon="pi pi-check"
-        style="margin-right: 0.25em;"
-      ></button>
+      <p-button label="GUARDAR" (onClick)="editar($event)"></p-button>
       <button
         pButton
         type="button"

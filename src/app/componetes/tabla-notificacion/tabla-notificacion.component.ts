@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { EstadosService } from 'src/app/servicios/estados.service';
 import { ContextMenu } from 'primeng/contextmenu/contextmenu';
 import { EditarSolComponent } from '../editar-sol/editar-sol.component';
+import { MessageService } from 'primeng/api';
+
 
 
 
@@ -30,7 +32,7 @@ export class TablaNotificacionComponent implements OnInit {
 
 
   constructor(private sol: SolicitudesService, private morb: MorbilidadesService, private router: Router,
-    private estados: EstadosService) { }
+    private estados: EstadosService,private messageService: MessageService) { }
 
   ngOnInit() {
     this.elementosmenu = [
@@ -50,7 +52,10 @@ export class TablaNotificacionComponent implements OnInit {
       },
       {
         label: 'Editar Solicitud', icon: 'pi pi-user-edit', command: (event) => {
-          this.editar.editarsol = true
+          this.editar.editarsol = true;
+          this.editar.selecipres.selecionar_Ipress(this.selectedNoti.COD_IPRESS)
+          this.editar.solicitud=this.selectedNoti
+          this.editar.cod_solicitud=this.selectedNoti.ID_SOLICITUD
           console.log(this.selectedNoti)
 
         }
@@ -88,6 +93,11 @@ export class TablaNotificacionComponent implements OnInit {
 
 
 
+  }
+  actualizoSolicitud(){
+    this.messageService.add({key: 'myKey2', severity:'success', summary: 'ACTUALIZACION CORRECTA', detail: 'LA SOLICITUD HA SIDO CAMBIADA EXITOSAMENTE'});
+    this.cargarNotificaciones();
+    this.editar.editarsol=false;
   }
 
   cargarNotificaciones() {
@@ -172,7 +182,7 @@ export class TablaNotificacionComponent implements OnInit {
   }
   vi() {
 
-    console.log(this.cm)
+  
   }
 
 }

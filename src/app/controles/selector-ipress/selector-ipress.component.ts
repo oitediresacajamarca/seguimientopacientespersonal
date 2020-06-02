@@ -20,7 +20,7 @@ export class SelectorIpressComponent implements OnInit {
   microred_selecionada: any = '';
   ESTABLECIMIENTO_FILTRADO: any[] = [];
   establecimiento_seleccionado: any = '';
- 
+
 
   constructor(private disad: DistribucionAdministrativaService,
     private geo: GeografiaService, private usua: UsuariosService
@@ -31,21 +31,21 @@ export class SelectorIpressComponent implements OnInit {
     this.REDES = this.disad.devolver_redes();
   }
 
-  
+
   cambioRegion(e) {
 
 
-    
+
 
     this.redes_filtradas = this.disad.devolver_redes_por_subregion(e.value);
-   
+
 
 
 
   }
   cambioRed(e) {
 
- 
+
     this.MICROREDES_FILTRADAS = [];
     this.geo.devolverMicroredPorRed(e.value).subscribe((datos) => {
       datos.respuesta.forEach(element => {
@@ -60,7 +60,7 @@ export class SelectorIpressComponent implements OnInit {
 
     })
 
-  
+
 
 
   }
@@ -85,7 +85,59 @@ export class SelectorIpressComponent implements OnInit {
 
   }
   cambio_establecimiento(e) {
- 
+
+
+
+  }
+  selecionar_Ipress(cod_ipres: string) {
+    this.disad.devolver_Ipress(cod_ipres).subscribe(dato => {
+      console.log(dato.recordset[0])
+      let ipress = dato.recordset[0]
+      this.subregionSelect = ipress.ID_SUBREGION
+      this.redes_filtradas = this.disad.devolver_redes_por_subregion(ipress.ID_SUBREGION);
+      this.red_seleccionada = ipress.ID_RED
+      this.MICROREDES_FILTRADAS = [];
+      this.geo.devolverMicroredPorRed(ipress.ID_RED).subscribe((datos) => {
+        datos.respuesta.forEach(element => {
+          let vari: any = {}
+          Object.assign(element, vari);
+          vari.label = element.NOMBRE;
+          vari.value = element.ID_MICRORED;
+          this.MICROREDES_FILTRADAS.push(vari)
+
+        });
+        this.microred_selecionada = ipress.ID_MICRORED;
+
+      })
+
+
+
+      this.ESTABLECIMIENTO_FILTRADO = []
+
+
+      this.geo.devolverIpressPorMicrored(ipress.ID_MICRORED).subscribe((datos) => {
+        datos.respuesta.forEach(element => {
+          let ipress: any = {};
+          ipress.label = element.NOMBRE;
+          ipress.value = element.COD_IPRESS;
+          this.ESTABLECIMIENTO_FILTRADO.push(ipress);
+
+        });
+        this.establecimiento_seleccionado = ipress.CODIGO_RENIPRESS
+
+      })
+
+
+
+
+
+
+
+
+
+
+
+    })
 
 
   }
