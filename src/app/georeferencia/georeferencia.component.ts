@@ -52,7 +52,7 @@ handleOverlayClick(event) {
         this.infoWindow.open(event.map, event.overlay);
         event.map.setCenter(event.overlay.getPosition());
 
-        this.messageService.add({severity:'info', summary:'Marker Selected', detail: title});
+        this.messageService.add({severity:'info', summary:'Marcar Zona', detail: title});
     }
     else {
         this.messageService.add({severity:'info', summary:'Shape Selected', detail: ''});
