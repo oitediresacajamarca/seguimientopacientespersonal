@@ -66,6 +66,7 @@ import {OverlayPanelModule} from 'primeng/overlaypanel';
 
 import { UsuariosModule } from './modulos/usuarios/usuarios.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,6 +86,9 @@ import { UsuariosModule } from './modulos/usuarios/usuarios.module';
     DiagnosticosComponent,
     TratamientoComponent,
     FormularioVerificarComponent,
+ 
+ 
+  
    
   ],
   imports: [

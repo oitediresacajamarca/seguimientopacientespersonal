@@ -17,9 +17,10 @@
 	font-size: 12px;
 }
 
-:host ::ng-deep .ui-table-customers .customer-badge.status-unqualified {
+:host ::ng-deep .ui-table-customers .customer-badge.status-CERRADO{
 	background-color: #FFCDD2;
 	color: #C63737;
+	font-size: 12px;
 }
 
 :host ::ng-deep .ui-table-customers .customer-badge.status-negotiation {
@@ -187,9 +188,4 @@
 }
 .contenedor{
     width: 4200px;
-}
-
-::ng-deep .ui-contextmenu{
-
-	position: fixed;
 }

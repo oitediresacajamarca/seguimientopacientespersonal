@@ -1,0 +1,42 @@
+<p-dialog header="Edicion de Solicitud" [(visible)]="editarsol">
+  <p-card
+    header="DATOS DE PACIENTE"
+    subheader="ARANA RABANAL ALEX EDWIN"
+    [style]="{ width: '600px' }"
+    styleClass="ui-card-shadow"
+  >
+
+  <div class="ui-g">
+    <div class="ui-g-12">
+    <p-fieldset legend="MOTIVO" [style]="{'font-size':'1rem'}">
+      <input type="text" pInputText style="
+      width: 100%"/>
+    </p-fieldset>
+  </div>
+      
+    
+ 
+  </div>
+  <p-fieldset legend="EDITAR IPRESS DE SOLICITUD" [style]="{'font-size':'1rem'}">
+ 
+    <app-selector-ipress></app-selector-ipress>
+    
+  </p-fieldset>
+    <p-footer>
+      <button
+        pButton
+        type="button"
+        label="GUADAR"
+        icon="pi pi-check"
+        style="margin-right: 0.25em;"
+      ></button>
+      <button
+        pButton
+        type="button"
+        label="CANCEL"
+        icon="pi pi-times"
+        class="ui-button-secondary"
+      ></button>
+    </p-footer>
+  </p-card>
+</p-dialog>

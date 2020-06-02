@@ -3,10 +3,11 @@
 
 
 
-<p-contextMenu #cm [model]="elementosmenu" appendTo="dt"></p-contextMenu>
+<p-contextMenu #cm [model]="elementosmenu" 
+[appendTo]="dt" (onShow)="vi()"></p-contextMenu>
 
    
-
+<app-editar-sol #editar></app-editar-sol>
 
 <p-table #dt [value]="pacientes"   styleClass="ui-table-customers" 
 [rowHover]="true"  [(contextMenuSelection)]="selectedNoti" [contextMenu]="cm"
@@ -75,6 +76,7 @@
 
 
 </p-table>
+
 <br>
 <br>
 <br>

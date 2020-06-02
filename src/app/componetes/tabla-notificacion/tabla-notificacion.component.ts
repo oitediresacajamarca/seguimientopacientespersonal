@@ -1,16 +1,19 @@
-import { Component, OnInit, ɵConsole, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ɵConsole, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { SolicitudesService } from 'src/app/servicios/solicitudes.service';
 import { MorbilidadesService } from 'src/app/servicios/morbilidades.service';
 import { MenuItem } from 'primeng/api/menuitem';
 import { Router } from '@angular/router';
 import { EstadosService } from 'src/app/servicios/estados.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { ContextMenu } from 'primeng/contextmenu/contextmenu';
+import { EditarSolComponent } from '../editar-sol/editar-sol.component';
+
 
 
 @Component({
   selector: 'app-tabla-notificacion',
   templateUrl: './tabla-notificacion.component.html',
-  styleUrls: ['./tabla-notificacion.component.css']
+  styleUrls: ['./tabla-notificacion.component.css'],
+
 })
 export class TablaNotificacionComponent implements OnInit {
   pacientes: any[];
@@ -21,6 +24,8 @@ export class TablaNotificacionComponent implements OnInit {
   selectedNoti: any;
   selectCars: any[];
   elementosmenu: MenuItem[];
+  cm: ContextMenu
+  @ViewChild('editar', { static: false }) editar: EditarSolComponent
 
 
 
@@ -43,7 +48,13 @@ export class TablaNotificacionComponent implements OnInit {
 
         }
       },
-      { label: 'Editar Solicitud', icon: 'pi pi-user-edit', command: (event) => { } },
+      {
+        label: 'Editar Solicitud', icon: 'pi pi-user-edit', command: (event) => {
+          this.editar.editarsol = true
+          console.log(this.selectedNoti)
+
+        }
+      },
       {
         label: 'Cerrar Soliciitud', icon: 'pi pi-times', command: (event) => {
           console.log(this.selectedNoti)
@@ -158,6 +169,10 @@ export class TablaNotificacionComponent implements OnInit {
       });
       FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
     });
+  }
+  vi() {
+
+    console.log(this.cm)
   }
 
 }

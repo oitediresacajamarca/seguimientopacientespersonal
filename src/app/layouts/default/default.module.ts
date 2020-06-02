@@ -16,14 +16,20 @@ import {PanelModule} from 'primeng/panel';
 import {ButtonModule} from 'primeng/button';
 import {ContextMenuModule} from 'primeng/contextmenu';
 import {MatFormFieldModule} from '@angular/material/form-field';
-
+import { EditarSolComponent } from 'src/app/componetes/editar-sol/editar-sol.component';
+import {CardModule} from 'primeng/card';
+import { SelectorIpressComponent } from 'src/app/controles/selector-ipress/selector-ipress.component';
+import {DropdownModule} from 'primeng/dropdown';
+import { FormsModule } from '@angular/forms';
+import {FieldsetModule} from 'primeng/fieldset';
 
 
 @NgModule({
   declarations: [
     DefaultComponent,
     DashboardComponent,
-    PostsComponent,TablaNotificacionComponent
+    PostsComponent,TablaNotificacionComponent,
+    EditarSolComponent,SelectorIpressComponent
   ],
   imports: [
     ButtonModule,
@@ -41,7 +47,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatTableModule,
     PanelModule,
     ContextMenuModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    CardModule,
+    DropdownModule,
+    FormsModule,
+    FieldsetModule
+    
   ],
   providers: [
     DashboardService
