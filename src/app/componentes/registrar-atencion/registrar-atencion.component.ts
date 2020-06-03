@@ -6,11 +6,10 @@ import { DiagnosticosComponent } from './diagnosticos/diagnosticos.component';
 import { TratamientoComponent } from './tratamiento/tratamiento.component';
 import { Atencion } from 'src/app/interfaces/atencion';
 import { FormatoFuat } from 'src/app/interfaces/formato-fuat';
-import * as jsPDF from 'jspdf'
 import { Diagnostico } from 'src/app/interfaces/diagnostico';
-import { FuatService } from 'src/app/servicios/fuat.service';
+
 import { FuatServicioService } from 'src/app/servicios/formatos/fuat-servicio.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+
 import * as moment from 'moment';
 import 'moment/locale/es';
 

@@ -148,6 +148,7 @@ export class PrincipalComponent implements OnInit {
 
   IniciaRegistro(e) {
 
+    
     this.panreg.ver = true;
     let sesion = JSON.parse(localStorage.getItem('datos'));
     this.atencion.ID_RESPONSABLE = sesion.TRABAJADOR_ID;

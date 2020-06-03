@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Examenfisico } from 'src/app/interfaces/examenfisico';
 import { AtencionDetalle } from 'src/app/interfaces/atencion-detalle';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-datos-atencion',
@@ -16,6 +17,7 @@ export class DatosAtencionComponent implements OnInit {
   descripcioncaso:string=""
   @Input()
   visible: boolean;
+  @ViewChild('form1dat',{static :false})form1dat :NgForm;
   examenesFisicos: Examenfisico = {
     examenes: [
       {
