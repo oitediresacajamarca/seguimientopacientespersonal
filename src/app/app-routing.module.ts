@@ -11,63 +11,69 @@ import { ConsentimientoInformadoComponent } from './componentes/formatos/consent
 import { UsuariosAdminComponent } from './modulos/usuarios/usuarios-admin/usuarios-admin.component';
 import { LoginComponent } from './modulos/usuarios/login/login.component';
 import { GeoreferenciaComponent } from './georeferencia/georeferencia.component';
+import { SelectorCieCpmsComponent } from './controles/selector-cie-cpms/selector-cie-cpms.component';
 
 
 const routes: Routes = [
-  {path:'PRIMERO',component:PaneldeseguimientoComponent},
-  {path:'',component:InicioComponent},
-  {path:'login',component:LoginComponent},
-  {path:'seguimientopacientespersonal',component:LoginComponent},
+  { path: 'PRIMERO', component: PaneldeseguimientoComponent },
+  { path: '', component: InicioComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'seguimientopacientespersonal', component: LoginComponent },
 
-  {path:'layout',component:DefaultComponent},
-  {path:'personal.jsp',component:LoginComponent},
-  {path:'atencion/:NRO_DOCUMENTO/:ID_PACIENTE/:ID_SOLICITUD',component:PrincipalComponent},
-  {path:'public',component:PublicComponent},
-  {path:'frontend',component:InicioComponent},
-  {path:'geo',component:GeoreferenciaComponent},
+  { path: 'layout', component: DefaultComponent },
+  { path: 'personal.jsp', component: LoginComponent },
+  { path: 'atencion/:NRO_DOCUMENTO/:ID_PACIENTE/:ID_SOLICITUD', component: PrincipalComponent },
+  { path: 'public', component: PublicComponent },
+  { path: 'frontend', component: InicioComponent },
+  { path: 'geo', component: GeoreferenciaComponent },
+  { path: 'cie', component: SelectorCieCpmsComponent },
   {
     path: 'admin',
     component: DefaultComponent,
     children: [
-    {
-      path: 'reportes',
-      component: DashboardComponent
-    },
-    {
-      path:'atencion/:NRO_DOCUMENTO/:ID_PACIENTE/:ID_SOLICITUD',
-      component:PrincipalComponent
-    },
-    {
-      path:'usuarios',
-      component:UsuariosAdminComponent
-    },
-   
-    {
-      path: 'panel',
-      component: PaneldeseguimientoComponent,
-      children:[
-        {
-          path:'atencion/:NRO_DOCUMENTO/:ID_PACIENTE/:ID_SOLICITUD',
-          component:PrincipalComponent
-        },
-        {
-          path:'',
-          component:PrincipalComponent
-        },
-       
-      ]
-    },
-    {    
-          path:'consentimiento',
-          component:ConsentimientoInformadoComponent      
-      
+      {
+        path: 'reportes',
+        component: DashboardComponent
+      },
+      {
+        path: 'atencion/:NRO_DOCUMENTO/:ID_PACIENTE/:ID_SOLICITUD',
+        component: PrincipalComponent
+      },
+      {
+        path: 'usuarios',
+        component: UsuariosAdminComponent
+      },
+      {
+        path: 'atencion',
+        component: PrincipalComponent
+      },
 
-    }
+      {
+        path: 'panel',
+        component: PaneldeseguimientoComponent,
+        children: [
+          {
+            path: 'atencion/:NRO_DOCUMENTO/:ID_PACIENTE/:ID_SOLICITUD',
+            component: PrincipalComponent
+          },
+          {
+            path: '',
+            component: PrincipalComponent
+          },
 
-  
-  ]
+        ]
+      },
+      {
+        path: 'consentimiento',
+        component: ConsentimientoInformadoComponent
+
+
+      }
+
+
+    ]
   }
-  
+
 ];
 
 @NgModule({

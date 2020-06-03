@@ -22,11 +22,23 @@ export class MorbilidadesPorPacienteComponent implements OnInit {
   }
   
   actualizarDatos(cod_pac:string){
-    this.mor.devolverMorbildadDetalladoPaciente(cod_pac).subscribe((dat)=>{
+    this.morbilidadesdepaciente=[]
 
-      this.morbilidadesdepaciente=dat.respuesta;
+    this.mor.devolverMorbildadDetalladoPaciente(cod_pac).subscribe((dat)=>{
+      console.log(dat.respuesta)
+      dat.respuesta.forEach(element => {
+        let nueva :any={};
+        Object.assign(nueva,element);
+        nueva.COD_MORBILIDAD=element.ID_CIE;
+        nueva.MORBILIDAD=element.Descripcion_Item;
+        nueva.COD_MED='';
+        nueva.NOMBRE_MEDICAMENTO='';    
+        this.morbilidadesdepaciente.push(nueva)
+      })
+
+    
 
     })
   }
-
+  
 }

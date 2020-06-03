@@ -133,9 +133,9 @@ export class PrincipalComponent implements OnInit {
     );
     this.solipac.buscarSolicitud(this.ID_SOLICITUD).subscribe(
       (sol) => {
-        console.log(sol.respuesta);
+      
         this.formsol = sol.respuesta
-        console.log(this.formsol);
+      
         this.atencion.ID_SOLICITUD = sol.respuesta.ID_SOLICITUD
         this.atencion.ANTECEDENTE = sol.respuesta.DESCRIPCION
 

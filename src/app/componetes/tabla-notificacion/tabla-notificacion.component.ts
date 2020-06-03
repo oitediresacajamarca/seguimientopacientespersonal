@@ -16,6 +16,7 @@ import { MessageService } from 'primeng/api';
   templateUrl: './tabla-notificacion.component.html',
   styleUrls: ['./tabla-notificacion.component.css'],
 
+
 })
 export class TablaNotificacionComponent implements OnInit {
   pacientes: any[];

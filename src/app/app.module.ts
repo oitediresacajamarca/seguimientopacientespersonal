@@ -67,6 +67,7 @@ import {OverlayPanelModule} from 'primeng/overlaypanel';
 
 import { UsuariosModule } from './modulos/usuarios/usuarios.module';
 import { GeoreferenciaComponent } from './georeferencia/georeferencia.component';
+import { SelectorCieCpmsComponent } from './controles/selector-cie-cpms/selector-cie-cpms.component';
 
 
 @NgModule({
@@ -89,6 +90,7 @@ import { GeoreferenciaComponent } from './georeferencia/georeferencia.component'
     TratamientoComponent,
     FormularioVerificarComponent,
     GeoreferenciaComponent,
+    SelectorCieCpmsComponent,
  
  
   
