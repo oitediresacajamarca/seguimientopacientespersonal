@@ -36,6 +36,10 @@ export class TablaNotificacionComponent implements OnInit {
     private estados: EstadosService,private messageService: MessageService) { }
 
   ngOnInit() {
+    this.estados.actualizarNotificacione.subscribe(()=>{
+      this.cargarNotificaciones();
+
+    })
     this.elementosmenu = [
       {
         label: 'Registrar Atencion', icon: 'pi pi-calendar-plus', command: (event) => {

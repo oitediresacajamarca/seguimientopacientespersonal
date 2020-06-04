@@ -17,6 +17,8 @@ export class SelectorCieCpmsComponent implements OnInit {
   morbilidadesselec: string[];
   public codigosSelect: string[];
   public selectioncie: any;
+  @Output()
+  seleccionoCie = new EventEmitter<any>();
 
   statuses: any[];
 
@@ -58,9 +60,8 @@ export class SelectorCieCpmsComponent implements OnInit {
     this.loading = false;
   }
   selecionarMob(e) {
-    console.log(this.selectioncie)
-
-    console.log(e)
+   
+    this.seleccionoCie.emit(this.selectioncie);
   }
 
 }

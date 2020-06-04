@@ -13,16 +13,14 @@ selectionMode="single" [(selection)]="selectioncie" dataKey="Codigo_Item" styleC
 </ng-template>
 <ng-template pTemplate="header">
     <tr>
-        <th></th>
+        
         <th pSortableColumn="Codigo_Item">Codigo  <p-sortIcon field="Codigo_Item"></p-sortIcon></th>
         <th pSortableColumn="Descripcion_Item">Nombre <p-sortIcon field="Descripcion_Item"></p-sortIcon></th>
         <th pSortableColumn="Fg_Tipo">Tipo <p-sortIcon field="Fg_Tipo"></p-sortIcon></th>
                
     </tr>
     <tr>
-        <th>
-            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-        </th>
+       
         <th>
             <input pInputText type="text" (input)="dt.filter($event.target.value, 'Codigo_Item', 'startsWith')" placeholder="Buscar por Codigo" class="ui-column-filter">
         </th>
@@ -37,10 +35,8 @@ selectionMode="single" [(selection)]="selectioncie" dataKey="Codigo_Item" styleC
     </tr>
 </ng-template>
 <ng-template pTemplate="body" let-customer>
-    <tr class="ui-selectable-row">
-        <td>
-            <p-tableCheckbox [value]="customer"></p-tableCheckbox>
-        </td>
+    <tr class="ui-selectable-row" [pSelectableRow]="customer">
+        
         <td>
             <span class="ui-column-title">Codigo</span>
        

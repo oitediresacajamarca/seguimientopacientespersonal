@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { EstadosService } from 'src/app/servicios/estados.service';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ export class HeaderComponent implements OnInit {
   @Output() notiA: EventEmitter<any> = new EventEmitter();
 
 
-  constructor() { }
+  constructor(private estado:EstadosService) { }
 
   ngOnInit() { }
 
@@ -25,6 +26,7 @@ export class HeaderComponent implements OnInit {
   }
 
   abrirNotificaciones(){
+    this.estado.actualizarNotificacione.emit();
     this.notiA.emit();
   
     setTimeout(() => {

@@ -28,7 +28,9 @@
 
       <p-overlayPanel #op1>
         <ng-template pTemplate>
-          <app-tabla-morbilidades></app-tabla-morbilidades>
+
+          <app-selector-cie-cpms (seleccionoCie)="agregarCie($event)"></app-selector-cie-cpms>
+         
         </ng-template>
       </p-overlayPanel>
       </div>

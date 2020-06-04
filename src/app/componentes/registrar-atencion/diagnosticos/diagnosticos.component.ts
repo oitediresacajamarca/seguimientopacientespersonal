@@ -51,13 +51,13 @@ export class DiagnosticosComponent implements OnInit {
 
 
 
-    this.dianosticospac.push({ item: this.dianosticospac.length + 1, cod_cie: this.cod_diag_selec,desc_diag:this.desc_diag_selec, tip_diag: tipo, lab: this.lab_selec })
+    this.dianosticospac.push({ item: this.dianosticospac.length + 1, cod_cie: this.cod_diag_selec, desc_diag: this.desc_diag_selec, tip_diag: tipo, lab: this.lab_selec })
 
     this.diagnostabla.push(
       {
         CODIGO_DIAGNOSTICO: this.cod_diag_selec,
         ESTADO_DIAGNOSTICO: "1", NRO_ITEM: this.dianosticospac.length, LAB_DIAGNOSTICO: this.lab_selec
-        , TIPO_DIAGNOSTICO: this.selectedtipdiag, ID_ATENCION: "", ID_TRABAJADOR: "",DESC_DIAGNOSTICO:this.desc_diag_selec
+        , TIPO_DIAGNOSTICO: this.selectedtipdiag, ID_ATENCION: "", ID_TRABAJADOR: "", DESC_DIAGNOSTICO: this.desc_diag_selec
       })
 
   }
@@ -69,15 +69,20 @@ export class DiagnosticosComponent implements OnInit {
     })
 
   }
-  eliminarDiagnosticoPaciente(diagnos){
+  eliminarDiagnosticoPaciente(diagnos) {
 
-   let lugar= this.dianosticospac.findIndex((element)=>{element.cod_cie==diagnos.cod_cie})
-    this.dianosticospac.splice(lugar,1);
-    this.diagnostabla.splice(lugar,1)
+    let lugar = this.dianosticospac.findIndex((element) => { element.cod_cie == diagnos.cod_cie })
+    this.dianosticospac.splice(lugar, 1);
+    this.diagnostabla.splice(lugar, 1)
 
   }
-  mostrar(){
+  mostrar() {
     alert()
+  }
+  agregarCie(e) {
+    console.log(e)
+    this.cod_diag_selec=e.Codigo_Item;
+    this.desc_diag_selec = e.Descripcion_Item;
   }
 
 
