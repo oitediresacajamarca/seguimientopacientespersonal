@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as FileSaver from 'file-saver';
 import { environment } from 'src/environments/environment';
+import { FormatoFuat } from 'src/app/interfaces/formato-fuat';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FuatServicioService {
+
+  formatofuat:FormatoFuat
 
   constructor(private http: HttpClient) { }
 

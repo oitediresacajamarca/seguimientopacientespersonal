@@ -150,6 +150,10 @@ export class PublicComponent implements OnInit {
 
   guardarPaciente() {
     this.fechasolicitud = new Date()
+    console.log(this.correo)
+    if(this.correo== undefined){
+      this.correo=''
+    }
     this.confirmationService.confirm({
       message: 'ESTAS SEGURO DE REGISTRARTE PARA SOLICITAR ATENCION?',
       key: 'final',

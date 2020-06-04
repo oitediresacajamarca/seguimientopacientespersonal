@@ -4,7 +4,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { MorbilidadesPorPacienteComponent } from '../morbilidades-por-paciente/morbilidades-por-paciente.component';
 import { PersonaService } from 'src/app/servicios/servicios/persona.service';
 import { GeografiaService } from 'src/app/servicios/servicios/geografia.service';
-import { FormatoFuat } from 'src/app/interfaces/formato-fuat';
+
 import { Configuracion } from 'src/app/configuracion/configuracion';
 import { Atencion } from 'src/app/interfaces/atencion';
 import { RegistrarAtencionComponent } from '../registrar-atencion/registrar-atencion.component';
@@ -85,7 +85,7 @@ export class PrincipalComponent implements OnInit {
   cod_buscar: string;
   ID_PACIENTE: string;
   ID_SOLICITUD: string;
-  formatoFuat: FormatoFuat
+
   es: any;
 
   constructor(private solipac: SolicitudPacienteService, private rutaActiva: ActivatedRoute, private personser: PersonaService, private GEO: GeografiaService) { }
@@ -154,7 +154,7 @@ export class PrincipalComponent implements OnInit {
     this.atencion.ID_RESPONSABLE = sesion.TRABAJADOR_ID;
     this.panreg.form1.atencion_detalle.MOTIVO = this.formsol.DESCRIPCION;
 
-    localStorage.setItem('formatofuat', JSON.stringify(this.formatoFuat));
+
 
 
 

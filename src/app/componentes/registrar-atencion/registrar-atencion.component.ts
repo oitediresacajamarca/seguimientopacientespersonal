@@ -39,7 +39,7 @@ export class RegistrarAtencionComponent implements OnInit {
   activo: MenuItem;
   @Input() atencion: Atencion
   @Input() datosPaciente: any
-  formatofuat: FormatoFuat
+  formatofuat: FormatoFuat=this.fuatservicio.formatofuat;
   fua: string
 
   constructor(private aten: AtencionService, private confirmationService: ConfirmationService,

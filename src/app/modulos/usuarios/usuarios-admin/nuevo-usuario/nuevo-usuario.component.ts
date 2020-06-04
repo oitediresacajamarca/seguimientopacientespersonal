@@ -121,6 +121,7 @@ export class NuevoUsuarioComponent implements OnInit {
         this.datgenerales.nombre = datos.NOMBRES;
         this.datgenerales.apellidopaterno = datos.APELLIDO_PAT;
         this.datgenerales.apellidomaterno = datos.APELLIDO_MAT;
+        this.datgenerales.id_persona=datos.ID_PERSONA
         //  this.datgenerales =datos.respuesta[0].DIRECCION
         this.datgenerales.telef = datos.TELEFONO
         this.datgenerales.correo = datos.CORREO
@@ -147,7 +148,9 @@ export class NuevoUsuarioComponent implements OnInit {
     this.usuariogen = this.datgenerales.nombre.slice(0, 1) +
       this.datgenerales.apellidopaterno + this.datgenerales.apellidomaterno.slice(0, 1);
     this.clavegen = this.numdocbuscar.slice(0, seed),
-      this.usu.generaFakeNom().subscribe(dato => { this.clavegen = this.clavegen + dato });
+      this.usu.generaFakeNom().subscribe(dato => { 
+        console.log(dato)
+        this.clavegen = this.clavegen + dato });
     this.usu.verificar(this.usuariogen).subscribe((dat) => {
       if (dat.mensaje == "Existe") {
         this.generarContrasenia(seed + 1)
@@ -174,6 +177,7 @@ export class NuevoUsuarioComponent implements OnInit {
     usu.TELEFONO = this.datgenerales.telef;
     usu.clave = this.clavegen;
     usu.numero_doc = this.numdocbuscar
+    usu.id_persona=this.datgenerales.id_persona
 
     usu.DATOS_PROFESIONALES.COD_COLEGIATURA = this.cod_colegiatura;
     usu.DATOS_PROFESIONALES.ID_COLEGIO = this.colegiselect as string
