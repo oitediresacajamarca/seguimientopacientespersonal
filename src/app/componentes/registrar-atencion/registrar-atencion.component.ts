@@ -112,10 +112,12 @@ export class RegistrarAtencionComponent implements OnInit {
           this.aten.registrarExamenfis(this.form1.examenesFisicos.examenes, id_atencion, this.trabajador_id).subscribe(() => { });
           this.aten.registrarAtencionDetalle(this.form1.atencion_detalle, id_atencion, this.trabajador_id).subscribe(() => { });
           this.aten.registrarAtencionDiagnosticos(this.form2.diagnostabla, id_atencion, this.trabajador_id).subscribe(() => { });
-
-          this.confirmationService.confirm({ message: 'Se guardaron los datos correctamente' })
           this.completoRegistro.emit('Se completo el Registro');
-          this.ver=false;
+          this.confirmationService.confirm({ message: 'Se guardaron los datos correctamente',accept:() =>{
+            this.ver=false
+          }})
+        
+         
 
 
 

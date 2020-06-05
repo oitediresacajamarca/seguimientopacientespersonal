@@ -1,4 +1,4 @@
-import { Component, OnInit, ɵConsole, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, ɵConsole, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { SolicitudesService } from 'src/app/servicios/solicitudes.service';
 import { MorbilidadesService } from 'src/app/servicios/morbilidades.service';
 import { MenuItem } from 'primeng/api/menuitem';
@@ -27,17 +27,19 @@ export class TablaNotificacionComponent implements OnInit {
   selectedNoti: any;
   selectCars: any[];
   elementosmenu: MenuItem[];
+  verDialog:boolean=true;
   cm: ContextMenu
   @ViewChild('editar', { static: false }) editar: EditarSolComponent
 
 
 
   constructor(private sol: SolicitudesService, private morb: MorbilidadesService, private router: Router,
-    private estados: EstadosService,private messageService: MessageService) { }
+    private estados: EstadosService,private messageService: MessageService,private elementRef: ElementRef) { }
 
   ngOnInit() {
     this.estados.actualizarNotificacione.subscribe(()=>{
       this.cargarNotificaciones();
+      this.verDialog=true;
 
     })
     this.elementosmenu = [
@@ -45,7 +47,7 @@ export class TablaNotificacionComponent implements OnInit {
         label: 'Registrar Atencion', icon: 'pi pi-calendar-plus', command: (event) => {
 
           this.router.navigate(['/admin/atencion/' + this.selectedNoti.NRO_DOCUMENTO + '/' + this.selectedNoti.ID_PACIENTE + '/' + this.selectedNoti.ID_SOLICITUD]);
-          this.displayNotificacion.emit('cerrar')
+          this.verDialog=false;
         }
       },
 
@@ -185,8 +187,10 @@ export class TablaNotificacionComponent implements OnInit {
       FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
     });
   }
-  vi() {
+  vi(e) {
+    console.log(e)
 
+console.log(    this.elementRef.nativeElement);
   
   }
 

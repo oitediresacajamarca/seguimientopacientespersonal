@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
 
   abrirNotificaciones(){
     this.estado.actualizarNotificacione.emit();
-    this.notiA.emit();
+ 
   
     setTimeout(() => {
       window.dispatchEvent(
