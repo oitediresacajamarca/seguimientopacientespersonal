@@ -19,10 +19,6 @@ export class SidebarComponent implements OnInit {
    this.correoelec=dat.CORREO;
    this.profesion=dat.DATOS_PROFESIONALES.NOMBRE_PROFESION
    this.cod_colegiatura=dat.DATOS_PROFESIONALES.COD_COLEGIATURA
-
-  
-
-
   }
 
 }
