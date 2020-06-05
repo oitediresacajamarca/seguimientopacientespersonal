@@ -111,7 +111,7 @@ export class PrincipalComponent implements OnInit {
     this.personser.devolverPersonaPaciente('1', this.cod_buscar).subscribe((dat) => {
 
       this.form = dat.respuesta;
-
+      console.log(dat.respuesta)
       if (dat.respuesta.ID_GENERO == 1) {
         this.form.GENERO = "MASCULINO"
       } else {
@@ -121,6 +121,7 @@ export class PrincipalComponent implements OnInit {
       this.atencion.ID_MODALIDAD = "5";
       this.atencion.ID_HC = "1";
       this.atencion.ID_TIPO_ATENCION = "4";
+      this.atencion.ID_SOLICITUD = this.ID_SOLICITUD
       this.GEO.devolverDistrito(dat.respuesta.ID_DISTRITO).subscribe((dis) => {
         this.form.NOMBRE_DISTRITO = dis.NOMBRE;
         this.form.NOMBRE_PROVINCIA = (this.GEO.devolverProvincia(dis.ID_PROVINCIA)).label;
@@ -133,9 +134,9 @@ export class PrincipalComponent implements OnInit {
     );
     this.solipac.buscarSolicitud(this.ID_SOLICITUD).subscribe(
       (sol) => {
-      
+
         this.formsol = sol.respuesta
-      
+
         this.atencion.ID_SOLICITUD = sol.respuesta.ID_SOLICITUD
         this.atencion.ANTECEDENTE = sol.respuesta.DESCRIPCION
 
@@ -148,7 +149,7 @@ export class PrincipalComponent implements OnInit {
 
   IniciaRegistro(e) {
 
-    
+
     this.panreg.ver = true;
     let sesion = JSON.parse(localStorage.getItem('datos'));
     this.atencion.ID_RESPONSABLE = sesion.TRABAJADOR_ID;

@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   nombrescompletos:string;
   correoelec:string;
+  profesion:string
+  cod_colegiatura:string
 
   constructor() { }
 
@@ -15,6 +17,9 @@ export class SidebarComponent implements OnInit {
    let dat:any= JSON.parse(localStorage.getItem('datos'));
    this.nombrescompletos=   dat.NOMBRES+' '+dat.APELLIDO_PAT+ ' '+ dat.APELLIDO_MAT;
    this.correoelec=dat.CORREO;
+   this.profesion=dat.DATOS_PROFESIONALES.NOMBRE_PROFESION
+   this.cod_colegiatura=dat.DATOS_PROFESIONALES.COD_COLEGIATURA
+
   
 
 
