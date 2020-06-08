@@ -12,6 +12,7 @@ import { FuatServicioService } from 'src/app/servicios/formatos/fuat-servicio.se
 
 import * as moment from 'moment';
 import 'moment/locale/es';
+import { PersonalService } from 'src/app/servicios/personal.service';
 
 
 @Component({
@@ -39,15 +40,25 @@ export class RegistrarAtencionComponent implements OnInit {
   activo: MenuItem;
   @Input() atencion: Atencion
   @Input() datosPaciente: any
-  formatofuat: FormatoFuat=this.fuatservicio.formatofuat;
+  formatofuat: FormatoFuat = this.fuatservicio.formatofuat;
   fua: string
 
   constructor(private aten: AtencionService, private confirmationService: ConfirmationService,
-    private fuatservicio: FuatServicioService, private messageService: MessageService) { }
+    private fuatservicio: FuatServicioService, private messageService: MessageService,
+    private personals: PersonalService) { }
 
   ngOnInit() {
+
     this.sesion = JSON.parse(localStorage.getItem('datos'));
     this.pasos = [{ label: "DATOS DE LA ATENCION" }, { label: "DIAGNOSTICOS" }, { label: "TRATAMIENTO Y RECOMENDACIONES" }]
+    this.completoRegistro.subscribe(() => {
+
+      this.confirmationService.confirm({
+        message: 'Se guardaron los datos correctamente', accept: () => {
+          this.ver = false
+        }
+      })
+    })
 
 
     this.trabajador_id = this.sesion.TRABAJADOR_ID;
@@ -79,7 +90,7 @@ export class RegistrarAtencionComponent implements OnInit {
       numeroFuat: 1,
       nuevocontrol: true,
       numerocontrol: "",
-      personal: { nombresyapellidos: "", colegiatura: "", profesion: "" },
+      personal: { nombresyapellidos: "", colegiatura: "", profesion: "", NRO_DOCUMENTO: "" },
       recomendaciones: [],
       sexo: "",
       tiposeguro: "",
@@ -90,38 +101,61 @@ export class RegistrarAtencionComponent implements OnInit {
 
 
   registrarAtencion(event) {
+
     console.log(this.atencion);
     console.log(this.form1.examenesFisicos);
     console.log(this.form1.atencion_detalle);
     console.log(this.form2.diagnostabla)
+    console.log(this.sesion)
     let id_atencion;
 
     this.confirmationService.confirm({
       message: 'Esta seguro de que deseas Guardar la Atencion',
       accept: () => {
+        this.imprimirFuat();
+
 
         this.form1.atencion_detalle.N_CONTROL = this.form1.numcon;
+        this.personals.devolver_personal(this.sesion.id_persona, this.sesion.COD_IPRESS).subscribe((dato) => {
+          let personal: any
+          if (dato.rowsAffected >= 1) {
+            personal = dato.recordset[0];
+            this.atencion.ID_RESPONSABLE = personal.ID_TRABAJADOR_IPRESS
+            console.log(personal.ID_TRABAJADOR_IPRESS)
+          }
+          console.log(this.atencion);
+          this.aten.registrar(
+            this.atencion
+
+          ).subscribe((RESPUESTA) => {
+            this.formatofuat.personal.NRO_DOCUMENTO = this.sesion.id_persona
+            this.fuatservicio.guardarFuat(this.formatofuat).subscribe((res) => { console.log(res) })
+
+            id_atencion = RESPUESTA.identiti;
+            this.form1.examenesFisicos.examenes.forEach(element => {
+              element.ID_TRABAJADOR = this.atencion.ID_RESPONSABLE
+            });
+            this.trabajador_id = personal.ID_TRABAJADOR_IPRESS
+            this.aten.registrarExamenfis(this.form1.examenesFisicos.examenes, id_atencion, this.trabajador_id).subscribe(() => { console.log('se guardo exitosamente los examenes fisicos') });
 
 
-        this.aten.registrar(
-          this.atencion
+            this.aten.registrarAtencionDetalle(this.form1.atencion_detalle, id_atencion, this.trabajador_id).subscribe(() => { console.log('se guardo exitosamente atencion detalle') });
 
-        ).subscribe((RESPUESTA) => {
-          id_atencion = RESPUESTA.respuesta.identiti;
-          this.form1.examenesFisicos
-          this.aten.registrarExamenfis(this.form1.examenesFisicos.examenes, id_atencion, this.trabajador_id).subscribe(() => { });
-          this.aten.registrarAtencionDetalle(this.form1.atencion_detalle, id_atencion, this.trabajador_id).subscribe(() => { });
-          this.aten.registrarAtencionDiagnosticos(this.form2.diagnostabla, id_atencion, this.trabajador_id).subscribe(() => { });
-          this.completoRegistro.emit('Se completo el Registro');
-          this.confirmationService.confirm({ message: 'Se guardaron los datos correctamente',accept:() =>{
-            this.ver=false
-          }})
-        
-         
+            this.aten.registrarAtencionDiagnosticos(this.form2.diagnostabla, id_atencion, this.trabajador_id).subscribe(() => { console.log('se guardo exitosamente los diagnosticos') });
+
+            this.completoRegistro.emit('Se completo el Registro');
 
 
 
-        });
+
+
+
+          });
+
+        })
+
+
+
       }
     })
 
@@ -131,8 +165,8 @@ export class RegistrarAtencionComponent implements OnInit {
 
 
     this.formatofuat.codipress = this.sesion.COD_IPRESS;
-  
-   
+
+
     this.formatofuat.nombreipress = this.sesion.NOMBRE_IPRESS;
     this.formatofuat.fechasolicitud = this.datos_solicitud.FECHA_SOLICITUD.substring(0, 10);
     this.formatofuat.horasolicitud = this.datos_solicitud.FECHA_SOLICITUD.substring(11, 20);
@@ -143,13 +177,13 @@ export class RegistrarAtencionComponent implements OnInit {
     var fn = moment(this.datosPaciente.FECHA_NAC, "DD-MM-YYYY")
     console.log(fn.toDate())
 
-    
-    var hoy=moment();
-    var anios=hoy.diff(fn,"years");
-  
+
+    var hoy = moment();
+    var anios = hoy.diff(fn, "years");
+
     var timeDiff = Math.abs(Date.now() - Date.parse(this.datosPaciente.FECHA_NAC));
 
-    this.formatofuat.edad =anios.toString()
+    this.formatofuat.edad = anios.toString()
 
     this.formatofuat.nro_documento = this.datosPaciente.NRO_DOCUMENTO;
     this.formatofuat.nuevocontrol = this.form1.numcon == null || this.form1.numcon < 1 ? true : false
@@ -188,7 +222,7 @@ export class RegistrarAtencionComponent implements OnInit {
 
     this.formatofuat.recomendaciones = this.form3.recomendaciones;
     this.fuatservicio.mostrarFuat(this.formatofuat);
-   
+
   }
 
   selecionarForm() {

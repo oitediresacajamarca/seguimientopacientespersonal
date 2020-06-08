@@ -26,8 +26,8 @@
       
       ></p-button>
 
-      <p-overlayPanel #op1>
-        <ng-template pTemplate>
+      <p-overlayPanel #op1 [dismissable]="false" [showCloseIcon]="true">
+        <ng-template pTemplate> 
 
           <app-selector-cie-cpms (seleccionoCie)="agregarCie($event)"></app-selector-cie-cpms>
          

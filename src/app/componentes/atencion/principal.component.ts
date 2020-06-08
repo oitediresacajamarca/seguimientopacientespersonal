@@ -82,6 +82,10 @@ export class PrincipalComponent implements OnInit {
     ID_PACIENTE: '',
     ID_SOLICITUD: ''
   }
+
+
+
+  
   cod_buscar: string;
   ID_PACIENTE: string;
   ID_SOLICITUD: string;
@@ -91,6 +95,23 @@ export class PrincipalComponent implements OnInit {
   constructor(private solipac: SolicitudPacienteService, private rutaActiva: ActivatedRoute, private personser: PersonaService, private GEO: GeografiaService) { }
 
   ngOnInit() {
+
+    this.atencion={
+      ID_ATENCION: null, 
+      TIPO_CONEXION:null, 
+      ID_MODALIDAD: null, 
+      ID_HC: null, 
+      ID_TIPO_ATENCION: null,
+      ANTECEDENTE: "DOLOR DE CABEZA CON OTRAS COSAS",
+      CONSENTIMIENTO: null,
+      FECHA: null,
+      FEC_REGISTRO:null,
+      HORA: null,
+      ID_PACIENTE: null,
+      ID_RESPONSABLE: null,
+      ID_SOLICITUD: "87",
+      NIVEL_ATENCION: null           
+      }
 
 
     this.cod_buscar = this.rutaActiva.snapshot.params.ID_PACIENTE;

@@ -9,7 +9,7 @@ import { FormatoFuat } from 'src/app/interfaces/formato-fuat';
 })
 export class FuatServicioService {
 
-  formatofuat:FormatoFuat
+  formatofuat: FormatoFuat
 
   constructor(private http: HttpClient) { }
 
@@ -20,7 +20,7 @@ export class FuatServicioService {
       headers: new HttpHeaders({ 'Content-Type': 'application/pdf' })
     };
 
-    this.http.post(environment.url_backend + 'fuat/ver', datosfuat, { responseType: 'arraybuffer' }).subscribe(
+    this.http.post('http://hospitalvirtual.diresacajamarca.gob.pe:8088/fuat/ver', datosfuat, { responseType: 'arraybuffer' }).subscribe(
       (datos) => {
 
 
@@ -31,6 +31,13 @@ export class FuatServicioService {
 
         console.log(url)
       });
+
+
+  }
+
+  guardarFuat(fuat: any) {
+
+    return this.http.post(environment.url_backend + 'fuat/guardar',fuat)
 
   }
 

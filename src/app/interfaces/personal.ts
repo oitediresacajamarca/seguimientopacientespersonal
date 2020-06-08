@@ -1,5 +1,6 @@
 export interface Personal {
     nombresyapellidos:string,
     profesion:string
-    colegiatura,
+    colegiatura:string
+    NRO_DOCUMENTO:string
 }

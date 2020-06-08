@@ -63,11 +63,14 @@ import { DiagnosticosComponent } from './componentes/registrar-atencion/diagnost
 import { TratamientoComponent } from './componentes/registrar-atencion/tratamiento/tratamiento.component';
 import { FormularioVerificarComponent } from './componentes/public/formulario-verificar/formulario-verificar.component';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
+import {TieredMenuModule} from 'primeng/tieredmenu';
 
 
 import { UsuariosModule } from './modulos/usuarios/usuarios.module';
 import { GeoreferenciaComponent } from './georeferencia/georeferencia.component';
 import { SelectorCieCpmsComponent } from './controles/selector-cie-cpms/selector-cie-cpms.component';
+import { AtencionesRealizadasComponent } from './componentes/atencion/atenciones-realizadas/atenciones-realizadas.component';
+import { DetalleAtencionComponent } from './componentes/atencion/atenciones-realizadas/detalle-atencion/detalle-atencion.component';
 
 
 @NgModule({
@@ -91,6 +94,8 @@ import { SelectorCieCpmsComponent } from './controles/selector-cie-cpms/selector
     FormularioVerificarComponent,
     GeoreferenciaComponent,
     SelectorCieCpmsComponent,
+    AtencionesRealizadasComponent,
+    DetalleAtencionComponent,
  
  
   
@@ -127,7 +132,8 @@ import { SelectorCieCpmsComponent } from './controles/selector-cie-cpms/selector
     LightboxModule, SidebarModule, CardModule,
     MatCheckboxModule,
     UsuariosModule,
-    OverlayPanelModule
+    OverlayPanelModule,
+    TieredMenuModule
   ],
   providers: [DistritosService, ConfirmationService, MessageService],
   bootstrap: [AppComponent]
