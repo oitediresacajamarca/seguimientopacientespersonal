@@ -19,10 +19,13 @@ import { LoginComponent } from './login/login.component';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import {CheckboxModule} from 'primeng/checkbox';
+import {TieredMenuModule} from 'primeng/tieredmenu';
+import { MenuAccionUsuarioComponent } from './controles/menu-accion-usuario/menu-accion-usuario.component';
+import {ToastModule} from 'primeng/toast';
 
 
 @NgModule({
-  declarations: [UsuariosAdminComponent, NuevoUsuarioComponent, AmbitoAdministrativoSelectComponent, LoginComponent],
+  declarations: [UsuariosAdminComponent, NuevoUsuarioComponent, AmbitoAdministrativoSelectComponent, LoginComponent, MenuAccionUsuarioComponent],
   providers:[ConfirmationService],
   imports: [
     SidebarModule,
@@ -38,7 +41,8 @@ import {CheckboxModule} from 'primeng/checkbox';
     ConfirmDialogModule,
     MessagesModule,
     MessageModule,
-    CheckboxModule
+    CheckboxModule,
+    TieredMenuModule,ToastModule
     
     
 

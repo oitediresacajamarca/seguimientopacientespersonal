@@ -12,17 +12,52 @@
   </div>
   <div class="ui-g-12" id="contenedo" #contenedo>
     <p-fieldset legend="Listado de Usuarios">
+     
       <p-table [columns]="columnasUsuarios" [value]="usuariosDatos">
         <ng-template pTemplate="caption">
-            <div class="ui-helper-clearfix" style="text-align: left">
-                <button type="button" pButton icon="pi pi-file-o" iconPos="left" label="CSV"  style="margin-right: 0.5em;"></button>
-                <button type="button" pButton icon="pi pi-file-excel" iconPos="left" label="EXCEL"  style="margin-right: 0.5em;" class="ui-button-success"></button>
-                <button type="button" pButton icon="pi pi-file-pdf" iconPos="left" label="PDF"  class="ui-button-warning"></button>
-                <button type="button" pButton icon="pi pi-plus" iconPos="left" label="NUEVO USUARIO"  style="float:right" (click)="formN.verNuevoUsuarios=true"></button>
-            </div>
+          <div class="ui-helper-clearfix" style="text-align: left;">
+            <button
+              type="button"
+              pButton
+              icon="pi pi-file-o"
+              iconPos="left"
+              label="CSV"
+              style="margin-right: 0.5em;"
+            ></button>
+            <button
+              type="button"
+              pButton
+              icon="pi pi-file-excel"
+              iconPos="left"
+              label="EXCEL"
+              style="margin-right: 0.5em;"
+              class="ui-button-success"
+            ></button>
+            <button
+              type="button"
+              pButton
+              icon="pi pi-file-pdf"
+              iconPos="left"
+              label="PDF"
+              class="ui-button-warning"
+            ></button>
+            <button
+              type="button"
+              pButton
+              icon="pi pi-plus"
+              iconPos="left"
+              label="NUEVO USUARIO"
+              style="float: right;"
+              (click)="formN.verNuevoUsuarios = true"
+            ></button>
+          </div>
         </ng-template>
         <ng-template pTemplate="header" let-columns>
           <tr>
+            <th>
+            
+            </th>
+
             <th *ngFor="let col of columns">
               {{ col.header }}
             </th>
@@ -30,6 +65,10 @@
         </ng-template>
         <ng-template pTemplate="body" let-car let-columns="columns">
           <tr>
+            <td> 
+           
+           <app-menu-accion-usuario [usuario]="car"></app-menu-accion-usuario>
+          </td>
             <td *ngFor="let col of columns">
               {{ car[col.field] }}
             </td>
@@ -40,4 +79,5 @@
   </div>
 </div>
 <app-nuevo-usuario #formN></app-nuevo-usuario>
+<p-toast position="top-right"></p-toast>
 

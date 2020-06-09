@@ -40,5 +40,11 @@ export class UsuariosService {
   return  this.http.get(environment.url_backend+'usuarios/generarFake')
 
   }
+  devolverUsuarios(){
+    return  this.http.get(environment.url_backend+'usuarios/listar')
+  }
+  eliminarUsuario(id:string){
+    return  this.http.get(environment.url_backend+'usuarios/eliminar/'+id)
+  }
 
 }
