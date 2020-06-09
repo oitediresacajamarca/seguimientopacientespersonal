@@ -29,6 +29,7 @@ export class AtencionService {
   registrarAtencionDiagnosticos(diagnosticos:AtencionDiagnosticoItem[],id_atencion: string, id_trabajador: string){
     diagnosticos.forEach(element => {
       
+      
       element.ID_ATENCION=id_atencion;
       element.ID_TRABAJADOR=id_trabajador;
     });

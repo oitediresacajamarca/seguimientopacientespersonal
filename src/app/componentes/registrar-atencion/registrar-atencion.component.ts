@@ -112,9 +112,7 @@ export class RegistrarAtencionComponent implements OnInit {
     this.confirmationService.confirm({
       message: 'Esta seguro de que deseas Guardar la Atencion',
       accept: () => {
-        this.imprimirFuat();
-
-
+       
         this.form1.atencion_detalle.N_CONTROL = this.form1.numcon;
         this.personals.devolver_personal(this.sesion.id_persona, this.sesion.COD_IPRESS).subscribe((dato) => {
           let personal: any
@@ -129,9 +127,12 @@ export class RegistrarAtencionComponent implements OnInit {
 
           ).subscribe((RESPUESTA) => {
             this.formatofuat.personal.NRO_DOCUMENTO = this.sesion.id_persona
+            this.formatofuat.numeroFuat=RESPUESTA.identiti;
+            console.log(RESPUESTA.identiti)
             this.fuatservicio.guardarFuat(this.formatofuat).subscribe((res) => { console.log(res) })
 
             id_atencion = RESPUESTA.identiti;
+         
             this.form1.examenesFisicos.examenes.forEach(element => {
               element.ID_TRABAJADOR = this.atencion.ID_RESPONSABLE
             });
@@ -142,7 +143,7 @@ export class RegistrarAtencionComponent implements OnInit {
             this.aten.registrarAtencionDetalle(this.form1.atencion_detalle, id_atencion, this.trabajador_id).subscribe(() => { console.log('se guardo exitosamente atencion detalle') });
 
             this.aten.registrarAtencionDiagnosticos(this.form2.diagnostabla, id_atencion, this.trabajador_id).subscribe(() => { console.log('se guardo exitosamente los diagnosticos') });
-
+            this.imprimirFuat();
             this.completoRegistro.emit('Se completo el Registro');
 
 
