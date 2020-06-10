@@ -64,14 +64,12 @@ import { TratamientoComponent } from './componentes/registrar-atencion/tratamien
 import { FormularioVerificarComponent } from './componentes/public/formulario-verificar/formulario-verificar.component';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
 import {TieredMenuModule} from 'primeng/tieredmenu';
-
-
 import { UsuariosModule } from './modulos/usuarios/usuarios.module';
 import { GeoreferenciaComponent } from './georeferencia/georeferencia.component';
 import { SelectorCieCpmsComponent } from './controles/selector-cie-cpms/selector-cie-cpms.component';
 import { AtencionesRealizadasComponent } from './componentes/atencion/atenciones-realizadas/atenciones-realizadas.component';
 import { DetalleAtencionComponent } from './componentes/atencion/atenciones-realizadas/detalle-atencion/detalle-atencion.component';
-
+import {PdfViewerModule} from 'ng2-pdf-viewer'
 
 @NgModule({
   declarations: [
@@ -133,7 +131,8 @@ import { DetalleAtencionComponent } from './componentes/atencion/atenciones-real
     MatCheckboxModule,
     UsuariosModule,
     OverlayPanelModule,
-    TieredMenuModule
+    TieredMenuModule,ToastModule,
+    PdfViewerModule
   ],
   providers: [DistritosService, ConfirmationService, MessageService],
   bootstrap: [AppComponent]

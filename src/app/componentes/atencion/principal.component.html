@@ -145,13 +145,12 @@
           <mat-card>
             FECHA Y HORA DE SOLICITUD<br />
             <input
-            type="email"
-            class="form-control"
-            aria-describedby="emailHelp"
-            [(ngModel)]="formsol.FECHA_SOLICITUD"
-            disabled="true"
-          />
-           
+              type="email"
+              class="form-control"
+              aria-describedby="emailHelp"
+              [(ngModel)]="formsol.FECHA_SOLICITUD"
+              disabled="true"
+            />
           </mat-card>
         </div>
         <div class="ui-g-6">
@@ -246,16 +245,32 @@
       [(ver)]="verpanelregistro"
       [(datos_solicitud)]="formsol"
     ></app-registrar-atencion>
-    <button
-      pButton
-      type="button"
-      label="Iniciar Atencion"
-      (click)="IniciaRegistro($event)"
-      (completoRegistro)="CerrarRegistro()"
-    ></button>
+    <div class="atencion-boton">
+      <button
+        pButton
+        type="button"
+        label="Iniciar Atencion"
+        (click)="IniciaRegistro($event)"
+        (completoRegistro)="CerrarRegistro()"
+        [style]="{'margin-left':'4px','float':'right'}"
+      ></button>
+      <button
+        pButton
+        type="button"
+        label="VER FUAT"
+        (click)="Imprimir_Fuat()"
+        (completoRegistro)="CerrarRegistro()"
+        [style]="{'margin-left':'4px','float':'right'}"
+      ></button>
+    </div>
   </p-tabPanel>
   <p-tabPanel header="Solicitudes de Atencion Pendientes"> </p-tabPanel>
   <p-tabPanel header="Atendidos">
-  <app-atenciones-realizadas></app-atenciones-realizadas>
+    <app-atenciones-realizadas></app-atenciones-realizadas>
   </p-tabPanel>
 </p-tabView>
+<pdf-viewer
+ 
+  [render-text]="true"
+  style="display: block;"
+></pdf-viewer>

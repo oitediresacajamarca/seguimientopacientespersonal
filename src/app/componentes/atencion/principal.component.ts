@@ -8,6 +8,7 @@ import { GeografiaService } from 'src/app/servicios/servicios/geografia.service'
 import { Configuracion } from 'src/app/configuracion/configuracion';
 import { Atencion } from 'src/app/interfaces/atencion';
 import { RegistrarAtencionComponent } from '../registrar-atencion/registrar-atencion.component';
+import { FuatServicioService } from 'src/app/servicios/formatos/fuat-servicio.service';
 declare var $: any
 
 @Component({
@@ -20,6 +21,7 @@ export class PrincipalComponent implements OnInit {
   sideBarOpen: boolean = false;
   @ViewChild('mpp', { static: false }) mpp: MorbilidadesPorPacienteComponent;
   verpanelregistro: boolean = false;
+  pdffuat = "file:///E:/Descargas/FORMATO_FUAT%20-%202020-06-09T170805.728.pdf"
 
 
   formsol: any =
@@ -85,33 +87,34 @@ export class PrincipalComponent implements OnInit {
 
 
 
-  
+
   cod_buscar: string;
   ID_PACIENTE: string;
   ID_SOLICITUD: string;
 
   es: any;
 
-  constructor(private solipac: SolicitudPacienteService, private rutaActiva: ActivatedRoute, private personser: PersonaService, private GEO: GeografiaService) { }
+  constructor(private solipac: SolicitudPacienteService, private rutaActiva: ActivatedRoute,
+    private personser: PersonaService, private GEO: GeografiaService, private fuats: FuatServicioService) { }
 
   ngOnInit() {
 
-    this.atencion={
-      ID_ATENCION: null, 
-      TIPO_CONEXION:null, 
-      ID_MODALIDAD: null, 
-      ID_HC: null, 
+    this.atencion = {
+      ID_ATENCION: null,
+      TIPO_CONEXION: null,
+      ID_MODALIDAD: null,
+      ID_HC: null,
       ID_TIPO_ATENCION: null,
       ANTECEDENTE: "DOLOR DE CABEZA CON OTRAS COSAS",
       CONSENTIMIENTO: null,
       FECHA: null,
-      FEC_REGISTRO:null,
+      FEC_REGISTRO: null,
       HORA: null,
       ID_PACIENTE: null,
       ID_RESPONSABLE: null,
       ID_SOLICITUD: "87",
-      NIVEL_ATENCION: null           
-      }
+      NIVEL_ATENCION: null
+    }
 
 
     this.cod_buscar = this.rutaActiva.snapshot.params.ID_PACIENTE;
@@ -132,7 +135,7 @@ export class PrincipalComponent implements OnInit {
     this.personser.devolverPersonaPaciente('1', this.cod_buscar).subscribe((dat) => {
 
       this.form = dat.respuesta;
-      console.log(dat.respuesta)
+     
       if (dat.respuesta.ID_GENERO == 1) {
         this.form.GENERO = "MASCULINO"
       } else {
@@ -157,7 +160,6 @@ export class PrincipalComponent implements OnInit {
       (sol) => {
 
         this.formsol = sol.respuesta
-
         this.atencion.ID_SOLICITUD = sol.respuesta.ID_SOLICITUD
         this.atencion.ANTECEDENTE = sol.respuesta.DESCRIPCION
 
@@ -189,6 +191,11 @@ export class PrincipalComponent implements OnInit {
   }
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
+  }
+
+  Imprimir_Fuat() {
+
+    this.panreg.imprimirFuat();
   }
 
 

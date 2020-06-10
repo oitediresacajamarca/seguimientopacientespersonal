@@ -4,5 +4,8 @@
     padding: 1px 0px;
     padding-left: 2.5em;
     font-family: Arial, Helvetica, sans-serif;
-    margin: 0em;
+    margin: 0em 3px 0px 3px;
+}
+:host ::ng-deep .atencion-boton>.ui-button{
+   margin-right: 8px;
 }

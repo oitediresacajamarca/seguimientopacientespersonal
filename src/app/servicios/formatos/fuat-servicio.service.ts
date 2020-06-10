@@ -10,10 +10,11 @@ import { FormatoFuat } from 'src/app/interfaces/formato-fuat';
 export class FuatServicioService {
 
   formatofuat: FormatoFuat
+  url: string;
 
   constructor(private http: HttpClient) { }
 
-  mostrarFuat(datosfuat: any) {
+  mostrarFuat(datosfuat: any){
 
     console.log(datosfuat)
     const httpOptions = {
@@ -27,9 +28,10 @@ export class FuatServicioService {
         var blob = new Blob([datos], { type: 'application/pdf' });
         var filename = 'FORMATO_FUAT.pdf';
         FileSaver.saveAs(blob, filename);
-        let url = URL.createObjectURL(blob)
+      this.url = URL.createObjectURL(blob)
+     
 
-        console.log(url)
+       
       });
 
 
