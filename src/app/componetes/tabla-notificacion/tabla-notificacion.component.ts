@@ -7,6 +7,7 @@ import { EstadosService } from 'src/app/servicios/estados.service';
 import { ContextMenu } from 'primeng/contextmenu/contextmenu';
 import { EditarSolComponent } from '../editar-sol/editar-sol.component';
 import { MessageService } from 'primeng/api';
+import { async } from 'rxjs/internal/scheduler/async';
 
 
 
@@ -38,6 +39,7 @@ export class TablaNotificacionComponent implements OnInit {
 
   ngOnInit() {
     this.estados.actualizarNotificacione.subscribe(()=>{
+
       this.cargarNotificaciones();
       this.verDialog=true;
 
@@ -88,13 +90,82 @@ export class TablaNotificacionComponent implements OnInit {
 
     this.cod_ambito = this.estados.cod_con;
 
+this.cols=[{header:"ESTADOS",field:"ESTADO"},{header:"FECHA_SOLICITUD",field:"FECHA_SOLICITUD"}]
 
-    this.sol.devolverColumnasSolicitudes().subscribe((res) => {
+this.cols=
+[
+  {
+    "header": "FECHA DE SOLICITUD",
+    "field": "FECHA_SOLICITUD"
+  },
+  {
+    "header": "TELEFONO",
+    "field": "TELEF_CONTACTO"
+  },
+  {
+    "header": "NRO_DOCUMENTO",
+    "field": "NRO_DOCUMENTO"
+  },
+  {
+    "header": "APELLIDO_PAT",
+    "field": "APELLIDO_PAT"
+  },
+  {
+    "header": "APELLIDO_MAT",
+    "field": "APELLIDO_MAT"
+  },
+  {
+    "header": "NOMBRES",
+    "field": "NOMBRES"
+  },
+  {
+    "header": "NOMBRE_IPRESS",
+    "field": "NOMBRE_IPRESS"
+  },
+  {
+    "header": "NOMBRE_PROVINCIA",
+    "field": "NOMBRE_PROVINCIA"
+  },
+  {
+    "header": "NOMBRE_DISTRITO",
+    "field": "NOMBRE_DISTRITO"
+  },
+
+  {
+    "header": "MOTIVO",
+    "field": "DESCRIPCION"
+  },
+  {
+    "header": "TELEF_CONTACTO2",
+    "field": "TELEF_CONTACTO2"
+  },
+  {
+    "header": "DOMICILIO_ACTUAL",
+    "field": "DOMICILIO_ACTUAL"
+  },
+  {
+    "header": "CORREO2",
+    "field": "CORREO2"
+  },
+  
+  {
+    "header": "FECHA_NAC",
+    "field": "FECHA_NAC"
+  },
+  {
+    "header": "ID_GENERO",
+    "field": "ID_GENERO"
+  },
+  
+
+]
+
+   /* this.sol.devolverColumnasSolicitudes().subscribe((res) => {
 
       this.cols = res.respuesta;
 
 
-    })
+    })*/
 
     this.cargarNotificaciones()
 
@@ -107,19 +178,20 @@ export class TablaNotificacionComponent implements OnInit {
     this.editar.editarsol=false;
   }
 
-  cargarNotificaciones() {
+  async cargarNotificaciones() {
 
 
     let maximo_cie = 0;
-    this.sol.devolverDatosSolicitudes(this.cod_ambito).subscribe((datos) => {
+  await  this.sol.devolverDatosSolicitudes(this.cod_ambito).subscribe((datos) => {
       let solicitudes = datos.recordset;
 
 
       var max_col_sol = 0;
-
+/*
       solicitudes.forEach(solicitud => {
 
         let solicitudedit = solicitud;
+        
         this.morb.devolverMorbildadPaciente(solicitud.ID_PACIENTE).subscribe((dato) => {
           max_col_sol = 0;
           let morbilidades = dato.respuesta;
@@ -157,7 +229,7 @@ export class TablaNotificacionComponent implements OnInit {
 
       });
 
-
+*/
 
 
 

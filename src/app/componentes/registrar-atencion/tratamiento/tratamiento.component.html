@@ -1,20 +1,22 @@
+<form #trat="ngForm">
 <div class="ui-g" *ngIf="visible">
     <div class="ui-g-12">
         <mat-card>
             TRATAMIENTO
-            <p-chips [(ngModel)]="tratamientos"></p-chips>
+            <p-chips [(ngModel)]="tratamientos" name="tratamientos"></p-chips>
         </mat-card>
     </div>
     <div class="ui-g-12">
         <mat-card>
             RECOMENDACIONES
-            <p-chips [(ngModel)]="recomendaciones"></p-chips>
+            <p-chips [(ngModel)]="recomendaciones" name="recomendaciones"></p-chips>
         </mat-card>
     </div>
     <div class="ui-g-12">
         <mat-card>
            OBSERVACIONES
-            <p-chips [(ngModel)]="resetamedica"></p-chips>
+            <p-chips [(ngModel)]="resetamedica" name="resetamedica"></p-chips>
         </mat-card>
     </div>
 </div>
+</form>

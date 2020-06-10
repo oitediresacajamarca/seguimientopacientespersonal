@@ -1,4 +1,4 @@
-
+<form #datosa="ngForm">
 <div class="ui-g" *ngIf="visible">
     <br>
 <div class="ui-g-4">
@@ -7,7 +7,7 @@
         <div class="NumControl">
             Indique si el paciente es nuevo o continuador<br><br>
             Nuevo
-            <p-radioButton [(ngModel)]=" tipocon" name="numcontrol" value="nuevo"  class="elementcontrol" (onClick)="controlarentrada($event)"></p-radioButton>
+            <p-radioButton [(ngModel)]=" tipocon" name="numcontrol" value="nuevo"  class="elementcontrol" (onClick)="controlarentrada($event)" ></p-radioButton>
             Control
             <p-radioButton [(ngModel)]=" tipocon"  name="numcontrol" value="control"  class="elementcontrol" (onClick)="controlarentrada($event)"></p-radioButton>
             <input type="number" pInputText class="elementcontrol" *ngIf="mostrarnumero" [(ngModel)]="numcon">
@@ -18,7 +18,7 @@
       
         <mat-card>
             MOTIVO
-            <input id="float-input" type="text" size="30" [(ngModel)]="atencion_detalle.MOTIVO" pInputText> 
+            <input id="float-input" type="text" size="30" [(ngModel)]="atencion_detalle.MOTIVO" name="MOTIVO" pInputText> 
         </mat-card>
     </div>
     <br>
@@ -33,14 +33,16 @@
                 <div class="ui-g-12 ui-md-4">
                     <div class="ui-inputgroup">
                         
-                        <input type="text" [(ngModel)]="examenesFisicos.examenes[0].VALOR" pInputText placeholder="Presion Arterial">   
+                        <input type="text" [(ngModel)]="examenesFisicos.examenes[0].VALOR" 
+                        pInputText placeholder="Presion Arterial" name="examenes_0">   
                         <span class="ui-inputgroup-addon">mmHg</span>      
                     </div>
                 </div>
                 <div class="ui-g-12 ui-md-4">
                     <div class="ui-inputgroup">
                         
-                        <input type="text"  [(ngModel)]="examenesFisicos.examenes[1].VALOR" pInputText placeholder="Frecuencia Cardiaca">   
+                        <input type="text"  [(ngModel)]="examenesFisicos.examenes[1].VALOR" 
+                        pInputText placeholder="Frecuencia Cardiaca" name="examenes_1">   
                         <span class="ui-inputgroup-addon">lat/min</span>      
                     </div>
                 </div>
@@ -48,7 +50,8 @@
                 <div class="ui-g-12 ui-md-4">
                     <div class="ui-inputgroup">
                         
-                        <input type="text"  [(ngModel)]="examenesFisicos.examenes[2].VALOR" pInputText placeholder="Frecuencia Respiratoria">   
+                        <input type="text"  [(ngModel)]="examenesFisicos.examenes[2].VALOR" 
+                        pInputText placeholder="Frecuencia Respiratoria" name="examenes_1">   
                         <span class="ui-inputgroup-addon">res/min</span>      
                     </div>
                 </div>
@@ -56,7 +59,8 @@
                 <div class="ui-g-12 ui-md-4">
                     <div class="ui-inputgroup">
                         
-                        <input type="text"  [(ngModel)]="examenesFisicos.examenes[3].VALOR" pInputText placeholder="Temperatura"> 
+                        <input type="text"  [(ngModel)]="examenesFisicos.examenes[3].VALOR"
+                         pInputText placeholder="Temperatura" name="examenes_3"> 
                         <span class="ui-inputgroup-addon">°C</span>  
                     </div>
                        
@@ -64,7 +68,8 @@
                 <div class="ui-g-12 ui-md-4">
                     <div class="ui-inputgroup">
                         
-                        <input type="text"  [(ngModel)]="examenesFisicos.examenes[4].VALOR" pInputText placeholder="SatO2"> 
+                        <input type="text"  [(ngModel)]="examenesFisicos.examenes[4].VALOR" 
+                        pInputText placeholder="SatO2" name="examenes_4"> 
                         <span class="ui-inputgroup-addon">%</span>    
                     </div>
                        
@@ -72,7 +77,8 @@
                 <div class="ui-g-12 ui-md-4">
                     <div class="ui-inputgroup">
                         
-                        <input type="text"  [(ngModel)]="examenesFisicos.examenes[5].VALOR" pInputText placeholder="Peso">   
+                        <input type="text"  [(ngModel)]="examenesFisicos.examenes[5].VALOR" 
+                        pInputText placeholder="Peso" name="examenes_5">   
                         <span class="ui-inputgroup-addon">kg</span>      
                     </div>
                     
@@ -80,7 +86,8 @@
                 <div class="ui-g-12 ui-md-4">
                     <div class="ui-inputgroup">
                         
-                        <input type="text"  [(ngModel)]="examenesFisicos.examenes[6].VALOR" pInputText placeholder="Talla">   
+                        <input type="text"  [(ngModel)]="examenesFisicos.examenes[6].VALOR" 
+                        pInputText placeholder="Talla" name="examenes_6">   
                         <span class="ui-inputgroup-addon">cm</span>     
                     </div>
                     
@@ -89,7 +96,8 @@
                    
                         <mat-card> 
                             Descripcion del Caso
-                        <input type="text" [(ngModel)]=  "descripcioncaso" pInputText placeholder=" Descripcion del Caso">   
+                        <input type="text" [(ngModel)]=  "descripcioncaso"
+                         pInputText placeholder=" Descripcion del Caso" name="descripcioncaso">   
                        
                     </mat-card>        
                     
@@ -100,14 +108,16 @@
 
       <mat-card>
         Tratamiento actual
-            <p-chips [(ngModel)]="tratamientoactual"  (ngModelChange)="selecciondeTratamientos()"></p-chips>
+            <p-chips [(ngModel)]="tratamientoactual"  (ngModelChange)="selecciondeTratamientos()"
+            name="tratamientoactual" ></p-chips>
         
         
     
     </mat-card>
     <mat-card>
       Exámenes de apoyo al diagnóstico
-        <p-chips [(ngModel)]="examenesdeapoyo" (ngModelChange)="selecciondeEA()"></p-chips>
+        <p-chips [(ngModel)]="examenesdeapoyo" (ngModelChange)="selecciondeEA()"
+        name="examenesdeapoyo"></p-chips>
         
     </mat-card>
 </mat-card>
@@ -115,4 +125,6 @@
      </div>
   
 </div>
+
+</form>
 

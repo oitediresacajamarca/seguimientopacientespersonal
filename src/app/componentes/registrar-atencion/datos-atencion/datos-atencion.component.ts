@@ -9,6 +9,8 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./datos-atencion.component.css']
 })
 export class DatosAtencionComponent implements OnInit {
+  @ViewChild('datosa', { static: false })
+  datosa:NgForm
   tipocon: any;
   mostrarnumero: boolean;
   tratamientoactual: string[]

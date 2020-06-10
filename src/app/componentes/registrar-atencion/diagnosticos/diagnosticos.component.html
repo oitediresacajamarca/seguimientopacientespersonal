@@ -1,5 +1,6 @@
+<form #diaf="ngForm">
 <div class="ui-g-12" *ngIf="visible">
-  <br />
+  <br /> 
   <br />
   DIAGNOSTICO
   <mat-card>
@@ -13,6 +14,7 @@
             pInputText
             [(ngModel)]="cod_diag_selec"
             (blur)="cargarCieDesc($event)"
+            name="cod_diag_selec"
           />
           <label for="COD_DIAG">Codigo de Diagnostico</label>
           
@@ -42,6 +44,7 @@
             size="20"
             pInputText
             [(ngModel)]="desc_diag_selec"
+            name="desc_diag_selec"
             disabled
           />
           <label for="DESC_DIAG">Descripcion de Diagnostico</label>
@@ -54,6 +57,7 @@
             [(ngModel)]="selectedtipdiag"
             placeholder="Select tipo diagnostico"
             [showClear]="true"
+            name="selectedtipdiag"
           ></p-dropdown>
         </span>
       </div>
@@ -65,6 +69,7 @@
             size="20"
             pInputText
             [(ngModel)]="lab_selec"
+            name="lab_selec"
           />
           <label for="LAB">Lab</label>
         </span>
@@ -114,3 +119,4 @@
     </div>
   </mat-card>
 </div>
+</form>

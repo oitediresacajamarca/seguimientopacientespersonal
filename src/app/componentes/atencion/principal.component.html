@@ -1,3 +1,5 @@
+
+
 <p-tabView class="container-fluid">
   <br />
   <p-tabPanel header="Registro de Atenciones">
@@ -15,6 +17,7 @@
         placeholder="Ingrese el numero de solicitud a registrar"
         aria-label="Username"
         aria-describedby="basic-addon1"
+        name="cod_buscar"
       />
       <button
         pButton
@@ -23,7 +26,7 @@
         (click)="buscarSolicitud()"
       ></button>
     </div>
-
+    <form #inicioaten="ngForm">
     <p-fieldset legend="Datos Generales del Paciente">
       <div class="ui-g">
         <div class="form-group ui-g-4">
@@ -36,6 +39,7 @@
             aria-describedby="emailHelp"
             placeholder="Numero de Documento de Identidad"
             [(ngModel)]="form.NRO_DOCUMENTO"
+            name="NRO_DOCUMENTO"
             disabled="true"
           />
         </div>
@@ -48,6 +52,7 @@
             id="nombres"
             aria-describedby="emailHelp"
             [(ngModel)]="form.NOMBRES"
+            name="NOMBRES"
             disabled="true"
           />
         </div>
@@ -60,6 +65,7 @@
             aria-describedby="emailHelp"
             [(ngModel)]="form.APELLIDO_PAT"
             disabled="true"
+            name="APELLIDO_PAT"
           />
         </div>
 
@@ -72,6 +78,7 @@
             aria-describedby="emailHelp"
             [(ngModel)]="form.APELLIDO_MAT"
             disabled="true"
+            name="APELLIDO_MAT"
           />
         </div>
 
@@ -84,6 +91,7 @@
             aria-describedby="emailHelp"
             [(ngModel)]="form.DIRECCION"
             disabled="true"
+            name="DIRECCION"
           />
         </div>
         <div class="form-group ui-g-4">
@@ -96,6 +104,7 @@
             placeholder="Genero"
             [(ngModel)]="form.GENERO"
             disabled="true"
+            name="GENERO"
           />
         </div>
 
@@ -109,6 +118,7 @@
             placeholder="Provincia"
             [(ngModel)]="form.NOMBRE_PROVINCIA"
             disabled="true"
+            name="NOMBRE_PROVINCIA"
           />
         </div>
         <div class="form-group ui-g-4">
@@ -121,6 +131,7 @@
             placeholder="Distrito"
             [(ngModel)]="form.NOMBRE_DISTRITO"
             disabled="true"
+            name="NOMBRE_DISTRITO"
           />
         </div>
         <div class="form-group ui-g-4">
@@ -133,6 +144,7 @@
             placeholder="Fecha Nacimiento"
             [(ngModel)]="form.FECHA_NAC"
             disabled="true"
+            name="FECHA_NAC"
           />
         </div>
       </div>
@@ -150,6 +162,7 @@
               aria-describedby="emailHelp"
               [(ngModel)]="formsol.FECHA_SOLICITUD"
               disabled="true"
+              name="FECHA_SOLICITUD"
             />
           </mat-card>
         </div>
@@ -162,6 +175,7 @@
               aria-describedby="emailHelp"
               [(ngModel)]="formsol.DESCRIPCION"
               disabled="true"
+              name="DESCRIPCION"
             />
           </mat-card>
         </div>
@@ -174,6 +188,7 @@
               aria-describedby="emailHelp"
               [(ngModel)]="formsol.DOMICILIO_ACTUAL"
               disabled="true"
+              name="DOMICILIO_ACTUAL"
             />
           </mat-card>
         </div>
@@ -186,6 +201,7 @@
               aria-describedby="emailHelp"
               [(ngModel)]="formsol.DIRECCION"
               disabled="true"
+              name="DIRECCION"
             />
           </mat-card>
         </div>
@@ -198,6 +214,7 @@
               aria-describedby="emailHelp"
               [(ngModel)]="formsol.TELEF_CONTACTO"
               disabled="true"
+              name="TELEF_CONTACTO"
             />
           </mat-card>
         </div>
@@ -210,6 +227,7 @@
               aria-describedby="emailHelp"
               [(ngModel)]="formsol.TELEF_CONTACTO2"
               disabled="true"
+              name="TELEF_CONTACTO2"
             />
           </mat-card>
         </div>
@@ -223,11 +241,13 @@
               placeholder=" Motivo"
               [(ngModel)]="formsol.CORREO2"
               disabled="true"
+              name="CORREO2"
             />
           </mat-card>
         </div>
       </div>
     </mat-card>
+
 
     <p-fieldset legend="Morbilidades del Paciente">
       <app-morbilidades-por-paciente
@@ -263,6 +283,7 @@
         [style]="{'margin-left':'4px','float':'right'}"
       ></button>
     </div>
+  </form>
   </p-tabPanel>
   <p-tabPanel header="Solicitudes de Atencion Pendientes"> </p-tabPanel>
   <p-tabPanel header="Atendidos">
@@ -274,3 +295,4 @@
   [render-text]="true"
   style="display: block;"
 ></pdf-viewer>
+

@@ -137,14 +137,30 @@ export class RegistrarAtencionComponent implements OnInit {
               element.ID_TRABAJADOR = this.atencion.ID_RESPONSABLE
             });
             this.trabajador_id = personal.ID_TRABAJADOR_IPRESS
-            this.aten.registrarExamenfis(this.form1.examenesFisicos.examenes, id_atencion, this.trabajador_id).subscribe(() => { console.log('se guardo exitosamente los examenes fisicos') });
-
-
-            this.aten.registrarAtencionDetalle(this.form1.atencion_detalle, id_atencion, this.trabajador_id).subscribe(() => { console.log('se guardo exitosamente atencion detalle') });
-
-            this.aten.registrarAtencionDiagnosticos(this.form2.diagnostabla, id_atencion, this.trabajador_id).subscribe(() => { console.log('se guardo exitosamente los diagnosticos') });
+            this.aten.registrarExamenfis(this.form1.examenesFisicos.examenes, id_atencion, this.trabajador_id).subscribe(() => { console.log('se guardo exitosamente los examenes fisicos') 
+            this.aten.registrarAtencionDetalle(this.form1.atencion_detalle, id_atencion, this.trabajador_id).subscribe(() => { console.log('se guardo exitosamente atencion detalle') 
+          
+            this.aten.registrarAtencionDiagnosticos(this.form2.diagnostabla, id_atencion, this.trabajador_id).subscribe(() => { console.log('se guardo exitosamente los diagnosticos') 
+             
             this.imprimirFuat();
             this.completoRegistro.emit('Se completo el Registro');
+            this.form1.datosa.resetForm()
+            this.form2.diaf.resetForm()
+            this.form3.trat.resetForm()
+            this.form2.dianosticospac=[]
+            this.form2.diagnostabla=[]
+          
+          });
+       
+          });
+          
+          
+          });
+
+
+           
+
+       
 
 
 

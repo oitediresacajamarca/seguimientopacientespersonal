@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { SelectItem } from 'primeng/api/selectitem';
 import { AtencionDiagnosticoItem } from 'src/app/interfaces/atencion-diagnostico-item';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { MorbilidadesService } from 'src/app/servicios/morbilidades.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-diagnosticos',
@@ -18,6 +19,8 @@ export class DiagnosticosComponent implements OnInit {
   dianosticospac: any[] = [];
   diagnostabla: AtencionDiagnosticoItem[] = [];
   lab_selec: string;
+
+  @ViewChild('diaf',{ static: false}) diaf:NgForm
 
   constructor(private morb: MorbilidadesService) { }
 

@@ -9,6 +9,7 @@ import { Configuracion } from 'src/app/configuracion/configuracion';
 import { Atencion } from 'src/app/interfaces/atencion';
 import { RegistrarAtencionComponent } from '../registrar-atencion/registrar-atencion.component';
 import { FuatServicioService } from 'src/app/servicios/formatos/fuat-servicio.service';
+import { NgForm } from '@angular/forms';
 declare var $: any
 
 @Component({
@@ -22,6 +23,7 @@ export class PrincipalComponent implements OnInit {
   @ViewChild('mpp', { static: false }) mpp: MorbilidadesPorPacienteComponent;
   verpanelregistro: boolean = false;
   pdffuat = "file:///E:/Descargas/FORMATO_FUAT%20-%202020-06-09T170805.728.pdf"
+  @ViewChild('inicioaten', { static: false }) inicioaten:NgForm
 
 
   formsol: any =
@@ -131,7 +133,7 @@ export class PrincipalComponent implements OnInit {
   }
 
   buscarSolicitud() {
-
+this.inicioaten.resetForm();
     this.personser.devolverPersonaPaciente('1', this.cod_buscar).subscribe((dat) => {
 
       this.form = dat.respuesta;
@@ -156,13 +158,14 @@ export class PrincipalComponent implements OnInit {
       this.mpp.actualizarDatos(this.cod_buscar);
     }
     );
-    this.solipac.buscarSolicitud(this.ID_SOLICITUD).subscribe(
+   
+    this.solipac.buscarSolicitud(this.cod_buscar).subscribe(
       (sol) => {
 
         this.formsol = sol.respuesta
         this.atencion.ID_SOLICITUD = sol.respuesta.ID_SOLICITUD
         this.atencion.ANTECEDENTE = sol.respuesta.DESCRIPCION
-
+     
 
       }
     );

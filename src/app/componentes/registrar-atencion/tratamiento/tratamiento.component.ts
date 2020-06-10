@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-tratamiento',
@@ -9,6 +10,7 @@ export class TratamientoComponent implements OnInit {
   tratamientos:string[];
   recomendaciones:string[];
   resetamedica:string[];
+  @ViewChild('trat',{ static: false}) trat:NgForm
   @Input()
   visible:boolean=false;
 
