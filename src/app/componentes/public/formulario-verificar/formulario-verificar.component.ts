@@ -85,7 +85,7 @@ export class FormularioVerificarComponent implements OnInit {
 
             this.verpanelregistro = true;
             this.verpaneldatosgenerales = false;
-            this.mesgs.add({ severity: 'success', summary: 'PACIENTE IDENTIFICADO:', detail: 'Para solicitar atencion complete el siguiente formulario: ' });
+            this.mesgs.add({ severity: 'success', summary: 'PACIENTE IDENTIFICADO:', detail: 'Para solicitar atencion complete el siguiente formulario: '});
 
           }
 

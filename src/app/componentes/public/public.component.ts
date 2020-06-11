@@ -240,7 +240,7 @@ export class PublicComponent implements OnInit {
 
 
 
-        this.mesgs.add({ severity: 'info', summary: 'Info Message', detail: 'Se agrego la solicitud de atencion pronto nos comunicaremos con usted', key: 'final' });
+        this.mesgs.add({ severity: 'info', summary: 'Solicitud Añadida Correctamente', detail: 'Se agrego la solicitud de atencion pronto nos comunicaremos con usted', key: 'final' });
 
 
       }

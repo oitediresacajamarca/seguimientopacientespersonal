@@ -90,71 +90,86 @@ export class TablaNotificacionComponent implements OnInit {
 
     this.cod_ambito = this.estados.cod_con;
 
-this.cols=[{header:"ESTADOS",field:"ESTADO"},{header:"FECHA_SOLICITUD",field:"FECHA_SOLICITUD"}]
+
 
 this.cols=
 [
   {
     "header": "FECHA DE SOLICITUD",
-    "field": "FECHA_SOLICITUD"
+    "field": "FECHA_SOLICITUD",
+    "col-size":250
   },
   {
     "header": "TELEFONO",
-    "field": "TELEF_CONTACTO"
+    "field": "TELEF_CONTACTO",
+     "colsize":250
   },
   {
-    "header": "NRO_DOCUMENTO",
-    "field": "NRO_DOCUMENTO"
+    "header": "NRO DOCUMENTO",
+    "field": "NRO_DOCUMENTO",
+     "colsize":250
   },
   {
-    "header": "APELLIDO_PAT",
-    "field": "APELLIDO_PAT"
+    "header": "APELLIDO PAT",
+    "field": "APELLIDO_PAT",
+     "colsize":250
   },
   {
-    "header": "APELLIDO_MAT",
-    "field": "APELLIDO_MAT"
+    "header": "APELLIDO MAT",
+    "field": "APELLIDO_MAT",
+     "colsize":250
   },
   {
     "header": "NOMBRES",
-    "field": "NOMBRES"
+    "field": "NOMBRES",
+     "colsize":250
   },
   {
-    "header": "NOMBRE_IPRESS",
-    "field": "NOMBRE_IPRESS"
+    "header": "NOMBRE IPRESS",
+    "field": "NOMBRE_IPRESS",
+     "colsize":250
   },
   {
-    "header": "NOMBRE_PROVINCIA",
-    "field": "NOMBRE_PROVINCIA"
+    "header": "NOMBRE PROVINCIA",
+    "field": "NOMBRE_PROVINCIA",
+     "colsize":250
   },
   {
-    "header": "NOMBRE_DISTRITO",
-    "field": "NOMBRE_DISTRITO"
+    "header": "NOMBRE DISTRITO",
+    "field": "NOMBRE_DISTRITO",
+     "colsize":250
   },
 
   {
     "header": "MOTIVO",
-    "field": "DESCRIPCION"
+    "field": "DESCRIPCION",
+     "colsize":1000
   },
   {
-    "header": "TELEF_CONTACTO2",
-    "field": "TELEF_CONTACTO2"
+    "header": "TELEF CONTACTO2",
+    "field": "TELEF_CONTACTO2",
+     "colsize":250
   },
   {
-    "header": "DOMICILIO_ACTUAL",
-    "field": "DOMICILIO_ACTUAL"
+    "header": "DOMICILIO ACTUAL",
+    "field": "DOMICILIO_ACTUAL",
+     "colsize":500
   },
   {
-    "header": "CORREO2",
-    "field": "CORREO2"
+    "header": "CORREO", 
+    "field": "CORREO2",
+     "colsize":250
   },
   
   {
-    "header": "FECHA_NAC",
-    "field": "FECHA_NAC"
+    "header": "FECHA NACIMIENTO",
+    "field": "FECHA_NAC",
+     "colsize":250
   },
   {
-    "header": "ID_GENERO",
-    "field": "ID_GENERO"
+    "header": "GENERO",
+    "field": "GENERO",
+     "colsize":250
   },
   
 

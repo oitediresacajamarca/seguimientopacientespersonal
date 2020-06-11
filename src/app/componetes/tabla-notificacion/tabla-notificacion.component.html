@@ -40,7 +40,7 @@
       'Fg_Tipo',
       'Fg_Estado'
     ]"
-    [resizableColumns]="true"
+  
     [columns]="cols"
     [scrollable]="true"
     [style]="{ width: '100%' }"
@@ -49,13 +49,14 @@
   >
     <ng-template pTemplate="colgroup" let-columns>
       <colgroup>
-        <col *ngFor="let col of columns" style="width: 250px;" />
+        <col>
+        <col *ngFor="let col of columns"  [ngStyle]="{'width': col.colsize+'px','font-size':'6px'}" />
       </colgroup>
     </ng-template>
 
     <ng-template pTemplate="header" let-columns>
       <tr>
-        <th pSortableColumn="ESTADO">
+        <th pSortableColumn="ESTADO" > 
           Estado <p-sortIcon field="ESTADO"></p-sortIcon>
         </th>
 
@@ -76,11 +77,11 @@
           />
         </th>
 
-        <th *ngFor="let col of columns">
+        <th *ngFor="let col of columns" pResizableColumn>
           <input
             pInputText
             type="text"
-            (input)="dt.filter($event.target.value, col.field, 'startsWith')"
+            (input)="dt.filter($event.target.value, col.field, 'contains')"
             placeholder="Buscar por {{ col.header }}"
             class="ui-column-filter"
           />
@@ -98,7 +99,7 @@
           }}</span>
         </td>
 
-        <td *ngFor="let col of columns">
+        <td *ngFor="let col of columns" class="ui-resizable-column">
           <span class="ui-column-title">Codigo</span>
 
           {{ customer[col.field] }}

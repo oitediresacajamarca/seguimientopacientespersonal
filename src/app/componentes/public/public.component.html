@@ -10,7 +10,7 @@
   [draggable]="false"
   [resizable]="true"
 >
-  <p-messages [(value)]="msgs"></p-messages>
+  <p-messages [(value)]="msgs" key="EXISTEPER"></p-messages>
   <p-panel header="DATOS GENERALES" *ngIf="verpaneldatosgenerales">
     <form #datosgenerales="ngForm">
       <div class="ui-g">
@@ -314,7 +314,7 @@
     key="final"
   ></p-confirmDialog>
   <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"   key="finalfinal"></p-confirmDialog>
-  <p-toast [style]="{ marginTop: '80px' }" position="center"></p-toast>
+
 </p-dialog>
 <p-dialog [(visible)]="vermensajeconfirmacion"
   >Su solicitud ha sido guardada exitosamente Pronto el personal medico se

@@ -192,3 +192,7 @@
 .contendornoti{
 	height: 800px;
 }
+
+:host ::ng-deep .myTable td:nth-child(1) {
+	width:600px;
+}
