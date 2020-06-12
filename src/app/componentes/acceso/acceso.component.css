@@ -7,3 +7,6 @@
     height: 703px;
     background-image: url('../../../assets/Fondo.jpg');
 }
+:ng-deep .form-control{
+padding: 10px 220px !important;
+}

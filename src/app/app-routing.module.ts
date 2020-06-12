@@ -12,6 +12,7 @@ import { UsuariosAdminComponent } from './modulos/usuarios/usuarios-admin/usuari
 import { LoginComponent } from './modulos/usuarios/login/login.component';
 import { GeoreferenciaComponent } from './georeferencia/georeferencia.component';
 import { SelectorCieCpmsComponent } from './controles/selector-cie-cpms/selector-cie-cpms.component';
+import { ActualizarContraseniaComponent } from './modulos/usuarios/usuarios-admin/actualizar-contrasenia/actualizar-contrasenia.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'frontend', component: InicioComponent },
   { path: 'geo', component: GeoreferenciaComponent },
   { path: 'cie', component: SelectorCieCpmsComponent },
+  { path: 'actualizar-usuario', component: ActualizarContraseniaComponent,outlet:'emergente' },
   {
     path: 'admin',
     component: DefaultComponent,

@@ -22,10 +22,13 @@ import {CheckboxModule} from 'primeng/checkbox';
 import {TieredMenuModule} from 'primeng/tieredmenu';
 import { MenuAccionUsuarioComponent } from './controles/menu-accion-usuario/menu-accion-usuario.component';
 import {ToastModule} from 'primeng/toast';
+import { ActualizarContraseniaComponent } from './usuarios-admin/actualizar-contrasenia/actualizar-contrasenia.component';
+
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [UsuariosAdminComponent, NuevoUsuarioComponent, AmbitoAdministrativoSelectComponent, LoginComponent, MenuAccionUsuarioComponent],
+  declarations: [UsuariosAdminComponent, NuevoUsuarioComponent, AmbitoAdministrativoSelectComponent, LoginComponent, MenuAccionUsuarioComponent, ActualizarContraseniaComponent],
   providers:[ConfirmationService],
   imports: [
     SidebarModule,
@@ -42,7 +45,7 @@ import {ToastModule} from 'primeng/toast';
     MessagesModule,
     MessageModule,
     CheckboxModule,
-    TieredMenuModule,ToastModule
+    TieredMenuModule,ToastModule,ReactiveFormsModule
     
     
 

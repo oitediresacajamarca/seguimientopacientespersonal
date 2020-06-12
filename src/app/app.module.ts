@@ -69,7 +69,8 @@ import { GeoreferenciaComponent } from './georeferencia/georeferencia.component'
 import { SelectorCieCpmsComponent } from './controles/selector-cie-cpms/selector-cie-cpms.component';
 import { AtencionesRealizadasComponent } from './componentes/atencion/atenciones-realizadas/atenciones-realizadas.component';
 import { DetalleAtencionComponent } from './componentes/atencion/atenciones-realizadas/detalle-atencion/detalle-atencion.component';
-import {PdfViewerModule} from 'ng2-pdf-viewer'
+import {PdfViewerModule} from 'ng2-pdf-viewer';
+
 
 @NgModule({
   declarations: [
@@ -94,6 +95,7 @@ import {PdfViewerModule} from 'ng2-pdf-viewer'
     SelectorCieCpmsComponent,
     AtencionesRealizadasComponent,
     DetalleAtencionComponent,
+
  
  
   
