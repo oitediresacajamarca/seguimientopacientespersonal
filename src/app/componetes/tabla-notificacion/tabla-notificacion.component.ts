@@ -8,6 +8,7 @@ import { ContextMenu } from 'primeng/contextmenu/contextmenu';
 import { EditarSolComponent } from '../editar-sol/editar-sol.component';
 import { MessageService } from 'primeng/api';
 import { async } from 'rxjs/internal/scheduler/async';
+import { FuatServicioService } from 'src/app/servicios/formatos/fuat-servicio.service';
 
 
 
@@ -28,20 +29,21 @@ export class TablaNotificacionComponent implements OnInit {
   selectedNoti: any;
   selectCars: any[];
   elementosmenu: MenuItem[];
-  verDialog:boolean=true;
+  verDialog: boolean = true;
   cm: ContextMenu
   @ViewChild('editar', { static: false }) editar: EditarSolComponent
 
 
 
   constructor(private sol: SolicitudesService, private morb: MorbilidadesService, private router: Router,
-    private estados: EstadosService,private messageService: MessageService,private elementRef: ElementRef) { }
+    private estados: EstadosService, private messageService: MessageService, private elementRef: ElementRef,
+    private fuatservicio: FuatServicioService) { }
 
   ngOnInit() {
-    this.estados.actualizarNotificacione.subscribe(()=>{
+    this.estados.actualizarNotificacione.subscribe(() => {
 
       this.cargarNotificaciones();
-      this.verDialog=true;
+      this.verDialog = true;
 
     })
     this.elementosmenu = [
@@ -49,7 +51,7 @@ export class TablaNotificacionComponent implements OnInit {
         label: 'Registrar Atencion', icon: 'pi pi-calendar-plus', command: (event) => {
 
           this.router.navigate(['/admin/atencion/' + this.selectedNoti.NRO_DOCUMENTO + '/' + this.selectedNoti.ID_PACIENTE + '/' + this.selectedNoti.ID_SOLICITUD]);
-          this.verDialog=false;
+          this.verDialog = false;
         }
       },
 
@@ -60,11 +62,19 @@ export class TablaNotificacionComponent implements OnInit {
         }
       },
       {
+        label: 'Ver Fuat', icon: 'pi pi-user-edit', command: (event) => {
+          this.fuatservicio.agregarSolictud(this.selectedNoti);
+
+
+        }
+      }
+      ,
+      {
         label: 'Editar Solicitud', icon: 'pi pi-user-edit', command: (event) => {
           this.editar.editarsol = true;
           this.editar.selecipres.selecionar_Ipress(this.selectedNoti.COD_IPRESS)
-          this.editar.solicitud=this.selectedNoti
-          this.editar.cod_solicitud=this.selectedNoti.ID_SOLICITUD
+          this.editar.solicitud = this.selectedNoti
+          this.editar.cod_solicitud = this.selectedNoti.ID_SOLICITUD
           console.log(this.selectedNoti)
 
         }
@@ -92,159 +102,159 @@ export class TablaNotificacionComponent implements OnInit {
 
 
 
-this.cols=
-[
-  {
-    "header": "FECHA DE SOLICITUD",
-    "field": "FECHA_SOLICITUD",
-    "col-size":250
-  },
-  {
-    "header": "TELEFONO",
-    "field": "TELEF_CONTACTO",
-     "colsize":250
-  },
-  {
-    "header": "NRO DOCUMENTO",
-    "field": "NRO_DOCUMENTO",
-     "colsize":250
-  },
-  {
-    "header": "APELLIDO PAT",
-    "field": "APELLIDO_PAT",
-     "colsize":250
-  },
-  {
-    "header": "APELLIDO MAT",
-    "field": "APELLIDO_MAT",
-     "colsize":250
-  },
-  {
-    "header": "NOMBRES",
-    "field": "NOMBRES",
-     "colsize":250
-  },
-  {
-    "header": "NOMBRE IPRESS",
-    "field": "NOMBRE_IPRESS",
-     "colsize":250
-  },
-  {
-    "header": "NOMBRE PROVINCIA",
-    "field": "NOMBRE_PROVINCIA",
-     "colsize":250
-  },
-  {
-    "header": "NOMBRE DISTRITO",
-    "field": "NOMBRE_DISTRITO",
-     "colsize":250
-  },
+    this.cols =
+      [
+        {
+          "header": "FECHA DE SOLICITUD",
+          "field": "FECHA_SOLICITUD",
+          "col-size": 250
+        },
+        {
+          "header": "TELEFONO",
+          "field": "TELEF_CONTACTO",
+          "colsize": 250
+        },
+        {
+          "header": "NRO DOCUMENTO",
+          "field": "NRO_DOCUMENTO",
+          "colsize": 250
+        },
+        {
+          "header": "APELLIDO PAT",
+          "field": "APELLIDO_PAT",
+          "colsize": 250
+        },
+        {
+          "header": "APELLIDO MAT",
+          "field": "APELLIDO_MAT",
+          "colsize": 250
+        },
+        {
+          "header": "NOMBRES",
+          "field": "NOMBRES",
+          "colsize": 250
+        },
+        {
+          "header": "NOMBRE IPRESS",
+          "field": "NOMBRE_IPRESS",
+          "colsize": 250
+        },
+        {
+          "header": "NOMBRE PROVINCIA",
+          "field": "NOMBRE_PROVINCIA",
+          "colsize": 250
+        },
+        {
+          "header": "NOMBRE DISTRITO",
+          "field": "NOMBRE_DISTRITO",
+          "colsize": 250
+        },
 
-  {
-    "header": "MOTIVO",
-    "field": "DESCRIPCION",
-     "colsize":1000
-  },
-  {
-    "header": "TELEF CONTACTO2",
-    "field": "TELEF_CONTACTO2",
-     "colsize":250
-  },
-  {
-    "header": "DOMICILIO ACTUAL",
-    "field": "DOMICILIO_ACTUAL",
-     "colsize":500
-  },
-  {
-    "header": "CORREO", 
-    "field": "CORREO2",
-     "colsize":250
-  },
-  
-  {
-    "header": "FECHA NACIMIENTO",
-    "field": "FECHA_NAC",
-     "colsize":250
-  },
-  {
-    "header": "GENERO",
-    "field": "GENERO",
-     "colsize":250
-  },
-  
+        {
+          "header": "MOTIVO",
+          "field": "DESCRIPCION",
+          "colsize": 1000
+        },
+        {
+          "header": "TELEF CONTACTO2",
+          "field": "TELEF_CONTACTO2",
+          "colsize": 250
+        },
+        {
+          "header": "DOMICILIO ACTUAL",
+          "field": "DOMICILIO_ACTUAL",
+          "colsize": 500
+        },
+        {
+          "header": "CORREO",
+          "field": "CORREO2",
+          "colsize": 250
+        },
 
-]
-
-   /* this.sol.devolverColumnasSolicitudes().subscribe((res) => {
-
-      this.cols = res.respuesta;
+        {
+          "header": "FECHA NACIMIENTO",
+          "field": "FECHA_NAC",
+          "colsize": 250
+        },
+        {
+          "header": "GENERO",
+          "field": "GENERO",
+          "colsize": 250
+        },
 
 
-    })*/
+      ]
+
+    /* this.sol.devolverColumnasSolicitudes().subscribe((res) => {
+ 
+       this.cols = res.respuesta;
+ 
+ 
+     })*/
 
     this.cargarNotificaciones()
 
 
 
   }
-  actualizoSolicitud(){
-    this.messageService.add({key: 'myKey2', severity:'success', summary: 'ACTUALIZACION CORRECTA', detail: 'LA SOLICITUD HA SIDO CAMBIADA EXITOSAMENTE'});
+  actualizoSolicitud() {
+    this.messageService.add({ key: 'myKey2', severity: 'success', summary: 'ACTUALIZACION CORRECTA', detail: 'LA SOLICITUD HA SIDO CAMBIADA EXITOSAMENTE' });
     this.cargarNotificaciones();
-    this.editar.editarsol=false;
+    this.editar.editarsol = false;
   }
 
   async cargarNotificaciones() {
 
 
     let maximo_cie = 0;
-  await  this.sol.devolverDatosSolicitudes(this.cod_ambito).subscribe((datos) => {
+    await this.sol.devolverDatosSolicitudes(this.cod_ambito).subscribe((datos) => {
       let solicitudes = datos.recordset;
 
 
       var max_col_sol = 0;
-/*
-      solicitudes.forEach(solicitud => {
-
-        let solicitudedit = solicitud;
-        
-        this.morb.devolverMorbildadPaciente(solicitud.ID_PACIENTE).subscribe((dato) => {
-          max_col_sol = 0;
-          let morbilidades = dato.respuesta;
-          morbilidades.forEach((morvilidad) => {
-
-            max_col_sol = max_col_sol + 1;
-            solicitudedit['ID_MEDICAMENTO_' + max_col_sol] = morvilidad.ID_MEDICAMENTO;
-            solicitudedit['ID_CIE_' + max_col_sol] = morvilidad.ID_CIE;
-
-            if (max_col_sol > maximo_cie) {
-
-              maximo_cie = max_col_sol;
-              let col = { 'header': 'ID_MEDICAMENTO_' + maximo_cie, 'field': 'ID_MEDICAMENTO_' + maximo_cie };
-              this.cols.push(col);
-              col = { 'header': 'ID_CIE_' + maximo_cie, 'field': 'ID_CIE_' + maximo_cie };
-              this.cols.push(col);
-
-
-            }
-
-
-
-
-
-
-
-          });
-
-
-
-        });
-
-
-
-
-      });
-
-*/
+      /*
+            solicitudes.forEach(solicitud => {
+      
+              let solicitudedit = solicitud;
+              
+              this.morb.devolverMorbildadPaciente(solicitud.ID_PACIENTE).subscribe((dato) => {
+                max_col_sol = 0;
+                let morbilidades = dato.respuesta;
+                morbilidades.forEach((morvilidad) => {
+      
+                  max_col_sol = max_col_sol + 1;
+                  solicitudedit['ID_MEDICAMENTO_' + max_col_sol] = morvilidad.ID_MEDICAMENTO;
+                  solicitudedit['ID_CIE_' + max_col_sol] = morvilidad.ID_CIE;
+      
+                  if (max_col_sol > maximo_cie) {
+      
+                    maximo_cie = max_col_sol;
+                    let col = { 'header': 'ID_MEDICAMENTO_' + maximo_cie, 'field': 'ID_MEDICAMENTO_' + maximo_cie };
+                    this.cols.push(col);
+                    col = { 'header': 'ID_CIE_' + maximo_cie, 'field': 'ID_CIE_' + maximo_cie };
+                    this.cols.push(col);
+      
+      
+                  }
+      
+      
+      
+      
+      
+      
+      
+                });
+      
+      
+      
+              });
+      
+      
+      
+      
+            });
+      
+      */
 
 
 
@@ -277,8 +287,8 @@ this.cols=
   vi(e) {
     console.log(e)
 
-console.log(    this.elementRef.nativeElement);
-  
+    console.log(this.elementRef.nativeElement);
+
   }
 
 }
