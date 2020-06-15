@@ -1,9 +1,10 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild } from '@angular/core';
 import { SelectItem } from 'primeng/api';
 import { DistritosService } from 'src/app/servicios/distritos.service';
 import { GeografiaService } from 'src/app/servicios/servicios/geografia.service';
 import { AmbitoInterface } from '../interfaces/ambito-interface';
 import { Nivel } from '../enums/nivel.enum';
+import { Dropdown } from 'primeng/dropdown';
 
 
 @Component({
@@ -21,8 +22,15 @@ export class AmbitoAdministrativoSelectComponent implements OnInit {
   microredes: SelectItem[];
   redes_filtradas: any[];
   ipresses: any[];
+  redSelect;
+  microredSelect;
+  ipSelect;
   @Output()
   selecionoAmbito: EventEmitter<any> = new EventEmitter()
+  @ViewChild('SR', { static: false }) SR: Dropdown
+  @ViewChild('RED', { static: false }) RED: Dropdown
+  @ViewChild('MR', { static: false }) MR: Dropdown
+  @ViewChild('IP', { static: false }) IP: Dropdown
 
   ambitoSelect: AmbitoInterface = {
     COD_IPRESS: 0,
@@ -82,9 +90,10 @@ export class AmbitoAdministrativoSelectComponent implements OnInit {
     this.ambitoSelect.COD_SUBREGION = e.value;
     this.ambitoSelect.nivel = Nivel.SREGION;
     this.ambitoSelect.peso = e.value * Math.pow(10, this.ambitoSelect.nivel);
-    this.ambitoSelect.peso_sup = (e.value + 1) * Math.pow(10, this.ambitoSelect.nivel);
+    this.ambitoSelect.peso_sup = (e.value) * Math.pow(10, this.ambitoSelect.nivel) + Math.pow(10, this.ambitoSelect.nivel);
     this.ambitoSelect.NOMBRE_SUBREGION = this.subregiones.find(sub => sub.value == e.value).label;
     this.ambitoSelect.NOMBRE_RED = "";
+    console.log(this.ambitoSelect)
 
 
   }
@@ -108,6 +117,7 @@ export class AmbitoAdministrativoSelectComponent implements OnInit {
       this.ambitoSelect.NOMBRE_RED = this.redes_filtradas.find(sub => sub.value == e.value).label;
 
     })
+    console.log(this.ambitoSelect)
 
   }
   cambioMicroRed(e) {
@@ -119,7 +129,7 @@ export class AmbitoAdministrativoSelectComponent implements OnInit {
       + this.ambitoSelect.COD_RED * Math.pow(10, Nivel.RED) +
       this.ambitoSelect.COD_MICRORED * Math.pow(10, Nivel.MICRORED)
 
-    this.ambitoSelect.peso = this.ambitoSelect.COD_SUBREGION * Math.pow(10, Nivel.SREGION)
+    this.ambitoSelect.peso_sup = this.ambitoSelect.COD_SUBREGION * Math.pow(10, Nivel.SREGION)
       + this.ambitoSelect.COD_RED * Math.pow(10, Nivel.RED) +
       (this.ambitoSelect.COD_MICRORED + 1) * Math.pow(10, Nivel.MICRORED)
 
@@ -135,7 +145,8 @@ export class AmbitoAdministrativoSelectComponent implements OnInit {
         this.ipresses.push(ipress);
       });
     })
-    this.ambitoSelect.NOMBRE_MICRORED = this.microredes.find(sub => sub.value == e.value).label;;
+    this.ambitoSelect.NOMBRE_MICRORED = this.microredes.find(sub => sub.value == e.value).label;
+    console.log(this.ambitoSelect)
   }
 
   cambioEstablecimiento(e) {
@@ -146,9 +157,7 @@ export class AmbitoAdministrativoSelectComponent implements OnInit {
     this.ambitoSelect.peso = this.ambitoSelect.COD_SUBREGION * Math.pow(10, Nivel.SREGION)
       + this.ambitoSelect.COD_RED * Math.pow(10, Nivel.RED) + this.ambitoSelect.COD_MICRORED * Math.pow(10, Nivel.MICRORED)
       + this.ambitoSelect.COD_IPRESS * Math.pow(10, 0);
-      this.ambitoSelect.peso = this.ambitoSelect.COD_SUBREGION * Math.pow(10, Nivel.SREGION)
-      + this.ambitoSelect.COD_RED * Math.pow(10, Nivel.RED) + this.ambitoSelect.COD_MICRORED * Math.pow(10, Nivel.MICRORED)
-      +( this.ambitoSelect.COD_IPRESS +1)* Math.pow(10, 0);
+    this.ambitoSelect.peso_sup = this.ambitoSelect.peso + 1
     this.ambitoSelect.NOMBRE_IPRESS = this.ipresses.find(sub => sub.value == e.value).label;
     console.log(this.ambitoSelect)
 
@@ -175,8 +184,20 @@ export class AmbitoAdministrativoSelectComponent implements OnInit {
       peso_sup: 0
     }
 
+    this.resetear();
 
+  }
 
+  resetear() {
+    this.sregionesSelect=null
+    this.redSelect=null
+    this.microredSelect=null
+    this.ipSelect=null
+    
+    this.SR.resetFilter()
+    this.RED.resetFilter()
+    this.MR.resetFilter()
+    this.IP.resetFilter()
   }
 
 }

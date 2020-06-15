@@ -8,6 +8,7 @@ export class EstadosService {
   verificoform= new EventEmitter<any>()
   actualizarNotificacione= new EventEmitter<any>()
   actualizarUsuarios=new EventEmitter<any>();
+  actualizarPerfil
 
 
   constructor() { }

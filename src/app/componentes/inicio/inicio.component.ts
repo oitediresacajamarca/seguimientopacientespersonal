@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { createPopper } from 'node_modules/popper.js/src/';
 import * as $ from 'jquery'
+import { Router } from '@angular/router';
 declare var jQuery:any;
 declare var $:any;
 declare var sticky:any;
@@ -18,9 +19,11 @@ export class InicioComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+
+    this.router.navigate([{outlets:{emergente:'actualizar-usuario'}}]);
 
     (function ($) {
         'use strict';

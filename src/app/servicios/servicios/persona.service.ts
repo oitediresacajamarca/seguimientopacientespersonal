@@ -24,7 +24,7 @@ export class PersonaService {
   
    }
    devolverPersonaTrabajador(num_doc){
-    return this.http.get<any>('http://'+environment.ip+'/persona/trabajador/'+num_doc)
+    return this.http.get<any>(environment.url_backend+'persona/'+num_doc)
 
    }
 

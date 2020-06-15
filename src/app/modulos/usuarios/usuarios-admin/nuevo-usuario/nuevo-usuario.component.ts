@@ -6,9 +6,11 @@ import { UsuarioBase } from '../../interfaces/usuario-base';
 import { Usuario } from '../../clases/usuario';
 
 import { Message } from 'primeng/api/message';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, SelectItem } from 'primeng/api';
 import { ProfesionService } from 'src/app/servicios/maestros/profesion.service';
 import { ColegioService } from 'src/app/servicios/maestros/colegio.service';
+import { EstadosService } from 'src/app/servicios/estados.service';
+
 
 
 
@@ -22,7 +24,7 @@ export class NuevoUsuarioComponent implements OnInit {
 
   constructor(private persona: PersonaService, private usu: UsuariosService,
     private confirmationService: ConfirmationService, private maestr: ProfesionService,
-    private colegios: ColegioService) { }
+    private colegios: ColegioService, private stadoss: EstadosService) { }
   cod_colegiatura: string;
   msgs: Message[] = [];
   logueado: string;
@@ -69,6 +71,8 @@ export class NuevoUsuarioComponent implements OnInit {
 
   usuariogen: string;
   clavegen: string;
+  roles: SelectItem[];
+  rolesselect: string[];
 
 
   ngOnInit() {
@@ -91,6 +95,8 @@ export class NuevoUsuarioComponent implements OnInit {
       }
 
     ];
+    this.roles = [{ label: "COORDINADOR", value: "COORDINADOR" }, { label: "PERSONAL", value: "PERSONAL" }, { label: "DIGITADOR", value: "DIGITADOR" }]
+
     this.colegiost = this.colegios.devolverColegiosDropDown();
     this.maestr.cargar_profesiones().subscribe((datos) => {
 
@@ -121,7 +127,7 @@ export class NuevoUsuarioComponent implements OnInit {
         this.datgenerales.nombre = datos.NOMBRES;
         this.datgenerales.apellidopaterno = datos.APELLIDO_PAT;
         this.datgenerales.apellidomaterno = datos.APELLIDO_MAT;
-        this.datgenerales.id_persona=datos.ID_PERSONA
+        this.datgenerales.id_persona = datos.ID_PERSONA
         //  this.datgenerales =datos.respuesta[0].DIRECCION
         this.datgenerales.telef = datos.TELEFONO
         this.datgenerales.correo = datos.CORREO
@@ -134,10 +140,31 @@ export class NuevoUsuarioComponent implements OnInit {
   }
   aniadirAmbito(e) {
 
-    let am = e;
+    console.log(e)
+    console.log(this.usu.getSession())
+    let usu = this.usu.getSession()
+    let aniade = false;
+    usu.ambitos.forEach(element => {
+      if (element.peso <= e.peso && element.peso_sup >= e.peso_sup) {
+        aniade = true;
+      }
 
-    this.ambitoelegidos.push(am)
+    });
 
+
+
+    if (aniade) {
+
+      console.log('si puede')
+      let am = e;
+
+
+      this.ambitoelegidos.push(am)
+    }
+    else {
+
+      console.log('no puede ')
+    }
 
   }
 
@@ -148,9 +175,10 @@ export class NuevoUsuarioComponent implements OnInit {
     this.usuariogen = this.datgenerales.nombre.slice(0, 1) +
       this.datgenerales.apellidopaterno + this.datgenerales.apellidomaterno.slice(0, 1);
     this.clavegen = this.numdocbuscar.slice(0, seed),
-      this.usu.generaFakeNom().subscribe(dato => { 
+      this.usu.generaFakeNom().subscribe(dato => {
         console.log(dato)
-        this.clavegen = this.clavegen + dato });
+        this.clavegen = this.clavegen + dato
+      });
     this.usu.verificar(this.usuariogen).subscribe((dat) => {
       if (dat.mensaje == "Existe") {
         this.generarContrasenia(seed + 1)
@@ -177,7 +205,7 @@ export class NuevoUsuarioComponent implements OnInit {
     usu.TELEFONO = this.datgenerales.telef;
     usu.clave = this.clavegen;
     usu.numero_doc = this.numdocbuscar
-    usu.id_persona=this.datgenerales.id_persona
+    usu.id_persona = this.datgenerales.id_persona
 
     usu.DATOS_PROFESIONALES.COD_COLEGIATURA = this.cod_colegiatura;
     usu.DATOS_PROFESIONALES.ID_COLEGIO = this.colegiselect as string
@@ -187,7 +215,8 @@ export class NuevoUsuarioComponent implements OnInit {
 
     usu.DATOS_PROFESIONALES.ID_PROFESION = this.profesionselec.ID_PROFESION;
     usu.DATOS_PROFESIONALES.NOMBRE_PROFESION = this.profesionselec.DESCRIPCION_PROFESION;
-    usu.DATOS_PROFESIONALES.NOMBRE_ESPECIALIDAD = this.especialidad;
+    usu.DATOS_PROFESIONALES.NOMBRE_ESPECIALIDAD = this.especialidad; '';
+    usu.roles = this.rolesselect
     console.log(usu);
     this.confirmationService.confirm({
       message: 'ESTA SEGURO DE CREAR EL USUARIO',
@@ -208,14 +237,17 @@ export class NuevoUsuarioComponent implements OnInit {
 
   }
   usuarioCreado() {
+    this.stadoss.actualizarUsuarios.emit()
+
     this.verNuevoUsuarios = false;
+
 
   }
   aniadirIpress(e) {
     this.ipressselect.push(e)
   }
   cambioprof(e) {
-    
+
     this.colegiselect = e.value.ID_COLEGIO
     this.especialidad = e.value.ESPECIALIDAD
   }

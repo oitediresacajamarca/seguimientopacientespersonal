@@ -75,13 +75,13 @@ export class TablaNotificacionComponent implements OnInit {
           this.editar.selecipres.selecionar_Ipress(this.selectedNoti.COD_IPRESS)
           this.editar.solicitud = this.selectedNoti
           this.editar.cod_solicitud = this.selectedNoti.ID_SOLICITUD
-          console.log(this.selectedNoti)
+      
 
         }
       },
       {
         label: 'Cerrar Soliciitud', icon: 'pi pi-times', command: (event) => {
-          console.log(this.selectedNoti)
+       
 
           this.sol.cerrarSolicitud(this.selectedNoti.ID_SOLICITUD).subscribe(dato => {
 
@@ -107,7 +107,7 @@ export class TablaNotificacionComponent implements OnInit {
         {
           "header": "FECHA DE SOLICITUD",
           "field": "FECHA_SOLICITUD",
-          "col-size": 250
+          "colsize": 250
         },
         {
           "header": "TELEFONO",
@@ -285,9 +285,7 @@ export class TablaNotificacionComponent implements OnInit {
     });
   }
   vi(e) {
-    console.log(e)
-
-    console.log(this.elementRef.nativeElement);
+    
 
   }
 

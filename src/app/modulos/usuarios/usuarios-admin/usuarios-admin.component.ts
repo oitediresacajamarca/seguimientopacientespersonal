@@ -34,7 +34,8 @@ export class UsuariosAdminComponent implements OnInit {
       { field: "APELLIDO_MAT", header: "APELLIDO MATERNO" },
       { field: "NOMBRES", header: "NOMBRES" },
       { field: "CORREO", header: "CORREO" },
-      { field: "TELEFONO", header: "TELEFONO" }
+      { field: "TELEFONO", header: "TELEFONO" },
+      { field: "roles", header: "ROLES" },
     ]
     this.estado.actualizarUsuarios.subscribe(()=>{this.CargarUsuarios()})
     this.CargarUsuarios()

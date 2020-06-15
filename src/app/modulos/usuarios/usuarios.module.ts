@@ -9,7 +9,8 @@ import { NuevoUsuarioComponent } from './usuarios-admin/nuevo-usuario/nuevo-usua
 import {DialogModule} from 'primeng/dialog';
 import {DropdownModule} from 'primeng/dropdown';
 import { AmbitoAdministrativoSelectComponent } from './ambito-administrativo-select/ambito-administrativo-select.component';
-
+import {PasswordModule} from 'primeng/password';
+import {MultiSelectModule} from 'primeng/multiselect';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {CardModule} from 'primeng/card';
 import { FormsModule } from '@angular/forms';
@@ -23,6 +24,7 @@ import {TieredMenuModule} from 'primeng/tieredmenu';
 import { MenuAccionUsuarioComponent } from './controles/menu-accion-usuario/menu-accion-usuario.component';
 import {ToastModule} from 'primeng/toast';
 import { ActualizarContraseniaComponent } from './usuarios-admin/actualizar-contrasenia/actualizar-contrasenia.component';
+import {PanelModule} from 'primeng/panel';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -45,7 +47,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MessagesModule,
     MessageModule,
     CheckboxModule,
-    TieredMenuModule,ToastModule,ReactiveFormsModule
+    TieredMenuModule,ToastModule,ReactiveFormsModule,PanelModule,PasswordModule,MultiSelectModule
     
     
 

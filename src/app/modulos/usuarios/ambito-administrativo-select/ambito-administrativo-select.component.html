@@ -2,36 +2,38 @@
     <div class="ui-g-2">
         SUB-REGION
         <br>
-        <p-dropdown [options]="subregiones" [(ngModel)]="sregionesSelect" 
+        <p-dropdown #SR [options]="subregiones" [(ngModel)]="sregionesSelect" 
         placeholder="Seleccione Subregion"  [showClear]="true" (onChange)="cambioSubregion($event)"></p-dropdown>
 
     </div>
     <div class="ui-g-2">
         RED
         <br>
-        <p-dropdown [options]="redes_filtradas"  placeholder="seleccione una Red"  
-        [showClear]="true" (onChange)="cambioRed($event)"></p-dropdown>
+        <p-dropdown #RED [options]="redes_filtradas"  placeholder="seleccione una Red"  
+        [showClear]="true" (onChange)="cambioRed($event)" [(ngModel)]="redSelect" ></p-dropdown>
     </div>
     <div class="ui-g-2">
        MICRORED
        <br>
-        <p-dropdown [options]="microredes"  placeholder="Seleccione una microred" 
-        (onChange)="cambioMicroRed($event)" [showClear]="true"></p-dropdown>
+        <p-dropdown #MR [options]="microredes"  placeholder="Seleccione una microred" 
+        (onChange)="cambioMicroRed($event)" [showClear]="true" [(ngModel)]="microredSelect"></p-dropdown>
     </div>
     <div class="ui-g-2">
         ESTABLECIMIENTO
         <br>
-        <p-dropdown [options]="ipresses"  
+        <p-dropdown #IP [options]="ipresses"  
         placeholder="Selecione una Ipress" 
          [showClear]="true"
          (onChange)=" cambioEstablecimiento($event)"
+
+         [(ngModel)]="ipSelect"
         ></p-dropdown>
    
     </div>
   
     <div class="ui-g-2">
         <Br>
-        <p-button label="Agregar" (onClick)="ambitoSelecionado()"></p-button>
+        <p-button label="Agregar" (onClick)="ambitoSelecionado()" ></p-button>
 
     </div>
     

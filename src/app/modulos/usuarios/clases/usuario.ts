@@ -35,5 +35,6 @@ export class Usuario implements UsuarioBase {
     TELEFONO: string;
     TIPO_AMBITO_ADMINISTRATIVO: string = '';
     logueado: string = '';
+    roles: string []= []
 
 }

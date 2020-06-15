@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: 'frontend', component: InicioComponent },
   { path: 'geo', component: GeoreferenciaComponent },
   { path: 'cie', component: SelectorCieCpmsComponent },
-  { path: 'actualizar-usuario', component: ActualizarContraseniaComponent,outlet:'emergente' },
+  { path: 'actualizar', component: ActualizarContraseniaComponent, outlet: 'emergente' },
   {
     path: 'admin',
     component: DefaultComponent,
@@ -53,15 +53,22 @@ const routes: Routes = [
       {
         path: 'panel',
         component: PaneldeseguimientoComponent,
+      
         children: [
           {
             path: 'atencion/:NRO_DOCUMENTO/:ID_PACIENTE/:ID_SOLICITUD',
             component: PrincipalComponent
           },
           {
-            path: '',
-            component: PrincipalComponent
-          },
+            path: 'inicio',
+            component: PrincipalComponent,
+         
+          }, 
+          {
+            path: 'actualizar',
+             component: ActualizarContraseniaComponent,
+            
+          }
 
         ]
       },

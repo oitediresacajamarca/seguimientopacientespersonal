@@ -7,6 +7,8 @@
       import { TablaMorbilidadesComponent } from '../componentes/tabla-morbilidades/tabla-morbilidades.component';
 import { MaestrosService } from '../servicios/maestros.service';
 import { Button } from 'primeng/button/button';
+import { EstadosService } from '../servicios/estados.service';
+import { Router } from '@angular/router';
 
       @Component({
         selector: 'app-paneldeseguimiento',
@@ -41,10 +43,17 @@ import { Button } from 'primeng/button/button';
         @ViewChild('tablamorb', { static: false }) tablamorb: TablaMorbilidadesComponent
         @ViewChild('btbuscar', { static: false }) btbuscar:Button
 
-        constructor(private sd: DistritosService, private fil: FitrarService, private mor: MorbilidadesService,private maestros:MaestrosService) { }
+        constructor(private sd: DistritosService, private fil: FitrarService, 
+          private mor: MorbilidadesService,private maestros:MaestrosService,
+           private estados:EstadosService, private router: Router) { }
 
         ngOnInit() {
           this.devolverPadrones();
+        if (this.estados.actualizarPerfil){
+          console.log('se aactuyalizara')
+          this.router.navigate([{ outlets: { emergente: 'actualizar' }}]);
+
+        }
 
           this.provincias = [
             { label: "CAJAMARCA", value: "0601" },

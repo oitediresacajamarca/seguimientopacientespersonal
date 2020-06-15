@@ -1,31 +1,118 @@
+<p-sidebar
+  [(visible)]="display"
+  position="right"
+  modal="false"
+  [style]="{ width: '50em' }"
+  baseZIndex="10004"
+  #dialog
+  (onHide)="rutaNula()"
+>
+<p-messages severity="info">
+  <ng-template pTemplate>
+      
+      <span class="custom-message">  BIENVENIDO SE LE SOLICTITA VERIFICAR SI LOS DATOS REGISTRADOS SON CORRECTOS</span>
+  </ng-template>
+</p-messages>
 
-<p-sidebar [(visible)]="display" position="right" modal="false" [style]="{width:'50em'}">
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="form-group">
-                  <label for="recipient-name" class="form-control-label">Recipient:</label>
-                  <input type="text" class="form-control" id="recipient-name">
-                </div>
-                <div class="form-group">
-                  <label for="message-text" class="form-control-label">Message:</label>
-                  <textarea class="form-control" id="message-text"></textarea>
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Send message</button>
-            </div>
-          </div>
-        </div>
+  <p-panel header="PERFIL">
+    <div class="row mb-3">
+      <div class="col-sm-5"><strong>Nombres</strong></div>
+      <div class="col-sm-5">{{personapersonal.NOMBRES}}</div>
+      <div class="col-sm-2 text-right">
+        <button
+          pButton
+          type="button"
+          icon="pi pi-pencil"
+          class="ui-button-secondary"
+        ></button>
       </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-sm-5"><strong>Apellido Paterno</strong></div>
+      <div class="col-sm-7">{{personapersonal.APELLIDO_PAT}}</div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-sm-5"><strong>Apellido Materno</strong></div>
+      <div class="col-sm-7">{{personapersonal.APELLIDO_MAT}}</div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-sm-5"><strong>Numero de Documneto</strong></div>
+      <div class="col-sm-7">{{personapersonal.NRO_DOCUMENTO}}</div>
+    </div>
+    <hr />
+
+    <div class="row mb-3">
+      <div class="col-sm-5"><strong>Profesion</strong></div>
+      <div class="col-sm-5">{{this.datosProf.NOMBRE_PROFESION}}</div>
+      <div class="col-sm-2 text-right">
+        <button
+          pButton
+          type="button"
+          icon="pi pi-pencil"
+          class="ui-button-secondary"
+        ></button>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-sm-5"><strong>Especiliadad</strong></div>
+      <div class="col-sm-7">{{this.datosProf.NOMBRE_ESPECIALIDAD}}</div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-sm-5"><strong>Numero Colegiatura</strong></div>
+      <div class="col-sm-7">{{this.datosProf.COD_COLEGIATURA}}</div>
+    </div>
+    <hr />
+    <form action="" [formGroup]="formCambio">
+    <div class="row mb-3">
+      <div class="col-sm-5"><strong>USUARIO</strong></div>
+      <div class="col-sm-5"><input type="text" pInputText disabled formControlName="username"/>
+      </div>
+      <div class="col-sm-2 text-right">
+        <button
+          pButton
+          type="button"
+          icon="pi pi-pencil"
+          class="ui-button-secondary"
+        ></button>
+      </div>
+    </div>
+   
+    <!-- <div class="row mb-3">
+      <div class="col-sm-5"><strong>CONTRASEÑA ANTERIOR</strong></div>
+      <div class="col-sm-7"><input type="password" pInputText  formControlName="password"/></div>
+    </div> -->
+
+    <div class="row mb-3">
+      <div class="col-sm-5"><strong>NUEVA CONTRASEÑA </strong></div>
+      <div class="col-sm-7"><input  type="password" weakLabel="Debil" mediumLabel="Medio"
+        formControlName="newpassword" strongLabel="Dura"/></div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-sm-5"><strong>CONFIRMAR CONTRASEÑA</strong></div>
+      <div class="col-sm-7"><input  type="password" weakLabel="Debil"
+        formControlName="confirmpassword" mediumLabel="Medio" strongLabel="Dura"/></div>
+    </div>
+  <div class="row mb-3" *ngIf="nocoincide">
+      <div class="col-sm-12">
+        <p-message severity="error" text="Las contraseñas ingresadas deben de coincidir" ></p-message>
+      </div>
+    
+    </div>
+ 
+    <hr />
+    <div class="row mb-3">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-4">
+        <p-button  label="Guardar"   icon="pi pi-check" [disabled]="formCambio.invalid" (onClick)="Guardar(formCambio.value)" iconPos="left"></p-button>
+      </div>
+      <div class="col-sm-4">
+        <p-button  label="Cancelar"  (onClick)="rutaNula()" icon="pi pi-times" iconPos="left"></p-button>
+      </div>
+      <div class="col-sm-2"></div>
+    
+    </div>
+  </form>
+  </p-panel>
+  <p-toast key="confirmacion"></p-toast>
 </p-sidebar>
+

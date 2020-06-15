@@ -155,6 +155,7 @@ export class LoginComponent implements OnInit {
 
         console.log(dato.respuesta);
         localStorage.setItem('datos', JSON.stringify(dato.respuesta))
+        this.usua.sessionUsuario=dato.respuesta;
         let cod1 = '', cod2 = '', cod3 = '', cod4 = ''
         if (ambito.COD_SUBREGION == 0) {
           cod1 = ''
@@ -176,8 +177,15 @@ export class LoginComponent implements OnInit {
         }
 
         this.estadoapp.cod_con = cod1 + '' + cod2 + '' + cod3 + '' + ambito.COD_IPRESS;
+        if (dato.respuesta.estado == 'actualizar' || dato.respuesta.estado == undefined) {
+          console.log(dato.respuesta.estado)
+          this.estadoapp.actualizarPerfil=true;
+          this.rout.navigate(['admin/panel']);
 
-        this.rout.navigate(['admin/panel']);
+        } else {
+          this.estadoapp.actualizarPerfil=false;
+          this.rout.navigate(['admin/panel']);
+        }
 
 
       } else {

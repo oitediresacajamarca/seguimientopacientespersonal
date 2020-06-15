@@ -26,6 +26,7 @@ export interface UsuarioBase {
     TELEFONO: string,
     TIPO_AMBITO_ADMINISTRATIVO: string,
     logueado: string,
-    DATOS_PROFESIONALES: DATOSPROFESIONALES
+    DATOS_PROFESIONALES: DATOSPROFESIONALES,
+    roles: string[]
 
 }
