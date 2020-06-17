@@ -62,14 +62,19 @@ import { DatosAtencionComponent } from './componentes/registrar-atencion/datos-a
 import { DiagnosticosComponent } from './componentes/registrar-atencion/diagnosticos/diagnosticos.component';
 import { TratamientoComponent } from './componentes/registrar-atencion/tratamiento/tratamiento.component';
 import { FormularioVerificarComponent } from './componentes/public/formulario-verificar/formulario-verificar.component';
-import {OverlayPanelModule} from 'primeng/overlaypanel';
-import {TieredMenuModule} from 'primeng/tieredmenu';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { TieredMenuModule } from 'primeng/tieredmenu';
 import { UsuariosModule } from './modulos/usuarios/usuarios.module';
 import { GeoreferenciaComponent } from './georeferencia/georeferencia.component';
 import { SelectorCieCpmsComponent } from './controles/selector-cie-cpms/selector-cie-cpms.component';
 import { AtencionesRealizadasComponent } from './componentes/atencion/atenciones-realizadas/atenciones-realizadas.component';
 import { DetalleAtencionComponent } from './componentes/atencion/atenciones-realizadas/detalle-atencion/detalle-atencion.component';
-import {PdfViewerModule} from 'ng2-pdf-viewer';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+
+import { MultiSelectModule } from 'primeng/multiselect';
+
+import { HistorialAtencionComponent } from './atencion/historial-atencion/historial-atencion.component';
+import { DataViewModule } from 'primeng/dataview';
 
 
 @NgModule({
@@ -96,10 +101,12 @@ import {PdfViewerModule} from 'ng2-pdf-viewer';
     AtencionesRealizadasComponent,
     DetalleAtencionComponent,
 
- 
- 
-  
-   
+    HistorialAtencionComponent,
+
+
+
+
+
   ],
   imports: [
     GMapModule,
@@ -133,8 +140,8 @@ import {PdfViewerModule} from 'ng2-pdf-viewer';
     MatCheckboxModule,
     UsuariosModule,
     OverlayPanelModule,
-    TieredMenuModule,ToastModule,
-    PdfViewerModule
+    TieredMenuModule, ToastModule,
+    PdfViewerModule, MultiSelectModule, DataViewModule
   ],
   providers: [DistritosService, ConfirmationService, MessageService],
   bootstrap: [AppComponent]

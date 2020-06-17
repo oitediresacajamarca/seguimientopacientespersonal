@@ -13,6 +13,10 @@ mat-drawer-container {
 
 mat-drawer-content {
   padding: 20px;
+  height: 1200px;
+}
+mat-drawer-content {
+ z-index: 0;
 }
 .ui-dialog-titlebar	 {
   background-color:red !important;

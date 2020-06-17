@@ -1,12 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { PersonaService } from 'src/app/servicios/servicios/persona.service';
 import { UsuariosService } from 'src/app/servicios/usuarios.service';
-import { UsuarioBase } from '../../interfaces/usuario-base';
 import { Usuario } from '../../clases/usuario';
-
 import { Message } from 'primeng/api/message';
-import { ConfirmationService, SelectItem } from 'primeng/api';
+import { ConfirmationService, SelectItem, MessageService } from 'primeng/api';
 import { ProfesionService } from 'src/app/servicios/maestros/profesion.service';
 import { ColegioService } from 'src/app/servicios/maestros/colegio.service';
 import { EstadosService } from 'src/app/servicios/estados.service';
@@ -24,7 +21,7 @@ export class NuevoUsuarioComponent implements OnInit {
 
   constructor(private persona: PersonaService, private usu: UsuariosService,
     private confirmationService: ConfirmationService, private maestr: ProfesionService,
-    private colegios: ColegioService, private stadoss: EstadosService) { }
+    private colegios: ColegioService, private stadoss: EstadosService,private messageService: MessageService) { }
   cod_colegiatura: string;
   msgs: Message[] = [];
   logueado: string;
@@ -140,8 +137,7 @@ export class NuevoUsuarioComponent implements OnInit {
   }
   aniadirAmbito(e) {
 
-    console.log(e)
-    console.log(this.usu.getSession())
+  
     let usu = this.usu.getSession()
     let aniade = false;
     usu.ambitos.forEach(element => {
@@ -162,7 +158,7 @@ export class NuevoUsuarioComponent implements OnInit {
       this.ambitoelegidos.push(am)
     }
     else {
-
+      this.messageService.add({severity:'danger', summary:'Error', detail:'No puede asignar ambito fuera del ambito de acceso asignado a su cuenta',key:"mensajeusu"});
       console.log('no puede ')
     }
 

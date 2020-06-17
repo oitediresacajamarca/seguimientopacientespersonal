@@ -1,5 +1,5 @@
 :host {
-  z-index: 10;
+ 
   .mat-icon {
     vertical-align: middle;
     margin-right: 20px;
@@ -13,5 +13,10 @@
       object-fit: cover;
       border-radius: 50%;
     }
+   
+  }
+  mat-nav-list{
+    z-index: 1;
+   
   }
 }

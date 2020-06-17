@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { EstadosService } from './estados.service';
 
 
 
@@ -10,7 +11,7 @@ import { environment } from 'src/environments/environment';
 export class UsuariosService {
   sessionUsuario
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private estados:EstadosService) { }
 
   login(usu: string, clave: string, peso: number) {
     let consulta = {
@@ -49,6 +50,11 @@ export class UsuariosService {
   }
   actualizarUsuarioPass(id: string, body: any) {
     return this.http.put<any>(environment.url_backend + 'usuarios/actualizarP/' + id, body)
+  }
+  devolverUsuariosAmbitos(){
+    let session =this.getSession();
+    return this.http.post<any>(environment.url_backend + 'usuarios/listarporambito', {peso:session.ambitos[0].peso,peso_sup:session.ambitos[0].peso_sup})
+
   }
   validarAmbitoPermitido(){
 

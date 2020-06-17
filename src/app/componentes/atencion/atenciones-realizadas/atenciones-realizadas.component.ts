@@ -53,7 +53,6 @@ export class AtencionesRealizadasComponent implements OnInit {
     this.id_personal = JSON.parse(localStorage.getItem('datos')).id_persona
     this.ate.devolverAtencionesRealizadas(this.id_personal).subscribe(datos => {
       this.datos_tabla_atenciones = datos.recordset;
-
     });
   }
 

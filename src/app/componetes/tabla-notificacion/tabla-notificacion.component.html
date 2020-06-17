@@ -2,132 +2,144 @@
   header="Solicitudes Actuales de Seguimiento"
   [(visible)]="verDialog"
   [modal]="true"
-  [style]="{ width: '90%',height: '1050px' }"
+  [style]="{ width: '90%', height: '1050px' }"
   [maximizable]="true"
   [baseZIndex]="10000"
   [draggable]="false"
   [resizable]="false"
   #DIAL
 >
-<div class="contendornoti">
-  <p-contextMenu
-    #cm
-    [model]="elementosmenu"
-    appendTo="body"
-    (onShow)="vi($event)"
-    baseZIndex="10001"
-  ></p-contextMenu>
-  <p-toast key="myKey2" position="top-left"></p-toast>
+  <div class="contendornoti">
+    <p-contextMenu
+      #cm
+      [model]="elementosmenu"
+      appendTo="body"
+      (onShow)="vi($event)"
+      baseZIndex="10001"
+    ></p-contextMenu>
+    <p-toast key="myKey2" position="top-left"></p-toast>
 
-  <app-editar-sol #editar (actualiso)="actualizoSolicitud()"></app-editar-sol>
+    <app-editar-sol #editar (actualiso)="actualizoSolicitud()"></app-editar-sol>
 
-  <p-table
-    #dt
-    [value]="pacientes"
-    styleClass="ui-table-customers"
-    [rowHover]="true"
-    [(contextMenuSelection)]="selectedNoti"
-    [contextMenu]="cm"
-    [rows]="10"
-    [showCurrentPageReport]="true"
-    [rowsPerPageOptions]="[10, 25, 50]"
-    [paginator]="true"
-    currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} resultados"
-    [filterDelay]="0"
-    [globalFilterFields]="[
-      'Codigo_Item',
-      'Descripcion_Item',
-      'Fg_Tipo',
-      'Fg_Estado'
-    ]"
-  
-    [columns]="cols"
-    [scrollable]="true"
-    [style]="{ width: '100%' }"
-    [autoLayout]="true"
-    [resizableColumns]="true"
-  >
-    <ng-template pTemplate="colgroup" let-columns>
-      <colgroup>
-        <col>
-        <col *ngFor="let col of columns"  [ngStyle]="{'width': col.colsize+'px','font-size':'6px'}" />
-      </colgroup>
-    </ng-template>
-
-    <ng-template pTemplate="header" let-columns>
-      <tr>
-        <th pSortableColumn="ESTADO" > 
-          Estado <p-sortIcon field="ESTADO"></p-sortIcon>
-        </th>
-
-        <th pSortableColumn="{{ col.field }}" *ngFor="let col of columns">
-          {{ col.header }} <p-sortIcon field="{{ col.field }}"></p-sortIcon>
-        </th>
-
-        <th></th>
-      </tr>
-      <tr>
-        <th>
-          <input
-            pInputText
-            type="text"
-            (input)="dt.filter($event.target.value, 'ESTADO', 'contains')"
-            placeholder="Buscar por ESTADO"
-            class="ui-column-filter"
+    <p-table
+      #dt
+      [value]="pacientes"
+      styleClass="ui-table-customers"
+      [rowHover]="true"
+      [(contextMenuSelection)]="selectedNoti"
+      [contextMenu]="cm"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [paginator]="true"
+      currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} resultados"
+      [filterDelay]="0"
+      [globalFilterFields]="[
+        'Codigo_Item',
+        'Descripcion_Item',
+        'Fg_Tipo',
+        'Fg_Estado'
+      ]"
+      [columns]="cols"
+      [scrollable]="true"
+      [style]="{ width: '100%' }"
+      [autoLayout]="true"
+      [resizableColumns]="true"
+    >
+      <ng-template pTemplate="colgroup" let-columns>
+        <colgroup>
+          <col />
+          <col
+            *ngFor="let col of columns"
+            [ngStyle]="{ width: col.colsize + 'px', 'font-size': '6px' }"
           />
-        </th>
+        </colgroup>
+      </ng-template>
 
-        <th *ngFor="let col of columns" pResizableColumn>
-          <input
-            pInputText
-            type="text"
-            (input)="dt.filter($event.target.value, col.field, 'contains')"
-            placeholder="Buscar por {{ col.header }}"
-            class="ui-column-filter"
-          />
-        </th>
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th pSortableColumn="ESTADO">
+            Estado <p-sortIcon field="ESTADO"></p-sortIcon>
+          </th>
 
-        <th></th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-customer let-columns="columns">
-      <tr class="ui-selectable-row" [pContextMenuRow]="customer">
-        <td>
-          <span class="ui-column-title">Status</span>
-          <span [class]="'customer-badge status-' + customer.ESTADO">{{
-            customer.ESTADO
-          }}</span>
-        </td>
+          <th pSortableColumn="{{ col.field }}" *ngFor="let col of columns">
+            {{ col.header }} <p-sortIcon field="{{ col.field }}"></p-sortIcon>
+          </th>
 
-        <td *ngFor="let col of columns" class="ui-resizable-column">
-          <span class="ui-column-title">Codigo</span>
+          <th></th>
+        </tr>
+        <tr>
+          <th>
+            <input
+              pInputText
+              type="text"
+              (input)="dt.filter($event.target.value, 'ESTADO', 'contains')"
+              placeholder="Buscar por ESTADO"
+              class="ui-column-filter"
+            />
+          </th>
 
-          {{ customer[col.field] }}
-        </td>
+          <th *ngFor="let col of columns" pResizableColumn>
+            <input
+              pInputText
+              type="text"
+              (input)="dt.filter($event.target.value, col.field, 'contains')"
+              placeholder="Buscar por {{ col.header }}"
+              class="ui-column-filter"
+            />
+          </th>
 
-        <td></td>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="summary">
-      Existen {{ pacientes?.length }} resultados
-      <button
-        type="button"
-        pButton
-        icon="pi pi-file-excel"
-        iconPos="left"
-        label="EXPORTAR A EXCEL"
-        (click)="exportExcel()"
-        style="margin-right: 0.5em;"
-        class="ui-button-success"
-      ></button>
-    </ng-template>
-    <ng-template pTemplate="emptymessage">
-      <tr>
-        <td colspan="8" style="text-align: left;">
-          No se han hallado Solicitudes.
-        </td>
-      </tr>
-    </ng-template>
-  </p-table>
-</div>
+          <th></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-customer let-columns="columns">
+        <tr class="ui-selectable-row" [pContextMenuRow]="customer">
+          <td>
+            <span class="ui-column-title">Status</span>
+            <span [class]="'customer-badge status-' + customer.ESTADO">{{
+              customer.ESTADO
+            }}</span>
+          </td>
+
+          <td *ngFor="let col of columns" class="ui-resizable-column">
+            <ng-container [ngSwitch]="col.field">
+              <ng-container *ngSwitchDefault>
+                <span class="ui-column-title">Codigo</span>
+
+                {{ customer[col.field] }}
+              </ng-container>
+              <ng-container *ngSwitchCase="'FECHA_SOLICITUD'">
+                <span class="ui-column-title">Codigo</span>
+
+                {{ customer[col.field] | date: "dd-MM-yyyy    hh:mm  aa" }}
+              </ng-container>
+             
+            </ng-container>
+          </td>
+
+          <td></td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="summary">
+        Existen {{ pacientes?.length }} resultados
+        <button
+          type="button"
+          pButton
+          icon="pi pi-file-excel"
+          iconPos="left"
+          label="EXPORTAR A EXCEL"
+          (click)="exportExcel()"
+          style="margin-right: 0.5em;"
+          class="ui-button-success"
+        ></button>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8" style="text-align: left;">
+            No se han hallado Solicitudes.
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
 </p-dialog>

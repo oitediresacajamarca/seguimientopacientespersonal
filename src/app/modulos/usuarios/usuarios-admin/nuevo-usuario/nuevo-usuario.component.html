@@ -3,11 +3,12 @@
   [(visible)]="verNuevoUsuarios"
   [modal]="true"
   [style]="{ width: '80vw' }"
-  [baseZIndex]="10000"
+  [baseZIndex]="20"
   [draggable]="false"
   [resizable]="false"
   [maximizable]="true"
 >
+<p-toast position="top-left" key="mensajeusu"></p-toast>
   <form name="nuevousu" #form="ngForm">
     <div class="ui-g">
       <div class="ui-g-12 contenedordatosnuevos">
@@ -345,7 +346,7 @@
               USUARIO:
               <div class="usuario">{{ usuariogen }}</div>
               <br />
-              CONTRASENIA:
+              CONTRASEÑA:
               <div class="usuario">{{ clavegen }}</div>
             </p-card>
           </div>

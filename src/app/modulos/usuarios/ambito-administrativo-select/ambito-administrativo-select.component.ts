@@ -159,7 +159,7 @@ export class AmbitoAdministrativoSelectComponent implements OnInit {
       + this.ambitoSelect.COD_IPRESS * Math.pow(10, 0);
     this.ambitoSelect.peso_sup = this.ambitoSelect.peso + 1
     this.ambitoSelect.NOMBRE_IPRESS = this.ipresses.find(sub => sub.value == e.value).label;
-    console.log(this.ambitoSelect)
+   
 
 
   }

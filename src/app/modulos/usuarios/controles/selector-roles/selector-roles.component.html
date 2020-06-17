@@ -1,0 +1,13 @@
+<p-multiSelect [options]="roles" [(ngModel)]="rolesselect" name='rolesselect'  [ngStyle]="{'width':'120px'}">
+    <ng-template let-value pTemplate="selectedItems">
+        <div *ngFor="let val of value" class="ui-multiselected-item-token ui-corner-all">
+          <div style="width:24px;vertical-align:middle;margin-right:.5em" ></div>
+            <span icon="pi pi-users">{{val}}</span>
+        </div>
+        <span *ngIf="!value || value.length === 0" class="ui-multiselected-empty-token ui-corner-all">Elija los roles que tendra el usuario</span>
+    </ng-template>
+    <ng-template let-car pTemplate="item">
+      <div  style="width:24px;display:inline-block;vertical-align:middle"></div>
+        <div icon="pi pi-users" style="font-size:14px;float:right;margin-top:4px">{{car.label}}</div>
+    </ng-template>
+</p-multiSelect>

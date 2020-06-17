@@ -69,7 +69,7 @@ export class UsuariosAdminComponent implements OnInit {
 
 
   CargarUsuarios() {
-    this.usuas.devolverUsuarios().subscribe(
+    this.usuas.devolverUsuariosAmbitos().subscribe(
       datos => {
 
         this.usuariosDatos = datos;

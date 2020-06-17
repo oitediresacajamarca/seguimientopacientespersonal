@@ -13,6 +13,7 @@ import { LoginComponent } from './modulos/usuarios/login/login.component';
 import { GeoreferenciaComponent } from './georeferencia/georeferencia.component';
 import { SelectorCieCpmsComponent } from './controles/selector-cie-cpms/selector-cie-cpms.component';
 import { ActualizarContraseniaComponent } from './modulos/usuarios/usuarios-admin/actualizar-contrasenia/actualizar-contrasenia.component';
+import { HistorialAtencionComponent } from './atencion/historial-atencion/historial-atencion.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'geo', component: GeoreferenciaComponent },
   { path: 'cie', component: SelectorCieCpmsComponent },
   { path: 'actualizar', component: ActualizarContraseniaComponent, outlet: 'emergente' },
+  { path:'prueba',component:HistorialAtencionComponent},
   {
     path: 'admin',
     component: DefaultComponent,
@@ -37,6 +39,8 @@ const routes: Routes = [
         path: 'reportes',
         component: DashboardComponent
       },
+      { path: 'actualizar', component: ActualizarContraseniaComponent, outlet: 'emergente' }
+      ,
       {
         path: 'atencion/:NRO_DOCUMENTO/:ID_PACIENTE/:ID_SOLICITUD',
         component: PrincipalComponent

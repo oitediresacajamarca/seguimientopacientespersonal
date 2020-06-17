@@ -27,10 +27,13 @@ import { ActualizarContraseniaComponent } from './usuarios-admin/actualizar-cont
 import {PanelModule} from 'primeng/panel';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { AsignarRolesComponent } from './asignar-roles/asignar-roles.component';
+import{SelectorRolesComponent} from './controles/selector-roles/selector-roles.component'
 
 
 @NgModule({
-  declarations: [UsuariosAdminComponent, NuevoUsuarioComponent, AmbitoAdministrativoSelectComponent, LoginComponent, MenuAccionUsuarioComponent, ActualizarContraseniaComponent],
+  declarations: [UsuariosAdminComponent,
+    SelectorRolesComponent, NuevoUsuarioComponent, AmbitoAdministrativoSelectComponent, LoginComponent, MenuAccionUsuarioComponent, ActualizarContraseniaComponent, AsignarRolesComponent],
   providers:[ConfirmationService],
   imports: [
     SidebarModule,

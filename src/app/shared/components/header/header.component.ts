@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { EstadosService } from 'src/app/servicios/estados.service';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,7 @@ export class HeaderComponent implements OnInit {
   @Output() notiA: EventEmitter<any> = new EventEmitter();
 
 
-  constructor(private estado:EstadosService) { }
+  constructor(private estado:EstadosService,private router :Router) { }
 
   ngOnInit() { }
 
@@ -37,6 +38,13 @@ export class HeaderComponent implements OnInit {
     
 
 
+  }
+  abrir(){
+  
+
+    this.router.navigate([{ outlets: { emergente: 'actualizar' }}]);
+
+   
   }
 
 }

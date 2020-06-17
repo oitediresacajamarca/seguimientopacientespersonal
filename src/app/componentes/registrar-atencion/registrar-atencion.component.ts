@@ -7,13 +7,10 @@ import { TratamientoComponent } from './tratamiento/tratamiento.component';
 import { Atencion } from 'src/app/interfaces/atencion';
 import { FormatoFuat } from 'src/app/interfaces/formato-fuat';
 import { Diagnostico } from 'src/app/interfaces/diagnostico';
-
 import { FuatServicioService } from 'src/app/servicios/formatos/fuat-servicio.service';
-
 import * as moment from 'moment';
 import 'moment/locale/es';
 import { PersonalService } from 'src/app/servicios/personal.service';
-
 
 @Component({
   selector: 'app-registrar-atencion',
@@ -22,7 +19,7 @@ import { PersonalService } from 'src/app/servicios/personal.service';
 })
 export class RegistrarAtencionComponent implements OnInit {
   fechaatencion: Date = new Date()
-  @Input() cod_paciente: string
+  @Input() cod_paciente: string;
   @Input() ver: boolean;
   @Input() ID_PACIENTE: string;
   @Input() ID_SOLICITUD: string;
@@ -101,18 +98,22 @@ export class RegistrarAtencionComponent implements OnInit {
 
 
   registrarAtencion(event) {
-
+    let fecha= new  Date()
+    this.atencion.FECHA =fecha.getFullYear()+'-'+(fecha.getMonth()+1)+'-'+fecha.getDate()
+   
+    this.atencion.HORA = fecha.getHours()+':'+fecha.getMinutes()+':'+fecha.getSeconds()
     console.log(this.atencion);
     console.log(this.form1.examenesFisicos);
     console.log(this.form1.atencion_detalle);
     console.log(this.form2.diagnostabla)
-    console.log(this.sesion)
+
     let id_atencion;
 
     this.confirmationService.confirm({
       message: 'Esta seguro de que deseas Guardar la Atencion',
       accept: () => {
-       
+
+
         this.form1.atencion_detalle.N_CONTROL = this.form1.numcon;
         this.personals.devolver_personal(this.sesion.id_persona, this.sesion.COD_IPRESS).subscribe((dato) => {
           let personal: any
@@ -127,47 +128,43 @@ export class RegistrarAtencionComponent implements OnInit {
 
           ).subscribe((RESPUESTA) => {
             this.formatofuat.personal.NRO_DOCUMENTO = this.sesion.id_persona
-            this.formatofuat.numeroFuat=RESPUESTA.identiti;
-            console.log(RESPUESTA.identiti)
+            this.formatofuat.numeroFuat = RESPUESTA.identiti;
+           
             this.fuatservicio.guardarFuat(this.formatofuat).subscribe((res) => { console.log(res) })
 
             id_atencion = RESPUESTA.identiti;
-         
+
             this.form1.examenesFisicos.examenes.forEach(element => {
               element.ID_TRABAJADOR = this.atencion.ID_RESPONSABLE
             });
             this.trabajador_id = personal.ID_TRABAJADOR_IPRESS
-            this.aten.registrarExamenfis(this.form1.examenesFisicos.examenes, id_atencion, this.trabajador_id).subscribe(() => { console.log('se guardo exitosamente los examenes fisicos') 
-            this.aten.registrarAtencionDetalle(this.form1.atencion_detalle, id_atencion, this.trabajador_id).subscribe(() => { console.log('se guardo exitosamente atencion detalle') 
-          
-            this.aten.registrarAtencionDiagnosticos(this.form2.diagnostabla, id_atencion, this.trabajador_id).subscribe(() => { console.log('se guardo exitosamente los diagnosticos') 
-             
-            this.imprimirFuat();
-            this.completoRegistro.emit('Se completo el Registro');
-            this.form1.datosa.resetForm()
-            this.form2.diaf.resetForm()
-            this.form3.trat.resetForm()
-            this.form2.dianosticospac=[]
-            this.form2.diagnostabla=[]
-          
-          });
-       
-          });
-          
-          
-          });
+            this.aten.registrarExamenfis(this.form1.examenesFisicos.examenes, id_atencion, this.trabajador_id).subscribe(() => {
+              console.log('se guardo exitosamente los examenes fisicos')
+              this.aten.registrarAtencionDetalle(this.form1.atencion_detalle, id_atencion, this.trabajador_id).subscribe(() => {
+                console.log('se guardo exitosamente atencion detalle')
+
+                this.aten.registrarAtencionDiagnosticos(this.form2.diagnostabla, id_atencion, this.trabajador_id).subscribe(() => {
+                  console.log('se guardo exitosamente los diagnosticos')
+
+                  this.imprimirFuat();
+                  this.completoRegistro.emit('Se completo el Registro');
+                  this.form1.datosa.resetForm()
+                  this.form2.diaf.resetForm()
+                  this.form3.trat.resetForm()
+                  this.form2.dianosticospac = []
+                  this.form2.diagnostabla = []
+
+                });
+
+              });
 
 
-           
+            });
 
-       
-
-
-
-
-
-
-          });
+          },(ERROR)=>{this.messageService.add({severity:'danger', summary:'error'})
+        
+        
+        });
 
         })
 
