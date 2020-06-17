@@ -20,7 +20,7 @@ export class HistorialAtencionComponent implements OnInit {
     sortField: string;
 
     sortOrder: number;
-  selectCar(){
+  selectCar($event,car){
 
   }
   onSortChange(){}
