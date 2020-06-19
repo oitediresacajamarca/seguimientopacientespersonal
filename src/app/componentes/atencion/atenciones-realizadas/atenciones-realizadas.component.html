@@ -13,9 +13,7 @@
         <th scope="col">Fecha de Atencion</th>
         <th scope="col">Nombre Personal</th>
         <th scope="col">Apellido Personal</th>
-        <th scope="col">Apellido Materno Personal</th>
-
-        
+        <th scope="col">Apellido Materno Personal</th>        
       </tr>
     </thead>
     <tbody>
@@ -31,13 +29,8 @@
         <td>{{dato.FECHA| date: 'dd-MM-yyyy hh:mm aa'}}</td>       
         <td>{{dato.APE_NOM_MED}}</td>
         <td>{{dato.APE_PAT_MED}}</td>
-        <td>{{dato.APE_MAT_MED}}</td>
-        
-      </tr>
-     
-
-     
-     
+        <td>{{dato.APE_MAT_MED}}</td>       
+      </tr> 
     </tbody>
   </table>
   <app-detalle-atencion></app-detalle-atencion>

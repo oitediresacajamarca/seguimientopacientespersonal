@@ -9,9 +9,17 @@ import { SelectItem } from 'primeng/api';
 })
 export class HistorialAtencionComponent implements OnInit {
   atenciones
+
+  id_persona
   constructor() { }
 
   ngOnInit() {
+
+
+  }
+
+  cargarAtenciones(){
+
   }
   sortOptions: SelectItem[];
 

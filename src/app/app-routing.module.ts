@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PaneldeseguimientoComponent } from './paneldeseguimiento/paneldeseguimiento.component';
-import { AccesoComponent } from './componentes/acceso/acceso.component';
 import { PrincipalComponent } from './componentes/atencion/principal.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { DefaultComponent } from './layouts/default/default.component';

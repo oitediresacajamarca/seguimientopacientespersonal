@@ -1,5 +1,3 @@
-
-
 <p-tabView class="container-fluid">
   <br />
   <p-tabPanel header="Registro de Atenciones">
@@ -27,272 +25,266 @@
       ></button>
     </div>
     <form #inicioaten="ngForm">
-    <p-fieldset legend="Datos Generales del Paciente">
-      <div class="ui-g">
-        <div class="form-group ui-g-4">
-          <label for="docidentidad">Numero de Documento de Identidad</label>
-          <input
-            matInput
-            type="email"
-            class="form-control"
-            id="docidentidad"
-            aria-describedby="emailHelp"
-            placeholder="Numero de Documento de Identidad"
-            [(ngModel)]="form.NRO_DOCUMENTO"
-            name="NRO_DOCUMENTO"
-            disabled="true"
-          />
-        </div>
-
-        <div class="form-group ui-g-4">
-          <label for="nombres">Nombres</label>
-          <input
-            type="text"
-            class="form-control"
-            id="nombres"
-            aria-describedby="emailHelp"
-            [(ngModel)]="form.NOMBRES"
-            name="NOMBRES"
-            disabled="true"
-          />
-        </div>
-        <div class="form-group ui-g-4">
-          <label for="ape_pat">Apellido Paterno</label>
-          <input
-            type="text"
-            class="form-control"
-            id="ape_pat"
-            aria-describedby="emailHelp"
-            [(ngModel)]="form.APELLIDO_PAT"
-            disabled="true"
-            name="APELLIDO_PAT"
-          />
-        </div>
-
-        <div class="form-group ui-g-4">
-          <label for="ape_mat">Apellido Materno</label>
-          <input
-            type="email"
-            class="form-control"
-            id="ape_mat"
-            aria-describedby="emailHelp"
-            [(ngModel)]="form.APELLIDO_MAT"
-            disabled="true"
-            name="APELLIDO_MAT"
-          />
-        </div>
-
-        <div class="form-group ui-g-4">
-          <label for="domicilio">Domicilio Actual</label>
-          <input
-            type="email"
-            class="form-control"
-            id="domicilio"
-            aria-describedby="emailHelp"
-            [(ngModel)]="form.DIRECCION"
-            disabled="true"
-            name="DIRECCION"
-          />
-        </div>
-        <div class="form-group ui-g-4">
-          <label for="genero">Genero</label>
-          <input
-            type="email"
-            class="form-control"
-            id="genero"
-            aria-describedby="emailHelp"
-            placeholder="Genero"
-            [(ngModel)]="form.GENERO"
-            disabled="true"
-            name="GENERO"
-          />
-        </div>
-
-        <div class="form-group ui-g-4">
-          <label for="provincia">Provincia</label>
-          <input
-            type="email"
-            class="form-control"
-            id="provincia"
-            aria-describedby="emailHelp"
-            placeholder="Provincia"
-            [(ngModel)]="form.NOMBRE_PROVINCIA"
-            disabled="true"
-            name="NOMBRE_PROVINCIA"
-          />
-        </div>
-        <div class="form-group ui-g-4">
-          <label for="distrito">Distrito</label>
-          <input
-            type="email"
-            class="form-control"
-            id="distrito"
-            aria-describedby="emailHelp"
-            placeholder="Distrito"
-            [(ngModel)]="form.NOMBRE_DISTRITO"
-            disabled="true"
-            name="NOMBRE_DISTRITO"
-          />
-        </div>
-        <div class="form-group ui-g-4">
-          <label for="fecha_nacimiento">Fecha Nacimiento</label>
-          <input
-            type="email"
-            class="form-control"
-            id="fecha_nacimiento"
-            aria-describedby="emailHelp"
-            placeholder="Fecha Nacimiento"
-            [(ngModel)]="form.FECHA_NAC"
-            disabled="true"
-            name="FECHA_NAC"
-          />
-        </div>
-      </div>
-    </p-fieldset>
-    <br />
-    SOLICITUD DE ATENCION
-    <mat-card>
-      <div class="ui-g">
-        <div class="ui-g-6">
-          <mat-card>
-            FECHA Y HORA DE SOLICITUD<br />
+      <p-fieldset legend="Datos Generales del Paciente">
+        <div class="ui-g">
+          <div class="form-group ui-g-4">
+            <label for="docidentidad">Numero de Documento de Identidad</label>
             <input
+              matInput
               type="email"
               class="form-control"
+              id="docidentidad"
               aria-describedby="emailHelp"
-              [(ngModel)]="formsol.FECHA_SOLICITUD"
+              placeholder="Numero de Documento de Identidad"
+              [(ngModel)]="form.NRO_DOCUMENTO"
+              name="NRO_DOCUMENTO"
               disabled="true"
-              name="FECHA_SOLICITUD"
             />
-          </mat-card>
-        </div>
-        <div class="ui-g-6">
-          <mat-card>
-            MOTIVO
+          </div>
+
+          <div class="form-group ui-g-4">
+            <label for="nombres">Nombres</label>
             <input
-              type="email"
+              type="text"
               class="form-control"
+              id="nombres"
               aria-describedby="emailHelp"
-              [(ngModel)]="formsol.DESCRIPCION"
+              [(ngModel)]="form.NOMBRES"
+              name="NOMBRES"
               disabled="true"
-              name="DESCRIPCION"
             />
-          </mat-card>
-        </div>
-        <div class="ui-g-6">
-          <mat-card>
-            DOMICILIO ACTUAL
+          </div>
+          <div class="form-group ui-g-4">
+            <label for="ape_pat">Apellido Paterno</label>
             <input
-              type="email"
+              type="text"
               class="form-control"
+              id="ape_pat"
               aria-describedby="emailHelp"
-              [(ngModel)]="formsol.DOMICILIO_ACTUAL"
+              [(ngModel)]="form.APELLIDO_PAT"
               disabled="true"
-              name="DOMICILIO_ACTUAL"
+              name="APELLIDO_PAT"
             />
-          </mat-card>
-        </div>
-        <div class="ui-g-6">
-          <mat-card>
-            REFERENCIA
+          </div>
+
+          <div class="form-group ui-g-4">
+            <label for="ape_mat">Apellido Materno</label>
             <input
               type="email"
               class="form-control"
+              id="ape_mat"
               aria-describedby="emailHelp"
-              [(ngModel)]="formsol.DIRECCION"
+              [(ngModel)]="form.APELLIDO_MAT"
+              disabled="true"
+              name="APELLIDO_MAT"
+            />
+          </div>
+
+          <div class="form-group ui-g-4">
+            <label for="domicilio">Domicilio Actual</label>
+            <input
+              type="email"
+              class="form-control"
+              id="domicilio"
+              aria-describedby="emailHelp"
+              [(ngModel)]="form.DIRECCION"
               disabled="true"
               name="DIRECCION"
             />
-          </mat-card>
-        </div>
-        <div class="ui-g-6">
-          <mat-card>
-            TELEFONO DE CONTACTO 1
+          </div>
+          <div class="form-group ui-g-4">
+            <label for="genero">Genero</label>
             <input
               type="email"
               class="form-control"
+              id="genero"
               aria-describedby="emailHelp"
-              [(ngModel)]="formsol.TELEF_CONTACTO"
+              placeholder="Genero"
+              [(ngModel)]="form.GENERO"
               disabled="true"
-              name="TELEF_CONTACTO"
+              name="GENERO"
             />
-          </mat-card>
-        </div>
-        <div class="ui-g-6">
-          <mat-card>
-            TELEFONO DE CONTACTO 2
+          </div>
+
+          <div class="form-group ui-g-4">
+            <label for="provincia">Provincia</label>
             <input
               type="email"
               class="form-control"
+              id="provincia"
               aria-describedby="emailHelp"
-              [(ngModel)]="formsol.TELEF_CONTACTO2"
+              placeholder="Provincia"
+              [(ngModel)]="form.NOMBRE_PROVINCIA"
               disabled="true"
-              name="TELEF_CONTACTO2"
+              name="NOMBRE_PROVINCIA"
             />
-          </mat-card>
-        </div>
-        <div class="ui-g-6">
-          <mat-card>
-            CORREO ELECTRONICO
+          </div>
+          <div class="form-group ui-g-4">
+            <label for="distrito">Distrito</label>
             <input
               type="email"
               class="form-control"
+              id="distrito"
               aria-describedby="emailHelp"
-              placeholder=" Motivo"
-              [(ngModel)]="formsol.CORREO2"
+              placeholder="Distrito"
+              [(ngModel)]="form.NOMBRE_DISTRITO"
               disabled="true"
-              name="CORREO2"
+              name="NOMBRE_DISTRITO"
             />
-          </mat-card>
+          </div>
+          <div class="form-group ui-g-4">
+            <label for="fecha_nacimiento">Fecha Nacimiento</label>
+            <input
+              type="email"
+              class="form-control"
+              id="fecha_nacimiento"
+              aria-describedby="emailHelp"
+              placeholder="Fecha Nacimiento"
+              [(ngModel)]="form.FECHA_NAC"
+              disabled="true"
+              name="FECHA_NAC"
+            />
+          </div>
         </div>
+      </p-fieldset>
+      <br />
+      SOLICITUD DE ATENCION
+      <mat-card>
+        <div class="ui-g">
+          <div class="ui-g-6">
+            <mat-card>
+              FECHA Y HORA DE SOLICITUD<br />
+              <input
+                type="email"
+                class="form-control"
+                aria-describedby="emailHelp"
+                [(ngModel)]="formsol.FECHA_SOLICITUD"
+                disabled="true"
+                name="FECHA_SOLICITUD"
+              />
+            </mat-card>
+          </div>
+          <div class="ui-g-6">
+            <mat-card>
+              MOTIVO
+              <input
+                type="email"
+                class="form-control"
+                aria-describedby="emailHelp"
+                [(ngModel)]="formsol.DESCRIPCION"
+                disabled="true"
+                name="DESCRIPCION"
+              />
+            </mat-card>
+          </div>
+          <div class="ui-g-6">
+            <mat-card>
+              DOMICILIO ACTUAL
+              <input
+                type="email"
+                class="form-control"
+                aria-describedby="emailHelp"
+                [(ngModel)]="formsol.DOMICILIO_ACTUAL"
+                disabled="true"
+                name="DOMICILIO_ACTUAL"
+              />
+            </mat-card>
+          </div>
+          <div class="ui-g-6">
+            <mat-card>
+              REFERENCIA
+              <input
+                type="email"
+                class="form-control"
+                aria-describedby="emailHelp"
+                [(ngModel)]="formsol.DIRECCION"
+                disabled="true"
+                name="DIRECCION"
+              />
+            </mat-card>
+          </div>
+          <div class="ui-g-6">
+            <mat-card>
+              TELEFONO DE CONTACTO 1
+              <input
+                type="email"
+                class="form-control"
+                aria-describedby="emailHelp"
+                [(ngModel)]="formsol.TELEF_CONTACTO"
+                disabled="true"
+                name="TELEF_CONTACTO"
+              />
+            </mat-card>
+          </div>
+          <div class="ui-g-6">
+            <mat-card>
+              TELEFONO DE CONTACTO 2
+              <input
+                type="email"
+                class="form-control"
+                aria-describedby="emailHelp"
+                [(ngModel)]="formsol.TELEF_CONTACTO2"
+                disabled="true"
+                name="TELEF_CONTACTO2"
+              />
+            </mat-card>
+          </div>
+          <div class="ui-g-6">
+            <mat-card>
+              CORREO ELECTRONICO
+              <input
+                type="email"
+                class="form-control"
+                aria-describedby="emailHelp"
+                placeholder=" Motivo"
+                [(ngModel)]="formsol.CORREO2"
+                disabled="true"
+                name="CORREO2"
+              />
+            </mat-card>
+          </div>
+        </div>
+      </mat-card>
+
+      <p-fieldset legend="Morbilidades del Paciente">
+        <app-morbilidades-por-paciente
+          #mpp
+          [(dni)]="cod_buscar"
+        ></app-morbilidades-por-paciente>
+      </p-fieldset>
+      <app-registrar-atencion
+        #panreg
+        [(datosPaciente)]="form"
+        [(atencion)]="atencion"
+        [(cod_paciente)]="cod_buscar"
+        [(ID_PACIENTE)]="ID_PACIENTE"
+        [(ID_SOLICITUD)]="ID_SOLICITUD"
+        [(ver)]="verpanelregistro"
+        [(datos_solicitud)]="formsol"
+      ></app-registrar-atencion>
+      <div class="atencion-boton">
+        <button
+          pButton
+          type="button"
+          label="Iniciar Atencion"
+          (click)="IniciaRegistro($event)"
+          (completoRegistro)="CerrarRegistro()"
+          [style]="{ 'margin-left': '4px', float: 'right' }"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="VER FUAT"
+          (click)="Imprimir_Fuat()"
+          (completoRegistro)="CerrarRegistro()"
+          [style]="{ 'margin-left': '4px', float: 'right' }"
+        ></button>
       </div>
-    </mat-card>
-
-
-    <p-fieldset legend="Morbilidades del Paciente">
-      <app-morbilidades-por-paciente
-        #mpp
-        [(dni)]="cod_buscar"
-      ></app-morbilidades-por-paciente>
-    </p-fieldset>
-    <app-registrar-atencion
-      #panreg
-      [(datosPaciente)]="form"
-      [(atencion)]="atencion"
-      [(cod_paciente)]="cod_buscar"
-      [(ID_PACIENTE)]="ID_PACIENTE"
-      [(ID_SOLICITUD)]="ID_SOLICITUD"
-      [(ver)]="verpanelregistro"
-      [(datos_solicitud)]="formsol"
-    ></app-registrar-atencion>
-    <div class="atencion-boton">
-      <button
-        pButton
-        type="button"
-        label="Iniciar Atencion"
-        (click)="IniciaRegistro($event)"
-        (completoRegistro)="CerrarRegistro()"
-        [style]="{'margin-left':'4px','float':'right'}"
-      ></button>
-      <button
-        pButton
-        type="button"
-        label="VER FUAT"
-        (click)="Imprimir_Fuat()"
-        (completoRegistro)="CerrarRegistro()"
-        [style]="{'margin-left':'4px','float':'right'}"
-      ></button>
-    </div>
-  </form>
+    </form>
   </p-tabPanel>
   <p-tabPanel header="Solicitudes de Atencion Pendientes"> </p-tabPanel>
   <p-tabPanel header="Atendidos">
     <app-atenciones-realizadas></app-atenciones-realizadas>
   </p-tabPanel>
 </p-tabView>
-<pdf-viewer
- 
-  [render-text]="true"
-  style="display: block;"
-></pdf-viewer>
-
+<pdf-viewer [render-text]="true" style="display: block;"></pdf-viewer>

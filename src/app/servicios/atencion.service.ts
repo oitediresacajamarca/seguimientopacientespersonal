@@ -22,24 +22,22 @@ export class AtencionService {
 
     return this.http.post(environment.ipmicroservicios + 'atenciones/examenes/', { root: { "examenes": examen, "id_atencion": id_atencion, "id_trabajador": id_trabajador } });
   }
-  registrarAtencionDetalle(detallea:AtencionDetalle,id_atencion: string, id_trabajador: string){
+  registrarAtencionDetalle(detallea: AtencionDetalle, id_atencion: string, id_trabajador: string) {
     return this.http.post(environment.ipmicroservicios + 'atenciones/detalle/', { root: { "detalle": detallea, "id_atencion": id_atencion, "id_trabajador": id_trabajador } });
 
   }
-  registrarAtencionDiagnosticos(diagnosticos:AtencionDiagnosticoItem[],id_atencion: string, id_trabajador: string){
+  registrarAtencionDiagnosticos(diagnosticos: AtencionDiagnosticoItem[], id_atencion: string, id_trabajador: string) {
     diagnosticos.forEach(element => {
-      
-      
-      element.ID_ATENCION=id_atencion;
-      element.ID_TRABAJADOR=id_trabajador;
+
+
+      element.ID_ATENCION = id_atencion;
+      element.ID_TRABAJADOR = id_trabajador;
     });
     return this.http.post(environment.ipmicroservicios + 'atenciones/diagnosticos/', { root: { "diagnosticos": diagnosticos, "id_atencion": id_atencion, "id_trabajador": id_trabajador } });
 
   }
-  devolverAtencionesRealizadas(id_persona_personal){
-   return this.http.get<any>(environment.url_backend+'atenciones/atencionesrealizadas/'+id_persona_personal);
-
-
+  devolverAtencionesRealizadas(id_persona_personal) {
+    return this.http.get<any>(environment.url_backend + 'atenciones/atencionesrealizadas/' + id_persona_personal);
   }
 
 
