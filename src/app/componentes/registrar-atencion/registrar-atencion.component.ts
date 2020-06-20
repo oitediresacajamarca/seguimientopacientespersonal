@@ -12,6 +12,7 @@ import * as moment from 'moment';
 import 'moment/locale/es';
 import { PersonalService } from 'src/app/servicios/personal.service';
 
+
 @Component({
   selector: 'app-registrar-atencion',
   templateUrl: './registrar-atencion.component.html',
@@ -98,10 +99,10 @@ export class RegistrarAtencionComponent implements OnInit {
 
 
   registrarAtencion(event) {
-    let fecha= new  Date()
-    this.atencion.FECHA =fecha.getFullYear()+'-'+(fecha.getMonth()+1)+'-'+fecha.getDate()
-   
-    this.atencion.HORA = fecha.getHours()+':'+fecha.getMinutes()+':'+fecha.getSeconds()
+    let fecha = new Date()
+    this.atencion.FECHA = fecha.getFullYear() + '-' + (fecha.getMonth() + 1) + '-' + fecha.getDate()
+
+    this.atencion.HORA = fecha.getHours() + ':' + fecha.getMinutes() + ':' + fecha.getSeconds()
     console.log(this.atencion);
     console.log(this.form1.examenesFisicos);
     console.log(this.form1.atencion_detalle);
@@ -129,7 +130,7 @@ export class RegistrarAtencionComponent implements OnInit {
           ).subscribe((RESPUESTA) => {
             this.formatofuat.personal.NRO_DOCUMENTO = this.sesion.id_persona
             this.formatofuat.numeroFuat = RESPUESTA.identiti;
-           
+
             this.fuatservicio.guardarFuat(this.formatofuat).subscribe((res) => { console.log(res) })
 
             id_atencion = RESPUESTA.identiti;
@@ -161,10 +162,11 @@ export class RegistrarAtencionComponent implements OnInit {
 
             });
 
-          },(ERROR)=>{this.messageService.add({severity:'danger', summary:'error'})
-        
-        
-        });
+          }, (ERROR) => {
+            this.messageService.add({ severity: 'danger', summary: 'error' })
+
+
+          });
 
         })
 
@@ -179,11 +181,12 @@ export class RegistrarAtencionComponent implements OnInit {
 
 
     this.formatofuat.codipress = this.sesion.COD_IPRESS;
-
-
     this.formatofuat.nombreipress = this.sesion.NOMBRE_IPRESS;
-    this.formatofuat.fechasolicitud = this.datos_solicitud.FECHA_SOLICITUD.substring(0, 10);
-    this.formatofuat.horasolicitud = this.datos_solicitud.FECHA_SOLICITUD.substring(11, 20);
+    console.log(this.datos_solicitud)
+    if (this.datos_solicitud.fechasolicitud != null) {
+      this.formatofuat.fechasolicitud = this.datos_solicitud.FECHA_SOLICITUD.substring(0, 10);
+      this.formatofuat.horasolicitud = this.datos_solicitud.FECHA_SOLICITUD.substring(11, 20);
+    }
     this.formatofuat.nombresypaciente = this.datosPaciente.NOMBRES + ' ' + this.datosPaciente.APELLIDO_PAT + ' ' + this.datosPaciente.APELLIDO_MAT;
     this.formatofuat.sexo = this.datosPaciente.GENERO.substring(0, 1);
 
