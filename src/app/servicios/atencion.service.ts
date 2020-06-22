@@ -39,6 +39,9 @@ export class AtencionService {
   devolverAtencionesRealizadas(id_persona_personal) {
     return this.http.get<any>(environment.url_backend + 'atenciones/atencionesrealizadas/' + id_persona_personal);
   }
+  devolverAtencionesRealizadasPersona(id_persona) {
+    return this.http.get<any>(environment.url_backend + 'atenciones/atencionesrealizadaspersona/' + id_persona);
+  }
 
 
 }

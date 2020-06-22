@@ -10,6 +10,7 @@ import { Atencion } from 'src/app/interfaces/atencion';
 import { RegistrarAtencionComponent } from '../registrar-atencion/registrar-atencion.component';
 import { FuatServicioService } from 'src/app/servicios/formatos/fuat-servicio.service';
 import { NgForm } from '@angular/forms';
+import { EstadosService } from 'src/app/servicios/estados.service';
 declare var $: any
 
 @Component({
@@ -23,8 +24,8 @@ export class PrincipalComponent implements OnInit {
   @ViewChild('mpp', { static: false }) mpp: MorbilidadesPorPacienteComponent;
   verpanelregistro: boolean = false;
   pdffuat = "file:///E:/Descargas/FORMATO_FUAT%20-%202020-06-09T170805.728.pdf"
-  @ViewChild('inicioaten', { static: false }) inicioaten:NgForm
-
+  @ViewChild('inicioaten', { static: false }) inicioaten: NgForm
+  verhistorial = false
 
   formsol: any =
     {
@@ -97,7 +98,8 @@ export class PrincipalComponent implements OnInit {
   es: any;
 
   constructor(private solipac: SolicitudPacienteService, private rutaActiva: ActivatedRoute,
-    private personser: PersonaService, private GEO: GeografiaService, private fuats: FuatServicioService) { }
+    private personser: PersonaService, private GEO: GeografiaService,
+    private fuats: FuatServicioService, private estadoss: EstadosService) { }
 
   ngOnInit() {
 
@@ -133,17 +135,19 @@ export class PrincipalComponent implements OnInit {
   }
 
   buscarSolicitud() {
-this.inicioaten.resetForm();
+    this.inicioaten.resetForm();
     this.personser.devolverPersonaPaciente('1', this.cod_buscar).subscribe((dat) => {
 
       this.form = dat.respuesta;
-     
+
       if (dat.respuesta.ID_GENERO == 1) {
         this.form.GENERO = "MASCULINO"
       } else {
         this.form.GENERO = "FEMENINO"
       }
+
       this.atencion.ID_PACIENTE = dat.respuesta.ID_PERSONA;
+      this.estadoss.cambiopaciente.emit(this.atencion.ID_PACIENTE);
       this.atencion.ID_MODALIDAD = "5";
       this.atencion.ID_HC = "1";
       this.atencion.ID_TIPO_ATENCION = "4";
@@ -158,14 +162,14 @@ this.inicioaten.resetForm();
       this.mpp.actualizarDatos(this.cod_buscar);
     }
     );
-   
+
     this.solipac.buscarSolicitud(this.cod_buscar).subscribe(
       (sol) => {
 
         this.formsol = sol.respuesta
         this.atencion.ID_SOLICITUD = sol.respuesta.ID_SOLICITUD
         this.atencion.ANTECEDENTE = sol.respuesta.DESCRIPCION
-     
+
 
       }
     );
@@ -201,6 +205,9 @@ this.inicioaten.resetForm();
     this.panreg.imprimirFuat();
   }
 
+  VerHistorial() {
+    this.verhistorial = true;
+  }
 
 
 }

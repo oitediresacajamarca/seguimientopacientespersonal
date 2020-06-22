@@ -9,6 +9,7 @@ export class EstadosService {
   actualizarNotificacione= new EventEmitter<any>()
   actualizarUsuarios=new EventEmitter<any>();
   actualizarPerfil
+  cambiopaciente= new EventEmitter<any>()
 
 
   constructor() { }

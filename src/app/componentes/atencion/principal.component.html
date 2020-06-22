@@ -252,6 +252,11 @@
           [(dni)]="cod_buscar"
         ></app-morbilidades-por-paciente>
       </p-fieldset>
+      
+<p-dialog header="HISTORIAL DE ATENCIONES" [(visible)]="verhistorial" [style]="{width: '90vw'}">
+  <router-outlet></router-outlet>
+</p-dialog>
+     
       <app-registrar-atencion
         #panreg
         [(datosPaciente)]="form"
@@ -272,6 +277,14 @@
           [style]="{ 'margin-left': '4px', float: 'right' }"
         ></button>
         <button
+        pButton
+        type="button"
+        label="VER HISTORIAL"
+        (click)="VerHistorial()"
+        
+        [style]="{ 'margin-left': '4px', float: 'right' }"
+      ></button>
+        <button
           pButton
           type="button"
           label="VER FUAT"
@@ -286,5 +299,6 @@
   <p-tabPanel header="Atendidos">
     <app-atenciones-realizadas></app-atenciones-realizadas>
   </p-tabPanel>
+  
 </p-tabView>
 <pdf-viewer [render-text]="true" style="display: block;"></pdf-viewer>

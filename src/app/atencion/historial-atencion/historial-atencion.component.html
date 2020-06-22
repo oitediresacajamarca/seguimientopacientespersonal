@@ -1,45 +1,45 @@
-<div class="ui-g-12">
-<p-dataView #dv [value]="atenciones" [paginator]="true" [rows]="20" paginatorPosition="both" filterBy="brand"
-    [sortField]="sortField" [sortOrder]="sortOrder">
-    <p-header>
-        <div class="ui-helper-clearfix">
-            <div class="p-grid">
-               
-                <div class="p-col-6 p-md-4 filter-container">
-                    <div style="position:relative">
-                        <input type="search" pInputText placeholder="Search by brand" (input)="dv.filter($event.target.value)">
-                    </div>
-                </div>
-                <div class="p-col-6 p-md-4" style="text-align:right">
-                    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
-                </div>
-            </div>
+<p-card>
+  <p-card header="HISTORIAL DE ATENCIONES"> </p-card>
+  <div class="row">
+    <div class="col-1">Acciones</div>
+    <div class="col-2">Fecha</div>
+    <div class="col-6">Personal Responsable</div>
+    <div class="col-3">Motivo</div>
+  </div>
+  <div class="row encabesadoatencion" *ngFor="let atencion of atenciones">
+    <div class="col-1">Acciones</div>
+    <div class="col-2">
+      <h6>{{ atencion.FECHA | date: "dd-MM-yyyy" }}</h6>
+    </div>
+    <div class="col-6">
+      <h6>
+        {{ atencion.trabajadorpersona.NOMBRES + " " }}
+        {{ atencion.trabajadorpersona.APELLIDO_PAT + " " }}
+        {{ atencion.trabajadorpersona.APELLIDO_MAT + " " }}
+      </h6>
+    </div>
+    <div class="col-3">{{ atencion.ANTECEDENTE + " " }}</div>
+    <div class="col-12">
+      <p-card header="Diagnosticos">
+        <div class="row">
+          <div class="col-1">Item</div>
+          <div class="col-4">Codigo</div>
+          <div class="col-4">Descripcion</div>
         </div>
-    </p-header>
-    <ng-template let-car pTemplate="listItem">
-        <div class="p-col-12">
-            <div class="car-details">
-                <div>
-                    <img src="assets/showcase/images/demo/car/{{car.brand}}.png">
-                    <div class="p-grid">
-                        <div class="p-col-12">Vin: <b>{{car.vin}}</b></div>
-                        <div class="p-col-12">Year: <b>{{car.year}}</b></div>
-                        <div class="p-col-12">Brand: <b>{{car.brand}}</b></div>
-                        <div class="p-col-12">Color: <b>{{car.color}}</b></div>
-                    </div>
-                </div>
-                <button pButton type="button" icon="pi pi-search" (click)="selectCar($event, car)"></button>
-            </div>
+        <div class="row" *ngFor="let diagnostico of atencion.diagnosticos ">
+          <div class="col-1">{{diagnostico.NRO_ITEM}}</div>
+          <div class="col-4">{{diagnostico.CODIGO_DIAGNOSTICO}}</div>
+          <div class="col-4">{{diagnostico.Descripcion}}</div>
         </div>
-    </ng-template>
-    <ng-template let-car pTemplate="gridItem">
-        <div style="padding:.5em" class="p-col-12 p-md-3">
-            <p-panel [header]="car.vin" [style]="{'text-align':'center'}">
-                <img src="assets/showcase/images/demo/car/{{car.brand}}.png" width="60">
-                <div class="car-detail">{{car.year}} - {{car.color}}</div>
-                <button pButton type="button" icon="pi pi-search" (click)="selectCar($event, car)" style="margin-top:0"></button>
-            </p-panel>
-        </div>
-    </ng-template>
-</p-dataView>
-</div>
+        <p-footer>
+          <p-button
+            label="Imprimir Fuat"
+            [style]="{ float: 'right' }"
+         
+        (onClick)="Imprimefuat(atencion)"   ></p-button>
+        </p-footer>
+      </p-card>
+    </div>
+  </div>
+  <p-footer>imprimir</p-footer>
+</p-card>

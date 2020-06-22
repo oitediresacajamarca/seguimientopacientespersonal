@@ -7,7 +7,7 @@ import { EstadosService } from 'src/app/servicios/estados.service';
 import { ContextMenu } from 'primeng/contextmenu/contextmenu';
 import { EditarSolComponent } from '../editar-sol/editar-sol.component';
 import { MessageService } from 'primeng/api';
-import { async } from 'rxjs/internal/scheduler/async';
+
 import { FuatServicioService } from 'src/app/servicios/formatos/fuat-servicio.service';
 
 
@@ -50,7 +50,7 @@ export class TablaNotificacionComponent implements OnInit {
       {
         label: 'Registrar Atencion', icon: 'pi pi-calendar-plus', command: (event) => {
 
-          this.router.navigate(['/admin/atencion/' + this.selectedNoti.NRO_DOCUMENTO + '/' + this.selectedNoti.ID_PACIENTE + '/' + this.selectedNoti.ID_SOLICITUD]);
+          this.router.navigate(['/admin/atencion/' + this.selectedNoti.NRO_DOCUMENTO + '/' + this.selectedNoti.ID_PACIENTE + '/' + this.selectedNoti.ID_SOLICITUD+'/historial']);
           this.verDialog = false;
         }
       },

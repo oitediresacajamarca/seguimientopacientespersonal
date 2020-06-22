@@ -9,41 +9,41 @@ import { FormatoFuat } from 'src/app/interfaces/formato-fuat';
 })
 export class FuatServicioService {
 
-  formatofuat: FormatoFuat={
-    numeroFuat:0,
-    nombresypaciente:'',
-    fechasolicitud:'',
-    horasolicitud:'',
-    edad:'',
-    sexo:'',nro_documento:'',
-    tiposeguro:'',
-    nuevocontrol:false,
-    numerocontrol:'',
-    especialidades:[],
-    examenfisico:{
-        presionarterial:'',
-        frecuenciacardiaca:'',
-        frecuenciarespi:'',
-        temperatura:'',
-        satO2:'',
-        peso:'',
-        talla:'',
-        descripciondecaso:''
+  formatofuat: FormatoFuat = {
+    numeroFuat: 0,
+    nombresypaciente: '',
+    fechasolicitud: '',
+    horasolicitud: '',
+    edad: '',
+    sexo: '', nro_documento: '',
+    tiposeguro: '',
+    nuevocontrol: false,
+    numerocontrol: '',
+    especialidades: [],
+    examenfisico: {
+      presionarterial: '',
+      frecuenciacardiaca: '',
+      frecuenciarespi: '',
+      temperatura: '',
+      satO2: '',
+      peso: '',
+      talla: '',
+      descripciondecaso: ''
     },
-    tratamiento:'',
-    examendeapoyo:'',
-    motivo:[],
-    nombreipress:'',
-    codipress:'',
-    fechaatencion:'',
-    horaatencion:'',
-    diagnosticos:[],
-    recomendaciones:[],
-    personal:{
-      nombresyapellidos:'',
-      profesion:'',
-      colegiatura:'',
-      NRO_DOCUMENTO:''
+    tratamiento: '',
+    examendeapoyo: '',
+    motivo: [],
+    nombreipress: '',
+    codipress: '',
+    fechaatencion: '',
+    horaatencion: '',
+    diagnosticos: [],
+    recomendaciones: [],
+    personal: {
+      nombresyapellidos: '',
+      profesion: '',
+      colegiatura: '',
+      NRO_DOCUMENTO: ''
     }
 
 
@@ -83,8 +83,8 @@ export class FuatServicioService {
 
   }
   agregarSolictud(solicitud) {
-    let sol= {
-      "ESTADO":'',
+    let sol = {
+      "ESTADO": '',
       "FECHA_SOLICITUD": "2020-06-03T14:21:45.090",
       "TELEF_CONTACTO": "992-705005",
       "NRO_DOCUMENTO": "71081207",
@@ -106,7 +106,7 @@ export class FuatServicioService {
       "cod_busqueda": "1011021011000015496",
       "COD_IPRESS": "000015496"
     }
-    console.log(  solicitud)
+    console.log(solicitud)
     this.formatofuat.codipress = solicitud.COD_IPRESS;
     this.formatofuat.motivo = solicitud.DESCRIPCION;
     this.formatofuat.edad = solicitud.FECHA_NAC;
@@ -114,12 +114,14 @@ export class FuatServicioService {
     this.formatofuat.nombreipress = solicitud.NOMBRE_IPRESS;
     this.formatofuat.nombresypaciente = solicitud.NOMBRES + ' ' + solicitud.APELLIDO_PAT + ' ' + solicitud.APELLIDO_MAT;
     this.formatofuat.sexo = solicitud.ID_GENERO == 1 ? 'MASCULINO' : 'FEMENINO';
-    this.formatofuat.nro_documento= solicitud.NRO_DOCUMENTO
+    this.formatofuat.nro_documento = solicitud.NRO_DOCUMENTO
     this.mostrarFuat(this.formatofuat)
 
   }
 
-  
+  getFuat(cod_fuat) {
+    return this.http.get(environment.url_backend + 'fuat/devolverfuat/' + cod_fuat);
+  }
 
 
 

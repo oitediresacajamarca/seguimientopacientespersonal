@@ -23,13 +23,16 @@ const routes: Routes = [
 
   { path: 'layout', component: DefaultComponent },
   { path: 'personal.jsp', component: LoginComponent },
-  { path: 'atencion/:NRO_DOCUMENTO/:ID_PACIENTE/:ID_SOLICITUD', component: PrincipalComponent },
+  {
+    path: 'atencion/:NRO_DOCUMENTO/:ID_PACIENTE/:ID_SOLICITUD', component: PrincipalComponent,
+  
+  },
   { path: 'public', component: PublicComponent },
   { path: 'frontend', component: InicioComponent },
   { path: 'geo', component: GeoreferenciaComponent },
   { path: 'cie', component: SelectorCieCpmsComponent },
   { path: 'actualizar', component: ActualizarContraseniaComponent, outlet: 'emergente' },
-  { path:'prueba',component:HistorialAtencionComponent},
+  { path: 'prueba', component: HistorialAtencionComponent },
   {
     path: 'admin',
     component: DefaultComponent,
@@ -42,7 +45,8 @@ const routes: Routes = [
       ,
       {
         path: 'atencion/:NRO_DOCUMENTO/:ID_PACIENTE/:ID_SOLICITUD',
-        component: PrincipalComponent
+        component: PrincipalComponent,
+        children: [{ path: 'historial', component: HistorialAtencionComponent }]
       },
       {
         path: 'usuarios',
@@ -50,27 +54,30 @@ const routes: Routes = [
       },
       {
         path: 'atencion',
-        component: PrincipalComponent
+        component: PrincipalComponent,
+        
       },
 
       {
         path: 'panel',
         component: PaneldeseguimientoComponent,
-      
+
         children: [
           {
             path: 'atencion/:NRO_DOCUMENTO/:ID_PACIENTE/:ID_SOLICITUD',
-            component: PrincipalComponent
+            component: PrincipalComponent,
+            children: [{ path: 'historial', component: HistorialAtencionComponent }]
+
           },
           {
             path: 'inicio',
             component: PrincipalComponent,
-         
-          }, 
+           
+          },
           {
             path: 'actualizar',
-             component: ActualizarContraseniaComponent,
-            
+            component: ActualizarContraseniaComponent,
+
           }
 
         ]
