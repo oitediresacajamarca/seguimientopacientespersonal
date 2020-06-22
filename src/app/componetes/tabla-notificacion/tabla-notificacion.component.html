@@ -111,7 +111,7 @@
               <ng-container *ngSwitchCase="'FECHA_SOLICITUD'">
                 <span class="ui-column-title">Codigo</span>
 
-                {{ customer[col.field] | date: "dd-MM-yyyy    hh:mm  aa" }}
+                {{ customer[col.field] | date: "dd-MM-yyyy    hh:mm  aa":'GMT' }}
               </ng-container>
              
             </ng-container>
