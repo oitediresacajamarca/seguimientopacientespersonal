@@ -75,6 +75,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
 
 import { HistorialAtencionComponent } from './atencion/historial-atencion/historial-atencion.component';
 import { DataViewModule } from 'primeng/dataview';
+import { BusquedaNominalComponent } from './componentes/busqueda-nominal/busqueda-nominal.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -102,6 +104,8 @@ import { DataViewModule } from 'primeng/dataview';
     DetalleAtencionComponent,
 
     HistorialAtencionComponent,
+
+    BusquedaNominalComponent,
 
 
 
@@ -141,7 +145,7 @@ import { DataViewModule } from 'primeng/dataview';
     UsuariosModule,
     OverlayPanelModule,
     TieredMenuModule, ToastModule,
-    PdfViewerModule, MultiSelectModule, DataViewModule
+    PdfViewerModule, MultiSelectModule, DataViewModule,ReactiveFormsModule
   ],
   providers: [DistritosService, ConfirmationService, MessageService],
   bootstrap: [AppComponent]

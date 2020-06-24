@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { SolicitudPacienteService } from 'src/app/servicios/solicitud-paciente.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MorbilidadesPorPacienteComponent } from '../morbilidades-por-paciente/morbilidades-por-paciente.component';
 import { PersonaService } from 'src/app/servicios/servicios/persona.service';
 import { GeografiaService } from 'src/app/servicios/servicios/geografia.service';
@@ -11,6 +11,7 @@ import { RegistrarAtencionComponent } from '../registrar-atencion/registrar-aten
 import { FuatServicioService } from 'src/app/servicios/formatos/fuat-servicio.service';
 import { NgForm } from '@angular/forms';
 import { EstadosService } from 'src/app/servicios/estados.service';
+import { Button } from 'primeng/button';
 declare var $: any
 
 @Component({
@@ -25,7 +26,15 @@ export class PrincipalComponent implements OnInit {
   verpanelregistro: boolean = false;
   pdffuat = "file:///E:/Descargas/FORMATO_FUAT%20-%202020-06-09T170805.728.pdf"
   @ViewChild('inicioaten', { static: false }) inicioaten: NgForm
+  @ViewChild('editabutton', { static: false }) editabutton: Button
+  @ViewChild('guardarbutton', { static: false }) guardarbutton: Button
+
+
+  nombresd = true
+  apellido_patd = true;
+  apellido_matd = true;
   verhistorial = false
+  editardatosgenerales = true
 
   formsol: any =
     {
@@ -97,12 +106,18 @@ export class PrincipalComponent implements OnInit {
 
   es: any;
 
-  constructor(private solipac: SolicitudPacienteService, private rutaActiva: ActivatedRoute,
+  constructor(
+    private solipac: SolicitudPacienteService, private rutaActiva: ActivatedRoute,
     private personser: PersonaService, private GEO: GeografiaService,
-    private fuats: FuatServicioService, private estadoss: EstadosService) { }
+    private fuats: FuatServicioService, private estadoss: EstadosService,
+    private router: Router) { }
 
   ngOnInit() {
+    this.estadoss.pacienteporatender.subscribe(dato => {
+      this.cod_buscar = dato;
+      this.buscarSolicitud()
 
+    })
     this.atencion = {
       ID_ATENCION: null,
       TIPO_CONEXION: null,
@@ -119,6 +134,8 @@ export class PrincipalComponent implements OnInit {
       ID_SOLICITUD: "87",
       NIVEL_ATENCION: null
     }
+    /*this.editabutton.disabled = false;
+    this.guardarbutton.disabled = true;*/
 
 
     this.cod_buscar = this.rutaActiva.snapshot.params.ID_PACIENTE;
@@ -185,12 +202,6 @@ export class PrincipalComponent implements OnInit {
     this.atencion.ID_RESPONSABLE = sesion.TRABAJADOR_ID;
     this.panreg.form1.atencion_detalle.MOTIVO = this.formsol.DESCRIPCION;
 
-
-
-
-
-
-
   }
   CerrarRegistro() {
     this.verpanelregistro = false;
@@ -207,6 +218,36 @@ export class PrincipalComponent implements OnInit {
 
   VerHistorial() {
     this.verhistorial = true;
+  }
+
+  BuscarDni() {
+
+    this.router.navigate([{ outlets: { emergente: 'buscardni' } }])
+  }
+  editarDatos() {
+    this.editardatosgenerales = true;
+    this.editabutton.disabled = true;
+    this.guardarbutton.disabled = false;
+    this.nombresd = false;
+    this.apellido_patd = false;
+    this.apellido_matd = false;
+
+  }
+  guardarDatos() {
+    this.personser.actualizarPersona(this.form.NRO_DOCUMENTO, this.form.APELLIDO_PAT, this.form.APELLIDO_MAT, this.form.NOMBRES).subscribe(
+
+      () => {
+        this.guardarbutton.disabled = true;
+        this.editabutton.disabled = false;
+        this.nombresd = true;
+        this.apellido_patd = true;
+        this.apellido_matd = true;
+
+
+      }
+
+    )
+
   }
 
 

@@ -1,0 +1,79 @@
+<p-dialog
+  header="Buscar Paciente por Nombres y Apellidos"
+  [(visible)]="verpanel"
+  [style]="{ width: '80vw' }"
+  modal="true"
+  (onHide)="ocultar()"
+>
+  <p-card>
+   
+    <p-card>
+      <p-header>
+        <h5>Busqueda</h5>
+      </p-header>
+      <form [formGroup]="formbus">
+      <div class="row">
+        <div class="col-3">
+          <span class="ui-float-label">
+            <input id="float-input" type="text" size="20" pInputText formControlName="NOMBRES" />
+            <label for="float-input">Nombres</label>
+          </span>
+        </div>
+        <div class="col-3">
+          <span class="ui-float-label">
+            <input id="float-input" type="text" size="20" pInputText  formControlName="APELLIDO_PAT"/>
+            <label for="float-input">Apellido Paterno</label>
+          </span>
+        </div>
+        <div class="col-3">
+          <span class="ui-float-label">
+            <input id="float-input" type="text" size="20" pInputText  formControlName="APELLIDO_MAT"/>
+            <label for="float-input">Apellido Materno</label>
+          </span>
+        </div>
+        <div class="col-3">
+          <button
+            pButton
+            type="button"
+            icon="pi pi-search"
+            iconPos="left"
+            label="Buscar"
+            (click)="buscar_persona()"
+          ></button>
+        </div>
+      </div>
+    </form>
+    </p-card>
+    <br />
+    <br />
+    <div class="row">
+      <div class="col-12">
+        <p-card>
+          <p-header>
+            <h5>Resultado de Busqueda</h5>
+          </p-header>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Nombres</th>
+                <th scope="col">Apellido Paterno</th>
+                <th scope="col">Apellido Materno</th>
+                <th scope="col">Numero de Documento</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let persona of resultados">
+                <th scope="row">{{persona.NOMBRES}}</th>
+                <td>{{persona.APELLIDO_PAT}}</td>
+                <td>{{persona.APELLIDO_MAT}}</td>
+                <td>{{persona.NRO_DOCUMENTO}}</td>
+                <td><p-button icon="pi pi-check" (onClick)="seleccionaDni(persona.NRO_DOCUMENTO)"></p-button></td>
+              </tr>
+            </tbody>
+          </table>
+        </p-card>
+      </div>
+    </div>
+  </p-card>
+</p-dialog>
