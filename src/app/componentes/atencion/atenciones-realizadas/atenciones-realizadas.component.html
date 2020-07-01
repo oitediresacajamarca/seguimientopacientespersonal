@@ -1,7 +1,31 @@
-
-
-
-<table class="table">
+<div class="col-6">
+  <form [formGroup]="formulario">
+    <div class="form-row">
+      <div class="col">
+        DESDE
+        <p-calendar
+          [(ngModel)]="desde"
+          dateFormat="dd/mm/yy"
+          formControlName="DESDE"
+        ></p-calendar>
+      </div>
+      <div class="col">
+        HASTA
+        <p-calendar
+          [(ngModel)]="hasta"
+          dateFormat="dd/mm/yy"
+          formControlName="HASTA"
+        ></p-calendar>
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="buscarPorFechas()">
+        BUSCAR
+      </button>
+    </div>
+  </form>
+</div>
+<div class="col-6">EXISTEN {{ datos_tabla_atenciones.length }} ATENCIONES</div>
+<div class="container-fluid">
+  <table class="table">
     <thead>
       <tr>
         <th scope="col">Acciones</th>
@@ -13,24 +37,25 @@
         <th scope="col">Fecha de Atencion</th>
         <th scope="col">Nombre Personal</th>
         <th scope="col">Apellido Personal</th>
-        <th scope="col">Apellido Materno Personal</th>        
+        <th scope="col">Apellido Materno Personal</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let dato of datos_tabla_atenciones">
-        <td><button #btn type="button" pButton icon="pi pi-bars" label="VER" (click)="menu.toggle($event)"></button>
-            <p-tieredMenu #menu [model]="elementosmenu" [popup]="true" appendTo="body"></p-tieredMenu></td>
-        
-        <td>{{dato.NRO_DOCUMENTO}}</td>
-        <td>{{dato.APELLIDO_PAT}}</td>
-        <td>{{dato.APELLIDO_MAT}}</td>
-        <td>{{dato.NOMBRES}}</td>
-        <td>{{dato.DESCRIPCION}}</td>
-        <td>{{dato.FECHA| date: 'dd-MM-yyyy hh:mm aa':'GMT'}}</td>       
-        <td>{{dato.APE_NOM_MED}}</td>
-        <td>{{dato.APE_PAT_MED}}</td>
-        <td>{{dato.APE_MAT_MED}}</td>       
-      </tr> 
+        <td>
+          <app-menu-accion-atencion [atencion]="dato"></app-menu-accion-atencion>
+        </td>
+        <td>{{ dato.personaatendida.NRO_DOCUMENTO }}</td>
+        <td>{{ dato.personaatendida.APELLIDO_PAT }}</td>
+        <td>{{ dato.personaatendida.APELLIDO_MAT }}</td>
+        <td>{{ dato.personaatendida.NOMBRES }}</td>
+        <td>{{ dato.ANTECEDENTE }}</td>
+        <td>{{ dato.FECHA | date: "dd-MM-yyyy " }}</td>
+        <td>{{ dato.trabajadorpersona.NOMBRES }}</td>
+        <td>{{ dato.trabajadorpersona.APELLIDO_PAT }}</td>
+        <td>{{ dato.trabajadorpersona.APELLIDO_MAT }}</td>
+      </tr>
     </tbody>
   </table>
-  <app-detalle-atencion></app-detalle-atencion>
+</div>
+<app-detalle-atencion></app-detalle-atencion>

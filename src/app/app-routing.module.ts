@@ -14,6 +14,7 @@ import { SelectorCieCpmsComponent } from './controles/selector-cie-cpms/selector
 import { ActualizarContraseniaComponent } from './modulos/usuarios/usuarios-admin/actualizar-contrasenia/actualizar-contrasenia.component';
 import { HistorialAtencionComponent } from './atencion/historial-atencion/historial-atencion.component';
 import { BusquedaNominalComponent } from './componentes/busqueda-nominal/busqueda-nominal.component';
+import { SelectorMedicamentoComponent } from './controles/selector-medicamento/selector-medicamento.component';
 
 
 const routes: Routes = [
@@ -35,6 +36,8 @@ const routes: Routes = [
   { path: 'actualizar', component: ActualizarContraseniaComponent, outlet: 'emergente' },
   { path: 'buscardni', component: BusquedaNominalComponent, outlet: 'emergente' },
   { path: 'prueba', component: HistorialAtencionComponent },
+  { path: 'prueba2', component: SelectorMedicamentoComponent },
+
   {
     path: 'admin',
     component: DefaultComponent,

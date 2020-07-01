@@ -13,6 +13,7 @@ import 'moment/locale/es';
 import { PersonalService } from 'src/app/servicios/personal.service';
 
 
+
 @Component({
   selector: 'app-registrar-atencion',
   templateUrl: './registrar-atencion.component.html',
@@ -130,7 +131,8 @@ export class RegistrarAtencionComponent implements OnInit {
           ).subscribe((RESPUESTA) => {
             this.formatofuat.personal.NRO_DOCUMENTO = this.sesion.id_persona
             this.formatofuat.numeroFuat = RESPUESTA.identiti;
-
+            console.log('se guardara el formato fuat')
+            console.log(this.formatofuat)
             this.fuatservicio.guardarFuat(this.formatofuat).subscribe((res) => { console.log(res) })
 
             id_atencion = RESPUESTA.identiti;

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AtencionService } from 'src/app/servicios/atencion.service';
 import { EstadosService } from 'src/app/servicios/estados.service';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-atenciones-realizadas',
@@ -11,16 +12,19 @@ export class AtencionesRealizadasComponent implements OnInit {
   @Input() id_personal: string = '';
   datos_tabla_atenciones: any[] = []
   elementosmenu: any[]
+  desde: Date;
+  hasta: Date
+  formulario
 
-  constructor(private ate: AtencionService, private estados_service: EstadosService) {
+  constructor(private ate: AtencionService, private estados_service: EstadosService, private fb:FormBuilder) {
 
 
   }
 
   ngOnInit() {
-    this.devolvertenciones();
+  
     this.estados_service.actualizarNotificacione.subscribe(() => {
-      this.devolvertenciones();
+  
 
     })
 
@@ -45,6 +49,19 @@ export class AtencionesRealizadasComponent implements OnInit {
         ]
       }
     ];
+
+   this.formulario= this.fb.group({DESDE:this.desde,HASTA:this.hasta})
+  }
+  buscarPorFechas() {
+
+    console.log(this.desde);
+    console.log(this.hasta)
+    let d =this.desde.getFullYear()+'/'+(this.desde.getMonth().valueOf()+1)+'/'+this.desde.getDate();
+    let h =this.hasta.getFullYear()+'/'+(this.hasta.getMonth().valueOf()+1)+'/'+this.hasta.getDate();
+    this.ate.devolverAtencionesRealizadasPorfecha(d,h).subscribe((datos) => {
+      console.log(datos)
+      this.datos_tabla_atenciones = datos;
+    });
 
   }
 

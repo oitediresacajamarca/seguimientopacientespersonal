@@ -1,0 +1,186 @@
+<div class="row">
+  <div class="col-12 tituloreceta">RECETA MEDICA</div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <mat-divider></mat-divider>
+  </div>
+</div>
+<div class="row">
+  <div class="col-4">
+    <p-card>
+      <p-header>
+        <br />
+      </p-header>
+      <form action="" [formGroup]="fg">
+        <mat-card>
+          <div class="row">
+            <div class="col-3">Item</div>
+            <div class="col-9">
+              <input
+                type="text"
+                pInputText
+                size="30"
+                formControlName="NRO_ITEM"
+                disabled
+              />
+            </div>
+          </div>
+        </mat-card>
+        <mat-card>
+          <div class="row">
+            <div class="col-3">Medicamento</div>
+            <div class="col-8">
+              <input
+                type="text"
+                pInputText
+                size="30"
+                formControlName="MEDICAMENTO"
+              />
+            </div>
+            <div class="col-1">
+              <button
+                pButton
+                type="button"
+                icon="pi pi-search"
+                iconPos="left"
+                (click)="selectorMed()"
+              ></button>
+            </div>
+          </div>
+        </mat-card>
+        <mat-card>
+          <div class="row">
+            <div class="col-3">Cantidad</div>
+            <div class="col-9">
+              <input type="text" pInputText formControlName="CANTIDAD" />
+            </div>
+          </div>
+        </mat-card>
+        <mat-card>
+          <div class="row">
+            <div class="col-3">Frecuencia</div>
+            <div class="col-9">
+              <input type="text" pInputText formControlName="FRECUENCIA" />
+            </div>
+          </div>
+        </mat-card>
+        <mat-card>
+          <div class="row">
+            <div class="col-3">Periodo</div>
+            <div class="col-9">
+              <input type="text" pInputText formControlName="PERIODO" />
+            </div>
+          </div>
+        </mat-card>
+        <mat-card>
+          <div class="row">
+            <div class="col-3">Dosis</div>
+            <div class="col-9">
+              <input type="text" pInputText formControlName="DOSIS" />
+            </div>
+          </div>
+        </mat-card>
+        <mat-card>
+          <div class="row">
+            <div class="col-3">Via</div>
+            <div class="col-9">
+              <input type="text" pInputText formControlName="VIA" />
+            </div>
+          </div>
+        </mat-card>
+        <mat-card>
+          <div class="row">
+            <div class="col-3">OBSERVACIONES</div>
+            <div class="col-9">
+              <input type="text" pInputText formControlName="DESCRIPCION" />
+            </div>
+          </div>
+        </mat-card>
+        <mat-card>
+          <div class="row">
+            <div class="col-3"></div>
+            <div class="col-3">
+              <p-button
+                label="Añadir"
+                icon="pi pi-check"
+                iconPos="left"
+                (onClick)="aniadir()"
+              ></p-button>
+            </div>
+            <div class="col-3">
+              <p-button
+                label="Cancelar"
+                icon="pi pi-check"
+                iconPos="left"
+              ></p-button>
+            </div>
+            <div class="col-3"></div>
+          </div>
+        </mat-card>
+      </form>
+    </p-card>
+  </div>
+  <div class="col-8">
+    <mat-card>
+      <div class="col-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Medicamento</th>
+              <th scope="col">Via</th>
+              <th scope="col">Docis</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Frecuencia</th>
+              <th scope="col">Dosis</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let col of itemsreceta; let indice = index">
+              <td>{{ indice + 1 }}</td>
+              <td>{{ col.MEDICAMENTO }}</td>
+              <td>{{ col.VIA }}</td>
+              <td>{{ col.DOCIS }}</td>
+              <td>{{ col.CANTIDAD }}</td>
+              <td>{{ col.FRECUENCIA }}</td>
+              <td>{{ col.DOSIS }}</td>
+              <td>
+                <button pButton  label="Borrar" icon="pi pi-trash" iconPos="left" class="ui-button-danger" (click)="borra(col)"></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-12">
+        <span class="centrado"></span>
+      </div>
+    </mat-card>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <mat-divider></mat-divider>
+  </div>
+</div>
+<div class="row">
+  <div class="col-11"></div>
+  <div class="col-1"></div>
+</div>
+<p-confirmDialog
+  header="Confirmation"
+  icon="pi pi-exclamation-triangle"
+></p-confirmDialog>
+
+<p-dialog
+  header="BUSQUEDA DE MEDICAMENTO"
+  [(visible)]="visulizarselector"
+  styleClass="mydialog"
+  baseZIndex="100000"
+  [style]="{ width: '70vw' }"
+  modal="true"
+>
+  <app-selector-medicamento (medicamentoselecionado)="medicamentosele($event)">
+  </app-selector-medicamento>
+</p-dialog>

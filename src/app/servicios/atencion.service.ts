@@ -43,5 +43,11 @@ export class AtencionService {
     return this.http.get<any>(environment.url_backend + 'atenciones/atencionesrealizadaspersona/' + id_persona);
   }
 
+  devolverAtencionesRealizadasPorfecha(DESDE:string,HASTA:string){
+    console.log(DESDE);
+    console.log(HASTA);
+    return this.http.post<any>(environment.url_backend + 'atenciones/atencionesRealizadasFiltros/',{DESDE:DESDE,HASTA:HASTA});
+  }
+
 
 }

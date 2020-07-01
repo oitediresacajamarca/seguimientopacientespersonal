@@ -10,11 +10,6 @@ import { Button } from 'primeng/button';
 import { Sidebar } from 'primeng/sidebar';
 import { MessageService } from 'primeng/api';
 
-
-
-
-
-
 @Component({
   selector: 'app-actualizar-contrasenia',
   templateUrl: './actualizar-contrasenia.component.html',
@@ -110,38 +105,22 @@ export class ActualizarContraseniaComponent implements OnInit {
       if (clave1 != clave2) {
 
         fg.setErrors({ nocincide: true })
-
-
         this.nocoincide = true
         return { nocincide: true };
-
-
       }
       else {
         this.nocoincide = false
-
-
         fg.setErrors(null)
         return null;
       }
-
-
-
-
     }
-
   }
   Guardar(values) {
     values.estado="actualizado"
-
     this.usuas.actualizarUsuarioPass(this.session.id_persona, values).subscribe(DATOS => {
-
       if (DATOS.nModified == 1) {
         this.messageService.add({ key: 'confirmacion', severity: 'success', summary: 'Actualizacion Exitosa', detail: 'Se actualizo correctamente el password' });
-       
-        setTimeout(() => {  this.dialog.visible = false; }, 2500);
-        
-
+        setTimeout(() => {  this.dialog.visible = false; }, 2500); 
       }
     })
   }

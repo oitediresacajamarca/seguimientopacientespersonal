@@ -172,7 +172,6 @@ export class PrincipalComponent implements OnInit {
       this.GEO.devolverDistrito(dat.respuesta.ID_DISTRITO).subscribe((dis) => {
         this.form.NOMBRE_DISTRITO = dis.NOMBRE;
         this.form.NOMBRE_PROVINCIA = (this.GEO.devolverProvincia(dis.ID_PROVINCIA)).label;
-
       });
 
 

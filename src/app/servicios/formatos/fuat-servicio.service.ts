@@ -106,7 +106,7 @@ export class FuatServicioService {
       "cod_busqueda": "1011021011000015496",
       "COD_IPRESS": "000015496"
     }
-    console.log(solicitud)
+  
     this.formatofuat.codipress = solicitud.COD_IPRESS;
     this.formatofuat.motivo = solicitud.DESCRIPCION;
     this.formatofuat.edad = solicitud.FECHA_NAC;

@@ -77,9 +77,15 @@ import { HistorialAtencionComponent } from './atencion/historial-atencion/histor
 import { DataViewModule } from 'primeng/dataview';
 import { BusquedaNominalComponent } from './componentes/busqueda-nominal/busqueda-nominal.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { RecetaComponent } from './componentes/registrar-atencion/tratamiento/receta/receta.component';
+import { SelectorMedicamentoComponent } from './controles/selector-medicamento/selector-medicamento.component';
+import {ToolbarModule} from 'primeng/toolbar';
+import { MenuAccionAtencionComponent } from './controles/menu-accion-atencion/menu-accion-atencion.component';
 
 @NgModule({
+  entryComponents: [
+    SelectorMedicamentoComponent
+  ],
   declarations: [
     AppComponent,
     PaneldeseguimientoComponent,
@@ -106,6 +112,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     HistorialAtencionComponent,
 
     BusquedaNominalComponent,
+
+    RecetaComponent,
+
+    SelectorMedicamentoComponent,
+
+    MenuAccionAtencionComponent,
 
 
 
@@ -145,9 +157,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     UsuariosModule,
     OverlayPanelModule,
     TieredMenuModule, ToastModule,
-    PdfViewerModule, MultiSelectModule, DataViewModule,ReactiveFormsModule
+    PdfViewerModule, MultiSelectModule, DataViewModule, ReactiveFormsModule,ToolbarModule
   ],
   providers: [DistritosService, ConfirmationService, MessageService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
