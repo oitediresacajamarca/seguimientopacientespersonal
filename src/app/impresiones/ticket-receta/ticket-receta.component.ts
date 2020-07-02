@@ -1,22 +1,23 @@
-import { Injectable, EventEmitter } from '@angular/core';
-import { Receta } from '../interfaces/receta';
+import { Component, OnInit } from '@angular/core';
+import { Receta } from 'src/app/interfaces/receta';
+import { EstadosService } from 'src/app/servicios/estados.service';
 
-@Injectable({
-  providedIn: 'root'
+@Component({
+  selector: 'app-ticket-receta',
+  templateUrl: './ticket-receta.component.html',
+  styleUrls: ['./ticket-receta.component.css']
 })
-export class EstadosService {
-  cod_con:string;
-  verificoform= new EventEmitter<any>()
-  actualizarNotificacione= new EventEmitter<any>()
-  actualizarUsuarios=new EventEmitter<any>();
-  actualizarPerfil
-  cambiopaciente= new EventEmitter<any>()
-  pacienteporatender=new EventEmitter<any>()
-  personaPaciente
+export class TicketRecetaComponent implements OnInit {
 
- 
+  constructor(private estadoss: EstadosService) { }
 
-  ticketreceta: Receta = {
+  ngOnInit() {
+    this.receta.NOMBRE_IPRESS = this.estadoss.ticketreceta.NOMBRE_IPRESS
+    this.receta.DIRECCION=this.estadoss.ticketreceta.DIRECCION
+  }
+
+
+  receta: Receta = {
     NOMBRE_IPRESS: "HOSPITAL SOTO CADENILLAS",
     DIRECCION: "JR LAS PALEMERAS 234",
     CIUDAD: "JAEN",
@@ -71,5 +72,21 @@ export class EstadosService {
   }
 
 
-  constructor() { }
+  
+  imprime() {
+    /* let divi = document.getElementById('receta')
+     html2canvas(divi).then((canvas) => {
+     let urlcanvas=  canvas.toDataURL('img/png');
+ 
+     let js = new jsPDF('p','mm','a5')
+     js.addImage(urlcanvas,'JPEG',0,0,148,210)
+     //  printJS('receta', 'html')
+     js.save();
+ 
+     })
+ */
+
+
+  }
+
 }

@@ -81,6 +81,8 @@ import { RecetaComponent } from './componentes/registrar-atencion/tratamiento/re
 import { SelectorMedicamentoComponent } from './controles/selector-medicamento/selector-medicamento.component';
 import {ToolbarModule} from 'primeng/toolbar';
 import { MenuAccionAtencionComponent } from './controles/menu-accion-atencion/menu-accion-atencion.component';
+import { TicketRecetaComponent } from './impresiones/ticket-receta/ticket-receta.component';
+import { IpressService } from './servicios/ipress.service';
 
 @NgModule({
   entryComponents: [
@@ -118,6 +120,8 @@ import { MenuAccionAtencionComponent } from './controles/menu-accion-atencion/me
     SelectorMedicamentoComponent,
 
     MenuAccionAtencionComponent,
+
+    TicketRecetaComponent,
 
 
 
@@ -159,7 +163,7 @@ import { MenuAccionAtencionComponent } from './controles/menu-accion-atencion/me
     TieredMenuModule, ToastModule,
     PdfViewerModule, MultiSelectModule, DataViewModule, ReactiveFormsModule,ToolbarModule
   ],
-  providers: [DistritosService, ConfirmationService, MessageService],
+  providers: [DistritosService, ConfirmationService, MessageService,IpressService],
 
   bootstrap: [AppComponent]
 })

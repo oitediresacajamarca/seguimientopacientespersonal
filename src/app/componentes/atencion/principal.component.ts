@@ -156,7 +156,7 @@ export class PrincipalComponent implements OnInit {
     this.personser.devolverPersonaPaciente('1', this.cod_buscar).subscribe((dat) => {
 
       this.form = dat.respuesta;
-
+      this.estadoss.personaPaciente = dat.respuesta
       if (dat.respuesta.ID_GENERO == 1) {
         this.form.GENERO = "MASCULINO"
       } else {

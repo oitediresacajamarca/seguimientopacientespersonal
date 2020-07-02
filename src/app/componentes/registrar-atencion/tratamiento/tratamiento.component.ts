@@ -7,7 +7,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./tratamiento.component.css']
 })
 export class TratamientoComponent implements OnInit {
-  tratamientos:string[];
+  tratamientos:string[]=[];
   recomendaciones:string[];
   resetamedica:string[];
   @ViewChild('trat',{ static: false}) trat:NgForm

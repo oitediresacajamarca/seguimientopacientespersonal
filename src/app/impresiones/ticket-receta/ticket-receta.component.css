@@ -1,0 +1,69 @@
+.titulo {
+    align-items: center;
+    text-align: center;
+    display: block;
+  }
+  .centrado {
+    text-align: center;
+    display: block;
+  }
+  .negrita {
+    font-style: bold;
+    font-weight: bold;
+  }
+  .contenedor {
+    font-size: 10px;
+    width: auto;
+  }
+  .logo {
+    width: 40px;
+  }
+  .principal {
+    margin: 8px 4px 8px 4px;
+  }
+  .logo1 {
+    width: 100px;
+  }
+  .primera {
+    border-bottom: solid 3px black;
+  }
+  .segunda {
+    margin-top: 15px;
+  }
+  .tercera {
+    border: solid 2px black;
+  }
+  .encabesado {
+    border: solid 2px black;
+  }
+  .tablabody {
+    border-left: solid 2px black;
+    border-right: solid 2px black;
+  }
+  footer {
+    margin-bottom: 0px;
+  }
+  .pag {
+    padding: 4px;
+    margin: 4px;
+    width: 10.5cm;
+    height: 14.8cm;
+  }
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+  }
+  .raya {
+    border-right: solid black 1px;
+  }
+  @media print {
+  
+    @page {
+      size: A5 landscape;
+    }
+   
+   
+  }
+  

@@ -10,16 +10,16 @@ import { NgForm } from '@angular/forms';
 })
 export class DatosAtencionComponent implements OnInit {
   @ViewChild('datosa', { static: false })
-  datosa:NgForm
+  datosa: NgForm
   tipocon: any;
   mostrarnumero: boolean;
   tratamientoactual: string[]
-  examenesdeapoyo: string[]=[]
+  examenesdeapoyo: string[] = []
   numcon: number;
-  descripcioncaso:string=""
+  descripcioncaso: string = ""
   @Input()
   visible: boolean;
-  @ViewChild('form1dat',{static :false})form1dat :NgForm;
+  @ViewChild('form1dat', { static: false }) form1dat: NgForm;
   examenesFisicos: Examenfisico = {
     examenes: [
       {
@@ -108,7 +108,6 @@ export class DatosAtencionComponent implements OnInit {
 
   constructor() { }
   selecciondeEA() {
-   
     this.examenesFisicos.examenes[7].VALOR = this.examenesdeapoyo.toString()
   }
 
@@ -119,16 +118,15 @@ export class DatosAtencionComponent implements OnInit {
     if (this.tipocon == 'control') {
       this.mostrarnumero = true;
       this.atencion_detalle.N_CONTROL = this.numcon
-     
+
     } else {
       this.mostrarnumero = false
       this.atencion_detalle.N_CONTROL = 0
-      this.numcon=null
+      this.numcon = null
     }
 
   }
   selecciondeTratamientos() {
-  
     this.atencion_detalle.TRATAMIENTO_ACTUAL = this.tratamientoactual.toString()
   }
 

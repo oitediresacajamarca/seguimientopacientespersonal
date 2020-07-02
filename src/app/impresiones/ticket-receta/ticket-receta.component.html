@@ -1,0 +1,171 @@
+<link
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+  crossorigin="anonymous"
+/>
+
+<div class="contenedor  recetaimp" id="receta">
+  <div class="row principal">
+    <div class="col-6 raya">
+      <div class="pag">
+        <div class="row primera">
+          <div class="col-4">
+            <img src="assets/FUATFORMATO.jpg" class="logo1" />
+          </div>
+          <div class="col-4">
+            <div class="block titulo negrita">{{ receta.NOMBRE_IPRESS }}</div>
+            <div class="block centrado">{{ receta.DIRECCION }}</div>
+            <div class="block centrado">{{ receta.CIUDAD }}</div>
+          </div>
+          <div class="col-4 centrado">
+            <img src="assets/logo.png" class="logo" />
+          </div>
+        </div>
+
+        <div class="row segunda">
+          <div class="col-10">
+            Nombres y Apellidos: {{ receta.NOMBRE_COMPLETO_PACIENTE }}
+          </div>
+
+          <div class="col-2">{{ receta.EDAD_PACIENTE }} años</div>
+        </div>
+        <div class="row tercera">
+          <div class="col-6">CODIGO ASEGURADO: {{ receta.COD_ASEGURADO }}</div>
+
+          <div class="col-6" style="text-align: right;">
+            NUMERO DOCUMENTO: {{ receta.NRO_DOCUMENTO }}
+          </div>
+        </div>
+        <div class="row" style="margin-top: 15px;">
+          <div class="col-4 centrado negrita">FINANCIADOR</div>
+          <div class="col-4 centrado negrita">ATENCION</div>
+          <div class="col-4 centrado negrita">ESPECIALIDAD</div>
+        </div>
+        <div class="row">
+          <div class="col-4 centrado">{{ receta.FINANCIADOR }}</div>
+          <div class="col-4 centrado">{{ receta.ATENCION }}</div>
+          <div class="col-4 centrado">{{ receta.ESPECIALIDAD }}</div>
+        </div>
+        <div class="row" style="margin-top: 10px;">
+          <div class="col-12">NRO HCL {{ receta.NR0_HCL }}</div>
+        </div>
+        <div class="row" style="margin-top: 10px;">
+          <div class="col-2 negrita">NRO</div>
+          <div class="col-6 negrita">DIAGNOSTICO</div>
+          <div class="col-2 negrita">TIPO</div>
+          <div class="col-2 negrita">CIE 10</div>
+        </div>
+        <div
+          class="row"
+          style="margin-top: 4px;"
+          *ngFor="let cie of receta.DIAGNOSTICOSlist"
+        >
+          <div class="col-2">{{ cie.NRO_ITEM }}</div>
+          <div class="col-6">{{ cie.DIAGNOSTICO }}</div>
+          <div class="col-2">{{ cie.TIPO }}</div>
+          <div class="col-2">{{ cie.COD_DIAGNOSTICO }}</div>
+        </div>
+        <div
+          class="row"
+          style="border-bottom: 2px solid; margin-top: 15px;"
+        ></div>
+        <div
+          class="row negrita encabesado"
+          style="margin-top: 10px; border-bottom: 0px 2px 2px 2px solid black;"
+        >
+          <div class="col-1">ITEM</div>
+          <div class="col-5">MEDICAMENTO</div>
+          <div class="col-1">PRESENTACION</div>
+          <div class="col-2">CONCENTRACION</div>
+          <div class="col-1">FORMA FARMACEUTICA</div>
+          <div class="col-2">CANTIDAD</div>
+        </div>
+        <div class="row tablabody" *ngFor="let cie of receta.ITEMS">
+          <div class="col-1">{{ cie.ITEM }}</div>
+          <div class="col-5">{{ cie.MEDICAMENTO }}</div>
+          <div class="col-1">{{ cie.PRESENTACION }}</div>
+          <div class="col-2">{{ cie.CONCENTRACION }}</div>
+          <div class="col-1">{{ cie.FF }}</div>
+          <div class="col-2">{{ cie.CANTIDAD }}</div>
+        </div>
+        <div class="row tablabody">.</div>
+        <div class="row tablabody">.</div>
+        <div class="row" style="border-bottom: 2px solid;"></div>
+
+        <footer class="page-footer font-small blue">
+          <div class="row">
+            <div class="col-6">
+              <div>Sello Firma/ Col. Prof</div>
+              <div>{{ receta.PROFESIONAL.NOMBRE_COMPLETO }}</div>
+            </div>
+
+            <div class="col-6"></div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="pag">
+            <div class="row primera">
+              <div class="col-4">
+                <img src="assets/FUATFORMATO.jpg" class="logo1" />
+              </div>
+              <div class="col-4">
+                <div class="block titulo negrita">{{ receta.NOMBRE_IPRESS }}</div>
+                <div class="block centrado">{{ receta.DIRECCION }}</div>
+                <div class="block centrado">{{ receta.CIUDAD }}</div>
+              </div>
+              <div class="col-4 centrado">
+                <img src="assets/logo.png" class="logo" />
+              </div>
+            </div>
+
+            <div class="row segunda">
+              <div class="col-10">
+                Nombres y Apellidos: {{ receta.NOMBRE_COMPLETO_PACIENTE }}
+              </div>
+
+              <div class="col-2">{{ receta.EDAD_PACIENTE }} años</div>
+            </div>
+
+            <div
+              class="row negrita encabesado"
+              style="margin-top: 10px; border-bottom: 0px 2px 2px 2px solid black;"
+            >
+              <div class="col-1">Nº</div>
+              <div class="col-4">MEDICAMENTO</div>
+              <div class="col-2">DOSIS</div>
+              <div class="col-2">VIA</div>
+              <div class="col-1">FREC</div>
+              <div class="col-2">DURACION</div>
+            </div>
+            <div class="row  tablabody" *ngFor="let cie of receta.ITEMS">
+              <div class="col-1">{{ cie.ITEM }}</div>
+              <div class="col-4">{{ cie.MEDICAMENTO }}</div>
+              <div class="col-2">{{ cie.DOSIS }}</div>
+              <div class="col-2">{{ cie.VIA }}</div>
+              <div class="col-1">{{ cie.FRECUENCIA }}</div>
+              <div class="col-2">{{ cie.DURACION }}</div>
+            </div>
+            <div class="row tablabody">.</div>
+            <div class="row tablabody">.</div>
+            <div class="row" style="border-bottom: 2px solid;"></div>
+    
+            <footer class="page-footer font-small blue">
+              <div class="row">
+                <div class="col-6">
+                  <div>Sello Firma/ Col. Prof</div>
+                  <div>{{ receta.PROFESIONAL.NOMBRE_COMPLETO }}</div>
+                </div>
+    
+                <div class="col-6"></div>
+              </div>
+            </footer>
+          </div>
+    </div>
+  </div>
+</div>
+
+

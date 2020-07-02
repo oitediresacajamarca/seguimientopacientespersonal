@@ -15,6 +15,7 @@ import { ActualizarContraseniaComponent } from './modulos/usuarios/usuarios-admi
 import { HistorialAtencionComponent } from './atencion/historial-atencion/historial-atencion.component';
 import { BusquedaNominalComponent } from './componentes/busqueda-nominal/busqueda-nominal.component';
 import { SelectorMedicamentoComponent } from './controles/selector-medicamento/selector-medicamento.component';
+import { TicketRecetaComponent } from './impresiones/ticket-receta/ticket-receta.component';
 
 
 const routes: Routes = [
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'buscardni', component: BusquedaNominalComponent, outlet: 'emergente' },
   { path: 'prueba', component: HistorialAtencionComponent },
   { path: 'prueba2', component: SelectorMedicamentoComponent },
+  {path:'recetaprint',component:TicketRecetaComponent},
 
   {
     path: 'admin',
