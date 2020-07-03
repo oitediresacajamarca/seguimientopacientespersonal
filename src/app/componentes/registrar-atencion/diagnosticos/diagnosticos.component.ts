@@ -4,6 +4,7 @@ import { AtencionDiagnosticoItem } from 'src/app/interfaces/atencion-diagnostico
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { MorbilidadesService } from 'src/app/servicios/morbilidades.service';
 import { NgForm } from '@angular/forms';
+import { EstadosService } from 'src/app/servicios/estados.service';
 
 @Component({
   selector: 'app-diagnosticos',
@@ -22,7 +23,7 @@ export class DiagnosticosComponent implements OnInit {
 
   @ViewChild('diaf',{ static: false}) diaf:NgForm
 
-  constructor(private morb: MorbilidadesService) { }
+  constructor(private morb: MorbilidadesService,private estadoss :EstadosService) { }
 
   ngOnInit() {
     this.tipodiag = [
@@ -55,6 +56,8 @@ export class DiagnosticosComponent implements OnInit {
 
 
     this.dianosticospac.push({ item: this.dianosticospac.length + 1, cod_cie: this.cod_diag_selec, desc_diag: this.desc_diag_selec, tip_diag: tipo, lab: this.lab_selec })
+
+this.estadoss.dianosticospac=this.dianosticospac
 
     this.diagnostabla.push(
       {

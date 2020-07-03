@@ -156,7 +156,7 @@ export class RegistrarAtencionComponent implements OnInit {
                   this.form3.trat.resetForm()
                   this.form2.dianosticospac = []
                   this.form2.diagnostabla = []
-
+                  this.form3.receta.resetearreceta();
                 });
 
               });

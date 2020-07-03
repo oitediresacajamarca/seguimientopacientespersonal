@@ -21,7 +21,6 @@ export class RecetaService {
     this.http.post('http://hospitalvirtual.diresacajamarca.gob.pe:8088/receta/ver', datosfuat, { responseType: 'arraybuffer' }
    ).subscribe(
       (datos) => {
-
         console.log(datosfuat)
         var blob = new Blob([datos], { type: 'application/pdf' });
         var filename = 'RECETA.pdf';

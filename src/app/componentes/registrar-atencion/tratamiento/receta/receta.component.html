@@ -132,10 +132,11 @@
               <th scope="col"></th>
               <th scope="col">Medicamento</th>
               <th scope="col">Via</th>
-              <th scope="col">Docis</th>
+              <th scope="col">Dosis</th>
               <th scope="col">Cantidad</th>
               <th scope="col">Frecuencia</th>
-              <th scope="col">Dosis</th>
+              <th scope="col">Periodo</th>
+              <th scope="col">DESCRIPCION</th>
               <th scope="col"></th>
             </tr>
           </thead>
@@ -144,10 +145,11 @@
               <td>{{ indice + 1 }}</td>
               <td>{{ col.MEDICAMENTO }}</td>
               <td>{{ col.VIA }}</td>
-              <td>{{ col.DOCIS }}</td>
+              <td>{{ col.DOSIS }}</td>
               <td>{{ col.CANTIDAD }}</td>
               <td>{{ col.FRECUENCIA }}</td>
-              <td>{{ col.DOSIS }}</td>
+              <td>{{ col.PERIODO }}</td>
+              <td>{{ col.DESCRIPCION }}</td>
               <td>
                 <button pButton  label="Borrar" icon="pi pi-trash" iconPos="left" class="ui-button-danger" (click)="borra(col)"></button>
               </td>
@@ -165,7 +167,7 @@
 
 <div class="row">
   <div class="col-12">
-    <button pButton type="button" label="Imprimir Boleta"  (click)="imprimirReceta()"></button>
+    <button pButton type="button" label="Imprimir Receta"  (click)="imprimirReceta()"></button>
   </div>
   
 </div>
