@@ -134,8 +134,7 @@ export class PrincipalComponent implements OnInit {
       ID_SOLICITUD: "87",
       NIVEL_ATENCION: null
     }
-    /*this.editabutton.disabled = false;
-    this.guardarbutton.disabled = true;*/
+
 
 
     this.cod_buscar = this.rutaActiva.snapshot.params.ID_PACIENTE;

@@ -11,6 +11,7 @@ import { FuatServicioService } from 'src/app/servicios/formatos/fuat-servicio.se
 import * as moment from 'moment';
 import 'moment/locale/es';
 import { PersonalService } from 'src/app/servicios/personal.service';
+import { AtencionRegService } from 'src/app/servicios/atencion-reg.service';
 
 
 
@@ -43,7 +44,7 @@ export class RegistrarAtencionComponent implements OnInit {
   fua: string
 
   constructor(private aten: AtencionService, private confirmationService: ConfirmationService,
-    private fuatservicio: FuatServicioService, private messageService: MessageService,
+    private fuatservicio: FuatServicioService, private messageService: MessageService,private atencionregser:AtencionRegService,
     private personals: PersonalService) { }
 
   ngOnInit() {
@@ -114,8 +115,6 @@ export class RegistrarAtencionComponent implements OnInit {
     this.confirmationService.confirm({
       message: 'Esta seguro de que deseas Guardar la Atencion',
       accept: () => {
-
-
         this.form1.atencion_detalle.N_CONTROL = this.form1.numcon;
         this.personals.devolver_personal(this.sesion.id_persona, this.sesion.COD_IPRESS).subscribe((dato) => {
           let personal: any
@@ -133,10 +132,8 @@ export class RegistrarAtencionComponent implements OnInit {
             this.formatofuat.numeroFuat = RESPUESTA.identiti;
             console.log('se guardara el formato fuat')
             console.log(this.formatofuat)
-            this.fuatservicio.guardarFuat(this.formatofuat).subscribe((res) => { console.log(res) })
-
+            this.fuatservicio.guardarFuat(this.formatofuat).subscribe((res) => {console.log('se guardo correctamente la fuat'); console.log(res) })
             id_atencion = RESPUESTA.identiti;
-
             this.form1.examenesFisicos.examenes.forEach(element => {
               element.ID_TRABAJADOR = this.atencion.ID_RESPONSABLE
             });
@@ -145,10 +142,8 @@ export class RegistrarAtencionComponent implements OnInit {
               console.log('se guardo exitosamente los examenes fisicos')
               this.aten.registrarAtencionDetalle(this.form1.atencion_detalle, id_atencion, this.trabajador_id).subscribe(() => {
                 console.log('se guardo exitosamente atencion detalle')
-
                 this.aten.registrarAtencionDiagnosticos(this.form2.diagnostabla, id_atencion, this.trabajador_id).subscribe(() => {
                   console.log('se guardo exitosamente los diagnosticos')
-
                   this.imprimirFuat();
                   this.completoRegistro.emit('Se completo el Registro');
                   this.form1.datosa.resetForm()
@@ -157,6 +152,20 @@ export class RegistrarAtencionComponent implements OnInit {
                   this.form2.dianosticospac = []
                   this.form2.diagnostabla = []
                   this.form3.receta.resetearreceta();
+                  this.atencionregser.guardar({
+                      ID_ATENCION:id_atencion,                     
+                      TIPO_CONSULTOR:"",
+                      LOTE:"",
+                      NUMERO_FUA:id_atencion,
+                      ID_TRABAJADOR:this.trabajador_id,
+                      COD_PRESTACIONAL:"",
+                      NIVEL:3,
+                      FEC_ATENCION:this.atencion.FECHA,
+                      HORA:this.atencion.HORA,
+                      ID_FINANCIADOR:1,
+                      ID_UPSS:302303                  
+
+                  }).subscribe(res=>{console.log("se guardo correctamente la atencion reg")})
                 });
 
               });
