@@ -206,9 +206,9 @@ export class RegistrarAtencionComponent implements OnInit {
     this.formatofuat.codipress = this.sesion.COD_IPRESS;
     this.formatofuat.nombreipress = this.sesion.NOMBRE_IPRESS;
 
-    if (this.datos_solicitud.FECHA_SOLICITUD != null) {
-      this.formatofuat.fechasolicitud = this.datos_solicitud.FECHA_SOLICITUD.substring(0, 10);
-      this.formatofuat.horasolicitud = this.datos_solicitud.FECHA_SOLICITUD.substring(11, 20);
+    if (this.estadoss.solicitud.FECHA_SOLICITUD != null) {
+      this.formatofuat.fechasolicitud = this.estadoss.solicitud.FECHA_SOLICITUD.substring(0, 10);
+      this.formatofuat.horasolicitud = this.estadoss.solicitud.FECHA_SOLICITUD.substring(11, 20);
     }
     this.formatofuat.nombresypaciente = this.datosPaciente.NOMBRES + ' ' + this.datosPaciente.APELLIDO_PAT + ' ' + this.datosPaciente.APELLIDO_MAT;
     this.formatofuat.sexo = this.datosPaciente.GENERO.substring(0, 1);

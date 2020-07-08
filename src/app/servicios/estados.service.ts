@@ -14,6 +14,7 @@ export class EstadosService {
   pacienteporatender=new EventEmitter<any>()
   personaPaciente
   dianosticospac
+  solicitud
 
  
 

@@ -192,6 +192,7 @@ export class PrincipalComponent implements OnInit {
           },
 
         )
+        this.estadoss.solicitud=datos
         this.ID_SOLICITUD = datos.ID_SOLICITUD
       }
 
