@@ -38,4 +38,9 @@ export class PersonaService {
     return this.http.post<any>(environment.url_backend + 'persona/busqueda', bod)
   }
 
+  getPersonaDescripcion(NRO_DOCUMENTO: string) {
+    return this.http.get<any>(environment.url_backend + 'persona-descripcion/' + NRO_DOCUMENTO);
+  }
+
+
 }

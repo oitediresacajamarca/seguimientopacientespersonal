@@ -4,12 +4,10 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MorbilidadesPorPacienteComponent } from '../morbilidades-por-paciente/morbilidades-por-paciente.component';
 import { PersonaService } from 'src/app/servicios/servicios/persona.service';
 import { GeografiaService } from 'src/app/servicios/servicios/geografia.service';
-
 import { Configuracion } from 'src/app/configuracion/configuracion';
 import { Atencion } from 'src/app/interfaces/atencion';
 import { RegistrarAtencionComponent } from '../registrar-atencion/registrar-atencion.component';
-import { FuatServicioService } from 'src/app/servicios/formatos/fuat-servicio.service';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { EstadosService } from 'src/app/servicios/estados.service';
 import { Button } from 'primeng/button';
 declare var $: any
@@ -36,28 +34,7 @@ export class PrincipalComponent implements OnInit {
   verhistorial = false
   editardatosgenerales = true
 
-  formsol: any =
-    {
-      "APELLIDO_PAT": "",
-      "APELLIDO_MAT": "",
-      "NOMBRES": "",
-      "NRO_DOCUMENTO": '',
-      "NOMBRE_PROVINCIA": "",
-      "NOMBRE_DISTRITO": "",
-      "TELEFONO": "",
-      "CORREO": "",
-      "DESCRIPCION": "",
-      "TELEF_CONTACTO": "",
-      "TELEF_CONTACTO2": "",
-      "DOMICILIO_ACTUAL": "",
-      "FECHA_SOLICITUD": "",
-      "ESTADO": "",
-      "CORREO2": "",
-      "ID_DISTRITO": "",
-      "FECHA_NAC": "",
-      "ID_GENERO": '',
-      "ID_SOLICITUD": ''
-    };
+
   form: any = {
     "APELLIDO_PAT": "",
     "APELLIDO_MAT": "",
@@ -99,23 +76,24 @@ export class PrincipalComponent implements OnInit {
 
 
 
-
   cod_buscar: string;
   ID_PACIENTE: string;
   ID_SOLICITUD: string;
 
   es: any;
+  formulariosolicitud: FormGroup
 
   constructor(
     private solipac: SolicitudPacienteService, private rutaActiva: ActivatedRoute,
     private personser: PersonaService, private GEO: GeografiaService,
-    private fuats: FuatServicioService, private estadoss: EstadosService,
-    private router: Router) { }
+    private estadoss: EstadosService,
+    private router: Router, private formnuilder: FormBuilder
+  ) { }
 
   ngOnInit() {
     this.estadoss.pacienteporatender.subscribe(dato => {
       this.cod_buscar = dato;
-      this.buscarSolicitud()
+      this.buscarParaInciciarAtencion()
 
     })
     this.atencion = {
@@ -134,6 +112,15 @@ export class PrincipalComponent implements OnInit {
       ID_SOLICITUD: "87",
       NIVEL_ATENCION: null
     }
+    this.formulariosolicitud = this.formnuilder.group({
+      FECHA_SOLICITUD: new FormControl(),
+      DESCRIPCION: new FormControl(),
+      DOMICILIO_ACTUAL: new FormControl(),
+      TELEF_CONTACTO: new FormControl(),
+      TELEF_CONTACTO2: new FormControl(),
+      CORREO: new FormControl(),
+      REFERENCIA: new FormControl()
+    })
 
 
 
@@ -149,45 +136,68 @@ export class PrincipalComponent implements OnInit {
     );
 
   }
+  buscarPersona() {
+    this.inicioaten.resetForm();
+    this.form = this.personser.getPersonaDescripcion(this.cod_buscar).subscribe(persona => {
+      if (persona != null) {
+        this.form = {
+          "APELLIDO_PAT": persona.APELLIDO_PAT,
+          "APELLIDO_MAT": persona.APELLIDO_MAT,
+          "NOMBRES": persona.NOMBRES,
+          "NRO_DOCUMENTO": persona.NRO_DOCUMENTO,
+          "NOMBRE_PROVINCIA": persona.NOMBRE_PROVINCIA,
+          "NOMBRE_DISTRITO": persona.NOMBRE_DISTRITO,
+          "TELEFONO": persona.TELEFONO,
+          "CORREO": persona.CORREO,
+          "ID_DISTRITO": persona.ID_DISTRITO,
+          "FECHA_NAC": persona.FECHA_NAC,
+          "GENERO": persona.GENERO,
+        }
+
+
+        this.estadoss.personaPaciente = persona
+        console.log(this.estadoss.personaPaciente)
+      }
+
+
+
+
+
+
+    })
+
+
+  }
+  buscarParaInciciarAtencion() {
+    this.buscarPersona();
+    this.buscarSolicitud()
+  }
 
   buscarSolicitud() {
-    this.inicioaten.resetForm();
-    this.personser.devolverPersonaPaciente('1', this.cod_buscar).subscribe((dat) => {
+    this.formulariosolicitud.reset()
 
-      this.form = dat.respuesta;
-      this.estadoss.personaPaciente = dat.respuesta
-      if (dat.respuesta.ID_GENERO == 1) {
-        this.form.GENERO = "MASCULINO"
-      } else {
-        this.form.GENERO = "FEMENINO"
+    this.solipac.buscarSolicitudPorNumeroDcocumento(this.cod_buscar).subscribe((datos) => {
+
+      if (datos != null) {
+        this.formulariosolicitud.setValue(
+
+          {
+            FECHA_SOLICITUD: datos.FECHA_SOLICITUD,
+            DESCRIPCION: datos.DESCRIPCION,
+            DOMICILIO_ACTUAL: datos.DOMICILIO_ACTUAL,
+            TELEF_CONTACTO: datos.TELEF_CONTACTO,
+            TELEF_CONTACTO2: datos.TELEF_CONTACTO2,
+            CORREO: datos.CORREO,
+            REFERENCIA: datos.REFERENCIA
+          },
+
+        )
+        this.ID_SOLICITUD = datos.ID_SOLICITUD
       }
 
-      this.atencion.ID_PACIENTE = dat.respuesta.ID_PERSONA;
-      this.estadoss.cambiopaciente.emit(this.atencion.ID_PACIENTE);
-      this.atencion.ID_MODALIDAD = "5";
-      this.atencion.ID_HC = "1";
-      this.atencion.ID_TIPO_ATENCION = "4";
-      this.atencion.ID_SOLICITUD = this.ID_SOLICITUD
-      this.GEO.devolverDistrito(dat.respuesta.ID_DISTRITO).subscribe((dis) => {
-        this.form.NOMBRE_DISTRITO = dis.NOMBRE;
-        this.form.NOMBRE_PROVINCIA = (this.GEO.devolverProvincia(dis.ID_PROVINCIA)).label;
-      });
+    
+    })
 
-
-      this.mpp.actualizarDatos(this.cod_buscar);
-    }
-    );
-
-    this.solipac.buscarSolicitud(this.cod_buscar).subscribe(
-      (sol) => {
-
-        this.formsol = sol.respuesta
-        this.atencion.ID_SOLICITUD = sol.respuesta.ID_SOLICITUD
-        this.atencion.ANTECEDENTE = sol.respuesta.DESCRIPCION
-
-
-      }
-    );
 
 
   }
@@ -198,7 +208,11 @@ export class PrincipalComponent implements OnInit {
     this.panreg.ver = true;
     let sesion = JSON.parse(localStorage.getItem('datos'));
     this.atencion.ID_RESPONSABLE = sesion.TRABAJADOR_ID;
-    this.panreg.form1.atencion_detalle.MOTIVO = this.formsol.DESCRIPCION;
+    this.atencion.ANTECEDENTE = this.formulariosolicitud.controls.DESCRIPCION.value
+    if (this.ID_SOLICITUD != null) {
+      this.atencion.ID_SOLICITUD = this.ID_SOLICITUD
+    }
+    this.panreg.form1.atencion_detalle.MOTIVO = this.formulariosolicitud.controls.DESCRIPCION.value;
 
   }
   CerrarRegistro() {

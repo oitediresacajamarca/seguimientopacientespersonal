@@ -30,7 +30,7 @@
         pButton
         type="button"
         label="BUSCAR"
-        (click)="buscarSolicitud()"
+        (click)="buscarParaInciciarAtencion()"
       ></button>
     </div>
 
@@ -38,21 +38,21 @@
       <div class="ui-g">
         <div class="ui-g-10"></div>
         <div class="ui-g-2">
-          <p-button      
+          <p-button
             #editabutton
             type="button"
             icon="pi pi-pencil"
             label="Editar"
             (onClick)="editarDatos()"
           ></p-button>
-          <p-button       
+          <p-button
             #guardarbutton
             type="button"
             icon="pi pi-save"
             label="Guardar"
             (click)="guardarDatos()"
             styleClass="ui-button-success"
-            ></p-button>
+          ></p-button>
         </div>
 
         <form #inicioaten="ngForm">
@@ -113,7 +113,6 @@
               [(ngModel)]="form.APELLIDO_MAT"
               [disabled]="apellido_matd"
               name="APELLIDO_MAT"
-
             />
           </div>
 
@@ -183,110 +182,102 @@
             />
           </div>
         </form>
-      
       </div>
     </p-fieldset>
     <br />
     SOLICITUD DE ATENCION
-    <mat-card>
-      <div class="ui-g">
-        <div class="ui-g-2">
-          <mat-card>
-            FECHA Y HORA DE SOLICITUD<br />
-            <input
-              type="email"
-              class="form-control"
-              aria-describedby="emailHelp"
-              [(ngModel)]="formsol.FECHA_SOLICITUD"
-              disabled="true"
-              name="FECHA_SOLICITUD"
-            />
-          </mat-card>
+    <form [formGroup]="formulariosolicitud">
+      <mat-card>
+        <div class="ui-g">
+          <div class="ui-g-2">
+            <mat-card>
+              FECHA Y HORA DE SOLICITUD<br />
+              <input
+                class="form-control"
+                aria-describedby="emailHelp"
+                formControlName="FECHA_SOLICITUD"
+                disabled="true"
+              />
+            </mat-card>
+          </div>
+          <div class="ui-g-10">
+            <mat-card>
+              MOTIVO
+              <input
+                class="form-control"
+                aria-describedby="emailHelp"
+                formControlName="DESCRIPCION"
+                disabled="true"
+              />
+            </mat-card>
+          </div>
+          <div class="ui-g-4">
+            <mat-card>
+              DOMICILIO ACTUAL
+              <input
+                type="email"
+                class="form-control"
+                aria-describedby="emailHelp"
+                formControlName="DOMICILIO_ACTUAL"
+                disabled="true"
+              />
+            </mat-card>
+          </div>
+          <div class="ui-g-4">
+            <mat-card>
+              REFERENCIA
+              <input
+                type="email"
+                class="form-control"
+                aria-describedby="emailHelp"
+                formControlName="REFERENCIA"
+                disabled="true"
+                name="REFERENCIA"
+              />
+            </mat-card>
+          </div>
+          <div class="ui-g-4">
+            <mat-card>
+              TELEFONO DE CONTACTO 1
+              <input
+                type="email"
+                class="form-control"
+                aria-describedby="emailHelp"
+                disabled="true"
+                formControlName="TELEF_CONTACTO"
+                placeholder=" Telef Contacto"
+              />
+            </mat-card>
+          </div>
+          <div class="ui-g-4">
+            <mat-card>
+              TELEFONO DE CONTACTO 2
+              <input
+                type="email"
+                class="form-control"
+                aria-describedby="emailHelp"
+                formControlName="TELEF_CONTACTO2"
+                placeholder=" Telef Contacto"
+                disabled="true"
+              />
+            </mat-card>
+          </div>
+          <div class="ui-g-4">
+            <mat-card>
+              CORREO ELECTRONICO
+              <input
+                type="email"
+                class="form-control"
+                aria-describedby="emailHelp"
+                placeholder=" Correo Electronico"
+                disabled="true"
+                formControlName="CORREO"
+              />
+            </mat-card>
+          </div>
         </div>
-        <div class="ui-g-10">
-          <mat-card>
-            MOTIVO
-            <input
-              type="email"
-              class="form-control"
-              aria-describedby="emailHelp"
-              [(ngModel)]="formsol.DESCRIPCION"
-              disabled="true"
-              name="DESCRIPCION"
-            />
-          </mat-card>
-        </div>
-        <div class="ui-g-4">
-          <mat-card>
-            DOMICILIO ACTUAL
-            <input
-              type="email"
-              class="form-control"
-              aria-describedby="emailHelp"
-              [(ngModel)]="formsol.DOMICILIO_ACTUAL"
-              disabled="true"
-              name="DOMICILIO_ACTUAL"
-            />
-          </mat-card>
-        </div>
-        <div class="ui-g-4">
-          <mat-card>
-            REFERENCIA
-            <input
-              type="email"
-              class="form-control"
-              aria-describedby="emailHelp"
-              [(ngModel)]="formsol.DIRECCION"
-              disabled="true"
-              name="DIRECCION"
-              placeholder=" Referencia"
-            />
-          </mat-card>
-        </div>
-        <div class="ui-g-4">
-          <mat-card>
-            TELEFONO DE CONTACTO 1
-            <input
-              type="email"
-              class="form-control"
-              aria-describedby="emailHelp"
-              [(ngModel)]="formsol.TELEF_CONTACTO"
-              disabled="true"
-              name="TELEF_CONTACTO"
-              placeholder=" Telef Contacto"
-            />
-          </mat-card>
-        </div>
-        <div class="ui-g-4">
-          <mat-card>
-            TELEFONO DE CONTACTO 2
-            <input
-              type="email"
-              class="form-control"
-              aria-describedby="emailHelp"
-              placeholder=" Telef Contacto"
-              [(ngModel)]="formsol.TELEF_CONTACTO2"
-              disabled="true"
-              name="TELEF_CONTACTO2"
-            />
-          </mat-card>
-        </div>
-        <div class="ui-g-4">
-          <mat-card>
-            CORREO ELECTRONICO
-            <input
-              type="email"
-              class="form-control"
-              aria-describedby="emailHelp"
-              placeholder=" Correo Electronico"
-              [(ngModel)]="formsol.CORREO2"
-              disabled="true"
-              name="CORREO2"
-            />
-          </mat-card>
-        </div>
-      </div>
-    </mat-card>
+      </mat-card>
+    </form>
 
     <p-fieldset legend="Morbilidades del Paciente">
       <app-morbilidades-por-paciente
@@ -310,8 +301,9 @@
       [(cod_paciente)]="cod_buscar"
       [(ID_PACIENTE)]="ID_PACIENTE"
       [(ID_SOLICITUD)]="ID_SOLICITUD"
+      [(datos_solicitud)]="formulariosolicitud.value"
       [(ver)]="verpanelregistro"
-      [(datos_solicitud)]="formsol"
+   
     ></app-registrar-atencion>
     <div class="atencion-boton">
       <button

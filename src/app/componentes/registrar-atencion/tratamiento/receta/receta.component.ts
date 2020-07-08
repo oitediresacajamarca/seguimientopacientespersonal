@@ -66,7 +66,7 @@ export class RecetaComponent implements OnInit {
   borra(col) {
 
     console.log(col)
-    
+
     let index = this.itemsreceta.findIndex(dato => dato.COD_MEDICAMENTO === col.COD_MEDICAMENTO)
 
     this.itemsreceta.splice(index, 1)
@@ -94,8 +94,14 @@ export class RecetaComponent implements OnInit {
       let persona = this.estadoss.personaPaciente;
       await this.geo.devolverDistrito(dato[0].ID_DISTRITO).subscribe((distri) => {
         distrito = distri;
+console.log(persona.FECHA_NAC)
+        let nac = moment(persona.FECHA_NAC, "YYYY-MM-DD")
+        console.log(nac.toDate())
 
-        let EDAD = moment(persona.FECHA_NAC, "DD-MM-YYYY").fromNow().split(" ")[1];
+
+        var hoy = moment();
+        var EDAD = hoy.diff(nac, "years");
+
         let diagnosticos = this.estadoss.dianosticospac.map(
           diagnos => {
             return {
@@ -106,22 +112,24 @@ export class RecetaComponent implements OnInit {
             }
 
           });
-        
+
 
         let PROFESIONAL = JSON.parse(localStorage.getItem('datos'));
-        console.log(this.itemsreceta)
-        let ITEMS=this.itemsreceta.map((item)=>{return    {
-          "ITEM": item.NRO_ITEM,
-          "MEDICAMENTO": item.MEDICAMENTO,
-          "DOSIS":item.DOSIS ,
-          "VIA": item.VIA,
-          "FRECUENCIA": item.FRECUENCIA,
-          "DURACION": item.PERIODO,
-          "PRESENTACION": "sobre",
-          "CONCENTRACION": "3mg",
-          "CANTIDAD": item.CANTIDAD,
-          "FF": "TABLETA"
-        } })
+      
+        let ITEMS = this.itemsreceta.map((item) => {
+          return {
+            "ITEM": item.NRO_ITEM,
+            "MEDICAMENTO": item.MEDICAMENTO,
+            "DOSIS": item.DOSIS,
+            "VIA": item.VIA,
+            "FRECUENCIA": item.FRECUENCIA,
+            "DURACION": item.PERIODO,
+            "PRESENTACION": "sobre",
+            "CONCENTRACION": "3mg",
+            "CANTIDAD": item.CANTIDAD,
+            "FF": "TABLETA"
+          }
+        })
         this.recetas.mostrarReceta(
           {
             "receta":
@@ -161,8 +169,8 @@ export class RecetaComponent implements OnInit {
 
 
   }
-  resetearreceta(){
-    this.itemsreceta=[];
+  resetearreceta() {
+    this.itemsreceta = [];
   }
 
 }
