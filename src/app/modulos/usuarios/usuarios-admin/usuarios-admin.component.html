@@ -6,8 +6,9 @@
         pInputText
         placeholder="Nombre de Usuario,Dni,Nombres personales"
         style="width: 100%;"
+        [(ngModel)]="filtro"
       />
-      <p-button label="Buscar"></p-button>
+      <p-button label="Buscar" (onClick)="buscarUsu()"></p-button>
     </div>
   </div>
   <div class="ui-g-12" id="contenedo" #contenedo>

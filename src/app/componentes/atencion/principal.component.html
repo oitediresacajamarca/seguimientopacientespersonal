@@ -176,7 +176,8 @@
               id="fecha_nacimiento"
               aria-describedby="emailHelp"
               placeholder="Fecha Nacimiento"
-              [(ngModel)]="form.FECHA_NAC"
+              [ngModel]="form.FECHA_NAC | date :'dd/MM/yyyy'"
+              (ngModelChange)="form.FECHA_NAC=$event"
               disabled="true"
               name="FECHA_NAC"
             />
@@ -196,6 +197,7 @@
                 class="form-control"
                 aria-describedby="emailHelp"
                 formControlName="FECHA_SOLICITUD"
+                [value]="formulariosolicitud.get('FECHA_SOLICITUD').value | date:'dd/MM/yyy hh:mm a'"
                 disabled="true"
               />
             </mat-card>

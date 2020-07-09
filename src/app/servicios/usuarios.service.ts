@@ -56,6 +56,11 @@ export class UsuariosService {
     return this.http.post<any>(environment.url_backend + 'usuarios/listarporambito', {peso:session.ambitos[0].peso,peso_sup:session.ambitos[0].peso_sup})
 
   }
+  devolverUsuariosAmbitosFiltro(filtro){
+    let session =this.getSession();
+    return this.http.post<any>(environment.url_backend + 'usuarios/listarambitofiltro', {peso:session.ambitos[0].peso,peso_sup:session.ambitos[0].peso_sup,filtros:filtro})
+
+  }
   validarAmbitoPermitido(){
 
   }

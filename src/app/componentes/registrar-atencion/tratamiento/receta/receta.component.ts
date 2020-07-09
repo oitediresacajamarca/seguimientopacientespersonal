@@ -94,9 +94,9 @@ export class RecetaComponent implements OnInit {
       let persona = this.estadoss.personaPaciente;
       await this.geo.devolverDistrito(dato[0].ID_DISTRITO).subscribe((distri) => {
         distrito = distri;
-console.log(persona.FECHA_NAC)
+
         let nac = moment(persona.FECHA_NAC, "YYYY-MM-DD")
-        console.log(nac.toDate())
+       
 
 
         var hoy = moment();

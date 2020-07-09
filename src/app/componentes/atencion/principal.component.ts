@@ -154,7 +154,7 @@ export class PrincipalComponent implements OnInit {
           "GENERO": persona.GENERO,
         }
 
-
+        this.estadoss.cambiopaciente.emit(persona.ID_PERSONA)
         this.estadoss.personaPaciente = persona
         console.log(this.estadoss.personaPaciente)
       }
@@ -192,11 +192,11 @@ export class PrincipalComponent implements OnInit {
           },
 
         )
-        this.estadoss.solicitud=datos
+        this.estadoss.solicitud = datos
         this.ID_SOLICITUD = datos.ID_SOLICITUD
       }
 
-    
+
     })
 
 

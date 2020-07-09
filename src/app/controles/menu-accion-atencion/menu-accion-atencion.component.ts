@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FuatServicioService } from 'src/app/servicios/formatos/fuat-servicio.service';
+
 
 @Component({
   selector: 'app-menu-accion-atencion',
@@ -8,7 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class MenuAccionAtencionComponent implements OnInit {
   elementosmenu: any[];
   @Input() atencion: any;
-  constructor() { }
+  constructor(private fuats:FuatServicioService) { }
 
   ngOnInit() {
 
@@ -35,7 +37,7 @@ export class MenuAccionAtencionComponent implements OnInit {
     ];
   }
   mostrarFuat() {
-   
+    this.fuats.mostrarFuatporCodigoAtencion(this.atencion.ID_ATENCION)   
     console.log(this.atencion)
   }
 

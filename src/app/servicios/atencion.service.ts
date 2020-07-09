@@ -33,7 +33,7 @@ export class AtencionService {
       element.ID_ATENCION = id_atencion;
       element.ID_TRABAJADOR = id_trabajador;
     });
-    return this.http.post(environment.ipmicroservicios + 'atenciones/diagnosticos/', { root: { "diagnosticos": diagnosticos, "id_atencion": id_atencion, "id_trabajador": id_trabajador } });
+    return this.http.post(environment.url_backend + 'atencion-diagnostico/guardardiagnosticos', diagnosticos);
 
   }
   devolverAtencionesRealizadas(id_persona_personal) {

@@ -83,7 +83,7 @@ export class RegistrarAtencionComponent implements OnInit {
         talla: "",
         temperatura: ""
       },
-      fechaatencion: "",
+      fechaatencion: null,
       fechasolicitud: "",
       horaatencion: "",
       horasolicitud: "",
@@ -125,13 +125,16 @@ export class RegistrarAtencionComponent implements OnInit {
           if (dato.rowsAffected >= 1) {
             personal = dato.recordset[0];
             this.atencion.ID_RESPONSABLE = personal.ID_TRABAJADOR_IPRESS
-            console.log(personal.ID_TRABAJADOR_IPRESS)
+            
           }
           let personapaciente = this.estadoss.personaPaciente
           //GENERA EL PACIENTE ASI COMO SU HISTORIA CLINICA SI NO LO TUBIERA
-          this.pacientes.prepararPaciente(personapaciente.ID_PERSONA, personapaciente.NRO_DOCUMENTO, this.sesion.COD_IPRES).subscribe(
-            () => {
-              this.atencion.ID_PACIENTE = personapaciente.ID_PERSONA
+          this.pacientes.prepararPaciente(personapaciente.ID_PERSONA, personapaciente.NRO_DOCUMENTO, this.sesion.COD_IPRESS).subscribe(
+            (historiaypaciente) => {
+              console.log(historiaypaciente)
+              this.atencion.ID_PACIENTE = personapaciente.ID_PERSONA;
+              this.atencion.ID_HC=historiaypaciente.historia.ID_HC
+
               console.log(this.atencion);
               this.aten.registrar(
                 this.atencion
@@ -206,7 +209,7 @@ export class RegistrarAtencionComponent implements OnInit {
     this.formatofuat.codipress = this.sesion.COD_IPRESS;
     this.formatofuat.nombreipress = this.sesion.NOMBRE_IPRESS;
 
-    if (this.estadoss.solicitud.FECHA_SOLICITUD != null) {
+    if (this.estadoss.solicitud!= null) {
       this.formatofuat.fechasolicitud = this.estadoss.solicitud.FECHA_SOLICITUD.substring(0, 10);
       this.formatofuat.horasolicitud = this.estadoss.solicitud.FECHA_SOLICITUD.substring(11, 20);
     }
@@ -242,7 +245,7 @@ export class RegistrarAtencionComponent implements OnInit {
     this.formatofuat.motivo[0] = this.form1.atencion_detalle.MOTIVO;
     this.formatofuat.codipress = this.sesion.COD_IPRESS;
     let actual = new Date();
-    this.formatofuat.fechaatencion = actual.getDate() + '-' + actual.getMonth() + '-' + actual.getFullYear()
+    this.formatofuat.fechaatencion = actual.toLocaleDateString('es-ES')
     this.formatofuat.horaatencion = (new Date()).getHours().toString() + ':' + (new Date()).getMinutes()
     this.formatofuat.personal.nombresyapellidos = this.sesion.APELLIDO_PAT + ' ' + this.sesion.APELLIDO_MAT + ' ' + this.sesion.NOMBRES;
     this.formatofuat.personal.colegiatura = this.sesion.DATOS_PROFESIONALES.COD_COLEGIATURA

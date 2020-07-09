@@ -113,6 +113,11 @@
 
                 {{ customer[col.field] | date: "dd-MM-yyyy    hh:mm  aa":'GMT' }}
               </ng-container>
+              <ng-container *ngSwitchCase="'FECHA_NAC'">
+                <span class="ui-column-title">Codigo</span>
+
+                {{ customer[col.field] | date: "dd-MM-yyyy":'GMT' }}
+              </ng-container>
              
             </ng-container>
           </td>

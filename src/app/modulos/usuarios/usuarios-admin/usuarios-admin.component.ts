@@ -3,8 +3,8 @@ import { NuevoUsuarioComponent } from './nuevo-usuario/nuevo-usuario.component';
 import { UsuariosService } from 'src/app/servicios/usuarios.service';
 import { Message } from 'primeng/api/message';
 
-import {ConfirmDialogModule} from 'primeng/confirmdialog';
-import {ConfirmationService} from 'primeng/api'
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api'
 import { EstadosService } from 'src/app/servicios/estados.service';
 
 @Component({
@@ -13,20 +13,27 @@ import { EstadosService } from 'src/app/servicios/estados.service';
   styleUrls: ['./usuarios-admin.component.css']
 })
 export class UsuariosAdminComponent implements OnInit {
- 
+  filtro
   columnasUsuarios: any[];
   usuariosDatos: any;
   elementosmenu
   msgs: Message[] = [];
+  buscarUsu() {
+    this.usuas.devolverUsuariosAmbitosFiltro(this.filtro).subscribe((respuesta) => {
+      console.log(respuesta)
+
+      this.usuariosDatos = respuesta
+    })
+  }
 
 
   @ViewChild('app-nuevo-usuario', { static: false }) formN: NuevoUsuarioComponent
 
-  constructor(private usuas: UsuariosService,private msgservicio:ConfirmationService, private estado:EstadosService) { }
+  constructor(private usuas: UsuariosService, private msgservicio: ConfirmationService, private estado: EstadosService) { }
 
   ngOnInit() {
     this.columnasUsuarios = [
-   
+
       { field: "numero_doc", header: "NUMERO DE DOCUMENTO" },
       { field: "tipo_doc", header: "TIPO DE DOCUMENTO" },
       { field: "FUNCION", header: "FUNCION O CARGO" },
@@ -37,29 +44,31 @@ export class UsuariosAdminComponent implements OnInit {
       { field: "TELEFONO", header: "TELEFONO" },
       { field: "roles", header: "ROLES" },
     ]
-    this.estado.actualizarUsuarios.subscribe(()=>{this.CargarUsuarios()})
+    this.estado.actualizarUsuarios.subscribe(() => { this.CargarUsuarios() })
     this.CargarUsuarios()
     this.elementosmenu = [
       {
         label: 'ADMINISTRAR',
         items: [
-        { label: 'ASIGNAR AMBITOS',icon: 'pi pi-fw pi-plus'},
-        { label: 'ASIGNAR ROLES' ,icon: 'pi pi-fw pi-plus'},
-        { label: 'DAR DE BAJA' ,icon: 'pi pi-fw pi-minus', command:()=>{
-          this.msgservicio.confirm({
-            message: 'Uste esta seguro de dar de baja a este usuario?',
-            header: 'Confimacion',
-            icon: 'pi pi-exclamation-triangle',
-            accept: () => {
-             
-                this.msgs = [{severity:'info', summary:'Confirmed', detail:'You have accepted'}];
-            },
-            reject: () => {
-                this.msgs = [{severity:'info', summary:'Rejected', detail:'You have rejected'}];
-            }
-        });
+          { label: 'ASIGNAR AMBITOS', icon: 'pi pi-fw pi-plus' },
+          { label: 'ASIGNAR ROLES', icon: 'pi pi-fw pi-plus' },
+          {
+            label: 'DAR DE BAJA', icon: 'pi pi-fw pi-minus', command: () => {
+              this.msgservicio.confirm({
+                message: 'Uste esta seguro de dar de baja a este usuario?',
+                header: 'Confimacion',
+                icon: 'pi pi-exclamation-triangle',
+                accept: () => {
 
-        }}
+                  this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' }];
+                },
+                reject: () => {
+                  this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
+                }
+              });
+
+            }
+          }
         ]
       }
     ];
