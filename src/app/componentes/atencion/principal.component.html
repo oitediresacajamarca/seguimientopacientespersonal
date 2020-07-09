@@ -117,14 +117,15 @@
           </div>
 
           <div class="form-group ui-g-3">
-            <label for="domicilio">Domicilio Actual</label>
+            <label for="domicilio">Direccion</label>
             <input
               type="email"
               class="form-control"
+              pInputText
               id="domicilio"
               aria-describedby="emailHelp"
               [(ngModel)]="form.DIRECCION"
-              disabled="true"
+              [disabled]="direccion_d"
               name="DIRECCION"
             />
           </div>

@@ -15,7 +15,6 @@ export class TratamientoComponent implements OnInit {
   @ViewChild('receta',{static: false}) receta:RecetaComponent
   @Input()
   visible:boolean=false;
-
   constructor() { }
 
   ngOnInit() {

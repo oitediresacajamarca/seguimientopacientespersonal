@@ -31,6 +31,7 @@ export class PrincipalComponent implements OnInit {
   nombresd = true
   apellido_patd = true;
   apellido_matd = true;
+  direccion_d = true;
   verhistorial = false
   editardatosgenerales = true
 
@@ -139,6 +140,7 @@ export class PrincipalComponent implements OnInit {
   buscarPersona() {
     this.inicioaten.resetForm();
     this.form = this.personser.getPersonaDescripcion(this.cod_buscar).subscribe(persona => {
+      console.log(persona)
       if (persona != null) {
         this.form = {
           "APELLIDO_PAT": persona.APELLIDO_PAT,
@@ -152,6 +154,7 @@ export class PrincipalComponent implements OnInit {
           "ID_DISTRITO": persona.ID_DISTRITO,
           "FECHA_NAC": persona.FECHA_NAC,
           "GENERO": persona.GENERO,
+          "DIRECCION":persona.DIRECCION
         }
 
         this.estadoss.cambiopaciente.emit(persona.ID_PERSONA)
@@ -244,10 +247,11 @@ export class PrincipalComponent implements OnInit {
     this.nombresd = false;
     this.apellido_patd = false;
     this.apellido_matd = false;
+    this.direccion_d = false;
 
   }
   guardarDatos() {
-    this.personser.actualizarPersona(this.form.NRO_DOCUMENTO, this.form.APELLIDO_PAT, this.form.APELLIDO_MAT, this.form.NOMBRES).subscribe(
+    this.personser.actualizarPersona(this.form.NRO_DOCUMENTO, this.form.APELLIDO_PAT, this.form.APELLIDO_MAT, this.form.NOMBRES, this.form.DIRECCION).subscribe(
 
       () => {
         this.guardarbutton.disabled = true;
@@ -255,6 +259,7 @@ export class PrincipalComponent implements OnInit {
         this.nombresd = true;
         this.apellido_patd = true;
         this.apellido_matd = true;
+        this.direccion_d = true;
 
 
       }

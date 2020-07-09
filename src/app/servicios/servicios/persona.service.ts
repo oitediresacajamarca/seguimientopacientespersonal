@@ -27,14 +27,15 @@ export class PersonaService {
     return this.http.get<any>(environment.url_backend + 'persona/' + num_doc)
 
   }
-  actualizarPersona(numdoc: string, apellido_pat: string, apellido_mat: string, nombres: string) {
+  actualizarPersona(numdoc: string, apellido_pat: string, apellido_mat: string, nombres: string, direccion: string) {
     return this.http.post<any>(environment.url_backend + 'persona/actualiza/' + numdoc, {
       NOMBRES: nombres,
       APELLIDO_PAT: apellido_pat,
-      APELLIDO_MAT: apellido_mat
+      APELLIDO_MAT: apellido_mat,
+      DIRECCION: direccion
     })
   }
-  buscarPersona(bod:any) {
+  buscarPersona(bod: any) {
     return this.http.post<any>(environment.url_backend + 'persona/busqueda', bod)
   }
 
