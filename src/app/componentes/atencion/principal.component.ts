@@ -10,6 +10,7 @@ import { RegistrarAtencionComponent } from '../registrar-atencion/registrar-aten
 import { NgForm, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { EstadosService } from 'src/app/servicios/estados.service';
 import { Button } from 'primeng/button';
+import { LogService } from 'src/app/servicios/log.service';
 declare var $: any
 
 @Component({
@@ -88,7 +89,8 @@ export class PrincipalComponent implements OnInit {
     private solipac: SolicitudPacienteService, private rutaActiva: ActivatedRoute,
     private personser: PersonaService, private GEO: GeografiaService,
     private estadoss: EstadosService,
-    private router: Router, private formnuilder: FormBuilder
+    private router: Router, private formnuilder: FormBuilder,
+    private logs: LogService
   ) { }
 
   ngOnInit() {
@@ -140,8 +142,9 @@ export class PrincipalComponent implements OnInit {
   buscarPersona() {
     this.inicioaten.resetForm();
     this.form = this.personser.getPersonaDescripcion(this.cod_buscar).subscribe(persona => {
-      console.log(persona)
+
       if (persona != null) {
+        this.logs.log('buca persona', { persona: JSON.stringify(persona) }).subscribe()
         this.form = {
           "APELLIDO_PAT": persona.APELLIDO_PAT,
           "APELLIDO_MAT": persona.APELLIDO_MAT,
@@ -154,12 +157,12 @@ export class PrincipalComponent implements OnInit {
           "ID_DISTRITO": persona.ID_DISTRITO,
           "FECHA_NAC": persona.FECHA_NAC,
           "GENERO": persona.GENERO,
-          "DIRECCION":persona.DIRECCION
+          "DIRECCION": persona.DIRECCION
         }
 
         this.estadoss.cambiopaciente.emit(persona.ID_PERSONA)
         this.estadoss.personaPaciente = persona
-        console.log(this.estadoss.personaPaciente)
+
       }
 
 
@@ -207,7 +210,7 @@ export class PrincipalComponent implements OnInit {
   }
 
   IniciaRegistro(e) {
-
+   
 
     this.panreg.ver = true;
     let sesion = JSON.parse(localStorage.getItem('datos'));
@@ -217,7 +220,7 @@ export class PrincipalComponent implements OnInit {
       this.atencion.ID_SOLICITUD = this.ID_SOLICITUD
     }
     this.panreg.form1.atencion_detalle.MOTIVO = this.formulariosolicitud.controls.DESCRIPCION.value;
-
+    this.logs.log('INICIA PROCESO DE ATENCION', this.atencion).subscribe();
   }
   CerrarRegistro() {
     this.verpanelregistro = false;

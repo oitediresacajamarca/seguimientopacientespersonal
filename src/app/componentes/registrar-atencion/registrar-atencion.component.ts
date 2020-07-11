@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter, ɵConsole } from '@angular/core';
 import { AtencionService } from 'src/app/servicios/atencion.service';
 import { ConfirmationService, MessageService, MenuItem } from 'primeng/api';
 import { DatosAtencionComponent } from './datos-atencion/datos-atencion.component';
@@ -14,6 +14,7 @@ import { PersonalService } from 'src/app/servicios/personal.service';
 import { AtencionRegService } from 'src/app/servicios/atencion-reg.service';
 import { PacienteService } from 'src/app/servicios/paciente.service';
 import { EstadosService } from 'src/app/servicios/estados.service';
+import { LogService } from 'src/app/servicios/log.service';
 
 
 
@@ -49,7 +50,7 @@ export class RegistrarAtencionComponent implements OnInit {
     private fuatservicio: FuatServicioService, private messageService: MessageService,
     private atencionregser: AtencionRegService,
     private personals: PersonalService, private pacientes: PacienteService,
-    private estadoss: EstadosService) { }
+    private estadoss: EstadosService, private logs: LogService) { }
 
   ngOnInit() {
 
@@ -119,13 +120,14 @@ export class RegistrarAtencionComponent implements OnInit {
     this.confirmationService.confirm({
       message: 'Esta seguro de que deseas Guardar la Atencion',
       accept: () => {
+        this.imprimirReceta()
         this.form1.atencion_detalle.N_CONTROL = this.form1.numcon;
         this.personals.devolver_personal(this.sesion.id_persona, this.sesion.COD_IPRESS).subscribe((dato) => {
           let personal: any
           if (dato.rowsAffected >= 1) {
             personal = dato.recordset[0];
             this.atencion.ID_RESPONSABLE = personal.ID_TRABAJADOR_IPRESS
-            
+
           }
           let personapaciente = this.estadoss.personaPaciente
           //GENERA EL PACIENTE ASI COMO SU HISTORIA CLINICA SI NO LO TUBIERA
@@ -133,7 +135,7 @@ export class RegistrarAtencionComponent implements OnInit {
             (historiaypaciente) => {
               console.log(historiaypaciente)
               this.atencion.ID_PACIENTE = personapaciente.ID_PERSONA;
-              this.atencion.ID_HC=historiaypaciente.historia.ID_HC
+              this.atencion.ID_HC = historiaypaciente.historia.ID_HC
 
               console.log(this.atencion);
               this.aten.registrar(
@@ -142,8 +144,8 @@ export class RegistrarAtencionComponent implements OnInit {
                 this.formatofuat.personal.NRO_DOCUMENTO = this.sesion.id_persona
                 this.formatofuat.numeroFuat = RESPUESTA.identiti;
                 console.log('se guardara el formato fuat')
-                console.log(this.formatofuat)
-                this.fuatservicio.guardarFuat(this.formatofuat).subscribe((res) => { console.log('se guardo correctamente la fuat'); console.log(res) })
+
+
                 id_atencion = RESPUESTA.identiti;
                 this.form1.examenesFisicos.examenes.forEach(element => {
                   element.ID_TRABAJADOR = this.atencion.ID_RESPONSABLE
@@ -155,14 +157,8 @@ export class RegistrarAtencionComponent implements OnInit {
                     console.log('se guardo exitosamente atencion detalle')
                     this.aten.registrarAtencionDiagnosticos(this.form2.diagnostabla, id_atencion, this.trabajador_id).subscribe(() => {
                       console.log('se guardo exitosamente los diagnosticos')
-                      this.imprimirFuat();
-                      this.completoRegistro.emit('Se completo el Registro');
-                      this.form1.datosa.resetForm()
-                      this.form2.diaf.resetForm()
-                      this.form3.trat.resetForm()
-                      this.form2.dianosticospac = []
-                      this.form2.diagnostabla = []
-                      this.form3.receta.resetearreceta();
+
+
                       this.atencionregser.guardar({
                         ID_ATENCION: id_atencion,
                         TIPO_CONSULTOR: "",
@@ -176,7 +172,35 @@ export class RegistrarAtencionComponent implements OnInit {
                         ID_FINANCIADOR: 1,
                         ID_UPSS: 302303
 
-                      }).subscribe(res => { console.log("se guardo correctamente la atencion reg") })
+                      }).subscribe(res => {
+                        console.log("se guardo correctamente la atencion reg")
+                        this.logs.log('se registro correctamnte la atencion', { atencion: this.atencion, diagnosticos: this.form2.diagnostabla }).subscribe()
+                        this.imprimirFuat();
+
+                        this.fuatservicio.guardarFuat(this.formatofuat).subscribe(async (res) => {
+                          this.logs.log('se guardo correctamente la fuat', res).subscribe()
+                          console.log('se guardo correctamente la fuat');
+
+                
+                          console.log(    this.form3.receta.itemsreceta)
+                            console.log(dato)
+                           
+                     
+                          this.form3.receta.resetearreceta()
+                          this.form3.trat.resetForm()
+
+                          this.completoRegistro.emit('Se completo el Registro');
+                          this.form1.datosa.resetForm()
+                          this.form2.diaf.resetForm()
+
+                          this.form2.dianosticospac = []
+                          this.form2.diagnostabla = []
+                          //    
+
+                        })
+
+
+                      })
                     });
 
                   });
@@ -203,13 +227,16 @@ export class RegistrarAtencionComponent implements OnInit {
 
 
   }
+  async imprimirReceta() {
+     await this.form3.receta.imprimirReceta()
+  }
   imprimirFuat() {
 
 
     this.formatofuat.codipress = this.sesion.COD_IPRESS;
     this.formatofuat.nombreipress = this.sesion.NOMBRE_IPRESS;
 
-    if (this.estadoss.solicitud!= null) {
+    if (this.estadoss.solicitud != null) {
       this.formatofuat.fechasolicitud = this.estadoss.solicitud.FECHA_SOLICITUD.substring(0, 10);
       this.formatofuat.horasolicitud = this.estadoss.solicitud.FECHA_SOLICITUD.substring(11, 20);
     }

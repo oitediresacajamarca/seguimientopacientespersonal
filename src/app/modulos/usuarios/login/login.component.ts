@@ -8,6 +8,7 @@ import { UsuariosService } from 'src/app/servicios/usuarios.service';
 import { RouterLink, Router } from '@angular/router';
 
 import { EstadosService } from 'src/app/servicios/estados.service';
+import { LogService } from 'src/app/servicios/log.service';
 
 @Component({
   selector: 'app-login',
@@ -39,7 +40,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private disad: DistribucionAdministrativaService,
     private geo: GeografiaService, private usua: UsuariosService
-    , private rout: Router, private estadoapp: EstadosService) { }
+    , private rout: Router, private estadoapp: EstadosService,
+    private logs: LogService) { }
 
   ngOnInit() {
     this.SUBREGION = this.disad.devolver_subregiones();
@@ -144,8 +146,7 @@ export class LoginComponent implements OnInit {
       COD_MICRORED: (this.microred_selecionada + 1000) * this.ambitoq.COD_MICRORED,
       COD_IPRESS: this.establecimiento_seleccionado
     }
-    console.log(ambito)
-    console.log(this.ambitoselec.peso)
+
 
 
     this.usua.login(this.username, this.clave, this.ambitoselec.peso).subscribe(dato => {
@@ -153,9 +154,10 @@ export class LoginComponent implements OnInit {
       if (dato.respuesta != null) {
 
 
-        console.log(dato.respuesta);
+     
         localStorage.setItem('datos', JSON.stringify(dato.respuesta))
-        this.usua.sessionUsuario=dato.respuesta;
+        this.usua.sessionUsuario = dato.respuesta;
+
         let cod1 = '', cod2 = '', cod3 = '', cod4 = ''
         if (ambito.COD_SUBREGION == 0) {
           cod1 = ''
@@ -178,15 +180,15 @@ export class LoginComponent implements OnInit {
 
         this.estadoapp.cod_con = cod1 + '' + cod2 + '' + cod3 + '' + ambito.COD_IPRESS;
         if (dato.respuesta.estado == 'actualizar' || dato.respuesta.estado == undefined) {
-          console.log(dato.respuesta.estado)
-          this.estadoapp.actualizarPerfil=true;
+      
+          this.estadoapp.actualizarPerfil = true;
           this.rout.navigate(['admin/panel']);
 
         } else {
-          this.estadoapp.actualizarPerfil=false;
+          this.estadoapp.actualizarPerfil = false;
           this.rout.navigate(['admin/panel']);
         }
-
+        this.logs.log('Inicio Sesion', dato.respuesta).subscribe()
 
       } else {
 

@@ -8,6 +8,7 @@ import { IpressService } from 'src/app/servicios/ipress.service';
 import { RecetaService } from 'src/app/servicios/impresiones/receta.service';
 import { GeografiaService } from 'src/app/servicios/maestros/geografia.service';
 import * as moment from 'moment';
+import { async } from '@angular/core/testing';
 
 
 
@@ -64,9 +65,6 @@ export class RecetaComponent implements OnInit {
 
   }
   borra(col) {
-
-    console.log(col)
-
     let index = this.itemsreceta.findIndex(dato => dato.COD_MEDICAMENTO === col.COD_MEDICAMENTO)
 
     this.itemsreceta.splice(index, 1)
@@ -74,12 +72,13 @@ export class RecetaComponent implements OnInit {
   }
 
 
-  imprimirReceta() {
+  async imprimirReceta() {
     //  this.estadoss.ticketreceta.CIUDAD=
+
 
     let session = JSON.parse(localStorage.getItem('datos'))
 
-    this.ips.getIpress(session.COD_IPRESS).subscribe(async (dato) => {
+  return  await this.ips.getIpress(session.COD_IPRESS).subscribe(async (dato) => {
 
       /*  this.estadoss.ticketreceta.DIRECCION = dato[0].DIRECCION
         this.estadoss.ticketreceta.NOMBRE_IPRESS = dato[0].NOMBRE_IPRESS
@@ -92,11 +91,12 @@ export class RecetaComponent implements OnInit {
 
       let distrito;
       let persona = this.estadoss.personaPaciente;
-      await this.geo.devolverDistrito(dato[0].ID_DISTRITO).subscribe((distri) => {
+
+ return     await this.geo.devolverDistrito(dato[0].ID_DISTRITO).subscribe(async (distri) => {
         distrito = distri;
 
         let nac = moment(persona.FECHA_NAC, "YYYY-MM-DD")
-       
+
 
 
         var hoy = moment();
@@ -115,7 +115,7 @@ export class RecetaComponent implements OnInit {
 
 
         let PROFESIONAL = JSON.parse(localStorage.getItem('datos'));
-      
+
         let ITEMS = this.itemsreceta.map((item) => {
           return {
             "ITEM": item.NRO_ITEM,
@@ -130,7 +130,8 @@ export class RecetaComponent implements OnInit {
             "FF": "TABLETA"
           }
         })
-        this.recetas.mostrarReceta(
+        console.log(this.itemsreceta)
+    return    await this.recetas.mostrarReceta(
           {
             "receta":
             {
@@ -150,9 +151,7 @@ export class RecetaComponent implements OnInit {
                 "NOMBRE_COMPLETO": PROFESIONAL.NOMBRES + ' ' + PROFESIONAL.APELLIDO_PAT + ' ' + PROFESIONAL.APELLIDO_MAT,
                 "NRO_DOCUMENTO": PROFESIONAL.NRO_DOCUMENTO
               },
-
               "ITEMS": ITEMS
-
             }
           }
         )
