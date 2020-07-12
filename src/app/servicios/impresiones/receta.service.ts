@@ -31,4 +31,7 @@ export class RecetaService {
 
 
   }
+  guardarReceta(receta) {
+    return this.http.post(environment.url_backend + 'receta/crear', receta);
+  }
 }

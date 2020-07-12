@@ -36,9 +36,9 @@ import { CalendarModule } from 'primeng/calendar';
 import { CaptchaModule } from 'primeng/captcha';
 import { ContextMenuModule } from 'primeng/contextmenu';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { ConfirmationService, SharedModule } from 'primeng/api';
+import { ConfirmationService, SharedModule } from 'primeng';
 import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
+import { MessageService } from 'primeng';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { PrincipalComponent } from './componentes/atencion/principal.component';
@@ -70,6 +70,7 @@ import { SelectorCieCpmsComponent } from './controles/selector-cie-cpms/selector
 import { AtencionesRealizadasComponent } from './componentes/atencion/atenciones-realizadas/atenciones-realizadas.component';
 import { DetalleAtencionComponent } from './componentes/atencion/atenciones-realizadas/detalle-atencion/detalle-atencion.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import {InputNumberModule} from 'primeng/inputnumber';
 
 import { MultiSelectModule } from 'primeng/multiselect';
 
@@ -139,6 +140,7 @@ import { IpressService } from './servicios/ipress.service';
     MatSidenavModule,
     BrowserAnimationsModule,
     DropdownModule,
+    InputNumberModule,
     FormsModule,
     HttpClientModule, SpinnerModule
     , SliderModule, RadioButtonModule,

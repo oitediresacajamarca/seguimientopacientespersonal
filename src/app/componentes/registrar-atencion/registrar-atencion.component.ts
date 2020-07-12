@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild, Output, EventEmitter, ɵConsole } from '@angular/core';
 import { AtencionService } from 'src/app/servicios/atencion.service';
-import { ConfirmationService, MessageService, MenuItem } from 'primeng/api';
+import { ConfirmationService, MessageService, MenuItem } from 'primeng';
 import { DatosAtencionComponent } from './datos-atencion/datos-atencion.component';
 import { DiagnosticosComponent } from './diagnosticos/diagnosticos.component';
 import { TratamientoComponent } from './tratamiento/tratamiento.component';
@@ -15,6 +15,7 @@ import { AtencionRegService } from 'src/app/servicios/atencion-reg.service';
 import { PacienteService } from 'src/app/servicios/paciente.service';
 import { EstadosService } from 'src/app/servicios/estados.service';
 import { LogService } from 'src/app/servicios/log.service';
+import { RecetaService } from 'src/app/servicios/impresiones/receta.service';
 
 
 
@@ -50,7 +51,7 @@ export class RegistrarAtencionComponent implements OnInit {
     private fuatservicio: FuatServicioService, private messageService: MessageService,
     private atencionregser: AtencionRegService,
     private personals: PersonalService, private pacientes: PacienteService,
-    private estadoss: EstadosService, private logs: LogService) { }
+    private estadoss: EstadosService, private logs: LogService, private recetas: RecetaService) { }
 
   ngOnInit() {
 
@@ -120,7 +121,10 @@ export class RegistrarAtencionComponent implements OnInit {
     this.confirmationService.confirm({
       message: 'Esta seguro de que deseas Guardar la Atencion',
       accept: () => {
-        this.imprimirReceta()
+        this.imprimirReceta();
+      
+
+        this.recetas.guardarReceta(this.form3.receta);
         this.form1.atencion_detalle.N_CONTROL = this.form1.numcon;
         this.personals.devolver_personal(this.sesion.id_persona, this.sesion.COD_IPRESS).subscribe((dato) => {
           let personal: any
@@ -143,6 +147,9 @@ export class RegistrarAtencionComponent implements OnInit {
               ).subscribe((RESPUESTA) => {
                 this.formatofuat.personal.NRO_DOCUMENTO = this.sesion.id_persona
                 this.formatofuat.numeroFuat = RESPUESTA.identiti;
+                this.guardarReceta( RESPUESTA.identiti);
+                this.guardarTratamiento(RESPUESTA.identiti, this.atencion.ID_RESPONSABLE )
+            
                 console.log('se guardara el formato fuat')
 
 
@@ -181,11 +188,11 @@ export class RegistrarAtencionComponent implements OnInit {
                           this.logs.log('se guardo correctamente la fuat', res).subscribe()
                           console.log('se guardo correctamente la fuat');
 
-                
-                          console.log(    this.form3.receta.itemsreceta)
-                            console.log(dato)
-                           
-                     
+
+                          console.log(this.form3.receta.itemsreceta)
+                          console.log(dato)
+
+
                           this.form3.receta.resetearreceta()
                           this.form3.trat.resetForm()
 
@@ -228,7 +235,14 @@ export class RegistrarAtencionComponent implements OnInit {
 
   }
   async imprimirReceta() {
-     await this.form3.receta.imprimirReceta()
+    await this.form3.receta.imprimirReceta()
+  }
+
+  async guardarTratamiento(ID_ATENCION,ID_TRABAJADOR) {
+    await this.form3.receta.GuardarTratamiento(ID_ATENCION,ID_TRABAJADOR)
+  }
+  async guardarReceta(ID_ATENCION) {
+    await this.form3.receta.GuardarReceta(ID_ATENCION)
   }
   imprimirFuat() {
 

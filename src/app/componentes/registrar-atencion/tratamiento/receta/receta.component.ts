@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService } from 'primeng';
 import { DialogService } from 'primeng/dynamicdialog';
 import { SelectorMedicamentoComponent } from 'src/app/controles/selector-medicamento/selector-medicamento.component';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -9,6 +9,7 @@ import { RecetaService } from 'src/app/servicios/impresiones/receta.service';
 import { GeografiaService } from 'src/app/servicios/maestros/geografia.service';
 import * as moment from 'moment';
 import { async } from '@angular/core/testing';
+import { TratamientoService } from 'src/app/servicios/tratamiento.service';
 
 
 
@@ -26,6 +27,7 @@ export class RecetaComponent implements OnInit {
   constructor(private confirmationService: ConfirmationService,
     private fb: FormBuilder, private estadoss: EstadosService,
     private ips: IpressService, private recetas: RecetaService,
+    private tratamientos: TratamientoService,
     private geo: GeografiaService) { }
 
   ngOnInit() {
@@ -42,7 +44,10 @@ export class RecetaComponent implements OnInit {
       PERIODO: "",
       COD_MEDICAMENTO: "",
       DOSIS: "",
-      VIA: ""
+      VIA: "",
+      PRESENTACION:"",
+      CONCENTRACION:"",
+      FF:""
 
     })
   }
@@ -53,11 +58,20 @@ export class RecetaComponent implements OnInit {
   }
   medicamentosele(e) {
     this.visulizarselector = false
-    this.fg.controls['MEDICAMENTO'].setValue(e.MEDICAMENTO)
+    this.fg.controls['MEDICAMENTO'].setValue(e.MEDICAMENTO);
+    this.fg.controls['COD_MEDICAMENTO'].setValue(e.COD_MEDICAMENTO);
+    this.fg.controls['PRESENTACION'].setValue(e.PRESENTACION);
+    this.fg.controls['CONCENTRACION'].setValue(e.CONCENTRACION);
+    this.fg.controls['FF'].setValue(e.FF);
+    
+    this.fg.controls['ESTADO_TRATAMIENTO'].setValue(1);
+    console.log(this.fg.value)
+  
 
 
   }
   aniadir() {
+
     this.itemsreceta.push(this.fg.value);
 
     this.fg.reset();
@@ -73,103 +87,116 @@ export class RecetaComponent implements OnInit {
 
 
   async imprimirReceta() {
-    //  this.estadoss.ticketreceta.CIUDAD=
+
+    this.generaDatosJson().then((datosJson) => {
+
+      console.log(datosJson)
+      this.recetas.mostrarReceta(
+        datosJson
+      )
+
+    });
+
+
+
+
+
+
+
+
+  }
+
+  async generaDatosJson() {
+
+
+
 
 
     let session = JSON.parse(localStorage.getItem('datos'))
 
-  return  await this.ips.getIpress(session.COD_IPRESS).subscribe(async (dato) => {
+    const dato = await this.ips.getIpress(session.COD_IPRESS).toPromise()
 
-      /*  this.estadoss.ticketreceta.DIRECCION = dato[0].DIRECCION
-        this.estadoss.ticketreceta.NOMBRE_IPRESS = dato[0].NOMBRE_IPRESS
-        this.estadoss.ticketreceta.NOMBRE_COMPLETO_PACIENTE = this.estadoss.personaPaciente.NOMBRES + ' ' + this.estadoss.personaPaciente.APELLIDO_PAT
-        this.estadoss.ticketreceta.COD_ASEGURADO = '';
-        var mywindow = window.open('http://localhost:4200/seguimientopacientespersonal/recetaprint', 'PRINT', 'height=800,width=1200');
-        mywindow.document.close();
-        mywindow.focus();
-        mywindow.print();*/
+    let distrito;
+    let persona = this.estadoss.personaPaciente;
 
-      let distrito;
-      let persona = this.estadoss.personaPaciente;
-
- return     await this.geo.devolverDistrito(dato[0].ID_DISTRITO).subscribe(async (distri) => {
-        distrito = distri;
-
-        let nac = moment(persona.FECHA_NAC, "YYYY-MM-DD")
+    const distri = await this.geo.devolverDistrito(dato[0].ID_DISTRITO).toPromise()
+    distrito = distri;
+    let nac = moment(persona.FECHA_NAC, "YYYY-MM-DD")
 
 
 
-        var hoy = moment();
-        var EDAD = hoy.diff(nac, "years");
+    var hoy = moment();
+    var EDAD = hoy.diff(nac, "years");
 
-        let diagnosticos = this.estadoss.dianosticospac.map(
-          diagnos => {
-            return {
-              NRO_ITEM: diagnos.item,
-              COD_DIAGNOSTICO: diagnos.cod_cie,
-              TIPO: diagnos.tip_diag,
-              DIAGNOSTICO: diagnos.desc_diag
-            }
+    let diagnosticos = this.estadoss.dianosticospac.map(
+      diagnos => {
+        return {
+          NRO_ITEM: diagnos.item,
+          COD_DIAGNOSTICO: diagnos.cod_cie,
+          TIPO: diagnos.tip_diag,
+          DIAGNOSTICO: diagnos.desc_diag
+        }
 
-          });
-
-
-        let PROFESIONAL = JSON.parse(localStorage.getItem('datos'));
-
-        let ITEMS = this.itemsreceta.map((item) => {
-          return {
-            "ITEM": item.NRO_ITEM,
-            "MEDICAMENTO": item.MEDICAMENTO,
-            "DOSIS": item.DOSIS,
-            "VIA": item.VIA,
-            "FRECUENCIA": item.FRECUENCIA,
-            "DURACION": item.PERIODO,
-            "PRESENTACION": "sobre",
-            "CONCENTRACION": "3mg",
-            "CANTIDAD": item.CANTIDAD,
-            "FF": "TABLETA"
-          }
-        })
-        console.log(this.itemsreceta)
-    return    await this.recetas.mostrarReceta(
-          {
-            "receta":
-            {
-              "NOMBRE_IPRESS": dato[0].NOMBRE,
-              "DIRECCION": dato[0].DIRECCION,
-              "CIUDAD": distrito.NOMBRE_DISTRITO,
-              "NOMBRE_COMPLETO_PACIENTE": persona.NOMBRES + ' ' + persona.APELLIDO_PAT + ' ' + persona.APELLIDO_MAT,
-              "EDAD_PACIENTE": EDAD,
-              "COD_ASEGURADO": "289382",
-              "NRO_DOCUMENTO": persona.NRO_DOCUMENTO,
-              "FINANCIADOR": "DEMANDA",
-              "ATENCION": "ESPECIALIDAD",
-              "ESPECIALIDAD": "NEUROLOGIA",
-              "NR0_HCL": persona.NRO_DOCUMENTO,
-              "DIAGNOSTICOSlist": diagnosticos,
-              "PROFESIONAL": {
-                "NOMBRE_COMPLETO": PROFESIONAL.NOMBRES + ' ' + PROFESIONAL.APELLIDO_PAT + ' ' + PROFESIONAL.APELLIDO_MAT,
-                "NRO_DOCUMENTO": PROFESIONAL.NRO_DOCUMENTO
-              },
-              "ITEMS": ITEMS
-            }
-          }
-        )
+      });
 
 
+    let PROFESIONAL = JSON.parse(localStorage.getItem('datos'));
 
-      })
-
-
-
-
+    let ITEMS = this.itemsreceta.map((item) => {
+      return {
+        "ITEM": item.NRO_ITEM,
+        "MEDICAMENTO": item.MEDICAMENTO,
+        "DOSIS": item.DOSIS,
+        "VIA": item.VIA,
+        "FRECUENCIA": item.FRECUENCIA,
+        "DURACION": item.PERIODO,
+        "PRESENTACION": item.PRESENTACION,
+        "CONCENTRACION": item.CONCENTRACION,
+        "CANTIDAD": item.CANTIDAD,
+        "FF": item.FF
+      }
     })
 
+    return {
+      "receta":
+      {
+        "ID_ATENCION": "",
+        "NOMBRE_IPRESS": dato[0].NOMBRE,
+        "DIRECCION": dato[0].DIRECCION,
+        "CIUDAD": distrito.NOMBRE_DISTRITO,
+        "NOMBRE_COMPLETO_PACIENTE": persona.NOMBRES + ' ' + persona.APELLIDO_PAT + ' ' + persona.APELLIDO_MAT,
+        "EDAD_PACIENTE": EDAD,
+        "COD_ASEGURADO": "289382",
+        "NRO_DOCUMENTO": persona.NRO_DOCUMENTO,
+        "FINANCIADOR": "DEMANDA",
+        "ATENCION": "ESPECIALIDAD",
+        "ESPECIALIDAD": "NEUROLOGIA",
+        "NR0_HCL": persona.NRO_DOCUMENTO,
+        "DIAGNOSTICOSlist": diagnosticos,
+        "PROFESIONAL": {
+          "NOMBRE_COMPLETO": PROFESIONAL.NOMBRES + ' ' + PROFESIONAL.APELLIDO_PAT + ' ' + PROFESIONAL.APELLIDO_MAT,
+          "NRO_DOCUMENTO": PROFESIONAL.NRO_DOCUMENTO
+        },
+        "ITEMS": ITEMS
+      }
+    }
 
 
+
+  }
+  GuardarTratamiento(ID_ATENCION, ID_TRABAJADOR) {
+    this.itemsreceta = this.itemsreceta.map((item) => { item.ID_ATENCION = ID_ATENCION; item.ID_TRABAJADOR = ID_TRABAJADOR; return item })
+    this.tratamientos.guardarTratamientos(this.itemsreceta).subscribe((datos) => { console.log('se guardaron los tratamientos') })
+
+  }
+  async GuardarReceta(ID_ATENCION) {
+    const datosjson = await this.generaDatosJson();
+    datosjson.receta.ID_ATENCION = ID_ATENCION
+    this.recetas.guardarReceta(datosjson.receta).subscribe((datos) => { console.log('se guardo correctamente la receta') })
   }
   resetearreceta() {
     this.itemsreceta = [];
   }
+
 
 }
