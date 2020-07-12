@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ConfirmationService } from 'primeng';
 import { DialogService } from 'primeng/dynamicdialog';
-import { SelectorMedicamentoComponent } from 'src/app/controles/selector-medicamento/selector-medicamento.component';
+
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EstadosService } from 'src/app/servicios/estados.service';
 import { IpressService } from 'src/app/servicios/ipress.service';
@@ -10,6 +10,7 @@ import { GeografiaService } from 'src/app/servicios/maestros/geografia.service';
 import * as moment from 'moment';
 import { async } from '@angular/core/testing';
 import { TratamientoService } from 'src/app/servicios/tratamiento.service';
+import { LogService } from 'src/app/servicios/log.service';
 
 
 
@@ -28,7 +29,7 @@ export class RecetaComponent implements OnInit {
     private fb: FormBuilder, private estadoss: EstadosService,
     private ips: IpressService, private recetas: RecetaService,
     private tratamientos: TratamientoService,
-    private geo: GeografiaService) { }
+    private geo: GeografiaService,private logs:LogService) { }
 
   ngOnInit() {
     this.fg = this.fb.group({
@@ -186,7 +187,9 @@ export class RecetaComponent implements OnInit {
   }
   GuardarTratamiento(ID_ATENCION, ID_TRABAJADOR) {
     this.itemsreceta = this.itemsreceta.map((item) => { item.ID_ATENCION = ID_ATENCION; item.ID_TRABAJADOR = ID_TRABAJADOR; return item })
-    this.tratamientos.guardarTratamientos(this.itemsreceta).subscribe((datos) => { console.log('se guardaron los tratamientos') })
+    this.tratamientos.guardarTratamientos(this.itemsreceta).subscribe((datos) => { console.log('se guardaron los tratamientos') },(ERROR)=>{
+      this.logs.log('errores al guadar tratamiento',this.itemsreceta).subscribe();
+    })
 
   }
   async GuardarReceta(ID_ATENCION) {
