@@ -21,7 +21,7 @@ export class NuevoUsuarioComponent implements OnInit {
 
   constructor(private persona: PersonaService, private usu: UsuariosService,
     private confirmationService: ConfirmationService, private maestr: ProfesionService,
-    private colegios: ColegioService, private stadoss: EstadosService,private messageService: MessageService) { }
+    private colegios: ColegioService, private stadoss: EstadosService, private messageService: MessageService) { }
   cod_colegiatura: string;
   msgs: Message[] = [];
   logueado: string;
@@ -137,7 +137,7 @@ export class NuevoUsuarioComponent implements OnInit {
   }
   aniadirAmbito(e) {
 
-  
+
     let usu = this.usu.getSession()
     let aniade = false;
     usu.ambitos.forEach(element => {
@@ -158,8 +158,8 @@ export class NuevoUsuarioComponent implements OnInit {
       this.ambitoelegidos.push(am)
     }
     else {
-      this.messageService.add({severity:'danger', summary:'Error', detail:'No puede asignar ambito fuera del ambito de acceso asignado a su cuenta',key:"mensajeusu"});
-      console.log('no puede ')
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No puede asignar ambito fuera del ambito de acceso asignado a su cuenta', key: "mensajeusu" });
+
     }
 
   }
@@ -185,6 +185,12 @@ export class NuevoUsuarioComponent implements OnInit {
       }
     })
 
+  }
+  EliminarAmbito(ambitoe) {
+    console.log(this.ambitoelegidos)
+    let pocicion = this.ambitoelegidos.findIndex(ambito => { return (ambito.peso == ambitoe.peso && ambito.peso_sup == ambitoe.peso_sup) });
+    this.ambitoelegidos.splice(pocicion, 1);
+    console.log(this.ambitoelegidos)
   }
 
   generarCuenta() {
@@ -213,10 +219,10 @@ export class NuevoUsuarioComponent implements OnInit {
     usu.DATOS_PROFESIONALES.NOMBRE_PROFESION = this.profesionselec.DESCRIPCION_PROFESION;
     usu.DATOS_PROFESIONALES.NOMBRE_ESPECIALIDAD = this.especialidad; '';
     usu.roles = this.rolesselect
-    console.log(usu);
+
     this.confirmationService.confirm({
       message: 'ESTA SEGURO DE CREAR EL USUARIO',
-      header: 'CONFIRMCION',
+      header: 'CONFIRMACION',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.usu.nuevo(usu).subscribe((dat) => {
@@ -241,6 +247,12 @@ export class NuevoUsuarioComponent implements OnInit {
   }
   aniadirIpress(e) {
     this.ipressselect.push(e)
+  }
+  EliminarEstableciminto(estableciminto) {
+    
+    let indice = this.ipressselect.findIndex((ipress) => { return ipress.COD_IPRESS == estableciminto.COD_IPRESS })
+    this.ipressselect.splice(indice, 1)
+
   }
   cambioprof(e) {
 

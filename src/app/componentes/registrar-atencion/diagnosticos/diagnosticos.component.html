@@ -1,5 +1,6 @@
 <form #diaf="ngForm">
 <div class="ui-g-12" *ngIf="visible">
+  
   <br /> 
   <br />
   DIAGNOSTICO
@@ -32,6 +33,7 @@
         <ng-template pTemplate> 
 
           <app-selector-cie-cpms (seleccionoCie)="agregarCie($event)"></app-selector-cie-cpms>
+        
          
         </ng-template>
       </p-overlayPanel>
@@ -84,6 +86,8 @@
       </div>
       <br />
       <br /><br />
+    
+     
       <p-table [value]="dianosticospac">
         <ng-template pTemplate="header">
           <tr>
@@ -117,6 +121,10 @@
         </ng-template>
       </p-table>
     </div>
+  
   </mat-card>
+  
+
 </div>
 </form>
+

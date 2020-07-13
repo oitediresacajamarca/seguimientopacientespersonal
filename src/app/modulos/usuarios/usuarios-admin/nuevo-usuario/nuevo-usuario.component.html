@@ -246,17 +246,13 @@
                   {{ car[col.field] }}
                 </td>
                 <td>
-                  <button
-                    pButton
-                    icon="pi pi-refresh"
-                    label="Editar"
-                    class="ui-button-success"
-                  ></button>
+              
                   <button
                     pButton
                     icon="pi pi-trash"
                     label="Eliminar"
                     class="ui-button-danger"
+                    (click)="EliminarAmbito(car)"
                   ></button>
                 </td>
               </tr>
@@ -305,17 +301,13 @@
                   {{ car[col.field] }}
                 </td>
                 <td>
-                  <button
-                    pButton
-                    icon="pi pi-refresh"
-                    label="Editar"
-                    class="ui-button-success"
-                  ></button>
+           
                   <button
                     pButton
                     icon="pi pi-trash"
                     label="Eliminar"
                     class="ui-button-danger"
+                    (click)="EliminarEstableciminto(car)"
                   ></button>
                 </td>
               </tr>

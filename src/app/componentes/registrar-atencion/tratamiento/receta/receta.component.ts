@@ -91,7 +91,6 @@ export class RecetaComponent implements OnInit {
 
     this.generaDatosJson().then((datosJson) => {
 
-      console.log(datosJson)
       this.recetas.mostrarReceta(
         datosJson
       )
@@ -167,11 +166,11 @@ export class RecetaComponent implements OnInit {
         "CIUDAD": distrito.NOMBRE_DISTRITO,
         "NOMBRE_COMPLETO_PACIENTE": persona.NOMBRES + ' ' + persona.APELLIDO_PAT + ' ' + persona.APELLIDO_MAT,
         "EDAD_PACIENTE": EDAD,
-        "COD_ASEGURADO": "289382",
+        "COD_ASEGURADO": "",
         "NRO_DOCUMENTO": persona.NRO_DOCUMENTO,
         "FINANCIADOR": "DEMANDA",
         "ATENCION": "ESPECIALIDAD",
-        "ESPECIALIDAD": "NEUROLOGIA",
+        "ESPECIALIDAD": "",
         "NR0_HCL": persona.NRO_DOCUMENTO,
         "DIAGNOSTICOSlist": diagnosticos,
         "PROFESIONAL": {

@@ -54,8 +54,7 @@ export class AtencionesRealizadasComponent implements OnInit {
   }
   buscarPorFechas() {
 
-    console.log(this.desde);
-    console.log(this.hasta)
+   
     let d =this.desde.getFullYear()+'/'+(this.desde.getMonth().valueOf()+1)+'/'+this.desde.getDate();
     let h =this.hasta.getFullYear()+'/'+(this.hasta.getMonth().valueOf()+1)+'/'+this.hasta.getDate();
     this.ate.devolverAtencionesRealizadasPorfecha(d,h).subscribe((datos) => {

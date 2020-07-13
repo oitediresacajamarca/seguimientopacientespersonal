@@ -31,6 +31,16 @@ export class RecetaService {
 
 
   }
+  verReceta(ID_ATENCION: number) {
+    this.http.get(environment.url_backend + 'receta/ver/' + ID_ATENCION,{ responseType: 'arraybuffer' }).subscribe(
+      (datos) => {
+        var blob = new Blob([datos], { type: 'application/pdf' });
+        var filename = 'RECETA.pdf';
+        FileSaver.saveAs(blob, filename);
+        this.url = URL.createObjectURL(blob)
+        return 'se imprimio'
+      });
+  }
   guardarReceta(receta) {
     return this.http.post(environment.url_backend + 'receta/crear', receta);
   }

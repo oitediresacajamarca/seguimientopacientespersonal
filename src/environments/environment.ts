@@ -8,10 +8,10 @@ export const environment = {
   ip: "localhost:8089",
   //ipmicroservicios: "http://190.116.36.121:8089/",
   //ip: "190.116.36.121:8089",
-  ip_backend: "localhost:8088",
-  url_backend: "http://localhost:8088/"
-  // ip_backend: "190.116.36.121:8088",
-  // url_backend: "http://190.116.36.121:8088/"
+   ip_backend: "localhost:8088",
+   url_backend: "http://localhost:8088/"
+  //ip_backend: "190.116.36.121:8088",
+  //url_backend: "http://190.116.36.121:8088/"
 };
 
 /*

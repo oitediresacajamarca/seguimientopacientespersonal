@@ -11,6 +11,7 @@ import { NgForm, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { EstadosService } from 'src/app/servicios/estados.service';
 import { Button } from 'primeng/button';
 import { LogService } from 'src/app/servicios/log.service';
+import { MessageService } from 'primeng';
 declare var $: any
 
 @Component({
@@ -90,10 +91,11 @@ export class PrincipalComponent implements OnInit {
     private personser: PersonaService, private GEO: GeografiaService,
     private estadoss: EstadosService,
     private router: Router, private formnuilder: FormBuilder,
-    private logs: LogService
+    private logs: LogService,private messageService:MessageService
   ) { }
 
   ngOnInit() {
+  
     this.estadoss.pacienteporatender.subscribe(dato => {
       this.cod_buscar = dato;
       this.buscarParaInciciarAtencion()

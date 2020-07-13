@@ -3,7 +3,7 @@ import { NuevoUsuarioComponent } from './nuevo-usuario/nuevo-usuario.component';
 import { UsuariosService } from 'src/app/servicios/usuarios.service';
 import { Message } from 'primeng/api/message';
 
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
+
 import { ConfirmationService } from 'primeng/api'
 import { EstadosService } from 'src/app/servicios/estados.service';
 
