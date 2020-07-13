@@ -108,6 +108,7 @@ export class RegistrarAtencionComponent implements OnInit {
 
 
   registrarAtencion(event) {
+    if(this.validarcampos().valido){
     try {
 
       let fecha = new Date()
@@ -124,6 +125,7 @@ export class RegistrarAtencionComponent implements OnInit {
       this.confirmationService.confirm({
         message: 'Esta seguro de que deseas Guardar la Atencion',
         accept: () => {
+          this.logs.log('Inicia proceso de registro de atencion en base de datos', {}).subscribe();
           this.imprimirReceta();
           this.recetas.guardarReceta(this.form3.receta);
           this.form1.atencion_detalle.N_CONTROL = this.form1.numcon;
@@ -138,10 +140,10 @@ export class RegistrarAtencionComponent implements OnInit {
             //GENERA EL PACIENTE ASI COMO SU HISTORIA CLINICA SI NO LO TUBIERA
             this.pacientes.prepararPaciente(personapaciente.ID_PERSONA, personapaciente.NRO_DOCUMENTO, this.sesion.COD_IPRESS).subscribe(
               (historiaypaciente) => {
-                console.log(historiaypaciente)
+                this.logs.log('Se creo la historia clinica del paciente', historiaypaciente).subscribe();
                 this.atencion.ID_PACIENTE = personapaciente.ID_PERSONA;
                 this.atencion.ID_HC = historiaypaciente.historia.ID_HC
-
+                this.logs.log('Se registrara la atencion :', this.atencion).subscribe();
                 console.log(this.atencion);
                 this.aten.registrar(
                   this.atencion
@@ -236,8 +238,24 @@ export class RegistrarAtencionComponent implements OnInit {
     } catch (error) {
       this.logs.log('errores al registrar atencion', error).subscribe()
     }
+  }else{
+
+this.messageService.add({severity:'error',detail:this.validarcampos().mensaje,summary:'No se puede registrar atencion',key:'mensajeregistro'})
+
+  }
 
 
+
+  }
+
+  validarcampos() {
+    let valido = {valido:true,mensaje:''};
+    if (this.form2.dianosticospac.length == 0) {
+      valido.valido = false;
+      valido.mensaje='No se a asigndo diagnosticos al paciente'
+    }
+
+    return valido;
 
   }
   async imprimirReceta() {
