@@ -85,6 +85,7 @@ import { MenuAccionAtencionComponent } from './controles/menu-accion-atencion/me
 import { TicketRecetaComponent } from './impresiones/ticket-receta/ticket-receta.component';
 import { IpressService } from './servicios/ipress.service';
 
+
 @NgModule({
   entryComponents: [
     SelectorMedicamentoComponent
@@ -111,6 +112,7 @@ import { IpressService } from './servicios/ipress.service';
     SelectorCieCpmsComponent,
     AtencionesRealizadasComponent,
     DetalleAtencionComponent,
+
 
     HistorialAtencionComponent,
 

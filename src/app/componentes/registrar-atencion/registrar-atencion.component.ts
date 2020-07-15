@@ -126,9 +126,13 @@ export class RegistrarAtencionComponent implements OnInit {
         this.confirmationService.confirm({
           message: 'Esta seguro de que deseas Guardar la Atencion',
           accept: () => {
+            this.confirmationService.close()
             this.logs.log('Inicia proceso de registro de atencion en base de datos', {}).subscribe();
             this.imprimirReceta();
-            this.recetas.guardarReceta(this.form3.receta);
+            setTimeout(() => {
+              console.log('sleep');
+            }, 10000);
+
             this.form1.atencion_detalle.N_CONTROL = this.form1.numcon;
             this.personals.devolver_personal(this.sesion.id_persona, this.sesion.COD_IPRESS).subscribe((dato) => {
               let personal: any
@@ -144,11 +148,12 @@ export class RegistrarAtencionComponent implements OnInit {
                   this.logs.log('Se creo la historia clinica del paciente', historiaypaciente).subscribe();
                   this.atencion.ID_PACIENTE = personapaciente.ID_PERSONA;
                   this.atencion.ID_HC = historiaypaciente.historia.ID_HC
-                  this.logs.log('Se registrara la atencion :', this.atencion).subscribe();
+
                   console.log(this.atencion);
                   this.aten.registrar(
                     this.atencion
                   ).subscribe((RESPUESTA) => {
+                    this.logs.log('Se registro  la atencion :', RESPUESTA).subscribe();
                     this.formatofuat.personal.NRO_DOCUMENTO = this.sesion.id_persona
                     this.formatofuat.numeroFuat = RESPUESTA.identiti;
                     this.guardarReceta(RESPUESTA.identiti);
@@ -185,7 +190,7 @@ export class RegistrarAtencionComponent implements OnInit {
 
                           this.atencionregser.guardar(atencionreg).subscribe(res => {
                             console.log("se guardo correctamente la atencion reg")
-                            this.logs.log('se registro correctamnte la atencion', { atencion: this.atencion, diagnosticos: this.form2.diagnostabla }).subscribe()
+                            this.logs.log('se registro correctamente la atencion', { atencion: this.atencion, diagnosticos: this.form2.diagnostabla }).subscribe()
                             this.imprimirFuat();
 
                             this.fuatservicio.guardarFuat(this.formatofuat).subscribe(async (res) => {
@@ -193,8 +198,7 @@ export class RegistrarAtencionComponent implements OnInit {
                               console.log('se guardo correctamente la fuat');
 
 
-                              console.log(this.form3.receta.itemsreceta)
-                              console.log(dato)
+
 
 
                               this.form3.receta.resetearreceta()
@@ -233,7 +237,7 @@ export class RegistrarAtencionComponent implements OnInit {
 
 
 
-          }
+          },
         })
 
       } catch (error) {
