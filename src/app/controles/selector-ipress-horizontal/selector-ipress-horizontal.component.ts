@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { DistribucionAdministrativaService } from 'src/app/servicios/distribucion-administrativa.service';
+import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Table } from 'primeng/table';
+import { MorbilidadesService } from 'src/app/servicios/morbilidades.service';
+import { MorbilidadesTablaItem } from 'src/app/interfaces/morbilidades-tabla-item';
 import { GeografiaService } from 'src/app/servicios/servicios/geografia.service';
+import { DistribucionAdministrativaService } from 'src/app/servicios/distribucion-administrativa.service';
 import { UsuariosService } from 'src/app/servicios/usuarios.service';
 import { Router } from '@angular/router';
 import { EstadosService } from 'src/app/servicios/estados.service';
 
 @Component({
-  selector: 'app-selector-ipress',
-  templateUrl: './selector-ipress.component.html',
-  styleUrls: ['./selector-ipress.component.css']
+  selector: 'app-selector-ipress-horizontal',
+  templateUrl: './selector-ipress-horizontal.component.html',
+  styleUrls: ['./selector-ipress-horizontal.component.css']
 })
-export class SelectorIpressComponent implements OnInit {
+export class SelectorIpressHorizontalComponent implements OnInit {
   SUBREGION: any[] = [];
   REDES: any[] = [];
   redes_filtradas: any[] = [];
@@ -21,16 +24,33 @@ export class SelectorIpressComponent implements OnInit {
   ESTABLECIMIENTO_FILTRADO: any[] = [];
   establecimiento_seleccionado: any = '';
 
-  constructor(private disad: DistribucionAdministrativaService,
+  listamorbilidades: MorbilidadesTablaItem[];
+
+  selectedCustomers: MorbilidadesTablaItem[];
+  morbilidadesselec: string[];
+  public codigosSelect: string[];
+  public selectioncie: any;
+  @Output()
+  seleccionoIpress = new EventEmitter<any>();
+
+  statuses: any[];
+
+  loading: boolean = true;
+
+  @ViewChild('dt', { static: false }) table: Table;
+  @Output() cambioSelecion: EventEmitter<string[]> = new EventEmitter()
+  constructor(private morb: MorbilidadesService,private disad: DistribucionAdministrativaService,
     private geo: GeografiaService, private usua: UsuariosService
     , private rout: Router, private estadoapp: EstadosService) { }
+  w
+
 
   ngOnInit() {
     this.SUBREGION = this.disad.devolver_subregiones();
     this.REDES = this.disad.devolver_redes();
   }
 
-
+  
   cambioRegion(e) {
     this.redes_filtradas = this.disad.devolver_redes_por_subregion(e.value);
   }
@@ -74,6 +94,8 @@ export class SelectorIpressComponent implements OnInit {
   cambio_establecimiento(e) {
 
 
+    this.establecimiento_seleccionado = e.value
+    this.seleccionoIpress.emit(this.establecimiento_seleccionado)
 
   }
   selecionar_Ipress(cod_ipres: string) {
@@ -94,14 +116,8 @@ export class SelectorIpressComponent implements OnInit {
 
         });
         this.microred_selecionada = ipress.ID_MICRORED;
-
       })
-
-
-
       this.ESTABLECIMIENTO_FILTRADO = []
-
-
       this.geo.devolverIpressPorMicrored(ipress.ID_MICRORED).subscribe((datos) => {
         datos.respuesta.forEach(element => {
           let ipress: any = {};
@@ -110,23 +126,13 @@ export class SelectorIpressComponent implements OnInit {
           this.ESTABLECIMIENTO_FILTRADO.push(ipress);
 
         });
-        this.establecimiento_seleccionado = ipress.CODIGO_RENIPRESS
+      
+
 
       })
 
-
-
-
-
-
-
-
-
-
-
     })
-
-
+    
   }
 
 

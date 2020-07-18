@@ -270,7 +270,7 @@ export class TablaNotificacionComponent implements OnInit {
       const worksheet = xlsx.utils.json_to_sheet(this.pacientes);
       const workbook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
       const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
-      this.saveAsExcelFile(excelBuffer, "primengTable");
+      this.saveAsExcelFile(excelBuffer, "SolicitudesAtencion");
     });
   }
 

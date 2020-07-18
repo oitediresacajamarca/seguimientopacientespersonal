@@ -16,6 +16,8 @@ import { HistorialAtencionComponent } from './atencion/historial-atencion/histor
 import { BusquedaNominalComponent } from './componentes/busqueda-nominal/busqueda-nominal.component';
 import { SelectorMedicamentoComponent } from './controles/selector-medicamento/selector-medicamento.component';
 import { TicketRecetaComponent } from './impresiones/ticket-receta/ticket-receta.component';
+import { SelectorIpressComponent } from './controles/selector-ipress/selector-ipress.component';
+import { SelectorIpressHorizontalComponent } from './controles/selector-ipress-horizontal/selector-ipress-horizontal.component';
 
 
 const routes: Routes = [
@@ -35,9 +37,11 @@ const routes: Routes = [
   { path: 'geo', component: GeoreferenciaComponent },
   { path: 'cie', component: SelectorCieCpmsComponent },
   { path: 'actualizar', component: ActualizarContraseniaComponent, outlet: 'emergente' },
+  { path: 'nuevaSolicitud', component:PublicComponent , outlet: 'emergente' },
+  
   { path: 'buscardni', component: BusquedaNominalComponent, outlet: 'emergente' },
   { path: 'prueba', component: HistorialAtencionComponent },
-  { path: 'prueba2', component: SelectorMedicamentoComponent },
+  { path: 'prueba2', component:SelectorIpressHorizontalComponent },
   {path:'recetaprint',component:TicketRecetaComponent},
 
   {

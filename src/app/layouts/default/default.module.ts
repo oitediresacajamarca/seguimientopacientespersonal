@@ -18,11 +18,11 @@ import {ContextMenuModule} from 'primeng/contextmenu';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { EditarSolComponent } from 'src/app/componetes/editar-sol/editar-sol.component';
 import {CardModule} from 'primeng/card';
-import { SelectorIpressComponent } from 'src/app/controles/selector-ipress/selector-ipress.component';
 import {DropdownModule} from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import {FieldsetModule} from 'primeng/fieldset';
 import {ToastModule} from 'primeng/toast';
+import { SelectorIpressComponent } from 'src/app/controles/selector-ipress/selector-ipress.component';
 
 
 
@@ -31,7 +31,8 @@ import {ToastModule} from 'primeng/toast';
     DefaultComponent,
     DashboardComponent,
     PostsComponent,TablaNotificacionComponent,
-    EditarSolComponent,SelectorIpressComponent
+    EditarSolComponent,
+    SelectorIpressComponent
   ],
   imports: [
     ButtonModule,

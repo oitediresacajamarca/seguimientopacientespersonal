@@ -1,0 +1,48 @@
+<div class="card contenedoripress">
+  <div class="ui-g">
+    <div class="ui-g-3">
+      <div class="form-group">
+        <label>SUBREGION</label><br>
+        <p-dropdown
+          [options]="SUBREGION"
+          [(ngModel)]="subregionSelect"
+          (onChange)="cambioRegion($event)"
+          placeholder="Seleccione "
+        ></p-dropdown>
+      </div>
+    </div>
+    <div class="ui-g-3">
+      <div class="form-group">
+        <label>RED</label><br />
+        <p-dropdown
+          [options]="redes_filtradas"
+          [(ngModel)]="red_seleccionada"
+          (onChange)="cambioRed($event)"
+          placeholder="Seleccione "
+        ></p-dropdown>
+      </div>
+    </div>
+    <div class="ui-g-3">
+      <div class="form-group">
+        <label>MICRORED</label><br />
+        <p-dropdown
+          [options]="MICROREDES_FILTRADAS"
+          [(ngModel)]="microred_selecionada"
+          (onChange)="devolver_establecimiento($event)"
+          placeholder="Seleccione "
+        ></p-dropdown>
+      </div>
+    </div>
+    <div class="ui-g-3">
+      <div class="form-group">
+        <label>ESTABLECIMIENTO</label><br />
+        <p-dropdown
+          [options]="ESTABLECIMIENTO_FILTRADO"
+          [(ngModel)]="establecimiento_seleccionado"
+          (onChange)="cambio_establecimiento($event)"
+          placeholder="Seleccione "
+        ></p-dropdown>
+      </div>
+    </div>
+  </div>
+</div>

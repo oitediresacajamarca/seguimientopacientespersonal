@@ -5,8 +5,7 @@
     </button>
 
     <span
-      >Sistema de Seguimiento a Poblacion en Riesgo/ Direccion Regional de Salud
-      Cajamarca</span
+      >Hospital Virtual Cajamarca/ Direccion Regional de Salud Cajamarca</span
     >
 
     <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
@@ -17,9 +16,20 @@
           </button>
         </li>
         <li>
-          <button mat-icon-button [routerLink]="['/admin/atencion']">
+
+          <button mat-icon-button [matMenuTriggerFor]="atenmenu">
             <mat-icon>add_box</mat-icon>
           </button>
+          <mat-menu #atenmenu="matMenu">
+            <button mat-menu-item [routerLink]="[{ outlets: { emergente: ['/nuevaSolicitud'] } }]">
+              <mat-icon>add_box</mat-icon>
+              Añadir Solicitud
+            </button>
+            <button mat-menu-item [routerLink]="['/admin/atencion']">
+              <mat-icon>assignment_return</mat-icon>
+              Ir a Atenciones
+            </button>
+          </mat-menu>
         </li>
         <li>
           <button mat-icon-button (click)="abrirNotificaciones()">
@@ -35,10 +45,10 @@
               <mat-icon>person</mat-icon>
               Usuarios
             </button>
-            <button mat-menu-item  (click)="abrir()" >
-                <mat-icon>lock_open</mat-icon>
-                Cambiar Contraseña
-              </button>
+            <button mat-menu-item (click)="abrir()">
+              <mat-icon>lock_open</mat-icon>
+              Cambiar Contraseña
+            </button>
           </mat-menu>
         </li>
         <li>

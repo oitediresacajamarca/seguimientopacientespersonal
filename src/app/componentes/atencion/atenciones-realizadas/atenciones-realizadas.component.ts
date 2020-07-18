@@ -15,16 +15,21 @@ export class AtencionesRealizadasComponent implements OnInit {
   desde: Date;
   hasta: Date
   formulario
+  ipressselecionada
 
-  constructor(private ate: AtencionService, private estados_service: EstadosService, private fb:FormBuilder) {
+  constructor(private ate: AtencionService, private estados_service: EstadosService, private fb: FormBuilder) {
 
+
+  }
+  seleccionoaipres(ipress) {
+    this.ipressselecionada = ipress
 
   }
 
   ngOnInit() {
-  
+
     this.estados_service.actualizarNotificacione.subscribe(() => {
-  
+
 
     })
 
@@ -50,18 +55,55 @@ export class AtencionesRealizadasComponent implements OnInit {
       }
     ];
 
-   this.formulario= this.fb.group({DESDE:this.desde,HASTA:this.hasta})
+    this.formulario = this.fb.group({ DESDE: this.desde, HASTA: this.hasta })
   }
   buscarPorFechas() {
 
-   
-    let d =this.desde.getFullYear()+'/'+(this.desde.getMonth().valueOf()+1)+'/'+this.desde.getDate();
-    let h =this.hasta.getFullYear()+'/'+(this.hasta.getMonth().valueOf()+1)+'/'+this.hasta.getDate();
-    this.ate.devolverAtencionesRealizadasPorfecha(d,h).subscribe((datos) => {
+
+    let d = this.desde.getFullYear() + '/' + (this.desde.getMonth().valueOf() + 1) + '/' + this.desde.getDate();
+    let h = this.hasta.getFullYear() + '/' + (this.hasta.getMonth().valueOf() + 1) + '/' + this.hasta.getDate();
+    this.ate.devolverAtencionesRealizadasPorfechaIpress(d, h, this.ipressselecionada).subscribe((datos) => {
       console.log(datos)
       this.datos_tabla_atenciones = datos;
     });
 
+
+  }
+  exportExcel() {
+    import("xlsx").then(xlsx => {
+      const worksheet = xlsx.utils.json_to_sheet(this.datos_tabla_atenciones.map(
+        atencion => {
+          return {
+            NRO_DOC: atencion.personaatendida.NRO_DOCUMENTO,
+            APELLIDO_PAT: atencion.personaatendida.APELLIDO_PAT,
+            APELLIDO_MAT: atencion.personaatendida.APELLIDO_MAT,
+            NOMBRES: atencion.personaatendida.NOMBRES,
+            TELEFONO: atencion.personaatendida.TELEFONO,
+            ANTECEDENTE: atencion.ANTECEDENTE,
+            NOMBRE_PERSONAL: atencion.trabajadorpersona.NOMBRES,
+            NOMBRE_APELLIDO_PAT: atencion.trabajadorpersona.APELLIDO_PAT,
+            NOMBRE_APELLIDO_MAT: atencion.trabajadorpersona.APELLIDO_MAT,
+            FECHA: atencion.FECHA,
+
+          }
+        }
+
+
+      ));
+      const workbook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+      const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
+      this.saveAsExcelFile(excelBuffer, "AtencionesRealizadas");
+    });
+  }
+  saveAsExcelFile(buffer: any, fileName: string): void {
+    import("file-saver").then(FileSaver => {
+      let EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+      let EXCEL_EXTENSION = '.xlsx';
+      const data: Blob = new Blob([buffer], {
+        type: EXCEL_TYPE
+      });
+      FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
+    });
   }
 
 

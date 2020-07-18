@@ -84,6 +84,8 @@ import {ToolbarModule} from 'primeng/toolbar';
 import { MenuAccionAtencionComponent } from './controles/menu-accion-atencion/menu-accion-atencion.component';
 import { TicketRecetaComponent } from './impresiones/ticket-receta/ticket-receta.component';
 import { IpressService } from './servicios/ipress.service';
+import { SelectorIpressHorizontalComponent } from './controles/selector-ipress-horizontal/selector-ipress-horizontal.component';
+
 
 
 @NgModule({
@@ -91,6 +93,7 @@ import { IpressService } from './servicios/ipress.service';
     SelectorMedicamentoComponent
   ],
   declarations: [
+  
     AppComponent,
     PaneldeseguimientoComponent,
     TablaMorbilidadesComponent,
@@ -125,6 +128,8 @@ import { IpressService } from './servicios/ipress.service';
     MenuAccionAtencionComponent,
 
     TicketRecetaComponent,
+
+    SelectorIpressHorizontalComponent,
 
 
 
