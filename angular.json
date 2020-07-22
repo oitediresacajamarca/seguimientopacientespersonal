@@ -35,8 +35,7 @@
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/popper.js/dist/umd/popper.min.js" ,
               "src/assets/js/plugins.js",
-              "src/assets/js/active.js"          
-              
+              "src/assets/js/active.js" 
               
             ]
           },

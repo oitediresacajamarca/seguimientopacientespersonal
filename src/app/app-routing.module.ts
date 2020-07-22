@@ -14,36 +14,28 @@ import { SelectorCieCpmsComponent } from './controles/selector-cie-cpms/selector
 import { ActualizarContraseniaComponent } from './modulos/usuarios/usuarios-admin/actualizar-contrasenia/actualizar-contrasenia.component';
 import { HistorialAtencionComponent } from './atencion/historial-atencion/historial-atencion.component';
 import { BusquedaNominalComponent } from './componentes/busqueda-nominal/busqueda-nominal.component';
-import { SelectorMedicamentoComponent } from './controles/selector-medicamento/selector-medicamento.component';
 import { TicketRecetaComponent } from './impresiones/ticket-receta/ticket-receta.component';
-import { SelectorIpressComponent } from './controles/selector-ipress/selector-ipress.component';
 import { SelectorIpressHorizontalComponent } from './controles/selector-ipress-horizontal/selector-ipress-horizontal.component';
-
-
 const routes: Routes = [
   { path: 'PRIMERO', component: PaneldeseguimientoComponent },
   { path: '', component: InicioComponent },
   { path: 'login', component: LoginComponent },
   { path: 'seguimientopacientespersonal', component: LoginComponent },
-
   { path: 'layout', component: DefaultComponent },
   { path: 'personal.jsp', component: LoginComponent },
   {
     path: 'atencion/:NRO_DOCUMENTO/:ID_PACIENTE/:ID_SOLICITUD', component: PrincipalComponent,
-  
-  },
+    },
   { path: 'public', component: PublicComponent },
   { path: 'frontend', component: InicioComponent },
   { path: 'geo', component: GeoreferenciaComponent },
   { path: 'cie', component: SelectorCieCpmsComponent },
   { path: 'actualizar', component: ActualizarContraseniaComponent, outlet: 'emergente' },
-  { path: 'nuevaSolicitud', component:PublicComponent , outlet: 'emergente' },
-  
+  { path: 'nuevaSolicitud', component:PublicComponent , outlet: 'emergente' },  
   { path: 'buscardni', component: BusquedaNominalComponent, outlet: 'emergente' },
   { path: 'prueba', component: HistorialAtencionComponent },
   { path: 'prueba2', component:SelectorIpressHorizontalComponent },
   {path:'recetaprint',component:TicketRecetaComponent},
-
   {
     path: 'admin',
     component: DefaultComponent,
