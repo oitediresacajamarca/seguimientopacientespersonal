@@ -85,6 +85,9 @@ import { MenuAccionAtencionComponent } from './controles/menu-accion-atencion/me
 import { TicketRecetaComponent } from './impresiones/ticket-receta/ticket-receta.component';
 import { IpressService } from './servicios/ipress.service';
 import { SelectorIpressHorizontalComponent } from './controles/selector-ipress-horizontal/selector-ipress-horizontal.component';
+import { PersonaComponent } from './formularios/persona/persona.component';
+import { BuscadorDniComponent } from './controles/buscador-dni/buscador-dni.component';
+
 
 
 
@@ -131,9 +134,11 @@ import { SelectorIpressHorizontalComponent } from './controles/selector-ipress-h
 
     SelectorIpressHorizontalComponent,
 
+    PersonaComponent,
 
+    BuscadorDniComponent,
 
-
+ 
 
   ],
   imports: [

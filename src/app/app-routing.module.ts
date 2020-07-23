@@ -15,7 +15,8 @@ import { ActualizarContraseniaComponent } from './modulos/usuarios/usuarios-admi
 import { HistorialAtencionComponent } from './atencion/historial-atencion/historial-atencion.component';
 import { BusquedaNominalComponent } from './componentes/busqueda-nominal/busqueda-nominal.component';
 import { TicketRecetaComponent } from './impresiones/ticket-receta/ticket-receta.component';
-import { SelectorIpressHorizontalComponent } from './controles/selector-ipress-horizontal/selector-ipress-horizontal.component';
+import { PersonaComponent } from './formularios/persona/persona.component';
+
 const routes: Routes = [
   { path: 'PRIMERO', component: PaneldeseguimientoComponent },
   { path: '', component: InicioComponent },
@@ -33,8 +34,7 @@ const routes: Routes = [
   { path: 'actualizar', component: ActualizarContraseniaComponent, outlet: 'emergente' },
   { path: 'nuevaSolicitud', component:PublicComponent , outlet: 'emergente' },  
   { path: 'buscardni', component: BusquedaNominalComponent, outlet: 'emergente' },
-  { path: 'prueba', component: HistorialAtencionComponent },
-  { path: 'prueba2', component:SelectorIpressHorizontalComponent },
+  { path: 'prueba', component: PersonaComponent },  
   {path:'recetaprint',component:TicketRecetaComponent},
   {
     path: 'admin',

@@ -198,4 +198,5 @@
 }
 :host ::ng-deep .myTable {
 	background-color:red;
+	font-size: 12px;
 }

@@ -1,0 +1,37 @@
+<div class="formulario-persona">
+  <div class="ui-g">
+    <div class="ui-g-6">
+      <div class="ui-g-6">Nombres</div>
+      <div class="ui-g-6">
+        <input type="text" pInputText placeholder="Nombres" />
+      </div>
+      <div class="ui-g-6">Apellido Paterno</div>
+      <div class="ui-g-6">
+        <input type="text" pInputText placeholder="Apellido Paterno" />
+      </div>
+      <div class="ui-g-6">Apellido Materno</div>
+      <div class="ui-g-6">
+        <input type="text" pInputText placeholder="Apellido Materno" />
+      </div>
+      <div class="ui-g-6">Tipo Documento</div>
+      <div class="ui-g-6">
+        <p-dropdown [options]="TIPO_DOC" optionLabel="label"></p-dropdown>
+      </div>
+      <div class="ui-g-6">Numero de Documento</div>
+      <div class="ui-g-6">
+        <app-buscador-dni></app-buscador-dni>
+      </div>
+      <div class="ui-g-6">Genero</div>
+      <div class="ui-g-6">
+        <p-dropdown [options]="GENERO" optionLabel="label"></p-dropdown>
+      </div>
+      <div class="ui-g-6"></div>
+      <div class="ui-g-6"></div>
+      <div class="ui-g-6"></div>
+      <div class="ui-g-6"></div>
+      <div class="ui-g-6"></div>
+      <div class="ui-g-6"></div>
+      <div class="ui-g-6"></div>
+    </div>
+  </div>
+</div>

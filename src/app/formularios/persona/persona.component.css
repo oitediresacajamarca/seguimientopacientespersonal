@@ -1,0 +1,22 @@
+div#capa_formulario {
+  padding-left: 20px;
+  padding-right: 20px;
+
+  background-color: #efefef;
+  padding: 10px 0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
+  border: 1px solid #999;
+  box-shadow: 0 0 22px -8px rgba(0, 0, 0, 0.5);
+  max-width: 450px;
+  width: 34%;
+  float: right;
+}
+.formulario-persona{
+    margin: 18px;
+}
+
