@@ -45,7 +45,8 @@ export class RegistrarAtencionComponent implements OnInit {
   @Input() atencion: Atencion
   @Input() datosPaciente: any
   formatofuat: FormatoFuat = this.fuatservicio.formatofuat;
-  fua: string
+  fua: string;
+  es:any;
 
   constructor(private aten: AtencionService, private confirmationService: ConfirmationService,
     private fuatservicio: FuatServicioService, private messageService: MessageService,
@@ -66,6 +67,17 @@ export class RegistrarAtencionComponent implements OnInit {
         }
       })
     })
+
+    this.es = {
+      firstDayOfWeek: 1,
+      dayNames: ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
+      dayNamesShort: ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"],
+      dayNamesMin: ["D", "L", "M", "MI", "J", "V", "S"],
+      monthNames: ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
+      monthNamesShort: ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"],
+      today: 'Hoy',
+      clear: 'Borrar'
+    };
 
 
     this.trabajador_id = this.sesion.TRABAJADOR_ID;
@@ -112,10 +124,13 @@ export class RegistrarAtencionComponent implements OnInit {
       try {
         this.generaJsonFuat();
         this.logs.log('Fuat antes de registrar en base', this.formatofuat).subscribe();
-        let fecha = new Date()
+    /*    let fecha = new Date()
         this.atencion.FECHA = fecha.getFullYear() + '-' + (fecha.getMonth() + 1) + '-' + fecha.getDate()
 
-        this.atencion.HORA = fecha.getHours() + ':' + fecha.getMinutes() + ':' + fecha.getSeconds()
+        this.atencion.HORA = fecha.getHours() + ':' + fecha.getMinutes() + ':' + fecha.getSeconds()*/
+
+        this.atencion.FECHA=this.fechaatencion
+        this.atencion.HORA=this.fechaatencion.toLocaleTimeString('es-ES')
         console.log(this.atencion);
         console.log(this.form1.examenesFisicos);
         console.log(this.form1.atencion_detalle);
@@ -129,9 +144,7 @@ export class RegistrarAtencionComponent implements OnInit {
             this.confirmationService.close()
             this.logs.log('Inicia proceso de registro de atencion en base de datos', {}).subscribe();
             this.imprimirReceta();
-            setTimeout(() => {
-              console.log('sleep');
-            }, 10000);
+        
 
             this.form1.atencion_detalle.N_CONTROL = this.form1.numcon;
             this.personals.devolver_personal(this.sesion.id_persona, this.sesion.COD_IPRESS).subscribe((dato) => {

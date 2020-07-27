@@ -67,7 +67,7 @@ export class PrincipalComponent implements OnInit {
     ID_HC: '',
     ID_TIPO_ATENCION: '',
     ID_RESPONSABLE: '',
-    FECHA: '',
+    FECHA: new Date(),
     HORA: '',
     ANTECEDENTE: '',
     FEC_REGISTRO: '',
