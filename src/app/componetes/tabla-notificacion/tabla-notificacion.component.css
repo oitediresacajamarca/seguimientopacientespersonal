@@ -197,8 +197,7 @@
 	width:600px;
 }
 
-:host ::ng-deep .myTable {
-	background-color:red;
-	font-size: 12px;
+:host ::ng-deep .ui-table {
+		font-size: 12px;
 }
 
