@@ -1,6 +1,6 @@
 <div class="col-10">
-  <app-selector-ipress-horizontal
-    (seleccionoIpress)="seleccionoaipres($event)"
+  <app-selector-ipress-horizontal #ambitoselec
+   
   ></app-selector-ipress-horizontal>
 </div>
 
@@ -39,7 +39,7 @@
           <button
           type="submit"
           class="btn btn-primary"
-          (click)="buscarPorFechas()"
+          (click)="buscarPorFechasAmbito()"
         >
           BUSCAR
         </button>

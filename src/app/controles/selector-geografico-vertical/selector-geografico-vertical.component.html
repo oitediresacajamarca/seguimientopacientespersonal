@@ -1,0 +1,24 @@
+<div class="selector-geografico-vertical">
+  <form action="" [formGroup]="formgeografico">
+    <div class="ui-g">
+      <div class="ui-g-6">PROVINCIA</div>
+      <div class="ui-g-6">
+        <p-dropdown
+          [options]="PROVINCIAS"
+          optionLabel="label"
+          formControlName="PROVINCIA"
+          (onChange)="filtrarDistritos()"
+        ></p-dropdown>
+      </div>
+      <div class="ui-g-6">DISTRITO</div>
+      <div class="ui-g-6">
+        <p-dropdown
+          [options]="DISTRITOS_FILTRADOS"
+          optionLabel="label"
+          formControlName="DISTRITO"
+          (onChange)="distritoCambio()"
+        ></p-dropdown>
+      </div>
+    </div>
+  </form>
+</div>

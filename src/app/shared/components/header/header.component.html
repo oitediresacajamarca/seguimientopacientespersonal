@@ -21,7 +21,7 @@
             <mat-icon>add_box</mat-icon>
           </button>
           <mat-menu #atenmenu="matMenu">
-            <button mat-menu-item [routerLink]="[{ outlets: { emergente: ['/nuevaSolicitud'] } }]">
+            <button mat-menu-item (click)="abrirEmergenteNuevaSolicitud() " >
               <mat-icon>add_box</mat-icon>
               Añadir Solicitud
             </button>
@@ -45,7 +45,7 @@
               <mat-icon>person</mat-icon>
               Usuarios
             </button>
-            <button mat-menu-item (click)="abrir()">
+            <button mat-menu-item (click)="abrirEmergenteCambiarContra()">
               <mat-icon>lock_open</mat-icon>
               Cambiar Contraseña
             </button>

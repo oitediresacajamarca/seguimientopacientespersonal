@@ -1,37 +1,95 @@
 <div class="formulario-persona">
-  <div class="ui-g">
-    <div class="ui-g-6">
-      <div class="ui-g-6">Nombres</div>
-      <div class="ui-g-6">
-        <input type="text" pInputText placeholder="Nombres" />
+  <form [formGroup]="formpersona">
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <div class="card">
+        
+          <div class="card-body">
+            <h5 class="card-title">DATOS GENERALES</h5>
+            <div class="ui-g-6">Nombres</div>
+            <div class="ui-g-6">
+              <input
+                type="text"
+                pInputText
+                placeholder="Nombres"
+                formControlName="NOMBRES"
+              />
+            </div>
+            <div class="ui-g-6">Apellido Paterno</div>
+            <div class="ui-g-6">
+              <input
+                type="text"
+
+                pInputText
+                placeholder="Apellido Paterno"
+                formControlName="APELLIDO_PAT"
+              />
+            </div>
+            <div class="ui-g-6">Apellido Materno</div>
+            <div class="ui-g-6">
+              <input
+                type="text"
+                pInputText
+                placeholder="Apellido Materno"
+                formControlName="APELLIDO_MAT"
+              />
+            </div>
+            <div class="ui-g-6">Tipo Documento</div>
+            <div class="ui-g-6">
+              <p-dropdown
+                [options]="TIPO_DOC"
+                optionLabel="label"
+                formControlName="ID_TIPOD"
+              ></p-dropdown>
+            </div>
+            <div class="ui-g-6">Numero de Documento</div>
+            <div class="ui-g-6">
+              <app-buscador-dni
+                (perosnaencontrada)="CargarInformacionPersona($event)"
+              ></app-buscador-dni>
+            </div>
+            <div class="ui-g-6">Genero</div>
+            <div class="ui-g-6">
+              <p-dropdown [options]="GENERO" optionLabel="label"></p-dropdown>
+            </div>
+            <div class="ui-g-6">FECHA DE NACIMIENTO</div>
+            <div class="ui-g-6">
+              <p-calendar formControlName="FECHA_NAC"></p-calendar>
+            </div>
+            <div class="ui-g-6">TELEFONO</div>
+            <div class="ui-g-6">
+              <input
+                type="text"
+                pInputText
+                placeholder="TELEFONO"
+                formControlName="TELEFONO"
+              />
+            </div>
+            <div class="ui-g-6">CORREO ELECTRONICO</div>
+            <div class="ui-g-6">
+              <input
+                type="text"
+                pInputText
+                placeholder="Correo"
+                formControlName="CORREO"
+              />
+            </div>
+            <div class="ui-g-12">
+                <app-selector-geografico-vertical (seleccionoDistrito)="seleccionoDistrito($event)" #selectorgeografico formControlName="ID_DISTRITO"></app-selector-geografico-vertical>
+            </div>
+            <div class="ui-g-6">DIRECCION</div>
+            <div class="ui-g-6">
+              <input
+                type="text"
+                pInputText
+                placeholder="Direccion"
+                formControlName="DIRECCION"
+              />
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="ui-g-6">Apellido Paterno</div>
-      <div class="ui-g-6">
-        <input type="text" pInputText placeholder="Apellido Paterno" />
-      </div>
-      <div class="ui-g-6">Apellido Materno</div>
-      <div class="ui-g-6">
-        <input type="text" pInputText placeholder="Apellido Materno" />
-      </div>
-      <div class="ui-g-6">Tipo Documento</div>
-      <div class="ui-g-6">
-        <p-dropdown [options]="TIPO_DOC" optionLabel="label"></p-dropdown>
-      </div>
-      <div class="ui-g-6">Numero de Documento</div>
-      <div class="ui-g-6">
-        <app-buscador-dni></app-buscador-dni>
-      </div>
-      <div class="ui-g-6">Genero</div>
-      <div class="ui-g-6">
-        <p-dropdown [options]="GENERO" optionLabel="label"></p-dropdown>
-      </div>
-      <div class="ui-g-6"></div>
-      <div class="ui-g-6"></div>
-      <div class="ui-g-6"></div>
-      <div class="ui-g-6"></div>
-      <div class="ui-g-6"></div>
-      <div class="ui-g-6"></div>
-      <div class="ui-g-6"></div>
     </div>
-  </div>
+  </form>
 </div>
+

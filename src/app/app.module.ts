@@ -87,6 +87,9 @@ import { IpressService } from './servicios/ipress.service';
 import { SelectorIpressHorizontalComponent } from './controles/selector-ipress-horizontal/selector-ipress-horizontal.component';
 import { PersonaComponent } from './formularios/persona/persona.component';
 import { BuscadorDniComponent } from './controles/buscador-dni/buscador-dni.component';
+import { SelectorGeograficoVerticalComponent } from './controles/selector-geografico-vertical/selector-geografico-vertical.component';
+import { SolicitudAtencionComponent } from './formularios/solicitud-atencion/solicitud-atencion.component';
+import { SelectorIpressMinComponent } from './controles/selector-ipress-min/selector-ipress-min.component';
 
 
 
@@ -137,6 +140,12 @@ import { BuscadorDniComponent } from './controles/buscador-dni/buscador-dni.comp
     PersonaComponent,
 
     BuscadorDniComponent,
+
+    SelectorGeograficoVerticalComponent,
+
+    SolicitudAtencionComponent,
+
+    SelectorIpressMinComponent,
 
  
 

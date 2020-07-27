@@ -55,7 +55,7 @@ export class DistribucionAdministrativaService {
     return this.redes;
    }
    devolver_Ipress(cod_ipress:string){
-     console.log(cod_ipress)
+
     return this.http.get<any>(environment.url_backend+'distribucion-administrativa/ipress/'+cod_ipress);
 
    }

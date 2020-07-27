@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { AtencionService } from 'src/app/servicios/atencion.service';
 import { EstadosService } from 'src/app/servicios/estados.service';
 import { FormBuilder } from '@angular/forms';
+import { SelectorIpressHorizontalComponent } from 'src/app/controles/selector-ipress-horizontal/selector-ipress-horizontal.component';
 
 @Component({
   selector: 'app-atenciones-realizadas',
@@ -16,6 +17,8 @@ export class AtencionesRealizadasComponent implements OnInit {
   hasta: Date
   formulario
   ipressselecionada
+  @ViewChild('ambitoselec', { static: false })
+  ambitoselec: SelectorIpressHorizontalComponent
 
   constructor(private ate: AtencionService, private estados_service: EstadosService, private fb: FormBuilder) {
 
@@ -63,6 +66,22 @@ export class AtencionesRealizadasComponent implements OnInit {
     let d = this.desde.getFullYear() + '/' + (this.desde.getMonth().valueOf() + 1) + '/' + this.desde.getDate();
     let h = this.hasta.getFullYear() + '/' + (this.hasta.getMonth().valueOf() + 1) + '/' + this.hasta.getDate();
     this.ate.devolverAtencionesRealizadasPorfechaIpress(d, h, this.ipressselecionada).subscribe((datos) => {
+      console.log(datos)
+      this.datos_tabla_atenciones = datos;
+    });
+
+
+  }
+  buscarPorFechasAmbito() {
+
+
+    let d = this.desde.getFullYear() + '/' + (this.desde.getMonth().valueOf() + 1) + '/' + this.desde.getDate();
+    let h = this.hasta.getFullYear() + '/' + (this.hasta.getMonth().valueOf() + 1) + '/' + this.hasta.getDate();
+    let ambito = this.ambitoselec.ambito
+    ambito.DESDE = d
+    ambito.HASTA = h
+
+    this.ate.devolverAtencionesRealizadasPorfechaAmbito(ambito).subscribe((datos) => {
       console.log(datos)
       this.datos_tabla_atenciones = datos;
     });

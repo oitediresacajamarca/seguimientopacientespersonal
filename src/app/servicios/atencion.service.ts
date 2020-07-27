@@ -49,6 +49,10 @@ export class AtencionService {
 
     return this.http.post<any>(environment.url_backend + 'atenciones/atencionesRealizadasFiltros/', { DESDE: DESDE, HASTA: HASTA ,COD_IPRESS:COD_IPRESS});
   }
+  devolverAtencionesRealizadasPorfechaAmbito(ambito:any) {
+
+    return this.http.post<any>(environment.url_backend + 'atenciones/atencionesRealizadasFiltrosFechasAmbito', ambito);
+  }
 
 
 }
