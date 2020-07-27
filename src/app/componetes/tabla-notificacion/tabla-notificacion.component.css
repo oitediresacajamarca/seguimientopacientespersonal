@@ -196,3 +196,9 @@
 :host ::ng-deep .myTable td:nth-child(1) {
 	width:600px;
 }
+
+:host ::ng-deep .myTable {
+	background-color:red;
+	font-size: 12px;
+}
+

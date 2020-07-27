@@ -105,34 +105,39 @@ export class TablaNotificacionComponent implements OnInit {
     this.cols =
       [
         {
-          "header": "FECHA DE SOLICITUD",
+          "header": "FEC DE SOLICITUD",
           "field": "FECHA_SOLICITUD",
-          "colsize": 250
+          "colsize": 150
         },
         {
           "header": "TELEFONO",
           "field": "TELEF_CONTACTO",
-          "colsize": 250
+          "colsize": 150
         },
         {
-          "header": "NRO DOCUMENTO",
+          "header": "NO DOCUMENTO",
           "field": "NRO_DOCUMENTO",
-          "colsize": 250
+          "colsize": 150
         },
         {
           "header": "APELLIDO PAT",
           "field": "APELLIDO_PAT",
-          "colsize": 250
+          "colsize": 150
         },
         {
           "header": "APELLIDO MAT",
           "field": "APELLIDO_MAT",
-          "colsize": 250
+          "colsize": 150
         },
         {
           "header": "NOMBRES",
           "field": "NOMBRES",
-          "colsize": 250
+          "colsize": 150
+        },
+        {
+          "header": "MOTIVO",
+          "field": "DESCRIPCION",
+          "colsize": 1000
         },
         {
           "header": "NOMBRE IPRESS",
@@ -150,11 +155,7 @@ export class TablaNotificacionComponent implements OnInit {
           "colsize": 250
         },
 
-        {
-          "header": "MOTIVO",
-          "field": "DESCRIPCION",
-          "colsize": 1000
-        },
+       
         {
           "header": "TELEF CONTACTO2",
           "field": "TELEF_CONTACTO2",

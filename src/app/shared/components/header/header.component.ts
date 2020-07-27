@@ -39,12 +39,15 @@ export class HeaderComponent implements OnInit {
 
 
   }
-  abrir(){
+  abrirEmergenteCambiarContra(){
   
 
     this.router.navigate([{ outlets: { emergente: 'actualizar' }}]);
 
    
+  }
+  abrirEmergenteNuevaSolicitud(){
+    this.router.navigate([{ outlets: { emergente: 'NuevaSolicitud' }}]);
   }
 
 }

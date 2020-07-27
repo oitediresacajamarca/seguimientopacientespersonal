@@ -26,11 +26,19 @@
           </div></mat-card
           >
         </div>
-        <div class="ui-g-6">
+        <div class="ui-g-3">
           <mat-card
             >NUMERO DE DOCUMENTO:
             <div class="nombrescompletos"> {{ datosPaciente.NRO_DOCUMENTO }}</div>
           </mat-card>
+        </div>
+        <div class="ui-g-3">
+          <mat-card
+            >Fecha:
+            <div class="nombrescompletos">
+              <p-calendar [(ngModel)]="fechaatencion" [locale]="es" showTime="true" hourFormat="12" dateFormat="dd/mm/yy"></p-calendar>
+          </div></mat-card
+          >
         </div>
         <div class="ui-g-12">
           <p-steps

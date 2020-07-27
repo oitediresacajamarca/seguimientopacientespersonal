@@ -5,7 +5,7 @@ export interface Atencion {
     ID_HC: string,
     ID_TIPO_ATENCION: string,
     ID_RESPONSABLE: string,
-    FECHA: string,
+    FECHA: Date,
     HORA: string,
     ANTECEDENTE: string,
     FEC_REGISTRO: string,

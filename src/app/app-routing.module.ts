@@ -15,17 +15,18 @@ import { ActualizarContraseniaComponent } from './modulos/usuarios/usuarios-admi
 import { HistorialAtencionComponent } from './atencion/historial-atencion/historial-atencion.component';
 import { BusquedaNominalComponent } from './componentes/busqueda-nominal/busqueda-nominal.component';
 import { TicketRecetaComponent } from './impresiones/ticket-receta/ticket-receta.component';
-import { SelectorIpressHorizontalComponent } from './controles/selector-ipress-horizontal/selector-ipress-horizontal.component';
+
+import { SolicitudAtencionComponent } from './formularios/solicitud-atencion/solicitud-atencion.component';
+
+
 const routes: Routes = [
-  { path: 'PRIMERO', component: PaneldeseguimientoComponent },
+
   { path: '', component: InicioComponent },
   { path: 'login', component: LoginComponent },
   { path: 'seguimientopacientespersonal', component: LoginComponent },
   { path: 'layout', component: DefaultComponent },
   { path: 'personal.jsp', component: LoginComponent },
-  {
-    path: 'atencion/:NRO_DOCUMENTO/:ID_PACIENTE/:ID_SOLICITUD', component: PrincipalComponent,
-    },
+  {path: 'atencion/:NRO_DOCUMENTO/:ID_PACIENTE/:ID_SOLICITUD', component: PrincipalComponent,},
   { path: 'public', component: PublicComponent },
   { path: 'frontend', component: InicioComponent },
   { path: 'geo', component: GeoreferenciaComponent },
@@ -33,8 +34,8 @@ const routes: Routes = [
   { path: 'actualizar', component: ActualizarContraseniaComponent, outlet: 'emergente' },
   { path: 'nuevaSolicitud', component:PublicComponent , outlet: 'emergente' },  
   { path: 'buscardni', component: BusquedaNominalComponent, outlet: 'emergente' },
-  { path: 'prueba', component: HistorialAtencionComponent },
-  { path: 'prueba2', component:SelectorIpressHorizontalComponent },
+  { path: 'NuevaSolicitud', component: SolicitudAtencionComponent, outlet: 'emergente' },  
+ 
   {path:'recetaprint',component:TicketRecetaComponent},
   {
     path: 'admin',
@@ -60,6 +61,7 @@ const routes: Routes = [
         component: PrincipalComponent,
         
       },
+      { path: 'NuevaSolicitud', component: SolicitudAtencionComponent, outlet: 'emergente' },  
 
       {
         path: 'panel',
