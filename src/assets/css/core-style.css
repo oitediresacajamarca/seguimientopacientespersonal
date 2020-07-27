@@ -1201,10 +1201,16 @@ select.form-control:not([size]):not([multiple]) {
 
 .breadcumb-area {
     width: 100%;
-    height: 255px;
+    height: 150px;
     position: relative;
     z-index: 1;
 }
+/*DC:: en pantallas pequeñas la altura debe ser menor*/
+@media all and (max-width: 800px) {
+    .breadcumb-area {
+        height: 70px;
+    }
+  }
 
 .breadcumb-title {
     font-size: 30px;

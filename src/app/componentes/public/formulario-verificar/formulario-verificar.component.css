@@ -192,6 +192,11 @@
   .p-t-130 {
     padding-top: 60px;
   }
+  @media (max-width: 767px) {
+    .p-t-130 {
+      padding-top: 30px;
+    }
+  }
   
   .p-t-180 {
     padding-top: 180px;
@@ -631,7 +636,7 @@
   
   @media (max-width: 767px) {
     .card-4 .card-body {
-      padding: 50px 40px;
+      padding: 10px 20px;
     }
   }
 
@@ -642,13 +647,13 @@
 
 
   .form-control{
-      padding: 10px 0px;
-      width: 500px;
+      padding: 10px 0px; 
+      width: 100%;
 
   }
  .ui-dropdown{
     width: 500px;
-    min-width: 34.5em !important;
+    width: 100% !important;
   }
 
   :host() .ui-calendar{

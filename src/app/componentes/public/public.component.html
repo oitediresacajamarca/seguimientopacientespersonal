@@ -4,20 +4,23 @@
   header="REGISTRE SUS DATOS"
   [(visible)]="verpanelregistro"
   [modal]="true"
-  [style]="{ width: '40vw', heigth: '60vw' }"
+  [style]="{width: dialog_width, heigth: '60vw' }"
   [maximizable]="true"
   [baseZIndex]="10000"
   [draggable]="false"
   [resizable]="true"
+  class="dialog_resp"
 >
   <p-messages [(value)]="msgs" key="EXISTEPER"></p-messages>
   <p-panel header="DATOS GENERALES" *ngIf="verpaneldatosgenerales">
     <form #datosgenerales="ngForm">
+
       <div class="ui-g">
-        <div class="ui-g-6 label-form">Nombres</div>
-        <div class="ui-g-6">
+        <div class="ui-g-12 ui-md-3 label-form">Nombres</div>
+        <div class="ui-g-12 ui-md-9">
           <input
             name="nombres"
+            id="txtNombre"
             required
             type="text"
             #nombres="ngModel"
@@ -25,11 +28,12 @@
             [(ngModel)]="nombres_nuevo"
             [pKeyFilter]="letrasyespacio"
             (blur)="cambiaform()"
+            
           />
         </div>
 
-        <div class="ui-g-6 label-form">Apellido Paterno</div>
-        <div class="ui-g-6">
+        <div class="ui-g-12 ui-md-3 label-form">Apellido Paterno</div>
+        <div class="ui-g-12 ui-md-9">
           <input
             name="apellido_paterno"
             required
@@ -47,8 +51,8 @@
             >Campo es requerido</p-message
           >
         </div>
-        <div class="ui-g-6 label-form">Apellido Materno</div>
-        <div class="ui-g-6">
+        <div class="ui-g-12 ui-md-3 label-form">Apellido Materno</div>
+        <div class="ui-g-12 ui-md-9">
           <input
             name="apellido_materno"
             required
@@ -64,14 +68,15 @@
             *ngIf="ape_mat.invalid && ape_mat.touched"
           ></p-message>
         </div>
-        <div class="ui-g-6 label-form">Genero</div>
-        <div class="ui-g-6">
+        <div class="ui-g-12 ui-md-3 label-form">Genero</div>
+        <div class="ui-g-12 ui-md-9">
           <p-dropdown
             name="genero"
             required
             [options]="generos"
             [(ngModel)]="generosele"
             placeholder="Seleccione"
+            [style]="{width: '100%', 'min-width': 'auto'}"
             #genero="ngModel"
             (blur)="cambiaform()"
           ></p-dropdown>
@@ -81,15 +86,15 @@
             *ngIf="genero.invalid && genero.touched"
           ></p-message>
         </div>
-        <div class="ui-g-6 label-form">Tipo de Documento</div>
-        <div class="ui-g-6">
+        <div class="ui-g-12 ui-md-3 label-form">Tipo de Documento</div>
+        <div class="ui-g-12 ui-md-9">
           <p-dropdown
             name="tipodo"
             [options]="tiposdoc"
             disabled="true"
             size="80"
             [(ngModel)]="tipodocseleccionado"
-            [style]="{ width: '100%' }"
+            [style]="{ width: '100%', 'min-width':'auto' }"
             [maxlength]="300"
             placeholder="Seleccione "
             (blur)="cambiaform()"
@@ -101,8 +106,8 @@
             *ngIf="tipodoc.invalid && tipodoc.touched"
           ></p-message>
         </div>
-        <div class="ui-g-6 label-form">Numero de Documento</div>
-        <div class="ui-g-6">
+        <div class="ui-g-12 ui-md-3 label-form">Numero de Documento</div>
+        <div class="ui-g-12 ui-md-9">
           <p-inputMask
             name="numerodo"
             [(ngModel)]="numerodoc"
@@ -116,8 +121,8 @@
           >
           </p-inputMask>
         </div>
-        <div class="ui-g-6 label-form">Fecha de Nacimiento</div>
-        <div class="ui-g-6">
+        <div class="ui-g-12 ui-md-3 label-form">Fecha de Nacimiento</div>
+        <div class="ui-g-12 ui-md-9">
           <p-calendar
             name="FECNAC"
             required
@@ -133,8 +138,8 @@
   <p-panel header="Solicitud de Atencion de Paciente" [toggleable]="true">
     <form #solicitud="ngForm">
       <div class="ui-g">
-        <div class="ui-g-6 label-form">Telefono Celular de Contacto</div>
-        <div class="ui-g-6">
+        <div class="ui-g-12 ui-md-3 label-form">Telefono Celular de Contacto</div>
+        <div class="ui-g-12 ui-md-9">
           <p-inputMask
             required
             name="telefcon1"
@@ -150,8 +155,8 @@
           ></p-message>
         </div>
 
-        <div class="ui-g-6 label-form">Telefono Fijo de Contacto</div>
-        <div class="ui-g-6">
+        <div class="ui-g-12 ui-md-3 label-form">Telefono Fijo de Contacto</div>
+        <div class="ui-g-12 ui-md-9">
           <p-inputMask
             name="telefcon2"
             [(ngModel)]="telefcon2"
@@ -160,8 +165,8 @@
           >
           </p-inputMask>
         </div>
-        <div class="ui-g-6 label-form">Correo Electronico</div>
-        <div class="ui-g-6">
+        <div class="ui-g-12 ui-md-3 label-form">Correo Electronico</div>
+        <div class="ui-g-12 ui-md-9">
           <input
             name="correo"
             type="text"
@@ -178,8 +183,8 @@
             *ngIf="corre.invalid && corre.touched"
           ></p-message>
         </div>
-        <div class="ui-g-6 label-form">Motivo</div>
-        <div class="ui-g-6">
+        <div class="ui-g-12 ui-md-3 label-form">Motivo</div>
+        <div class="ui-g-12 ui-md-9">
           <textarea
             name="obsevaciones"
             pInputTextarea
@@ -188,6 +193,7 @@
             (blur)="cambiaform()"
             required
             #obser="ngModel"
+            style="width : 100% "
           ></textarea>
           <p-message
             severity="error"
@@ -195,12 +201,12 @@
             *ngIf="obser.invalid && obser.touched"
           ></p-message>
         </div>
-        <div class="ui-g-6"></div>
-        <div class="ui-g-6">
+        <div class="ui-g-12 ui-md-3"></div>
+        <div class="ui-g-12 ui-md-9">
           <mat-checkbox>Solicita Vacunacion</mat-checkbox>
         </div>
-        <div class="ui-g-6 label-form">Fecha de Solicitud</div>
-        <div class="ui-g-6">
+        <div class="ui-g-12 ui-md-3 label-form">Fecha de Solicitud</div>
+        <div class="ui-g-12 ui-md-9">
           <p-calendar
             name="fechasolicitud"
             [(ngModel)]="fechasolicitud"
@@ -209,14 +215,15 @@
             [showTime]="true"
           ></p-calendar>
         </div>
-        <div class="ui-g-6 label-form">Provincia</div>
-        <div class="ui-g-6">
+        <div class="ui-g-12 ui-md-3 label-form">Provincia</div>
+        <div class="ui-g-12 ui-md-9">
           <p-dropdown
             required
             name="provincia"
             [options]="provincias"
             [(ngModel)]="provinciaselecionada"
             placeholder="Seleccione "
+            [style]="{width: '100%', 'min-width': 'auto'}"
             (onChange)="cambioProvincia()"
             #provincia="ngModel"
             (change)="cambiaform()"
@@ -227,13 +234,14 @@
             *ngIf="provincia.invalid && provincia.touched"
           ></p-message>
         </div>
-        <div class="ui-g-6 label-form">Distrito</div>
-        <div class="ui-g-6">
+        <div class="ui-g-12 ui-md-3 label-form">Distrito</div>
+        <div class="ui-g-12 ui-md-9">
           <p-dropdown
             required
             name="distrito"
             [options]="distritos"
             [(ngModel)]="distritoselecionado"
+            [style]="{width: '100%', 'min-width': 'auto'}"
             #distrito="ngModel"
             placeholder="Seleccione "
             (onChange)="cambiadis()"
@@ -244,8 +252,8 @@
             *ngIf="distrito.invalid && distrito.touched"
           ></p-message>
         </div>
-        <div class="ui-g-6 label-form">Domicilio Actual</div>
-        <div class="ui-g-6">
+        <div class="ui-g-12 ui-md-3 label-form">Domicilio Actual</div>
+        <div class="ui-g-12 ui-md-9">
           <textarea
             required
             name="direccion"
@@ -253,6 +261,7 @@
             [rows]="10"
             [(ngModel)]="direccion"
             #direccio="ngModel"
+            style="width : 100%"
           ></textarea>
           <p-message
             severity="error"
@@ -260,15 +269,16 @@
             *ngIf="direccio.invalid && direccio.touched"
           ></p-message>
         </div>
-        <div class="ui-g-6 label-form">
+        <div class="ui-g-12 ui-md-3 label-form">
           Establecimiento de Salud mas Cercano
         </div>
-        <div class="ui-g-6">
+        <div class="ui-g-12 ui-md-9">
           <p-dropdown
             required
             name="ipresss"
             placeholder="Seleccione "
             [options]="ipressFiltrados"
+            [style]="{width: '100%', 'min-width': 'auto'}"
             [(ngModel)]="ipress_select"
             #ipress="ngModel"
           ></p-dropdown>
@@ -317,6 +327,5 @@
 
 </p-dialog>
 <p-dialog [(visible)]="vermensajeconfirmacion"
-  >Su solicitud ha sido guardada exitosamente Pronto el personal medico se
-  comunicara con usted segun la informacion proporcionada.</p-dialog
+  >Su solicitud ha sido procesada exitosamente, pronto el personal médico se comunicará con usted según la información proporcionada.</p-dialog
 >

@@ -58,7 +58,7 @@ export class PublicComponent implements OnInit {
   @ViewChild('btenv', { static: false })
   btenv: Button
   mensajefinal: boolean = false;
-
+  dialog_width: string;
   constructor(private est: EstadosService, private pers: PersonaService, private geo: GeografiaService,
     private sol: SolicitudService, private confirmationService: ConfirmationService, private mesgs: MessageService
     , private confirmationService2: ConfirmationService, private router: Router) { }
@@ -69,6 +69,11 @@ export class PublicComponent implements OnInit {
       zoom: 12
     };
 
+    //detectar tamaño de pantalla
+    window.onresize = this.setDialogWidth;
+
+    this.setDialogWidth();
+
     this.est.verificoform.subscribe((dat) => {
 
       this.verpanelregistro = dat.verpanelregistro;
@@ -76,9 +81,23 @@ export class PublicComponent implements OnInit {
       this.FECNAC = dat.FECNAC;
       this.tipodocseleccionado = dat.tipodocseleccionado;
       this.numerodoc = dat.numerodoc;
-      this.fechasolicitud=new Date()
-      
+      this.fechasolicitud=new Date();
 
+      console.log(`ver panel registro: ${this.verpanelregistro}`);
+      
+      if(this.verpanelregistro){
+        //set timeout para asegurar que el control exista
+        setTimeout(() => {
+          let txtNom = window.document.getElementById("txtNombre");
+          if(txtNom){
+            window.document.getElementById("txtNombre").focus();
+            //window.document.getElementById("txtNombre").scrollIntoView();
+          }
+          
+        }, 1500);
+        this.setDialogWidth();
+      }
+      
     })
 
 
@@ -119,6 +138,18 @@ export class PublicComponent implements OnInit {
       { label: "SAN PABLO", value: "0612" },
       { label: "SANTA CRUZ", value: "0613" }]
 
+
+     
+      
+  }
+
+  setDialogWidth(){
+    console.log(window.innerWidth)
+    if(window.innerWidth < 768){
+      this.dialog_width = '90vw';
+    } else{
+      this.dialog_width = '50vw';
+    }
   }
 
 
@@ -145,6 +176,9 @@ export class PublicComponent implements OnInit {
 
     this.verpanelregistro = event.verpanelregistro;
     this.verpaneldatosgenerales = event.verpaneldatosgenerales;
+
+
+
   }
 
 

@@ -20,6 +20,12 @@
 .ui-dialog-titlebar{
      font-size: 16px;
 }
+/*
 .label-form{
     padding-left: 3em;
+}
+*/
+.dialog_resp{
+    width: 60% !important;
+
 }
