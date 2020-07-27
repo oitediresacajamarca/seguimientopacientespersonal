@@ -2,7 +2,6 @@
  
  <section
    class="breadcumb-area bg-img gradient-background-overlay"
-   style="background-image: url(assets/img/bg-img/hero3.jpg);"
  >
    <div class="container  h-100">
      <div class="row h-100 align-items-center">
@@ -35,14 +34,14 @@
          <h2 class="title">Requerimiento de la atención</h2>
  
      
-           <div class="form-group col-md-4">
+           <div class="form-group col-md-12">
              <label class="label">Tipo de documento</label>
              <p-dropdown
                required
                [options]="tiposdoc"
                size="80"
                [(ngModel)]="tipodocseleccionado"
-               [style]="{ width: '35em' }"
+               [style]="{ width: '100%' }"
                [maxlength]="300"
                placeholder="Seleccione "
                #tipodoc="ngModel"
@@ -54,7 +53,7 @@
              ></p-dropdown>
            </div>
  
-           <div class="form-group col-md-6">
+           <div class="form-group col-md-12">
              <label for="inputCity">N° de documento</label>
              <p-inputMask
                [(ngModel)]="numerodoc"
@@ -67,11 +66,11 @@
                #cajanumdoc
                disabled
                class="form-control"
-               [style]="{ width: '35em' }"
+               [style]="{ width: '100%' }"
              ></p-inputMask>
            </div>
  
-           <div class="form-group col-md-6">
+           <div class="form-group col-md-12">
              <label for="infecncputCity">Fecha de nacimiento</label>
              <p-calendar inputStyleClass="stilocaja"
                mask="99/99/9999"

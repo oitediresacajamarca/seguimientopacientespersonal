@@ -36,6 +36,7 @@ export class GeoreferenciaComponent implements OnInit {
   this.initOverlays();
 
   this.infoWindow = new google.maps.InfoWindow();
+  
   }
 
   handleMapClick(event) {

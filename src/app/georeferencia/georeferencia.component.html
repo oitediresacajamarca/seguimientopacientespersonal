@@ -3,7 +3,7 @@
 
 <p-gmap #gmap [style]="{'width':'80%','height':'420px', 'margin-bottom': '1em'}" [options]="options" [overlays]="overlays"
        (onMapClick)="handleMapClick($event)" (onOverlayClick)="handleOverlayClick($event)" (onOverlayDragEnd)="handleDragEnd($event)"></p-gmap>
-
+ 
 <button type="button" pButton label="Limpiar" icon="pi pi-times" (click)="clear()" style="margin-right:.25em"></button>
 <button type="button" pButton label="Acercar" icon="pi pi-plus" (click)="zoomIn(gmap.getMap())" style="margin-right:.25em"></button>
 <button type="button" pButton label="Alejar" icon="pi pi-minus" (click)="zoomOut(gmap.getMap())"></button>
