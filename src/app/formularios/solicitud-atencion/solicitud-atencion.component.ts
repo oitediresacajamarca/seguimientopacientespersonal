@@ -38,7 +38,7 @@ export class SolicitudAtencionComponent implements OnInit {
 
   }
   rutanula(){
-    console.log("se oculto")
+ 
     this.router.navigate([{ outlets: { emergente: null } }]);
   }
 

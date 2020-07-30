@@ -90,6 +90,8 @@ import { BuscadorDniComponent } from './controles/buscador-dni/buscador-dni.comp
 import { SelectorGeograficoVerticalComponent } from './controles/selector-geografico-vertical/selector-geografico-vertical.component';
 import { SolicitudAtencionComponent } from './formularios/solicitud-atencion/solicitud-atencion.component';
 import { SelectorIpressMinComponent } from './controles/selector-ipress-min/selector-ipress-min.component';
+import { SelectorCarteraServiciosComponent } from './controles/selector-cartera-servicios/selector-cartera-servicios.component';
+import { PruebaComponent } from './prueba/prueba/prueba.component';
 
 
 
@@ -146,6 +148,10 @@ import { SelectorIpressMinComponent } from './controles/selector-ipress-min/sele
     SolicitudAtencionComponent,
 
     SelectorIpressMinComponent,
+
+    SelectorCarteraServiciosComponent,
+
+    PruebaComponent,
 
  
 

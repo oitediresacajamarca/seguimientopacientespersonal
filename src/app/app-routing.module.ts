@@ -17,6 +17,8 @@ import { BusquedaNominalComponent } from './componentes/busqueda-nominal/busqued
 import { TicketRecetaComponent } from './impresiones/ticket-receta/ticket-receta.component';
 
 import { SolicitudAtencionComponent } from './formularios/solicitud-atencion/solicitud-atencion.component';
+import { SelectorCarteraServiciosComponent } from './controles/selector-cartera-servicios/selector-cartera-servicios.component';
+import { PruebaComponent } from './prueba/prueba/prueba.component';
 
 
 const routes: Routes = [
@@ -34,7 +36,8 @@ const routes: Routes = [
   { path: 'actualizar', component: ActualizarContraseniaComponent, outlet: 'emergente' },
   { path: 'nuevaSolicitud', component:PublicComponent , outlet: 'emergente' },  
   { path: 'buscardni', component: BusquedaNominalComponent, outlet: 'emergente' },
-  { path: 'NuevaSolicitud', component: SolicitudAtencionComponent, outlet: 'emergente' },  
+  { path: 'NuevaSolicitud', component: SolicitudAtencionComponent, outlet: 'emergente' }, 
+  { path: '1', component: SelectorCarteraServiciosComponent },  
  
   {path:'recetaprint',component:TicketRecetaComponent},
   {
