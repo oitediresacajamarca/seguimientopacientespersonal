@@ -1,4 +1,4 @@
-import { Component, OnInit, forwardRef } from '@angular/core';
+import { Component, OnInit, forwardRef, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { CarteraServiciosService } from 'src/app/servicios/cartera-servicios.service';
 import { SelectItem } from 'primeng';
@@ -21,13 +21,13 @@ export class SelectorCarteraServiciosComponent implements OnInit, ControlValueAc
   onChang: any = () => { };
   onTouched: any
   disabled: boolean = false
+  @Input()
+  COD_IPRESS: string;
   writeValue(COD_CARTERA: string): void {
-    let servicioelegido = this.listado_servicios.find((servicios) => {
-      servicios.value = COD_CARTERA
-    })
-    if (servicioelegido) {
-      this.cod_selecionado = servicioelegido.value
-    }
+    this.cod_selecionado=COD_CARTERA
+  }
+  setIpress(COD_IPRESS: string) {
+    this.COD_IPRESS = COD_IPRESS
   }
   registerOnChange(fn: any): void {
     this.onChang = fn
@@ -46,14 +46,27 @@ export class SelectorCarteraServiciosComponent implements OnInit, ControlValueAc
       Cartera.label = Cartera.cartera.NOMBRE_CARTERA.toUpperCase();
       return Cartera
     })
-    console.log(this.listado_servicios)
+   
 
+  }
+
+  async cargarServicios() {
+    await this.cargarServiciosIpress(this.COD_IPRESS)
   }
   listado_servicios: SelectItem[] = []
   cod_selecionado: string
   ngOnInit() {
     this.cod_selecionado = "000004210"
     this.cargarServiciosIpress(this.cod_selecionado)
+  }
+  getNombreCarteraSeleccionada() {
+   
+    let cartera = this.listado_servicios.find((dat) => { 
+     
+      return dat.value == this.cod_selecionado })
+
+
+    return cartera.label
   }
 
 }

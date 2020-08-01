@@ -8,7 +8,6 @@ import { IpressService } from 'src/app/servicios/ipress.service';
 import { RecetaService } from 'src/app/servicios/impresiones/receta.service';
 import { GeografiaService } from 'src/app/servicios/maestros/geografia.service';
 import * as moment from 'moment';
-import { async } from '@angular/core/testing';
 import { TratamientoService } from 'src/app/servicios/tratamiento.service';
 import { LogService } from 'src/app/servicios/log.service';
 
@@ -24,6 +23,9 @@ export class RecetaComponent implements OnInit {
   visulizarselector: boolean = false
   itemsreceta: any[] = []
   fg: FormGroup
+  FINANCIADOR:string=''
+  @Input()
+  ESPECIALIDAD:string=''
   @Output() preparaReceta = new EventEmitter()
   constructor(private confirmationService: ConfirmationService,
     private fb: FormBuilder, private estadoss: EstadosService,
@@ -168,9 +170,9 @@ export class RecetaComponent implements OnInit {
         "EDAD_PACIENTE": EDAD,
         "COD_ASEGURADO": "",
         "NRO_DOCUMENTO": persona.NRO_DOCUMENTO,
-        "FINANCIADOR": "DEMANDA",
+        "FINANCIADOR": this.FINANCIADOR,
         "ATENCION": "ESPECIALIDAD",
-        "ESPECIALIDAD": "",
+        "ESPECIALIDAD": this.estadoss.especialidadatender,
         "NR0_HCL": persona.NRO_DOCUMENTO,
         "DIAGNOSTICOSlist": diagnosticos,
         "PROFESIONAL": {

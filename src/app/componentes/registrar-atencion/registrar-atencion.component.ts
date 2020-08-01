@@ -47,6 +47,8 @@ export class RegistrarAtencionComponent implements OnInit {
   formatofuat: FormatoFuat = this.fuatservicio.formatofuat;
   fua: string;
   es:any;
+  @Input()
+  especialidad:string
 
   constructor(private aten: AtencionService, private confirmationService: ConfirmationService,
     private fuatservicio: FuatServicioService, private messageService: MessageService,
@@ -308,7 +310,7 @@ export class RegistrarAtencionComponent implements OnInit {
 
     console.log(moment.locale('es'));
     var fn = moment(this.datosPaciente.FECHA_NAC, "YYYY-MM-DD")
-    console.log(fn.toDate())
+   
 
 
     var hoy = moment();
@@ -376,11 +378,10 @@ export class RegistrarAtencionComponent implements OnInit {
     } else {
       this.form3.visible = false;
     }
-
-
-
-
-
+  }
+  cambioTipoFinaciador(e){
+    console.log(e)
+    alert("")
   }
 
 

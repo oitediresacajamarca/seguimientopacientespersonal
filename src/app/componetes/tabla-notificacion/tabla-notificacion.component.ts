@@ -145,6 +145,11 @@ export class TablaNotificacionComponent implements OnInit {
           "colsize": 250
         },
         {
+          "header": "ESPECIALIDAD",
+          "field": "NOMBRE_CARTERA",
+          "colsize": 250
+        },
+        {
           "header": "NOMBRE PROVINCIA",
           "field": "NOMBRE_PROVINCIA",
           "colsize": 250

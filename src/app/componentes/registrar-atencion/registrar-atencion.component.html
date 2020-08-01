@@ -12,9 +12,9 @@
   <p-scrollPanel [style]="{ width: '100%', height: '800px' }">
     <div class="ui-fluid">
       <div class="ui-g">
-        <div class="ui-g-6">
+        <div class="ui-g-4">
           <mat-card
-            >NOMBRES Y APELLIDOS COMPLETOS:
+            >NOMBRES Y APELLIDOS COMPLETOS:<br>
             <div class="nombrescompletos">
             {{
               datosPaciente.NOMBRES +
@@ -26,17 +26,33 @@
           </div></mat-card
           >
         </div>
-        <div class="ui-g-3">
+        <div class="ui-g-2">
           <mat-card
-            >NUMERO DE DOCUMENTO:
+            >NUMERO DE DOCUMENTO:<br>
             <div class="nombrescompletos"> {{ datosPaciente.NRO_DOCUMENTO }}</div>
           </mat-card>
         </div>
-        <div class="ui-g-3">
+        <div class="ui-g-2">
           <mat-card
             >Fecha:
             <div class="nombrescompletos">
               <p-calendar [(ngModel)]="fechaatencion" [locale]="es" showTime="true" hourFormat="12" dateFormat="dd/mm/yy"></p-calendar>
+          </div></mat-card
+          >
+        </div>
+        <div class="ui-g-2">
+          <mat-card
+            >SEGURO:
+            <div class="nombrescompletos">
+              <app-selector-financiador (onChange)="cambioTipoFinaciador($event)"></app-selector-financiador>
+          </div></mat-card
+          >
+        </div>
+        <div class="ui-g-2">
+          <mat-card
+            >NRO SEGURO:
+            <div class="nombrescompletos">
+              <input type="text" pInputText />
           </div></mat-card
           >
         </div>

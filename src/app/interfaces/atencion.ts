@@ -12,5 +12,6 @@ export interface Atencion {
     NIVEL_ATENCION: string,
     CONSENTIMIENTO: string,
     ID_PACIENTE:string,
-    ID_SOLICITUD:string
+    ID_SOLICITUD:string,
+    COD_CARTERA:string
 }

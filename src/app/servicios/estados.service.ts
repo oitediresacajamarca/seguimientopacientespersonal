@@ -15,6 +15,7 @@ export class EstadosService {
   personaPaciente
   dianosticospac
   solicitud
+  especialidadatender:string
 
  
 

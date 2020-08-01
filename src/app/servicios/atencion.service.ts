@@ -15,7 +15,7 @@ export class AtencionService {
 
   }
   registrar(aten: any) {
-
+   
     return this.http.post<any>(environment.url_backend + 'atenciones/registrar/', aten);
   }
   registrarExamenfis(examen: any, id_atencion: string, id_trabajador: string) {

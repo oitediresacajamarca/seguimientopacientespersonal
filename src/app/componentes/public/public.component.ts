@@ -8,6 +8,8 @@ import { NgForm, Form } from '@angular/forms';
 import { Button } from 'primeng/button/button';
 import { EstadosService } from 'src/app/servicios/estados.service';
 import { Router } from '@angular/router';
+import { SelectorCarteraServiciosComponent } from 'src/app/controles/selector-cartera-servicios/selector-cartera-servicios.component';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 
@@ -21,7 +23,7 @@ export class PublicComponent implements OnInit {
   tiposdoc: SelectItem[];
   optionsMap: any;
   ipressFiltrados: SelectItem[];
-  ipress_select: SelectItem;
+  ipress_select: any;
   msgs: any[];
   verpanelregistro: boolean = false;
   noexistepaciente: boolean = false;
@@ -59,6 +61,8 @@ export class PublicComponent implements OnInit {
   btenv: Button
   mensajefinal: boolean = false;
   dialog_width: string;
+  COD_CARTERA: string
+  @ViewChild('selectorcartera', { static: false }) selectorcartera: SelectorCarteraServiciosComponent
   constructor(private est: EstadosService, private pers: PersonaService, private geo: GeografiaService,
     private sol: SolicitudService, private confirmationService: ConfirmationService, private mesgs: MessageService
     , private confirmationService2: ConfirmationService, private router: Router) { }
@@ -81,23 +85,23 @@ export class PublicComponent implements OnInit {
       this.FECNAC = dat.FECNAC;
       this.tipodocseleccionado = dat.tipodocseleccionado;
       this.numerodoc = dat.numerodoc;
-      this.fechasolicitud=new Date();
+      this.fechasolicitud = new Date();
 
       console.log(`ver panel registro: ${this.verpanelregistro}`);
-      
-      if(this.verpanelregistro){
+
+      if (this.verpanelregistro) {
         //set timeout para asegurar que el control exista
         setTimeout(() => {
           let txtNom = window.document.getElementById("txtNombre");
-          if(txtNom){
+          if (txtNom) {
             window.document.getElementById("txtNombre").focus();
             //window.document.getElementById("txtNombre").scrollIntoView();
           }
-          
+
         }, 1500);
         this.setDialogWidth();
       }
-      
+
     })
 
 
@@ -139,15 +143,15 @@ export class PublicComponent implements OnInit {
       { label: "SANTA CRUZ", value: "0613" }]
 
 
-     
-      
+
+
   }
 
-  setDialogWidth(){
+  setDialogWidth() {
     console.log(window.innerWidth)
-    if(window.innerWidth < 768){
+    if (window.innerWidth < 768) {
       this.dialog_width = '90vw';
-    } else{
+    } else {
       this.dialog_width = '50vw';
     }
   }
@@ -184,9 +188,9 @@ export class PublicComponent implements OnInit {
 
   guardarPaciente() {
     this.fechasolicitud = new Date()
-    console.log(this.correo)
-    if(this.correo== undefined){
-      this.correo=''
+   
+    if (this.correo == undefined) {
+      this.correo = ''
     }
     this.confirmationService.confirm({
       message: 'ESTAS SEGURO DE REGISTRARTE PARA SOLICITAR ATENCION?',
@@ -205,7 +209,8 @@ export class PublicComponent implements OnInit {
           "ESTADO": "P",
           "ID_DISTRITO": this.distritoselecionado,
           "CORREO": this.correo.toLocaleUpperCase(),
-          "ID_IPRESS": this.ipress_select
+          "ID_IPRESS": this.ipress_select,
+          "COD_CARTERA":this.COD_CARTERA
         }
 
         if (this.verpaneldatosgenerales) {
@@ -319,6 +324,7 @@ export class PublicComponent implements OnInit {
 
 
   }
+
   validarcheck(e) {
 
     if (e == "acepto") {
@@ -341,6 +347,11 @@ export class PublicComponent implements OnInit {
 
       this.ipressFiltrados = datos.respuesta;
     })
+
+  }
+  cambioIpress() {
+    console.log(this.ipress_select)
+    this.selectorcartera.cargarServiciosIpress(this.ipress_select)
 
   }
 

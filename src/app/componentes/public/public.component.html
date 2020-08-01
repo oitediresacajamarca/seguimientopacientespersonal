@@ -281,7 +281,19 @@
             [style]="{width: '100%', 'min-width': 'auto'}"
             [(ngModel)]="ipress_select"
             #ipress="ngModel"
+            (onChange)="cambioIpress()"
           ></p-dropdown>
+          <p-message
+            severity="error"
+            text="Establecimiento es requerido"
+            *ngIf="ipress.invalid && ipress.touched"
+          ></p-message>
+        </div>
+        <div class="ui-g-12 ui-md-3 label-form">
+          Especialidad
+        </div>
+        <div class="ui-g-12 ui-md-9">
+          <app-selector-cartera-servicios name="COD_CARTERA" [(ngModel)]="COD_CARTERA" #selectorcartera></app-selector-cartera-servicios>
           <p-message
             severity="error"
             text="Establecimiento es requerido"

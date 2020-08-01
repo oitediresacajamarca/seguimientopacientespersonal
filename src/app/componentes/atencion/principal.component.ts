@@ -12,6 +12,7 @@ import { EstadosService } from 'src/app/servicios/estados.service';
 import { Button } from 'primeng/button';
 import { LogService } from 'src/app/servicios/log.service';
 import { MessageService } from 'primeng';
+import { SelectorCarteraServiciosComponent } from 'src/app/controles/selector-cartera-servicios/selector-cartera-servicios.component';
 declare var $: any
 
 @Component({
@@ -28,6 +29,8 @@ export class PrincipalComponent implements OnInit {
   @ViewChild('inicioaten', { static: false }) inicioaten: NgForm
   @ViewChild('editabutton', { static: false }) editabutton: Button
   @ViewChild('guardarbutton', { static: false }) guardarbutton: Button
+  @ViewChild('COD_CARTERA', { static: false }) COD_CARTERA: SelectorCarteraServiciosComponent
+
 
 
   nombresd = true
@@ -74,7 +77,8 @@ export class PrincipalComponent implements OnInit {
     NIVEL_ATENCION: '',
     CONSENTIMIENTO: '',
     ID_PACIENTE: '',
-    ID_SOLICITUD: ''
+    ID_SOLICITUD: '',
+    COD_CARTERA: ''
   }
 
 
@@ -91,11 +95,11 @@ export class PrincipalComponent implements OnInit {
     private personser: PersonaService, private GEO: GeografiaService,
     private estadoss: EstadosService,
     private router: Router, private formnuilder: FormBuilder,
-    private logs: LogService,private messageService:MessageService
+    private logs: LogService, private messageService: MessageService
   ) { }
 
   ngOnInit() {
-  
+
     this.estadoss.pacienteporatender.subscribe(dato => {
       this.cod_buscar = dato;
       this.buscarParaInciciarAtencion()
@@ -115,7 +119,8 @@ export class PrincipalComponent implements OnInit {
       ID_PACIENTE: null,
       ID_RESPONSABLE: null,
       ID_SOLICITUD: "87",
-      NIVEL_ATENCION: null
+      NIVEL_ATENCION: null,
+      COD_CARTERA: ''
     }
     this.formulariosolicitud = this.formnuilder.group({
       FECHA_SOLICITUD: new FormControl(),
@@ -124,7 +129,8 @@ export class PrincipalComponent implements OnInit {
       TELEF_CONTACTO: new FormControl(),
       TELEF_CONTACTO2: new FormControl(),
       CORREO: new FormControl(),
-      REFERENCIA: new FormControl()
+      REFERENCIA: new FormControl(),
+      COD_CARTERA: new FormControl()
     })
 
 
@@ -167,16 +173,12 @@ export class PrincipalComponent implements OnInit {
 
       }
 
-
-
-
-
-
     })
 
 
   }
   buscarParaInciciarAtencion() {
+
     this.buscarPersona();
     this.buscarSolicitud()
   }
@@ -184,11 +186,11 @@ export class PrincipalComponent implements OnInit {
   buscarSolicitud() {
     this.formulariosolicitud.reset()
 
-    this.solipac.buscarSolicitudPorNumeroDcocumento(this.cod_buscar).subscribe((datos) => {
-
+    this.solipac.buscarSolicitudPorNumeroDcocumento(this.cod_buscar).subscribe(async (datos) => {
+      this.COD_CARTERA.COD_IPRESS = datos.ID_IPRESS
+      await this.COD_CARTERA.cargarServicios();
       if (datos != null) {
         this.formulariosolicitud.setValue(
-
           {
             FECHA_SOLICITUD: datos.FECHA_SOLICITUD,
             DESCRIPCION: datos.DESCRIPCION,
@@ -196,27 +198,27 @@ export class PrincipalComponent implements OnInit {
             TELEF_CONTACTO: datos.TELEF_CONTACTO,
             TELEF_CONTACTO2: datos.TELEF_CONTACTO2,
             CORREO: datos.CORREO,
-            REFERENCIA: datos.REFERENCIA
+            REFERENCIA: datos.REFERENCIA,
+            COD_CARTERA: datos.COD_CARTERA
           },
-
         )
+        
         this.estadoss.solicitud = datos
         this.ID_SOLICITUD = datos.ID_SOLICITUD
       }
-
-
     })
-
-
-
   }
 
-  IniciaRegistro(e) {
-   
+  async IniciaRegistro(e) {
 
     this.panreg.ver = true;
     let sesion = JSON.parse(localStorage.getItem('datos'));
-    this.atencion.ID_RESPONSABLE = sesion.TRABAJADOR_ID;
+    this.atencion = this.formulariosolicitud.value
+    
+    let valor=  this.COD_CARTERA.getNombreCarteraSeleccionada()
+  this.estadoss.especialidadatender=valor
+       
+
     this.atencion.ANTECEDENTE = this.formulariosolicitud.controls.DESCRIPCION.value
     if (this.ID_SOLICITUD != null) {
       this.atencion.ID_SOLICITUD = this.ID_SOLICITUD
@@ -224,6 +226,8 @@ export class PrincipalComponent implements OnInit {
     this.panreg.form1.atencion_detalle.MOTIVO = this.formulariosolicitud.controls.DESCRIPCION.value;
     this.logs.log('INICIA PROCESO DE ATENCION', this.atencion).subscribe();
   }
+
+
   CerrarRegistro() {
     this.verpanelregistro = false;
 
@@ -265,8 +269,6 @@ export class PrincipalComponent implements OnInit {
         this.apellido_patd = true;
         this.apellido_matd = true;
         this.direccion_d = true;
-
-
       }
 
     )

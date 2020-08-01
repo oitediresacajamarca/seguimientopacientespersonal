@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatCardModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -92,6 +92,7 @@ import { SolicitudAtencionComponent } from './formularios/solicitud-atencion/sol
 import { SelectorIpressMinComponent } from './controles/selector-ipress-min/selector-ipress-min.component';
 import { SelectorCarteraServiciosComponent } from './controles/selector-cartera-servicios/selector-cartera-servicios.component';
 import { PruebaComponent } from './prueba/prueba/prueba.component';
+import { SelectorFinanciadorComponent } from './controles/selector-financiador/selector-financiador.component';
 
 
 
@@ -100,6 +101,9 @@ import { PruebaComponent } from './prueba/prueba/prueba.component';
   entryComponents: [
     SelectorMedicamentoComponent
   ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+],
   declarations: [
   
     AppComponent,
@@ -152,6 +156,8 @@ import { PruebaComponent } from './prueba/prueba/prueba.component';
     SelectorCarteraServiciosComponent,
 
     PruebaComponent,
+
+    SelectorFinanciadorComponent,
 
  
 
