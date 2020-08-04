@@ -11,11 +11,14 @@ export class HeaderComponent implements OnInit {
 
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
   @Output() notiA: EventEmitter<any> = new EventEmitter();
+  constructor(private estado: EstadosService, private router: Router) { }
+  nro_noti = 0
+  ngOnInit() {
+    this.estado.actualiza_cantidad_noti.subscribe((cantidad) => {
+      this.nro_noti = cantidad
+    })
 
-
-  constructor(private estado:EstadosService,private router :Router) { }
-
-  ngOnInit() { }
+  }
 
   toggleSideBar() {
     this.toggleSideBarForMe.emit();
@@ -26,28 +29,28 @@ export class HeaderComponent implements OnInit {
     }, 300);
   }
 
-  abrirNotificaciones(){
+  abrirNotificaciones() {
     this.estado.actualizarNotificacione.emit();
- 
-  
+
+
     setTimeout(() => {
       window.dispatchEvent(
         new Event('resize')
       );
     }, 300);
-    
+
 
 
   }
-  abrirEmergenteCambiarContra(){
-  
+  abrirEmergenteCambiarContra() {
 
-    this.router.navigate([{ outlets: { emergente: 'actualizar' }}]);
 
-   
+    this.router.navigate([{ outlets: { emergente: 'actualizar' } }]);
+
+
   }
-  abrirEmergenteNuevaSolicitud(){
-    this.router.navigate([{ outlets: { emergente: 'NuevaSolicitud' }}]);
+  abrirEmergenteNuevaSolicitud() {
+    this.router.navigate([{ outlets: { emergente: 'NuevaSolicitud' } }]);
   }
 
 }

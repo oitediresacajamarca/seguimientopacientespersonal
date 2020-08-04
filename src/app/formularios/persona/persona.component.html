@@ -38,19 +38,19 @@
             <div class="ui-g-6">
               <p-dropdown
                 [options]="TIPO_DOC"
-                optionLabel="label"
+             
                 formControlName="ID_TIPOD"
               ></p-dropdown>
             </div>
             <div class="ui-g-6">Numero de Documento</div>
             <div class="ui-g-6">
-              <app-buscador-dni
-                (perosnaencontrada)="CargarInformacionPersona($event)"
+              <app-buscador-dni 
+                (perosnaencontrada)="CargarInformacionPersona($event)" formControlName="NRO_DOCUMENTO"
               ></app-buscador-dni>
             </div>
             <div class="ui-g-6">Genero</div>
             <div class="ui-g-6">
-              <p-dropdown [options]="GENERO" optionLabel="label"></p-dropdown>
+              <p-dropdown [options]="GENERO"   formControlName="ID_GENERO"></p-dropdown>
             </div>
             <div class="ui-g-6">FECHA DE NACIMIENTO</div>
             <div class="ui-g-6">

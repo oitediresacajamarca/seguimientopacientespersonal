@@ -16,6 +16,8 @@ export class EstadosService {
   dianosticospac
   solicitud
   especialidadatender:string
+  NombreFinanciador:string ="S.I.S"
+  COD_FINANCIADOR
 
  
 
@@ -72,6 +74,7 @@ export class EstadosService {
     }]
 
   }
+  actualiza_cantidad_noti =new EventEmitter<any>();
 
 
   constructor() { }

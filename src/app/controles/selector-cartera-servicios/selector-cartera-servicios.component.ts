@@ -39,6 +39,7 @@ export class SelectorCarteraServiciosComponent implements OnInit, ControlValueAc
     this.disabled = isDisabled
   }
   async cargarServiciosIpress(COD_IPRESS: string) {
+  
     let respuesta: any[] = await this.cartera_servicios.cargarServiciosIpress(COD_IPRESS).toPromise()
 
     this.listado_servicios = respuesta.map((Cartera) => {

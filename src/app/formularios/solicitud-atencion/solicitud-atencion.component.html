@@ -1,6 +1,18 @@
-<p-sidebar [(visible)]="visible" [style]="{width:'100em'}" (onHide)="rutanula()">
- 
 
+ 
+    <p-dialog header="REGISTRO DE NUEVA SOLICITUD" [(visible)]="visible"  [modal]="true"
+    [(visible)]="ver"
+    [modal]="true"
+    [style]="{ width: '80vw' }"
+    [maximizable]="true"
+    [baseZIndex]="5000"
+    [draggable]="false"
+    [resizable]="false"
+    (onHide)="rutanula()"
+    
+    >
+    
+   
 <div class="ui-g">
     <div class="ui-g-6"><app-persona #formpersona (cambioDistrito)="cambiar_distrito($event)"></app-persona></div>
     <div class="ui-g-6">
@@ -13,8 +25,9 @@
                           <div class="ui-g-3">MOTIVO</div>
                           <div class="ui-g-9"><textarea [rows]="10" [cols]="60" pInputTextarea formControlName='DESCRIPCION'></textarea></div>
                           <div class="ui-g-6">ESTABLECIMIENTO</div>
-                          <div class="ui-g-6"><app-selector-ipress-min #selectoripres formControlName='ID_IPRESS'></app-selector-ipress-min></div>                          
-                         
+                          <div class="ui-g-6"><app-selector-ipress-min #selectoripres formControlName='ID_IPRESS' (seleccionoIpress)="ipressSelec($event)"></app-selector-ipress-min></div>                          
+                          <div class="ui-g-6">ESPECIALIDAD</div>
+                          <div class="ui-g-6"><app-selector-cartera-servicios #selectorCartera  formControlName='COD_CARTERA'></app-selector-cartera-servicios></div>  
                         </div>
                       </form>
                 </div>
@@ -27,11 +40,16 @@
 </div>
 <div class="footerform">
         
-    <p-button label="GUARDAR" (onClick)="GUARDAR($event)"></p-button>
-    <p-button label="CANCELAR" (onClick)="GUARDAR($event)"></p-button>
+    <p-toast></p-toast>
+    <p-confirmDialog header="Confirmacion" icon="pi pi-exclamation-triangle" acceptLabel="Aceptar" rejectLabel="Cancelar"></p-confirmDialog>
 
 
 </div>
 
+<p-footer>
+    <p-button label="GUARDAR" (onClick)="GUARDAR($event)" [disabled]="formpersona.formpersona.invalid || SOLICITUDFORM.invalid"></p-button>
+    <p-button label="CANCELAR" (onClick)="this.visible=false"></p-button>
+</p-footer>
+</p-dialog>
 
-</p-sidebar>
+

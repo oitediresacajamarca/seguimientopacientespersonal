@@ -19,6 +19,7 @@ import { TicketRecetaComponent } from './impresiones/ticket-receta/ticket-receta
 import { SolicitudAtencionComponent } from './formularios/solicitud-atencion/solicitud-atencion.component';
 import { SelectorCarteraServiciosComponent } from './controles/selector-cartera-servicios/selector-cartera-servicios.component';
 import { SelectorFinanciadorComponent } from './controles/selector-financiador/selector-financiador.component';
+import { SelectorGeograficoVerticalComponent } from './controles/selector-geografico-vertical/selector-geografico-vertical.component';
 
 
 
@@ -38,7 +39,7 @@ const routes: Routes = [
   { path: 'nuevaSolicitud', component:PublicComponent , outlet: 'emergente' },  
   { path: 'buscardni', component: BusquedaNominalComponent, outlet: 'emergente' },
   { path: 'NuevaSolicitud', component: SolicitudAtencionComponent, outlet: 'emergente' }, 
-  { path: '1', component: SelectorFinanciadorComponent },  
+  { path: '1', component:SelectorGeograficoVerticalComponent },  
  
   {path:'recetaprint',component:TicketRecetaComponent},
   {

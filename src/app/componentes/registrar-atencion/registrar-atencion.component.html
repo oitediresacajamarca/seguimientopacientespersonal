@@ -44,7 +44,7 @@
           <mat-card
             >SEGURO:
             <div class="nombrescompletos">
-              <app-selector-financiador (onChange)="cambioTipoFinaciador($event)"></app-selector-financiador>
+              <app-selector-financiador [(ngModel)]="FINANCIADOR" (eligioFinanciador)="cambioTipoFinaciador($event)"></app-selector-financiador>
           </div></mat-card
           >
         </div>
@@ -52,7 +52,7 @@
           <mat-card
             >NRO SEGURO:
             <div class="nombrescompletos">
-              <input type="text" pInputText />
+              <input type="text" pInputText [(ngModel)]="COD_FINANCIADOR" (keyup)="CAMBIO_COD_FINANCIADOR()"/>
           </div></mat-card
           >
         </div>

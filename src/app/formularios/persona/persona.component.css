@@ -20,3 +20,6 @@ div#capa_formulario {
     margin: 18px;
 }
 
+:host  ::ng-deep .ui-dropdown {
+  float: left !important; 
+}

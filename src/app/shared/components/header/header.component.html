@@ -29,11 +29,13 @@
               <mat-icon>assignment_return</mat-icon>
               Ir a Atenciones
             </button>
+          
           </mat-menu>
+          
         </li>
         <li>
           <button mat-icon-button (click)="abrirNotificaciones()">
-            <mat-icon>notification_important</mat-icon>
+            <mat-icon [matBadge]="nro_noti"  matBadgeColor="warn">notification_important</mat-icon>
           </button>
         </li>
         <li>

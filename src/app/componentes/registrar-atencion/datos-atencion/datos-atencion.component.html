@@ -10,7 +10,7 @@
             <p-radioButton [(ngModel)]=" tipocon" name="numcontrol" value="nuevo"  class="elementcontrol" (onClick)="controlarentrada($event)" ></p-radioButton>
             Control
             <p-radioButton [(ngModel)]=" tipocon"  name="numcontrol" value="control"  class="elementcontrol" (onClick)="controlarentrada($event)"></p-radioButton>
-            <input type="number" pInputText class="elementcontrol" *ngIf="mostrarnumero" [(ngModel)]="numcon">
+            <input type="number" pInputText  name="numcon" class="elementcontrol" *ngIf="mostrarnumero" [(ngModel)]="numcon">
         </div>
     </mat-card>
 </div>

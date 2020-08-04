@@ -23,6 +23,6 @@ export class SolicitudesService {
     return this.http.get('http://' + environment.ip_backend + '/solicitudes/solicitud/cerrar/' + solicitud);
   }
   nuevaSolicitud(datos) {
-    return this.http.post(environment.url_backend + 'solicitudes-atencion/nueva/', datos);
+    return this.http.post<any>(environment.url_backend + 'solicitudes-atencion/nueva/', datos);
   }
 }

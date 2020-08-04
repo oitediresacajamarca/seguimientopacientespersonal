@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild, Output, EventEmitter, forwardRef, ɵConsole } from '@angular/core';
 import { SelectItem } from 'primeng';
-import { FormBuilder, FormGroup, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { FormBuilder, FormGroup, ControlValueAccessor, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { SelectorGeograficoVerticalComponent } from 'src/app/controles/selector-geografico-vertical/selector-geografico-vertical.component';
 
 
@@ -23,17 +23,17 @@ export class PersonaComponent implements OnInit, ControlValueAccessor {
   writeValue(value: any): void {
     this.ID_DISTRITO = value
   }
-  onChange:()=>{}
-  onTouched:()=>{}
+  onChange: () => {}
+  onTouched: () => {}
   disabled
   registerOnChange(fn: any): void {
-   this.onChange=fn
+    this.onChange = fn
   }
   registerOnTouched(fn: any): void {
-   this.onTouched=fn
+    this.onTouched = fn
   }
   setDisabledState?(isDisabled: boolean): void {
-  this.disabled=isDisabled
+    this.disabled = isDisabled
   }
   formpersona: FormGroup;
   TIPO_DOC: SelectItem[]
@@ -42,8 +42,8 @@ export class PersonaComponent implements OnInit, ControlValueAccessor {
   @ViewChild('selectorgeografico', { static: false }) selectorgeografico: SelectorGeograficoVerticalComponent
   ngOnInit() {
     this.TIPO_DOC = [
-      { label: 'DNI', value: null },
-      { label: 'CARNET', value: { id: 1, name: 'New York', code: 'NY' } },
+      { label: 'DNI', value: 1 },
+      { label: 'CARNET', value: 2 },
 
 
     ];
@@ -53,16 +53,39 @@ export class PersonaComponent implements OnInit, ControlValueAccessor {
 
     ];
     this.formpersona = this.formBuilder.group({
-      NOMBRES: '',
-      APELLIDO_PAT: '',
-      APELLIDO_MAT: '',
-      NRO_DOCUMENTO: '',
-      FECHA_NAC: '',
-      TELEFONO: '',
-      CORREO: '',
-      ID_TIPOD: '',
-      DIRECCION: '',
-      ID_DISTRITO: ''
+      NOMBRES: ['', [
+        Validators.required,
+      ]],
+      APELLIDO_PAT: ['', [
+        Validators.required,
+      ]],
+      APELLIDO_MAT: ['', [
+        Validators.required,
+      ]],
+      NRO_DOCUMENTO: ['', [
+        Validators.required,
+      ]],
+      FECHA_NAC: ['', [
+        Validators.required,
+      ]],
+      TELEFONO: ['', [
+        Validators.required,
+      ]],
+      CORREO: ['', [
+        Validators.required,
+      ]],
+      ID_TIPOD: [1, [
+        Validators.required,
+      ]],
+      DIRECCION: ['', [
+        Validators.required,
+      ]],
+      ID_DISTRITO: ['', [
+        Validators.required,
+      ]],
+      ID_GENERO: [1, [
+        Validators.required,
+      ]]
 
     })
 
@@ -77,6 +100,7 @@ export class PersonaComponent implements OnInit, ControlValueAccessor {
     this.formpersona.controls['CORREO'].setValue(e.CORREO)
     this.formpersona.controls['FECHA_NAC'].setValue(new Date(e.FECHA_NAC))
     this.formpersona.controls['ID_TIPOD'].setValue(e.ID_TIPOD)
+    this.formpersona.controls['ID_GENERO'].setValue(e.ID_GENERO)
     this.formpersona.controls['DIRECCION'].setValue(e.DIRECCION)
     this.selectorgeografico.cargarDistrito(e.ID_DISTRITO)
     this.formpersona.controls['ID_DISTRITO'].setValue(e.ID_DISTRITO)
@@ -86,10 +110,6 @@ export class PersonaComponent implements OnInit, ControlValueAccessor {
   seleccionoDistrito(e) {
     console.log('cambio distrito dentro de persona')
     this.cambioDistrito.emit(e);
-    
-
-    this.formpersona.controls['ID_DISTRITO'].setValue(e)
-    console.log(    this.formpersona.controls['ID_DISTRITO'].value)
   }
 
 

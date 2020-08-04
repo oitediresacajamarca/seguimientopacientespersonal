@@ -49,6 +49,8 @@ export class RegistrarAtencionComponent implements OnInit {
   es:any;
   @Input()
   especialidad:string
+  FINANCIADOR:number=2
+  COD_FINANCIADOR:string
 
   constructor(private aten: AtencionService, private confirmationService: ConfirmationService,
     private fuatservicio: FuatServicioService, private messageService: MessageService,
@@ -321,7 +323,7 @@ export class RegistrarAtencionComponent implements OnInit {
     this.formatofuat.edad = anios.toString()
 
     this.formatofuat.nro_documento = this.datosPaciente.NRO_DOCUMENTO;
-    this.formatofuat.nuevocontrol = this.form1.numcon == null || this.form1.numcon < 1 ? true : false
+    this.formatofuat.nuevocontrol = this.form1.mostrarnumero == true || this.form1.numcon < 1 ? false : true
     this.formatofuat.numerocontrol = this.form1.numcon != null ? this.form1.numcon.toString() : ""
     this.formatofuat.especialidades = [];
     this.formatofuat.examenfisico.presionarterial = this.form1.examenesFisicos.examenes[0].VALOR
@@ -336,6 +338,7 @@ export class RegistrarAtencionComponent implements OnInit {
     this.formatofuat.examendeapoyo = this.form1.examenesdeapoyo.toString();
     this.formatofuat.motivo[0] = this.form1.atencion_detalle.MOTIVO;
     this.formatofuat.codipress = this.sesion.COD_IPRESS;
+    this.formatofuat.tiposeguro=this.estadoss.NombreFinanciador
     let actual = new Date();
     this.formatofuat.fechaatencion = actual.toLocaleDateString('es-ES')
     this.formatofuat.horaatencion = (new Date()).getHours().toString() + ':' + (new Date()).getMinutes()
@@ -380,8 +383,16 @@ export class RegistrarAtencionComponent implements OnInit {
     }
   }
   cambioTipoFinaciador(e){
-    console.log(e)
-    alert("")
+    
+    console.log(e.VALOR)
+  this.estadoss.NombreFinanciador= e.VALOR
+ 
+ 
+   
+  }
+  CAMBIO_COD_FINANCIADOR(e){
+
+    this.estadoss.COD_FINANCIADOR=this.COD_FINANCIADOR
   }
 
 

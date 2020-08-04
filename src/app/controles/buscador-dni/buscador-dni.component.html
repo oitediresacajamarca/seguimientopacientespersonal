@@ -1,10 +1,12 @@
 <div class="ui-inputgroup">
-  <input type="text" pInputText placeholder="Numero de Documento" [(ngModel)]="NRO_DOC_BUSCAR" />
+  <input type="text" pInputText placeholder="Numero de Documento" [(ngModel)]="NRO_DOC_BUSCAR" 
+  (ngModelChange)="cambioDocumento(NRO_DOC_BUSCAR)"/>
   <p-button
 
     (onClick)="BuscarNro_documento($event)"
     type="button"
     icon="pi pi-refresh"
     class="ui-button-warn"
+
   ></p-button>
 </div>

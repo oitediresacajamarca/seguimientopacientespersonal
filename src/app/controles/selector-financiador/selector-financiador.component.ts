@@ -1,6 +1,7 @@
-import { Component, OnInit, Output, forwardRef } from '@angular/core';
+import { Component, OnInit, Output, forwardRef, EventEmitter } from '@angular/core';
 import { SelectItem } from 'primeng';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+
 
 @Component({
   selector: 'app-selector-financiador',
@@ -15,13 +16,35 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
   ]
 })
 export class SelectorFinanciadorComponent implements OnInit, ControlValueAccessor {
-  financiadorSeleccionado: string
-  onChang: any = () => { console.log("sdf") };
+  financiadorSeleccionado: number=2
+  @Output()
+  eligioFinanciador = new EventEmitter<any>()
+  cambioFinanciador(dato){
+    let objeto = this.devolverNombreFinanciador()
+    this.eligioFinanciador.emit({ COD_FINANCIADOR: dato, VALOR: objeto.label })
+    this.onChang({ COD_FINANCIADOR: dato, VALOR: objeto.label })
+
+  }
+  onChang: any = (dato) => {
+   
+  };
+  devolverNombreFinanciador() {
+    let finaciadorObjeto = this.financiadores.find((financiador) => { return financiador.value == this.financiadorSeleccionado })
+    return finaciadorObjeto;
+  }
   onTouched: () => void;
   disabled: boolean = false
   constructor() { }
   writeValue(obj: any): void {
+   
     this.financiadorSeleccionado = obj
+    let objeto = this.devolverNombreFinanciador()
+  
+    if(objeto!=undefined){
+    this.eligioFinanciador.emit({ COD_FINANCIADOR: this.financiadorSeleccionado, VALOR: objeto.label })
+ 
+    this.onChang({ COD_FINANCIADOR: this.financiadorSeleccionado, VALOR: objeto.label })
+    }
   }
   registerOnChange(fn: any): void {
     this.onChang = fn
@@ -33,9 +56,6 @@ export class SelectorFinanciadorComponent implements OnInit, ControlValueAccesso
     this.disabled = isDisabled
   }
   financiadores: SelectItem[]
-
-
-
   ngOnInit() {
     this.financiadores = [
       {

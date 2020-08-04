@@ -214,7 +214,8 @@ export class TablaNotificacionComponent implements OnInit {
 
     let maximo_cie = 0;
     await this.sol.devolverDatosSolicitudes(this.cod_ambito).subscribe((datos) => {
-      let solicitudes = datos.recordset;
+      let solicitudes:any[] = datos.recordset;
+      this.estados.actualiza_cantidad_noti.emit(solicitudes.length)
 
 
       var max_col_sol = 0;

@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter, forwardRef } from '@angular/co
 import { GeografiaService } from 'src/app/servicios/servicios/geografia.service';
 import { SelectItem } from 'primeng';
 import { FormBuilder, FormGroup, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+
 
 
 @Component({
@@ -26,11 +26,11 @@ export class SelectorGeograficoVerticalComponent implements OnInit, ControlValue
     this.ID_DISTRITO = value
     this.cargarDistrito(this.ID_DISTRITO)
   }
-  onChange: (value) => void;
+  onChange: (value) => void=(dato)=>{};
   onTouched: () => void;
 
   registerOnChange(fn: any): void {
-    this.onChange = fn
+    this.onChange=fn;
   }
   registerOnTouched(fn: any): void {
     this.onTouched = fn
@@ -42,8 +42,6 @@ export class SelectorGeograficoVerticalComponent implements OnInit, ControlValue
   formgeografico: FormGroup
   @Output()
   seleccionoDistrito = new EventEmitter()
-
-
   DISTRITOS_FILTRADOS
 
   async filtrarDistritos() {
@@ -56,7 +54,10 @@ export class SelectorGeograficoVerticalComponent implements OnInit, ControlValue
 
   distritoCambio() {
     let DISTRITO = this.formgeografico.controls['DISTRITO'].value
-    this.onChange(DISTRITO)
+
+    this.onChange(DISTRITO.value)
+    this.seleccionoDistrito.emit(DISTRITO.value)
+  
 
   }
   ngOnInit() {
@@ -86,6 +87,8 @@ export class SelectorGeograficoVerticalComponent implements OnInit, ControlValue
       this.formgeografico.controls['PROVINCIA'].setValue(PROVINCIA)
       await this.filtrarDistritos()
       this.formgeografico.controls['DISTRITO'].setValue(distrito.ID_DISTRITO)
+      this.seleccionoDistrito.emit(distrito.ID_DISTRITO)
+      this.onChange(cod_distrito)
     })
   }
 
