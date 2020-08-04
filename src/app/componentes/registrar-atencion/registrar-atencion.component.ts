@@ -390,7 +390,7 @@ export class RegistrarAtencionComponent implements OnInit {
  
    
   }
-  CAMBIO_COD_FINANCIADOR(e){
+  CAMBIO_COD_FINANCIADOR(){
 
     this.estadoss.COD_FINANCIADOR=this.COD_FINANCIADOR
   }
