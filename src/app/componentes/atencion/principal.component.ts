@@ -223,6 +223,7 @@ export class PrincipalComponent implements OnInit {
     if (this.ID_SOLICITUD != null) {
       this.atencion.ID_SOLICITUD = this.ID_SOLICITUD
     }
+    console.log(this.formulariosolicitud.controls.DESCRIPCION.value)
     this.panreg.form1.atencion_detalle.MOTIVO = this.formulariosolicitud.controls.DESCRIPCION.value;
     this.logs.log('INICIA PROCESO DE ATENCION', this.atencion).subscribe();
   }

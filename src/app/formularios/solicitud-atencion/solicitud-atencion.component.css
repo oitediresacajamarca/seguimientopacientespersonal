@@ -1,10 +1,9 @@
-.footerform{
-    display: flex;
+.footerform {
+  display: flex;
 
-    justify-content: center;
-    margin: auto;
-  
-   
-
-   
+  justify-content: center;
+  margin: auto;
+}
+:host ::ng-deep .ui-inputtextarea {
+  width: 100%;
 }

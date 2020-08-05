@@ -1,22 +1,24 @@
 <div class="selector-geografico-vertical">
   <form action="" [formGroup]="formgeografico">
     <div class="ui-g">
-      <div class="ui-g-6">PROVINCIA</div>
-      <div class="ui-g-6">
+      <div class="ui-g-5">PROVINCIA</div>
+      <div class="ui-g-7">
         <p-dropdown
           [options]="PROVINCIAS"
           optionLabel="label"
           formControlName="PROVINCIA"
           (onChange)="filtrarDistritos()"
+          maxlength="22"
         ></p-dropdown>
       </div>
-      <div class="ui-g-6">DISTRITO</div>
-      <div class="ui-g-6">
+      <div class="ui-g-5">DISTRITO</div>
+      <div class="ui-g-7">
         <p-dropdown
           [options]="DISTRITOS_FILTRADOS"
           optionLabel="label"
           formControlName="DISTRITO"
           (onChange)="distritoCambio()"
+          maxlength="22"
         ></p-dropdown>
       </div>
     </div>

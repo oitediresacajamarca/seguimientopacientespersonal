@@ -1,84 +1,87 @@
-<div class="formulario-persona">
+
   <form [formGroup]="formpersona">
-    <div class="ui-g">
-      <div class="ui-g-12">
-        <div class="card">
+   
         
-          <div class="card-body">
-            <h5 class="card-title">DATOS GENERALES</h5>
-            <div class="ui-g-6">Nombres</div>
-            <div class="ui-g-6">
+        <div class="ui-g">
+            <div class="ui-g-5">Nombres</div>
+            <div class="ui-g-7">
               <input
                 type="text"
                 pInputText
                 placeholder="Nombres"
                 formControlName="NOMBRES"
+                size="22"
               />
             </div>
-            <div class="ui-g-6">Apellido Paterno</div>
-            <div class="ui-g-6">
+            <div class="ui-g-5">Apellido Paterno</div>
+            <div class="ui-g-7">
               <input
                 type="text"
+                size="22"
 
                 pInputText
                 placeholder="Apellido Paterno"
                 formControlName="APELLIDO_PAT"
               />
             </div>
-            <div class="ui-g-6">Apellido Materno</div>
-            <div class="ui-g-6">
+            <div class="ui-g-5">Apellido Materno</div>
+            <div class="ui-g-7">
               <input
                 type="text"
                 pInputText
                 placeholder="Apellido Materno"
                 formControlName="APELLIDO_MAT"
+                size="22"
               />
             </div>
-            <div class="ui-g-6">Tipo Documento</div>
-            <div class="ui-g-6">
+            <div class="ui-g-5">Tipo Documento</div>
+            <div class="ui-g-7">
               <p-dropdown
                 [options]="TIPO_DOC"
              
                 formControlName="ID_TIPOD"
+                size="22"
               ></p-dropdown>
             </div>
-            <div class="ui-g-6">Numero de Documento</div>
-            <div class="ui-g-6">
+            <div class="ui-g-5">Numero de Documento</div>
+            <div class="ui-g-7">
               <app-buscador-dni 
                 (perosnaencontrada)="CargarInformacionPersona($event)" formControlName="NRO_DOCUMENTO"
               ></app-buscador-dni>
             </div>
-            <div class="ui-g-6">Genero</div>
-            <div class="ui-g-6">
+            <div class="ui-g-5">Genero</div>
+            <div class="ui-g-7">
               <p-dropdown [options]="GENERO"   formControlName="ID_GENERO"></p-dropdown>
             </div>
-            <div class="ui-g-6">FECHA DE NACIMIENTO</div>
-            <div class="ui-g-6">
-              <p-calendar formControlName="FECHA_NAC"></p-calendar>
+            <div class="ui-g-5">FECHA DE NACIMIENTO</div>
+            <div class="ui-g-7">
+              <p-calendar formControlName="FECHA_NAC"  size="22"></p-calendar>
             </div>
-            <div class="ui-g-6">TELEFONO</div>
-            <div class="ui-g-6">
+            <div class="ui-g-5">TELEFONO</div>
+            <div class="ui-g-7">
               <input
                 type="text"
                 pInputText
                 placeholder="TELEFONO"
                 formControlName="TELEFONO"
+                size="22"
               />
             </div>
-            <div class="ui-g-6">CORREO ELECTRONICO</div>
-            <div class="ui-g-6">
+            <div class="ui-g-5">CORREO ELECTRONICO</div>
+            <div class="ui-g-7">
               <input
                 type="text"
                 pInputText
                 placeholder="Correo"
                 formControlName="CORREO"
+                size="22"
               />
             </div>
             <div class="ui-g-12">
                 <app-selector-geografico-vertical (seleccionoDistrito)="seleccionoDistrito($event)" #selectorgeografico formControlName="ID_DISTRITO"></app-selector-geografico-vertical>
             </div>
-            <div class="ui-g-6">DIRECCION</div>
-            <div class="ui-g-6">
+            <div class="ui-g-5">DIRECCION</div>
+            <div class="ui-g-7">
               <input
                 type="text"
                 pInputText
@@ -87,9 +90,8 @@
               />
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+      
+  
   </form>
-</div>
+
 

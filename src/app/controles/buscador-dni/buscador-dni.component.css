@@ -1,4 +1,4 @@
-:host ::ng-deep .ui-inputtext{
+:host ::ng-deep .ui-inputgroup{
   
-    width: 50%;
+    width: 100%;
 }

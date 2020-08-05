@@ -24,7 +24,7 @@ export class SelectorCarteraServiciosComponent implements OnInit, ControlValueAc
   @Input()
   COD_IPRESS: string;
   writeValue(COD_CARTERA: string): void {
-    this.cod_selecionado=COD_CARTERA
+    this.cod_selecionado = COD_CARTERA
   }
   setIpress(COD_IPRESS: string) {
     this.COD_IPRESS = COD_IPRESS
@@ -39,7 +39,7 @@ export class SelectorCarteraServiciosComponent implements OnInit, ControlValueAc
     this.disabled = isDisabled
   }
   async cargarServiciosIpress(COD_IPRESS: string) {
-  
+
     let respuesta: any[] = await this.cartera_servicios.cargarServiciosIpress(COD_IPRESS).toPromise()
 
     this.listado_servicios = respuesta.map((Cartera) => {
@@ -47,7 +47,7 @@ export class SelectorCarteraServiciosComponent implements OnInit, ControlValueAc
       Cartera.label = Cartera.cartera.NOMBRE_CARTERA.toUpperCase();
       return Cartera
     })
-   
+
 
   }
 
@@ -61,13 +61,20 @@ export class SelectorCarteraServiciosComponent implements OnInit, ControlValueAc
     this.cargarServiciosIpress(this.cod_selecionado)
   }
   getNombreCarteraSeleccionada() {
-   
-    let cartera = this.listado_servicios.find((dat) => { 
-     
-      return dat.value == this.cod_selecionado })
+
+    let cartera = this.listado_servicios.find((dat) => {
+
+      return dat.value == this.cod_selecionado
+    })
+    let ret
+    if (cartera == null) {
+      ret = ""
+    } else {
+      ret = cartera.label
+    }
 
 
-    return cartera.label
+    return ret
   }
 
 }

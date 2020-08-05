@@ -23,3 +23,14 @@ div#capa_formulario {
 :host  ::ng-deep .ui-dropdown {
   float: left !important; 
 }
+:host  ::ng-deep .ui-dropdown {
+width: 100%;
+}
+:host  ::ng-deep .ui-inputtext {
+  width: 100%;
+  }
+  :host  ::ng-deep .ui-calendar	{
+    width: 100%;
+    }
+
+

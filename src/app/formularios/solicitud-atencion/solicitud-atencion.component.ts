@@ -33,7 +33,7 @@ export class SolicitudAtencionComponent implements OnInit {
         Validators.required,
       ]],
       COD_CARTERA: ['', [
-        Validators.required,
+       
       ]]
 
     })
