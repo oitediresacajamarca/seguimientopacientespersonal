@@ -5,7 +5,7 @@ import { PersonaComponent } from '../persona/persona.component';
 import { SolicitudesService } from 'src/app/servicios/solicitudes.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CarteraServiciosService } from 'src/app/servicios/cartera-servicios.service';
+
 import { SelectorCarteraServiciosComponent } from 'src/app/controles/selector-cartera-servicios/selector-cartera-servicios.component';
 import { MessageService, ConfirmationService } from 'primeng';
 
