@@ -285,6 +285,7 @@ export class RegistrarAtencionComponent implements OnInit {
   }
 
   async guardarTratamiento(ID_ATENCION, ID_TRABAJADOR) {
+    console.log(this.form3.receta.fg)
     await this.form3.receta.GuardarTratamiento(ID_ATENCION, ID_TRABAJADOR)
   }
   async guardarReceta(ID_ATENCION) {

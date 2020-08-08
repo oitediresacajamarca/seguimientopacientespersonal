@@ -187,6 +187,7 @@ export class PrincipalComponent implements OnInit {
     this.formulariosolicitud.reset()
 
     this.solipac.buscarSolicitudPorNumeroDcocumento(this.cod_buscar).subscribe(async (datos) => {
+      console.log(datos)
       this.COD_CARTERA.COD_IPRESS = datos.ID_IPRESS
       await this.COD_CARTERA.cargarServicios();
       if (datos != null) {

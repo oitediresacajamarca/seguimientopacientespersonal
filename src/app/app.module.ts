@@ -93,6 +93,7 @@ import { SelectorIpressMinComponent } from './controles/selector-ipress-min/sele
 import { SelectorCarteraServiciosComponent } from './controles/selector-cartera-servicios/selector-cartera-servicios.component';
 import { PruebaComponent } from './prueba/prueba/prueba.component';
 import { SelectorFinanciadorComponent } from './controles/selector-financiador/selector-financiador.component';
+import { ConInfComponent } from './impresiones/con-inf/con-inf.component';
 
 
 
@@ -158,6 +159,8 @@ import { SelectorFinanciadorComponent } from './controles/selector-financiador/s
     PruebaComponent,
 
     SelectorFinanciadorComponent,
+
+    ConInfComponent,
 
  
 

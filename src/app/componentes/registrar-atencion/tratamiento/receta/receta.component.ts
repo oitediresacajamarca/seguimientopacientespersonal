@@ -65,18 +65,16 @@ export class RecetaComponent implements OnInit {
     this.fg.controls['COD_MEDICAMENTO'].setValue(e.COD_MEDICAMENTO);
     this.fg.controls['PRESENTACION'].setValue(e.PRESENTACION);
     this.fg.controls['CONCENTRACION'].setValue(e.CONCENTRACION);
-    this.fg.controls['FF'].setValue(e.FF);
-    
+    this.fg.controls['FF'].setValue(e.FF);    
     this.fg.controls['ESTADO_TRATAMIENTO'].setValue(1);
     console.log(this.fg.value)
-  
 
 
   }
   aniadir() {
 
     this.itemsreceta.push(this.fg.value);
-
+    console.log(this.itemsreceta)
     this.fg.reset();
     this.fg.controls['NRO_ITEM'].setValue(this.itemsreceta.length + 1)
 
@@ -188,6 +186,7 @@ export class RecetaComponent implements OnInit {
   }
   GuardarTratamiento(ID_ATENCION, ID_TRABAJADOR) {
     this.itemsreceta = this.itemsreceta.map((item) => { item.ID_ATENCION = ID_ATENCION; item.ID_TRABAJADOR = ID_TRABAJADOR; return item })
+    console.log(this.itemsreceta)
     this.tratamientos.guardarTratamientos(this.itemsreceta).subscribe((datos) => { console.log('se guardaron los tratamientos') },(ERROR)=>{
       this.logs.log('errores al guadar tratamiento',this.itemsreceta).subscribe();
     })
