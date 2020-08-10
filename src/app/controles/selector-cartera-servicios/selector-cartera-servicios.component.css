@@ -1,3 +1,5 @@
 :host  ::ng-deep .ui-dropdown {
-    width: 100%;
+   overflow: visible;
+   text-align: justify;
+ 
     }

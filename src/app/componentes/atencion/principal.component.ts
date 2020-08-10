@@ -187,7 +187,7 @@ export class PrincipalComponent implements OnInit {
     this.formulariosolicitud.reset()
 
     this.solipac.buscarSolicitudPorNumeroDcocumento(this.cod_buscar).subscribe(async (datos) => {
-      console.log(datos)
+
       this.COD_CARTERA.COD_IPRESS = datos.ID_IPRESS
       await this.COD_CARTERA.cargarServicios();
       if (datos != null) {
@@ -203,7 +203,7 @@ export class PrincipalComponent implements OnInit {
             COD_CARTERA: datos.COD_CARTERA
           },
         )
-        
+
         this.estadoss.solicitud = datos
         this.ID_SOLICITUD = datos.ID_SOLICITUD
       }
@@ -215,16 +215,16 @@ export class PrincipalComponent implements OnInit {
     this.panreg.ver = true;
     let sesion = JSON.parse(localStorage.getItem('datos'));
     this.atencion = this.formulariosolicitud.value
-    
-    let valor=  this.COD_CARTERA.getNombreCarteraSeleccionada()
-  this.estadoss.especialidadatender=valor
-       
+
+    let valor = this.COD_CARTERA.getNombreCarteraSeleccionada()
+    this.estadoss.especialidadatender = valor
+
 
     this.atencion.ANTECEDENTE = this.formulariosolicitud.controls.DESCRIPCION.value
     if (this.ID_SOLICITUD != null) {
       this.atencion.ID_SOLICITUD = this.ID_SOLICITUD
     }
-    console.log(this.formulariosolicitud.controls.DESCRIPCION.value)
+  
     this.panreg.form1.atencion_detalle.MOTIVO = this.formulariosolicitud.controls.DESCRIPCION.value;
     this.logs.log('INICIA PROCESO DE ATENCION', this.atencion).subscribe();
   }

@@ -16,6 +16,11 @@
 	color: #256029;
 	font-size: 12px;
 }
+:host ::ng-deep .ui-table-customers .customer-badge.status-DERIVADO {
+	background-color: #C8E6C9;
+	color: #256029;
+	font-size: 12px;
+}
 
 :host ::ng-deep .ui-table-customers .customer-badge.status-CERRADO{
 	background-color: #FFCDD2;
@@ -201,4 +206,9 @@
 		font-size: 12px;
 }
 
+:host ::ng-deep .DERIVADO {
+	background-color:#f47b08 !important;
+	color:white  !important;
+	
+}
 

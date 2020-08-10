@@ -25,4 +25,7 @@ export class SolicitudesService {
   nuevaSolicitud(datos) {
     return this.http.post<any>(environment.url_backend + 'solicitudes-atencion/nueva/', datos);
   }
+  nuevaDerivacion(datos) {
+    return this.http.post<any>(environment.url_backend + 'solicitudes-atencion/derivar/', datos);
+  }
 }

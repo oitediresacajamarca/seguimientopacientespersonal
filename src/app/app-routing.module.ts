@@ -21,6 +21,7 @@ import { SelectorCarteraServiciosComponent } from './controles/selector-cartera-
 import { SelectorFinanciadorComponent } from './controles/selector-financiador/selector-financiador.component';
 import { SelectorGeograficoVerticalComponent } from './controles/selector-geografico-vertical/selector-geografico-vertical.component';
 import { ConInfComponent } from './impresiones/con-inf/con-inf.component';
+import { FormDerivacionComponent } from './formularios/form-derivacion/form-derivacion.component';
 
 
 
@@ -40,7 +41,7 @@ const routes: Routes = [
   { path: 'nuevaSolicitud', component:PublicComponent , outlet: 'emergente' },  
   { path: 'buscardni', component: BusquedaNominalComponent, outlet: 'emergente' },
   { path: 'NuevaSolicitud', component: SolicitudAtencionComponent, outlet: 'emergente' }, 
-  { path: '1', component:ConInfComponent },  
+  { path: '1', component:FormDerivacionComponent },  
  
   {path:'recetaprint',component:TicketRecetaComponent},
   {

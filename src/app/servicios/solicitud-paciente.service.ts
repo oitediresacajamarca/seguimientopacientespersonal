@@ -17,4 +17,5 @@ export class SolicitudPacienteService {
     return  this.http.get<any>(environment.url_backend+'solicitudes-atencion/NRO_DOCUMENTO/'+nro_documento);
     }
   
+  
 }

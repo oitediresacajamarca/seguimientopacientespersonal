@@ -16,6 +16,7 @@ import { PacienteService } from 'src/app/servicios/paciente.service';
 import { EstadosService } from 'src/app/servicios/estados.service';
 import { LogService } from 'src/app/servicios/log.service';
 import { RecetaService } from 'src/app/servicios/impresiones/receta.service';
+import { FormDerivacionComponent } from 'src/app/formularios/form-derivacion/form-derivacion.component';
 
 
 
@@ -34,7 +35,10 @@ export class RegistrarAtencionComponent implements OnInit {
   @ViewChild('form1', { static: false }) form1: DatosAtencionComponent;
   @ViewChild('form2', { static: false }) form2: DiagnosticosComponent;
   @ViewChild('form3', { static: false }) form3: TratamientoComponent;
+  @ViewChild('derivacionForm', { static: false }) derivacionForm: FormDerivacionComponent;
+
   @Output('completoRegistro') completoRegistro: EventEmitter<any> = new EventEmitter
+
   motivoAte: string;
   casocovit: boolean;
   tipocov: string;
@@ -46,11 +50,12 @@ export class RegistrarAtencionComponent implements OnInit {
   @Input() datosPaciente: any
   formatofuat: FormatoFuat = this.fuatservicio.formatofuat;
   fua: string;
-  es:any;
+  es: any;
   @Input()
-  especialidad:string
-  FINANCIADOR:number=2
-  COD_FINANCIADOR:string
+  especialidad: string
+  FINANCIADOR: number = 2
+  COD_FINANCIADOR: string
+  verpanelderivacion:boolean=false
 
   constructor(private aten: AtencionService, private confirmationService: ConfirmationService,
     private fuatservicio: FuatServicioService, private messageService: MessageService,
@@ -128,13 +133,13 @@ export class RegistrarAtencionComponent implements OnInit {
       try {
         this.generaJsonFuat();
         this.logs.log('Fuat antes de registrar en base', this.formatofuat).subscribe();
-    /*    let fecha = new Date()
-        this.atencion.FECHA = fecha.getFullYear() + '-' + (fecha.getMonth() + 1) + '-' + fecha.getDate()
+        /*    let fecha = new Date()
+            this.atencion.FECHA = fecha.getFullYear() + '-' + (fecha.getMonth() + 1) + '-' + fecha.getDate()
+    
+            this.atencion.HORA = fecha.getHours() + ':' + fecha.getMinutes() + ':' + fecha.getSeconds()*/
 
-        this.atencion.HORA = fecha.getHours() + ':' + fecha.getMinutes() + ':' + fecha.getSeconds()*/
-
-        this.atencion.FECHA=this.fechaatencion
-        this.atencion.HORA=this.fechaatencion.toLocaleTimeString('es-ES')
+        this.atencion.FECHA = this.fechaatencion
+        this.atencion.HORA = this.fechaatencion.toLocaleTimeString('es-ES')
         console.log(this.atencion);
         console.log(this.form1.examenesFisicos);
         console.log(this.form1.atencion_detalle);
@@ -148,7 +153,7 @@ export class RegistrarAtencionComponent implements OnInit {
             this.confirmationService.close()
             this.logs.log('Inicia proceso de registro de atencion en base de datos', {}).subscribe();
             this.imprimirReceta();
-        
+
 
             this.form1.atencion_detalle.N_CONTROL = this.form1.numcon;
             this.personals.devolver_personal(this.sesion.id_persona, this.sesion.COD_IPRESS).subscribe((dato) => {
@@ -313,7 +318,7 @@ export class RegistrarAtencionComponent implements OnInit {
 
     console.log(moment.locale('es'));
     var fn = moment(this.datosPaciente.FECHA_NAC, "YYYY-MM-DD")
-   
+
 
 
     var hoy = moment();
@@ -339,7 +344,7 @@ export class RegistrarAtencionComponent implements OnInit {
     this.formatofuat.examendeapoyo = this.form1.examenesdeapoyo.toString();
     this.formatofuat.motivo[0] = this.form1.atencion_detalle.MOTIVO;
     this.formatofuat.codipress = this.sesion.COD_IPRESS;
-    this.formatofuat.tiposeguro=this.estadoss.NombreFinanciador
+    this.formatofuat.tiposeguro = this.estadoss.NombreFinanciador
     let actual = new Date();
     this.formatofuat.fechaatencion = actual.toLocaleDateString('es-ES')
     this.formatofuat.horaatencion = (new Date()).getHours().toString() + ':' + (new Date()).getMinutes()
@@ -383,17 +388,19 @@ export class RegistrarAtencionComponent implements OnInit {
       this.form3.visible = false;
     }
   }
-  cambioTipoFinaciador(e){
-    
-    console.log(e.VALOR)
-  this.estadoss.NombreFinanciador= e.VALOR
- 
- 
-   
-  }
-  CAMBIO_COD_FINANCIADOR(){
+  cambioTipoFinaciador(e) {
 
-    this.estadoss.COD_FINANCIADOR=this.COD_FINANCIADOR
+    console.log(e.VALOR)
+    this.estadoss.NombreFinanciador = e.VALOR
+  }
+  CAMBIO_COD_FINANCIADOR() {
+
+    this.estadoss.COD_FINANCIADOR = this.COD_FINANCIADOR
+  }
+  IniciarDerivacion() {
+
+    this.derivacionForm.ver=true   
+    this.derivacionForm.solicitud=this.estadoss.solicitud
   }
 
 

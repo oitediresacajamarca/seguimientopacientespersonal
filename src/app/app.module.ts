@@ -71,6 +71,7 @@ import { AtencionesRealizadasComponent } from './componentes/atencion/atenciones
 import { DetalleAtencionComponent } from './componentes/atencion/atenciones-realizadas/detalle-atencion/detalle-atencion.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import {InputNumberModule} from 'primeng/inputnumber';
+import { MatTableModule } from '@angular/material';
 
 import { MultiSelectModule } from 'primeng/multiselect';
 
@@ -94,6 +95,9 @@ import { SelectorCarteraServiciosComponent } from './controles/selector-cartera-
 import { PruebaComponent } from './prueba/prueba/prueba.component';
 import { SelectorFinanciadorComponent } from './controles/selector-financiador/selector-financiador.component';
 import { ConInfComponent } from './impresiones/con-inf/con-inf.component';
+import { FormDerivacionComponent } from './formularios/form-derivacion/form-derivacion.component';
+import { ClickColorDirective } from './directivas/click-color.directive';
+import { CalendarioEspaniolComponent } from './controles/calendario-espaniol/calendario-espaniol.component';
 
 
 
@@ -162,6 +166,12 @@ import { ConInfComponent } from './impresiones/con-inf/con-inf.component';
 
     ConInfComponent,
 
+    FormDerivacionComponent,
+
+    ClickColorDirective,
+
+    CalendarioEspaniolComponent,
+
  
 
   ],
@@ -187,6 +197,7 @@ import { ConInfComponent } from './impresiones/con-inf/con-inf.component';
     ListboxModule, ChipsModule, ProgressBarModule,
     DialogModule,
     InputMaskModule,
+    MatTableModule,
     CalendarModule, CaptchaModule, ContextMenuModule,
     TabViewModule, ConfirmDialogModule,
     ToastModule, MatDividerModule, MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, MatListModule

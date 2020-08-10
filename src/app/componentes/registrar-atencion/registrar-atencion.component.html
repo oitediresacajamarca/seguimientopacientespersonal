@@ -56,13 +56,16 @@
           </div></mat-card
           >
         </div>
-        <div class="ui-g-12">
+        <div class="ui-g-10">
           <p-steps
             [model]="pasos"
             [(activeIndex)]="activo"
             [readonly]="false"
             (activeIndexChange)="selecionarForm()"
           ></p-steps>
+        </div>
+        <div class="ui-g-2" style="display:flex;align-items:center;">
+          <p-button label="Derivar Paciente" icon="pi pi-external-link" (onClick)="IniciarDerivacion()" ></p-button>
         </div>
        
 
@@ -101,4 +104,4 @@
   </p-footer>
   <p-toast key ="mensajeregistro"></p-toast>
 </p-dialog>
- 
+ <app-form-derivacion  [(ver)]="verpanelderivacion" #derivacionForm></app-form-derivacion>

@@ -93,15 +93,14 @@
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-customer let-columns="columns">
-        <tr class="ui-selectable-row" [pContextMenuRow]="customer">
+        <tr class="ui-selectable-row" [pContextMenuRow]="customer" >
           <td>
             <span class="ui-column-title">Status</span>
             <span [class]="'customer-badge status-' + customer.ESTADO">{{
-              customer.ESTADO
-            }}</span>
+              customer.ESTADO=='DERIVADO'?'PENDIENTE': customer.ESTADO          }}</span>
           </td>
 
-          <td *ngFor="let col of columns" class="ui-resizable-column">
+          <td *ngFor="let col of columns" class="ui-resizable-column" [ngClass]=" customer['ESTADO']=='DERIVADO'?'DERIVADO':''">
             <ng-container [ngSwitch]="col.field">
               <ng-container *ngSwitchDefault>
                 <span class="ui-column-title">Codigo</span>

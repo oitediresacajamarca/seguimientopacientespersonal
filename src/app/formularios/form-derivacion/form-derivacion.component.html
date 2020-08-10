@@ -1,0 +1,96 @@
+<p-dialog
+  header="REGISTRO DE DERIVACION DE PACIENTE"
+  [(visible)]="ver"
+  [modal]="true"
+  [style]="{ width: '80vw' }"
+  [maximizable]="true"
+  [baseZIndex]="5000"
+  [draggable]="false"
+  [resizable]="false"
+
+>
+<div class="ui-g">
+  <div class="ui-g-12 titulo-derivar">DERIVAR PACIENTE</div>
+  <div class="ui-g-4">
+    <form action="" [formGroup]="formularioServicio">
+      <p-card>
+        <div class="ui-g">
+          <div class="ui-g-4">Especialidad</div>
+          <div class="ui-g-8">
+            <app-selector-cartera-servicios
+              #selector_servicios
+              formControlName="COD_CARTERA"
+            ></app-selector-cartera-servicios>
+          </div>
+          <div class="ui-g-4">Motivo</div>
+          <div class="ui-g-8">
+            <textarea
+              pInputTextarea
+              [rows]="10"
+              style="width: 100%;"
+              formControlName="MOTIVO"
+            ></textarea>
+          </div>
+          <div class="ui-g-3"></div>
+          <div class="ui-g-3">
+            <p-button label="AGREGAR" (onClick)="agregaDerivacion()"></p-button>
+          </div>
+          <div class="ui-g-3"><p-button label="CANCELAR" ></p-button></div>
+          <div class="ui-g-3"></div>
+        </div>
+      </p-card>
+    </form>
+  </div>
+  <div class="ui-g-8">
+    <mat-table [(dataSource)]="datas" class="mat-elevation-z8" #tabla>
+      <!-- Weight Column -->
+      <ng-container matColumnDef="item">
+        <mat-header-cell *matHeaderCellDef> Item </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.item }} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="Especialidad">
+        <mat-header-cell *matHeaderCellDef> Especialidad</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ element.Especialidad }}
+        </mat-cell>
+      </ng-container>
+      <!-- Position Column -->
+      <ng-container matColumnDef="Motivo">
+        <mat-header-cell *matHeaderCellDef> Motivo </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.Motivo }} </mat-cell>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="symbol">
+        <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button
+            mat-mini-fab
+            color="primary"
+            aria-label="Example icon button with a delete icon"
+            (click)="elimnarDerivacion(element.item)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        fila="{{ row.item }}"
+        (selecciono)="alertar()"
+      ></mat-row>
+    </mat-table>
+  </div>
+  <div class="ui-g-12 titulo-derivar">
+
+   
+  </div>
+</div>
+<p-footer>
+    <p-button label="Guardar" (onClick)="GuardarDerivacion($event)"></p-button>
+    </p-footer>
+</p-dialog>

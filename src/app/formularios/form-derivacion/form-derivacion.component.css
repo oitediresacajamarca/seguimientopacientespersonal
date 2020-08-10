@@ -1,0 +1,27 @@
+
+
+:host ::ng-deep  .ui-inputtextarea{
+    width: 100%;
+}
+.titulo-derivar{
+    font-size: 25px;
+    color: blue;
+    text-align: center;
+    justify-content: center;
+}
+ .mat-column-item{
+    flex: 0 0 10%;
+ 
+}
+.mat-column-Especialidad{
+    flex: 0 0 40%;
+ 
+}
+.mat-column-Motivo{
+    flex: 0 0 40%;
+ 
+}
+.mat-column-symbol{
+    flex: 0 0 10%;
+ 
+}
