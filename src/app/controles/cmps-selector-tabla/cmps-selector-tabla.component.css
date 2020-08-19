@@ -1,0 +1,14 @@
+table {
+    width: 80%;
+    align-items: center;
+  }
+.contenedor-cpms{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color:aqua;
+}

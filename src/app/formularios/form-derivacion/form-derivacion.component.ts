@@ -36,6 +36,7 @@ export class FormDerivacionComponent implements OnInit, AfterViewInit {
   @Input() ID_PACIENTE: number
   @Input() solicitud={}
   @Input() ver:boolean
+  @Input('fila') fila:any
 
   @ViewChild('tabla', { static: false }) tabla: MatTable<PeriodicElement>;
 
@@ -53,8 +54,8 @@ export class FormDerivacionComponent implements OnInit, AfterViewInit {
     this.selector_servicios.cargarServiciosIpress(this.COD_IPRESS)
 
   }
-  alertar() {
-    console.log('alertar')
+  cambiarEstilo(fila) {
+    console.log('alertar'+fila)
   }
   agregaDerivacion() {
     console.log(this.tabla.dataSource)
@@ -65,7 +66,6 @@ export class FormDerivacionComponent implements OnInit, AfterViewInit {
       Motivo: this.formularioServicio.value.MOTIVO,
       symbol: '',
       COD_CARTERA: this.formularioServicio.value.COD_CARTERA
-
     })
     // this.tabla.dataSource=this.datas
 
@@ -79,7 +79,7 @@ export class FormDerivacionComponent implements OnInit, AfterViewInit {
     this.datas = this.datas.map((dato, index) => { dato.item = index + 1; return dato })
     this.tabla.renderRows();
   }
-  GuardarDerivacion() {
+  GuardarDerivacion(e) {
     let body: any = {}
     body.derivaciones = this.datas;
     console.log(this.estados.personaPaciente)

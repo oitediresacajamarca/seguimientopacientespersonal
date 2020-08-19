@@ -1,0 +1,7 @@
+<form class="example-form"> 
+    <mat-form-field class="example-full-width">
+      <mat-label>Nombre a Buscar</mat-label>
+      <textarea matInput placeholder="Ingrese un Nombre Aproximado" [(ngModel)]="NombreBuscar" name="NombreBuscar"></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="accent" (click)="Buscar()">BUSCAR</button>
+  </form>

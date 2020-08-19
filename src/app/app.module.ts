@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { MatCardModule } from '@angular/material';
+import { MatCardModule, MatInputModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PaneldeseguimientoComponent } from './paneldeseguimiento/paneldeseguimiento.component';
@@ -98,6 +98,10 @@ import { ConInfComponent } from './impresiones/con-inf/con-inf.component';
 import { FormDerivacionComponent } from './formularios/form-derivacion/form-derivacion.component';
 import { ClickColorDirective } from './directivas/click-color.directive';
 import { CalendarioEspaniolComponent } from './controles/calendario-espaniol/calendario-espaniol.component';
+import { ExamenesApoyoComponent } from './componentes/registrar-atencion/examenes-apoyo/examenes-apoyo.component';
+import { CmpsSelectorTablaComponent } from './controles/cmps-selector-tabla/cmps-selector-tabla.component';
+import { BuscadorCpmsComponent } from './controles/buscador-cpms/buscador-cpms.component';
+import { CovidComponent } from './componentes/covid/covid.component';
 
 
 
@@ -132,24 +136,14 @@ import { CalendarioEspaniolComponent } from './controles/calendario-espaniol/cal
     SelectorCieCpmsComponent,
     AtencionesRealizadasComponent,
     DetalleAtencionComponent,
-
-
     HistorialAtencionComponent,
-
     BusquedaNominalComponent,
-
     RecetaComponent,
-
     SelectorMedicamentoComponent,
-
     MenuAccionAtencionComponent,
-
     TicketRecetaComponent,
-
     SelectorIpressHorizontalComponent,
-
     PersonaComponent,
-
     BuscadorDniComponent,
 
     SelectorGeograficoVerticalComponent,
@@ -172,10 +166,19 @@ import { CalendarioEspaniolComponent } from './controles/calendario-espaniol/cal
 
     CalendarioEspaniolComponent,
 
+    ExamenesApoyoComponent,
+
+    CmpsSelectorTablaComponent,
+
+    BuscadorCpmsComponent,
+
+    CovidComponent,
+
  
 
   ],
   imports: [
+    MatInputModule,
     GMapModule,
     StepsModule,
     PickListModule,

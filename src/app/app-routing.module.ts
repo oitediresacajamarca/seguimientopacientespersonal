@@ -22,6 +22,10 @@ import { SelectorFinanciadorComponent } from './controles/selector-financiador/s
 import { SelectorGeograficoVerticalComponent } from './controles/selector-geografico-vertical/selector-geografico-vertical.component';
 import { ConInfComponent } from './impresiones/con-inf/con-inf.component';
 import { FormDerivacionComponent } from './formularios/form-derivacion/form-derivacion.component';
+import { CmpsSelectorTablaComponent } from './controles/cmps-selector-tabla/cmps-selector-tabla.component';
+import { BuscadorCpmsComponent } from './controles/buscador-cpms/buscador-cpms.component';
+import { CovidComponent } from './componentes/covid/covid.component';
+import { RegistrarAtencionComponent } from './componentes/registrar-atencion/registrar-atencion.component';
 
 
 
@@ -41,7 +45,10 @@ const routes: Routes = [
   { path: 'nuevaSolicitud', component:PublicComponent , outlet: 'emergente' },  
   { path: 'buscardni', component: BusquedaNominalComponent, outlet: 'emergente' },
   { path: 'NuevaSolicitud', component: SolicitudAtencionComponent, outlet: 'emergente' }, 
-  { path: '1', component:FormDerivacionComponent },  
+  { path: '1', component:BuscadorCpmsComponent },
+  { path: '2', component:GeoreferenciaComponent },
+  { path: '3', component:CovidComponent },  
+  { path: '4', component:FormDerivacionComponent },       
  
   {path:'recetaprint',component:TicketRecetaComponent},
   {
