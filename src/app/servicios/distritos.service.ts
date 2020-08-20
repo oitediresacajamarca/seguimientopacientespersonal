@@ -17,5 +17,8 @@ export class DistritosService {
   devolverCP(coddist:string){
     return this.http.get<any>(environment.ipmicroservicios+'centrospoblados/distrito/'+coddist);
   }
+  devolverGeoreferncia(coddist:string){
+    return this.http.get<any>(environment.url_backend+'ubigeos-distritos/'+coddist);
+  }
   
 }

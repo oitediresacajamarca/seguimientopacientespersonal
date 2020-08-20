@@ -1,0 +1,22 @@
+<mat-form-field appearance="fill">
+  <mat-label>Provincia</mat-label>
+  <mat-select
+    name="food"
+    [(ngModel)]="PROVINCIA_SELECCIONADA"
+    (selectionChange)="cambiarProvincia($event)"
+  >
+    <mat-option *ngFor="let PROVINCIA of PROVINCIAS" [value]="PROVINCIA.value">
+      {{ PROVINCIA.label }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-divider></mat-divider>
+
+<mat-form-field appearance="fill">
+  <mat-label>Distrito</mat-label>
+  <mat-select name="food" (selectionChange)="cambioDistrito($event)">
+    <mat-option *ngFor="let DISTRITO of DISTRITOS" [value]="DISTRITO.value">
+      {{ DISTRITO.label }}
+    </mat-option> 
+  </mat-select>
+</mat-form-field>

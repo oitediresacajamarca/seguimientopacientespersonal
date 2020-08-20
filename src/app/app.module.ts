@@ -25,6 +25,7 @@ import { ChipsModule } from 'primeng/chips';
 import { TablaMorbilidadesComponent } from './componentes/tabla-morbilidades/tabla-morbilidades.component';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
 import { PickListModule } from 'primeng/picklist';
 import { LightboxModule } from 'primeng/lightbox';
 import { SidebarModule } from 'primeng/sidebar';
@@ -102,6 +103,10 @@ import { ExamenesApoyoComponent } from './componentes/registrar-atencion/examene
 import { CmpsSelectorTablaComponent } from './controles/cmps-selector-tabla/cmps-selector-tabla.component';
 import { BuscadorCpmsComponent } from './controles/buscador-cpms/buscador-cpms.component';
 import { CovidComponent } from './componentes/covid/covid.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { SelectorGeograficoVerticalMaterialComponent } from './controles/selector-geografico-vertical-material/selector-geografico-vertical-material.component';
+import { GeoreferenciasUbicacionesPositivasComponent } from './georeferencias-ubicaciones-positivas/georeferencias-ubicaciones-positivas.component';
+import { GeoreferenciasUbicacionesFallecidosComponent } from './georeferencias-ubicaciones-fallecidos/georeferencias-ubicaciones-fallecidos.component';
 
 
 
@@ -174,6 +179,12 @@ import { CovidComponent } from './componentes/covid/covid.component';
 
     CovidComponent,
 
+    SelectorGeograficoVerticalMaterialComponent,
+
+    GeoreferenciasUbicacionesPositivasComponent,
+
+    GeoreferenciasUbicacionesFallecidosComponent,
+
  
 
   ],
@@ -191,6 +202,7 @@ import { CovidComponent } from './componentes/covid/covid.component';
     DropdownModule,
     InputNumberModule,
     FormsModule,
+    MatSelectModule,
     HttpClientModule, SpinnerModule
     , SliderModule, RadioButtonModule,
     ButtonModule,
@@ -213,7 +225,7 @@ import { CovidComponent } from './componentes/covid/covid.component';
     UsuariosModule,
     OverlayPanelModule,
     TieredMenuModule, ToastModule,
-    PdfViewerModule, MultiSelectModule, DataViewModule, ReactiveFormsModule,ToolbarModule
+    PdfViewerModule, MultiSelectModule, DataViewModule, ReactiveFormsModule,ToolbarModule,MatTabsModule
   ],
   providers: [DistritosService, ConfirmationService, MessageService,IpressService],
 

@@ -13,4 +13,10 @@ export class CovidRefService {
    devolverGeoReferencias(){
      return this.http.get<any[]>(environment.url_backend+'heatmap')
    }
+   devolverGeoReferenciasFallecidos(){
+    return this.http.get<any[]>(environment.url_backend+'base-noti/fallecidos/region')
+  }
+   devolverGeoReferenciasDist(cod_distrito){
+    return this.http.get<any[]>(environment.url_backend+'base-noti/confirmadosgeo/'+cod_distrito)
+  }
 }

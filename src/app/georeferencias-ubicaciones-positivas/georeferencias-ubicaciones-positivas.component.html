@@ -1,0 +1,41 @@
+  
+
+        <p-gmap
+        #gmap2
+        [style]="{ width: '100%', height: '600px', 'margin-bottom': '1em' }"
+        [options]="options"
+        [overlays]="overlays"
+      
+      ></p-gmap>
+
+      <button
+        type="button"
+        pButton
+        label="Limpiar"
+        icon="pi pi-times"
+        (click)="clear()"
+        style="margin-right: 0.25em;"
+      ></button>
+      <button
+        type="button"
+        pButton
+        label="Acercar"
+        icon="pi pi-plus"
+        (click)="zoomIn(gmap2.getMap())"
+        style="margin-right: 0.25em;"
+      ></button>
+      <button
+        type="button"
+        pButton
+        label="Alejar"
+        icon="pi pi-minus"
+        (click)="zoomOut(gmap2.getMap())"
+      ></button>
+      <button
+        type="button"
+        pButton
+        label="Cargar"
+        icon="pi pi-minus"
+        (click)="cargarGeoreferencias()"
+      ></button>
+    

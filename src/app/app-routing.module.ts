@@ -26,6 +26,7 @@ import { CmpsSelectorTablaComponent } from './controles/cmps-selector-tabla/cmps
 import { BuscadorCpmsComponent } from './controles/buscador-cpms/buscador-cpms.component';
 import { CovidComponent } from './componentes/covid/covid.component';
 import { RegistrarAtencionComponent } from './componentes/registrar-atencion/registrar-atencion.component';
+import { SelectorGeograficoVerticalMaterialComponent } from './controles/selector-geografico-vertical-material/selector-geografico-vertical-material.component';
 
 
 
@@ -48,7 +49,8 @@ const routes: Routes = [
   { path: '1', component:BuscadorCpmsComponent },
   { path: '2', component:GeoreferenciaComponent },
   { path: '3', component:CovidComponent },  
-  { path: '4', component:FormDerivacionComponent },       
+  { path: '4', component:FormDerivacionComponent },  
+  { path: '5', component:SelectorGeograficoVerticalMaterialComponent },          
  
   {path:'recetaprint',component:TicketRecetaComponent},
   {
