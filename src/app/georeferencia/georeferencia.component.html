@@ -1,25 +1,11 @@
 <p-toast [style]="{ marginTop: '80px' }"></p-toast>
 <div class="container">
   <div class="ui-g">
-    <div class="ui-g-12">
-      <mat-card class="banner"
-        ><img
-          src="assets/Logo diresa.png"
-          style="height: 100px; width: 100px;"
-          alt=""
-        />
-        <span class="titulo">
-          DIRECCION REGIONAL DE SALUD CAJAMARCA </span
-        ><br />
-        <span class="subtitulo">
-          GEOREFERENCIACION CASOS COVID
-        </span>
-      </mat-card>
-    </div>
+   
     <div class="ui-g-3">
       <mat-card fxFlex="650">
         <app-selector-geografico-vertical-material
-          (selecionoDistrito)="selecionoDistrito($event)"
+          (selecionoDistrito)="selecionoDistrito($event)" (selecionoProvincia)="seleccionoProvincia($event)"
         ></app-selector-geografico-vertical-material>
       </mat-card>
     </div>

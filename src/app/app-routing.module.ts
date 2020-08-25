@@ -50,7 +50,8 @@ const routes: Routes = [
   { path: '2', component:GeoreferenciaComponent },
   { path: '3', component:CovidComponent },  
   { path: '4', component:FormDerivacionComponent },  
-  { path: '5', component:SelectorGeograficoVerticalMaterialComponent },          
+  { path: '5', component:SelectorGeograficoVerticalMaterialComponent },   
+  { path: '6', component:ConInfComponent },          
  
   {path:'recetaprint',component:TicketRecetaComponent},
   {

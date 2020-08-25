@@ -42,7 +42,7 @@ export class GeoreferenciaComponent implements OnInit {
 
         this.options = {
             center: { lat: -6.4341326741444, lng: -78.70264353085936 },
-            zoom: 8,       
+            zoom: 8,
         };
         this.gradiente = [
             "rgba(0, 255, 255, 0)",
@@ -81,15 +81,16 @@ export class GeoreferenciaComponent implements OnInit {
 
     }
     selecionoDistrito(e) {
+     
 
         this.georefs.devolverGeoreferncia(e.value).subscribe((dato) => {
-            console.log(dato)
+            console.log(dato)      
             this.map.getMap().setCenter({ lat: dato.LAT, lng: dato.LONG })
-            this.map.getMap().setZoom(13)
+            this.map.getMap().setZoom(14)
             this.ub.map.getMap().setCenter({ lat: dato.LAT, lng: dato.LONG })
-            this.ub.map.getMap().setZoom(13)
+            this.ub.map.getMap().setZoom(14)
         })
-        this.cargarGeoreferenciasDistrito(e.value)
+    //    this.cargarGeoreferenciasDistrito(e.value)
 
     }
 
@@ -101,7 +102,7 @@ export class GeoreferenciaComponent implements OnInit {
             this.overlays.push(
                 new google.maps.visualization.HeatmapLayer({
                     data: this.heatmapdata,
-                    radius: 1000,
+                    radius: 10,
                     dissipating: false,
                     opacity: 1,
                     gradiente: this.gradiente
@@ -117,8 +118,7 @@ export class GeoreferenciaComponent implements OnInit {
     cargarGeoreferencias() {
         this.covid.devolverGeoReferencias().subscribe((geo) => {
             geo.forEach(element => {
-
-                this.heatmapdata.push({ location: new google.maps.LatLng(element.lat, element.lng), weight: 250 });
+                this.heatmapdata.push({ location: new google.maps.LatLng(element.lat, element.lng), weight: 10  });
             });
 
             this.overlays.push(new google.maps.visualization.HeatmapLayer({
@@ -129,18 +129,17 @@ export class GeoreferenciaComponent implements OnInit {
                 gradiente: this.gradiente
             })
             )
-
-
-
         })
-
-
-
     }
 
     handleMapClick(event) {
         this.dialogVisible = true;
         this.selectedPosition = event.latLng;
+    }
+
+    seleccionoProvincia(event) {
+        this.map.getMap().setCenter({ lat: event.LAT, lng: event.LONG })
+        this.map.getMap().setZoom(11)
     }
 
     handleOverlayClick(event) {
@@ -206,9 +205,7 @@ export class GeoreferenciaComponent implements OnInit {
     clear() {
         var heatmapData = [
             new google.maps.LatLng(-7.1606346, -78.5392219),
-            new google.maps.LatLng(-7.1606312, -78.5392219),
-            new google.maps.LatLng(-7.1678435, -78.5152423),
-            new google.maps.LatLng(-7.1606346, -78.5392219),
+
         ];
 
 
