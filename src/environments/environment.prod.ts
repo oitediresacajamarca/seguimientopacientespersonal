@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  ipmicroservicios:" http://hospitalvirtual.diresacajamarca.gob.pe:8089/",
-  ip:"hospitalvirtual.diresacajamarca.gob.pe:8089" ,
-  ip_backend: "hospitalvirtual.diresacajamarca.gob.pe:8088",
-  url_backend: "http://hospitalvirtual.diresacajamarca.gob.pe:8088/"
+  ipmicroservicios:" http://sir.diresacajamarca.gob.pe:8089/",
+  ip:"sir.diresacajamarca.gob.pe:8089" ,
+  ip_backend: "sir.diresacajamarca.gob.pe:8088",
+  url_backend: "http://sir.diresacajamarca.gob.pe:8088/"
   };
